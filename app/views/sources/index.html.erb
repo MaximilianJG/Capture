@@ -1,0 +1,7 @@
+<h1>Home</h1>
+
+<% @sources.each do |source| %>
+<ul>
+  <li> <%= source.title %> ----- <%= source.user.first_name %></li>
+</ul>
+  <% end %>
