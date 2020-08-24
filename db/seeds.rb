@@ -37,27 +37,26 @@ Source.create!(title: "Joe Biden formally accepts Democratic nomination", websit
 
 # INTERNATIONAL INCIDENTS
 # Tim
-Source.create!(title: "Covid-19 Live Updates: Researchers Document First Case of Virus Reinfection", website: "nytimes.com", url_of_website: "https://www.nytimes.com/2020/08/24/world/covid-19-coronavirus.html?action=click&module=Top%20Stories&pgtype=Homepage", user_id: tim.id, folder_id: us_politics_tim.id)
-Source.create!(title: "Beirut explosion: Port officials under house arrest as rescue efforts continue", website: "bbc.co.uk", url_of_website: "https://www.bbc.com/news/world-middle-east-53670839", user_id: tim.id, folder_id: us_politics_tim.id)
+Source.create!(title: "Covid-19 Live Updates: Researchers Document First Case of Virus Reinfection", website: "nytimes.com", url_of_website: "https://www.nytimes.com/2020/08/24/world/covid-19-coronavirus.html?action=click&module=Top%20Stories&pgtype=Homepage", user_id: tim.id, folder_id: international_incidents_tim.id)
+Source.create!(title: "Beirut explosion: Port officials under house arrest as rescue efforts continue", website: "bbc.co.uk", url_of_website: "https://www.bbc.com/news/world-middle-east-53670839", user_id: tim.id, folder_id: international_incidents_tim.id)
 
 # Marc
-Source.create!(title: "Covid-19 Live Updates: Researchers Document First Case of Virus Reinfection", website: "nytimes.com", url_of_website: "https://www.nytimes.com/2020/08/24/world/covid-19-coronavirus.html?action=click&module=Top%20Stories&pgtype=Homepage", user_id: marc.id, folder_id: us_politics_marc.id)
-Source.create!(title: "Beirut explosion: Port officials under house arrest as rescue efforts continue", website: "bbc.co.uk", url_of_website: "https://www.bbc.com/news/world-middle-east-53670839", user_id: marc.id, folder_id: us_politics_marc.id)
+Source.create!(title: "Covid-19 Live Updates: Researchers Document First Case of Virus Reinfection", website: "nytimes.com", url_of_website: "https://www.nytimes.com/2020/08/24/world/covid-19-coronavirus.html?action=click&module=Top%20Stories&pgtype=Homepage", user_id: marc.id, folder_id: international_incidents_marc.id)
+Source.create!(title: "Beirut explosion: Port officials under house arrest as rescue efforts continue", website: "bbc.co.uk", url_of_website: "https://www.bbc.com/news/world-middle-east-53670839", user_id: marc.id, folder_id: international_incidents_marc.id)
 
 # Max
-Source.create!(title: "Covid-19 Live Updates: Researchers Document First Case of Virus Reinfection", website: "nytimes.com", url_of_website: "https://www.nytimes.com/2020/08/24/world/covid-19-coronavirus.html?action=click&module=Top%20Stories&pgtype=Homepage", user_id: max.id, folder_id: us_politics_max.id)
-Source.create!(title: "Beirut explosion: Port officials under house arrest as rescue efforts continue", website: "bbc.co.uk", url_of_website: "https://www.bbc.com/news/world-middle-east-53670839", user_id: max.id, folder_id: us_politics_max.id)
+Source.create!(title: "Covid-19 Live Updates: Researchers Document First Case of Virus Reinfection", website: "nytimes.com", url_of_website: "https://www.nytimes.com/2020/08/24/world/covid-19-coronavirus.html?action=click&module=Top%20Stories&pgtype=Homepage", user_id: max.id, folder_id: international_incidents_max.id)
+Source.create!(title: "Beirut explosion: Port officials under house arrest as rescue efforts continue", website: "bbc.co.uk", url_of_website: "https://www.bbc.com/news/world-middle-east-53670839", user_id: max.id, folder_id: international_incidents_max.id)
 
 # SPORTS
 # Tim
-Source.create!(title: "Ver­dienter geht es kaum", website: "11freunde.de", url_of_website: "https://11freunde.de/artikel/verdienter-geht-es-kaum/2538567", user_id: tim.id, folder_id: us_politics_tim.id)
-Source.create!(title: "World No 304 Sophia Popov holds nerve to claim shock Women's Open title", website: "theguardian.com", url_of_website: "https://www.theguardian.com/sport/2020/aug/23/sophia-popov-holds-her-nerve-and-lands-first-major-with-the-womens-open", user_id: tim.id, folder_id: us_politics_tim.id)
+Source.create!(title: "Ver­dienter geht es kaum", website: "11freunde.de", url_of_website: "https://11freunde.de/artikel/verdienter-geht-es-kaum/2538567", user_id: tim.id, folder_id: sports_tim.id)
+Source.create!(title: "World No 304 Sophia Popov holds nerve to claim shock Women's Open title", website: "theguardian.com", url_of_website: "https://www.theguardian.com/sport/2020/aug/23/sophia-popov-holds-her-nerve-and-lands-first-major-with-the-womens-open", user_id: tim.id, folder_id: sports_tim.id)
 
 # Marc
-Source.create!(title: "Ver­dienter geht es kaum", website: "11freunde.de", url_of_website: "https://11freunde.de/artikel/verdienter-geht-es-kaum/2538567", user_id: marc.id, folder_id: us_politics_marc.id)
-Source.create!(title: "World No 304 Sophia Popov holds nerve to claim shock Women's Open title", website: "theguardian.com", url_of_website: "https://www.theguardian.com/sport/2020/aug/23/sophia-popov-holds-her-nerve-and-lands-first-major-with-the-womens-open", user_id: marc.id, folder_id: us_politics_marc.id)
+Source.create!(title: "Ver­dienter geht es kaum", website: "11freunde.de", url_of_website: "https://11freunde.de/artikel/verdienter-geht-es-kaum/2538567", user_id: marc.id, folder_id: sports_marc.id)
+Source.create!(title: "World No 304 Sophia Popov holds nerve to claim shock Women's Open title", website: "theguardian.com", url_of_website: "https://www.theguardian.com/sport/2020/aug/23/sophia-popov-holds-her-nerve-and-lands-first-major-with-the-womens-open", user_id: marc.id, folder_id: sports_marc.id)
 
 # Max
-Source.create!(title: "Ver­dienter geht es kaum", website: "11freunde.de", url_of_website: "https://11freunde.de/artikel/verdienter-geht-es-kaum/2538567", user_id: max.id, folder_id: us_politics_max.id)
-Source.create!(title: "World No 304 Sophia Popov holds nerve to claim shock Women's Open title", website: "theguardian.com", url_of_website: "https://www.theguardian.com/sport/2020/aug/23/sophia-popov-holds-her-nerve-and-lands-first-major-with-the-womens-open", user_id: max.id, folder_id: us_politics_max.id)
-
+Source.create!(title: "Ver­dienter geht es kaum", website: "11freunde.de", url_of_website: "https://11freunde.de/artikel/verdienter-geht-es-kaum/2538567", user_id: max.id, folder_id: sports_max.id)
+Source.create!(title: "World No 304 Sophia Popov holds nerve to claim shock Women's Open title", website: "theguardian.com", url_of_website: "https://www.theguardian.com/sport/2020/aug/23/sophia-popov-holds-her-nerve-and-lands-first-major-with-the-womens-open", user_id: max.id, folder_id: sports_max.id)
