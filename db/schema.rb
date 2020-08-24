@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_132545) do
+ActiveRecord::Schema.define(version: 2020_08_24_135300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 2020_08_24_132545) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_folders_on_user_id"
+  end
+
+  create_table "quotes", force: :cascade do |t|
+    t.text "content"
+    t.bigint "source_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["source_id"], name: "index_quotes_on_source_id"
   end
 
   create_table "sources", force: :cascade do |t|
@@ -53,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_132545) do
   end
 
   add_foreign_key "folders", "users"
+  add_foreign_key "quotes", "sources"
   add_foreign_key "sources", "folders"
   add_foreign_key "sources", "users"
 end
