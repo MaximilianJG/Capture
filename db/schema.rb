@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_131202) do
+ActiveRecord::Schema.define(version: 2020_08_24_132545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,20 @@ ActiveRecord::Schema.define(version: 2020_08_24_131202) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_folders_on_user_id"
+  end
+
+  create_table "sources", force: :cascade do |t|
+    t.string "title"
+    t.string "website"
+    t.date "date_of_article"
+    t.datetime "date_time_of_save"
+    t.string "url_of_website"
+    t.bigint "user_id", null: false
+    t.bigint "folder_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["folder_id"], name: "index_sources_on_folder_id"
+    t.index ["user_id"], name: "index_sources_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,4 +53,6 @@ ActiveRecord::Schema.define(version: 2020_08_24_131202) do
   end
 
   add_foreign_key "folders", "users"
+  add_foreign_key "sources", "folders"
+  add_foreign_key "sources", "users"
 end
