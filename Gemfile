@@ -32,8 +32,6 @@ gem 'devise'
 
 # Gems I added
 gem 'cloudinary', '~> 1.12.0'
-gem 'pundit'
-
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
