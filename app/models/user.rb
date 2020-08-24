@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :folders, dependent: :destroy
   has_many :sources, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
