@@ -5,6 +5,7 @@ class SourcesController < ApplicationController
   def index
     # only show sources that the user has created himself (e.g. record.user == user)
     @sources = policy_scope(Source).where(user: current_user)
+
   end
 
   def show
