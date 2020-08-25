@@ -12,7 +12,7 @@ class QuotesController < ApplicationController
       @quote.save
       redirect_to sources_path
     else
-      redirect_to new_source
+      redirect_to new_source_path
     end
   end
 
