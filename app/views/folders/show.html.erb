@@ -1,0 +1,10 @@
+<div class="container">
+  <h1> <%= @folder.folder_name %> </h1>
+
+  <% @sources.each do |source| %>
+    <li>
+      <%= source.title %>
+    </li>
+  <% end %>
+</div>
+
