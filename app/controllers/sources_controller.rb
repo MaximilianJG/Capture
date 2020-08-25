@@ -11,15 +11,14 @@ class SourcesController < ApplicationController
   end
 
   def new
-  end
-
-  def new
     @source = Source.new
+    authorize @source
   end
 
   def create
     @source = Source.new(strong_source_params)
     @source.user = current_user
+    authorize @source
 
     if @source.save!
       redirect_to sources_path
@@ -31,11 +30,12 @@ class SourcesController < ApplicationController
     end
   end
 
+
+  private
+
   def strong_source_params
     params.require(:source).permit(:title, :website, :date_of_article, :date_time_of_save, :url_of_website, :folder_id)
   end
-
-  private
 
   def set_source
     @source = Source.find(params[:id])
