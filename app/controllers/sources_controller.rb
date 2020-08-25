@@ -10,16 +10,18 @@ class SourcesController < ApplicationController
 
   def create
     @source = Source.new(strong_source_params)
-    # @source.user = current_user
-    if @source.save
-      redirect_to sources_path
+    @source.user = current_user
+    # @quote.source_id = @source.id
+
+    if @source.save!
+      redirect_to new_quote_path
     else
-      render new_source_path
+      render :new
     end
   end
 
   def strong_source_params
-    params.require(:source).permit(:title, :website, :date_of_article, :date_time_of_save, :url_of_website, :folder)
+    params.require(:source).permit(:title, :website, :date_of_article, :date_time_of_save, :url_of_website, :folder_id)
   end
 
 end
