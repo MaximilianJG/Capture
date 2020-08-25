@@ -34,3 +34,9 @@
     </ul>
   </div>
 </div>
+
+<% Folder.all.each do |folder| %>
+<ul>
+  <li><%= link_to folder.folder_name, folder_path(folder) %></li>
+</ul>
+<% end %>
