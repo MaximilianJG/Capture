@@ -11,10 +11,12 @@ class SourcesController < ApplicationController
   def create
     @source = Source.new(strong_source_params)
     @source.user = current_user
-    # @quote.source_id = @source.id
 
     if @source.save!
-      redirect_to new_quote_path
+      redirect_to sources_path
+      # not for Chrome Extension
+      $quote.source_id = @source.id
+      $quote.save!
     else
       render :new
     end
