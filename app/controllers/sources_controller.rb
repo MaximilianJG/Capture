@@ -4,5 +4,8 @@ class SourcesController < ApplicationController
     @sources = Source.all
   end
 
+  def new
+    @source = Source.new
+  end
 
 end

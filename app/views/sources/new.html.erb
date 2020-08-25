@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Create a new Source</h1>
+
+  <%= simple_form_for (@source) do |f|%>
+  <%= f.input :title %>
+  <%= f.input :website %>
+  <%= f.input :date_of_article %>
+  <%= f.input :date_time_of_save %>
+  <%= f.input :url_of_website %>
+  <%= f.input :folder_id %>
+  <%= f.submit %>
+
+  <% end %>
+</div>
