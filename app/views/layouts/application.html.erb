@@ -12,9 +12,30 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
 
-    <%= yield %>
+    <% if @landing_page_navbar %>
+      <%= render 'shared/navbar-landing-page' %>
+      <%= yield %>
+    <% else %>
+
+    <div class="display-flex-container">
+
+      <div class="sidebar-rest">
+        <%= render 'shared/sidebar-rest' %>
+      </div>
+
+      <div class="">
+        <%= yield %>
+      </div>
+
+
+    </div>
+
+    <% end %>
+
+
+
+
   </body>
 </html>

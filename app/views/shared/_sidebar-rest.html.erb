@@ -1,0 +1,34 @@
+
+
+<%= cl_image_tag("Screenshot_2020-08-25_at_17.42.48_xjhppf",
+      width: 220, height: 80, crop: :fill, class: "logo-sidebar") %>
+
+  <ul class="nav-bar-links">
+    <%= link_to sources_path, class: "nav-bar-links" do  %>
+    <li> <i class="fas fa-home"></i></li>
+    <li class="home-btn-navbar"> <strong>Home</strong></li>
+    <% end %>
+  </ul>
+
+<ul class="nav-bar-links">
+  <li> <i class="fas fa-bell"></i> </li>
+  <li class=""> <strong>Notifications</strong></li>
+</ul>
+
+<ul class="nav-bar-links">
+  <li> <i class="fas fa-search"></i> </li>
+  <li class=""> <strong>Search</strong></li>
+</ul>
+
+<div class="all-folders-in-sidebar">
+  <ul>
+  <% Folder.where(user: current_user).each do |folder| %>
+  <%= link_to folder_path(folder), class: "ul-text-decoration" do %>
+    <div class="div-folder-in-sidebar">
+      <li class="folder-in-sidebar"> <i class="fa fa-archive"></i> <%= folder.folder_name %></li>
+    </div>
+  <% end %>
+  <% end %>
+</ul>
+</div>
+
