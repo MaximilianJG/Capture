@@ -1,13 +1,29 @@
 <h1>Home</h1>
 
 <% @sources.each do |source| %>
-<%= link_to "Destroy", source_path(source), method: :delete, data: { confirm: "Are you sure?" }  %>
-<ul>
-  <li> <%= source.title %> ----- <%= source.user.first_name %></li>
-  <% source.quotes.each do |quote| %>
-  <li><%= quote.content %></li>
-  <% end %>
-</ul>
+
+<div class="source-card">
+  <ul class="source-list">
+
+    <div class="flex-div-favicon-and-title">
+      <%= cl_image_tag("1200x630wa-1_hbgeji",
+      width: 60, height: 60, class: "favicon-source-card") %>
+      <div class="source-card-title">
+        <li> <%= source.title %> </li>
+        <p class="saved-to"><strong>Saved to: <%= source.folder.folder_name %></strong></p>
+      </div>
+    </div>
+
+
+
+    <% source.quotes.each do |quote| %>
+    <li><%= quote.content %></li>
+    <% end %>
+
+  </ul>
+  <%= link_to "Destroy", source_path(source), method: :delete, data: { confirm: "Are you sure?" }  %>
+</div>
+
   <% end %>
 
 
