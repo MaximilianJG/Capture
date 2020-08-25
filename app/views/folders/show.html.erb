@@ -3,7 +3,7 @@
 
   <% @sources.each do |source| %>
     <li>
-      <%= source.title %>
+      <%= link_to source.title, source_path %>
     </li>
   <% end %>
 </div>
