@@ -11,6 +11,7 @@ class SourcePolicy < ApplicationPolicy
 
   def show?
     return true
+    record.user == user || user.admin
   end
 
   def new?
@@ -23,14 +24,17 @@ class SourcePolicy < ApplicationPolicy
 
   def edit?
     true
+    record.user == user || user.admin
   end
 
   def update?
     true
+    record.user == user || user.admin
   end
 
   def destroy?
     true
+    record.user == user || user.admin
   end
 
 end
