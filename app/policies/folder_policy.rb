@@ -6,7 +6,6 @@ class FolderPolicy < ApplicationPolicy
   end
 
 def show?
-  true
   record.user == user || user.admin
 end
 
