@@ -3,10 +3,8 @@ class SourcesController < ApplicationController
 
   # READ
   def index
-    @sources = Source.all
-
     # only show sources that the user has created himself (e.g. record.user == user)
-    @source = policy_scope(Source).all
+    @sources = policy_scope(Source).where(user: current_user)
   end
 
   def show
