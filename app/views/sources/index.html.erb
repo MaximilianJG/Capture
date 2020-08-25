@@ -3,5 +3,10 @@
 <% @sources.each do |source| %>
 <ul>
   <li> <%= source.title %> ----- <%= source.user.first_name %></li>
+  <% source.quotes.each do |quote| %>
+  <li><%= quote.content %></li>
+  <% end %>
 </ul>
   <% end %>
+
+<%= link_to "Create a new quote", new_quote_path %>
