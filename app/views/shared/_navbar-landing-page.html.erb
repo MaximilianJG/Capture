@@ -7,7 +7,6 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
@@ -35,8 +34,3 @@
   </div>
 </div>
 
-<% Folder.where(user: current_user).each do |folder| %>
-<ul>
-  <li><%= link_to folder.folder_name, folder_path(folder) %></li>
-</ul>
-<% end %>
