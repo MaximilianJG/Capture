@@ -1,6 +1,7 @@
 <h1>Home</h1>
 
 <% @sources.each do |source| %>
+<%= link_to "Destroy", source_path(source), method: :delete, data: { confirm: "Are you sure?" }  %>
 <ul>
   <li> <%= source.title %> ----- <%= source.user.first_name %></li>
   <% source.quotes.each do |quote| %>

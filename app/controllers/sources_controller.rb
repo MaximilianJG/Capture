@@ -1,5 +1,5 @@
 class SourcesController < ApplicationController
-  before_action :set_source, only: [:show]
+  before_action :set_source, only: [:show, :edit, :update, :destroy]
 
   # READ
   def index
@@ -30,6 +30,21 @@ class SourcesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @source.update(strong_source_params)
+      redirect_to sources_path(@source)
+    else
+      render :update
+    end
+  end
+
+  def destroy
+    @source.destroy
+    redirect_to sources_path
+  end
 
   private
 
