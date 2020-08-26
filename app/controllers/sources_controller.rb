@@ -4,6 +4,8 @@ class SourcesController < ApplicationController
   # READ
   def index
     # only show sources that the user has created himself (e.g. record.user == user)
+    @sources = policy_scope(Source).where(user: current_user).order(created_at: :desc)
+
     if params[:query].present?
       # @sources = policy_scope(Source).where(user: current_user)
       @sources = policy_scope(Source).search_for_all(params[:query]).where(user: current_user)

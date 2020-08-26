@@ -1,5 +1,3 @@
-
-
 .sidebar-rest .nav-bar-links ul {
   padding-left: 50px;
   list-style: none;
@@ -53,9 +51,17 @@
   text-decoration: none;
   background-color: #D0DACD;
   color: black;
+}
 
+.folder-in-sidebar:active {
+  background-color: #D0DACD;
 }
 
 .ul-text-decoration:hover {
   text-decoration: none;
+}
+
+.div-main-links-sidebar {
+  border-bottom: 1px solid #B7B9BD;
+  margin-bottom: 10px;
 }
