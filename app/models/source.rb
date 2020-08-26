@@ -17,8 +17,8 @@ class Source < ApplicationRecord
     }
 end
 
-
-
+# for later versions some prioritizing:
+#
 #   include PgSearch::Model
 #   pg_search_scope :search_full_text, against: {
 #     title: 'A',
