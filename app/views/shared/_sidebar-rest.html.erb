@@ -3,6 +3,7 @@
 <%= cl_image_tag("Screenshot_2020-08-25_at_17.42.48_xjhppf",
       width: 220, height: 80, crop: :fill, class: "logo-sidebar") %>
 
+<div class="div-main-links-sidebar">
   <ul class="nav-bar-links">
     <%= link_to sources_path, class: "nav-bar-links" do  %>
     <li> <i class="fas fa-home"></i></li>
@@ -10,15 +11,16 @@
     <% end %>
   </ul>
 
-<ul class="nav-bar-links">
-  <li> <i class="fas fa-bell"></i> </li>
-  <li class=""> <strong>Notifications</strong></li>
-</ul>
+  <ul class="nav-bar-links">
+    <li> <i class="fas fa-bell"></i> </li>
+    <li class=""> <strong>Notifications</strong></li>
+  </ul>
 
-<ul class="nav-bar-links">
-  <li> <i class="fas fa-search"></i> </li>
-  <li class=""> <strong>Search</strong></li>
-</ul>
+  <ul class="nav-bar-links">
+    <li> <i class="fas fa-search"></i> </li>
+    <li class=""> <strong>Search</strong></li>
+  </ul>
+</div>
 
 <div class="all-folders-in-sidebar">
   <ul>
