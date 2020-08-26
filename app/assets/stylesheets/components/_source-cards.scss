@@ -63,14 +63,21 @@
   margin-left: 53px;
 }
 
+.quote-source-card {
+  margin-left: 10px;
+  padding-bottom: 10px;
+  margin-right: 20px;
+}
+
 .quote-overflow-source-card {
-    display: block;
-    margin-left: 10px;
-    padding-bottom: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis !important;
-    overflow-x: scroll;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+.quote-wrap-source-card {
+
 }
 
 .d-flex-bottom-of-source-card {
