@@ -1,11 +1,13 @@
 .all-sources-home {
   height: 90vh;
   overflow-y: scroll;
+  margin: 20px;
+  padding: 10px;
 }
 
 .source-card {
-  margin: 20px;
   border: 1px solid #9C9C9C;
+  margin-top: -1px;
   width: 800px;
   position: relative;
 }
@@ -36,7 +38,6 @@
   margin-top: 10px;
   margin-right: 10px;
   width: 620px;
-  background-color: #DEDBC4;
 }
 
 .flex-div-favicon-and-title {
@@ -57,12 +58,12 @@
 
 .flex-div-quote-and-content {
   display: flex;
-  background-color: #DDDBC4;
   margin-left: 53px;
 }
 
 .quote-overflow-source-card {
   margin-left: 10px;
+  padding-bottom: 10px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
