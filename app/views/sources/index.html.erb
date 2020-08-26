@@ -3,6 +3,14 @@
   <h1>Home</h1>
 </div>
 
+<%= form_tag sources_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
 
 <div class="all-sources-home">
   <% @sources.each do |source| %>
