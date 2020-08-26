@@ -18,12 +18,6 @@ for (let quote_javascript of quote_javascripts) {
 }
 
 
-
-
-
-
-
-
 // quote_symbols.forEach((quote_symbol) => {
 //   console.log(quote_symbol)
 // });
