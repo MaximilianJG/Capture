@@ -42,9 +42,10 @@ class SourcesController < ApplicationController
 
   def update
     if @source.update(strong_source_params)
-      redirect_to sources_path(@source)
+      redirect_to sources_path
     else
       render :update
+      # add alert that it failed
     end
   end
 

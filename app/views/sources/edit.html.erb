@@ -1,0 +1,11 @@
+<h1>Move source</h1>
+
+<%= simple_form_for(@source) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :website %>
+  <%= f.input :date_of_article %>
+  <%= f.input :date_time_of_save %>
+  <%= f.input :url_of_website %>
+  <%= f.input :folder_id, collection: Folder.where(user_id: current_user.id), label_method: :folder_name, value_method: :id, label: "Folder name", include_blank: false %>
+  <%= f.submit %>
+<% end %>
