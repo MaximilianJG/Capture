@@ -26,11 +26,12 @@
   <ul>
 
   <% folders.each do |folder| %>
-    <div class="div-folder-in-sidebar">
-      <%= link_to folder_path(folder), class: "folder-link ul-text-decoration" do %>
-          <li class="folder-in-sidebar"> <i class="fa fa-archive"></i> <%= folder.folder_name %></li>
-      <% end %>
-    </div>
+    <%= link_to folder_path(folder), class: "folder-link ul-text-decoration" do %>
+      <div class="div-folder-in-sidebar">
+            <li class="folder-in-sidebar"> <i class="fa fa-archive"></i> <%= folder.folder_name %></li>
+      </div>
+    <% end %>
+
 
   <% end %>
 </ul>
