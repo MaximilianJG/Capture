@@ -63,6 +63,7 @@
   margin-left: 53px;
 }
 
+// Javascript CSS
 .quote-source-card {
   margin-left: 10px;
   padding-bottom: 10px;
@@ -76,9 +77,11 @@
   overflow-x: scroll;
 }
 
-.quote-wrap-source-card {
-
+.rotating-quotation-mark {
+  transform: rotateZ(90deg);
+  margin-bottom: 0px;
 }
+// UNTIL HERE
 
 .d-flex-bottom-of-source-card {
   display:flex;

@@ -8,9 +8,11 @@ console.log(quote_contents)
 
 
 for (let quote_javascript of quote_javascripts) {
-    console.log(quote_javascript.children[1]);
+    console.log(quote_javascript.children[0]);
 
     quote_javascript.children[0].addEventListener('click', (event) => {
+
+      quote_javascript.children[0].classList.toggle("rotating-quotation-mark")
       quote_javascript.children[1].classList.toggle("quote-overflow-source-card")
     });
 }
