@@ -1,6 +1,7 @@
 <h1>Home</h1>
-
-<% @sources.each do |source| %>
+<!-- build sort function sorting the sources by time added, newest to oldest -->
+<!-- calculate time by subtracting added_time by time.now, over 60 mins -> hours -> days -->
+<% @sources.sort.each do |source| %>
 <%= link_to "Destroy", source_path(source), method: :delete, data: { confirm: "Are you sure?" }  %>
 <%= link_to "Move folder", edit_source_path(source) %>
 <ul>
