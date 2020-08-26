@@ -1,13 +1,31 @@
+.all-sources-home {
+  height: 90vh;
+  overflow-y: scroll;
+}
+
 .source-card {
   margin: 20px;
   border: 1px solid #9C9C9C;
   width: 800px;
+  position: relative;
 }
 
-.source-list {
+.source-list-top-div {
   list-style: none;
   padding-inline-start: 0px;
+  margin: 5px;
+  color: black;
+}
 
+.source-collapse-link:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.source-list-quotes {
+  list-style: none;
+  padding-inline-start: 0px;
+  margin-bottom: 0px !important;
 }
 
 .favicon-source-card {
@@ -16,16 +34,90 @@
 
 .source-card-title {
   margin-top: 10px;
-  width: 650px;
+  margin-right: 10px;
+  width: 620px;
   background-color: #DEDBC4;
 }
 
 .flex-div-favicon-and-title {
   display: flex;
+  justify-content: space-between;
 }
 
 .saved-to {
   color: #85937E;
-  margin-top: 10px;
+  margin-top: 16px;
   margin-bottom: 0px;
+}
+
+.time-since-save-source-card {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.flex-div-quote-and-content {
+  display: flex;
+  background-color: #DDDBC4;
+  margin-left: 53px;
+}
+
+.quote-overflow-source-card {
+  margin-left: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+.d-flex-bottom-of-source-card {
+  display:flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.date_of_article {
+  padding-left: 10px;
+}
+
+.show-locally-link {
+  margin-right: 10px;
+  color: black;
+}
+
+.show-locally-link:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.show-locally-text {
+  margin-left: 10px;
+  padding-right: 10px;
+  border-right: 1px solid #9C9C9C;
+}
+
+.show-on-website-link {
+  color: black;
+}
+
+.show-on-website-link:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.show-on-website-text {
+margin-left: 10px;
+margin-right: 10px;
+}
+
+.delete-source-card {
+  color: black;
+  font-size: 13px;
+  position: absolute;
+  top: 1px;
+  left: 3px;
+}
+
+.delete-source-card:hover {
+  color: black;
+  text-decoration: none;
 }

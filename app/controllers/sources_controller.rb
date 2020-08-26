@@ -4,7 +4,7 @@ class SourcesController < ApplicationController
   # READ
   def index
     # only show sources that the user has created himself (e.g. record.user == user)
-    @sources = policy_scope(Source).where(user: current_user)
+    @sources = policy_scope(Source).where(user: current_user).order(created_at: :desc)
   end
 
   def show
