@@ -2,10 +2,12 @@
 
 <% @sources.each do |source| %>
 <%= link_to "Destroy", source_path(source), method: :delete, data: { confirm: "Are you sure?" }  %>
+<%= link_to "Move folder", edit_source_path(source) %>
 <ul>
   <li> <%= source.title %> ----- <%= source.user.first_name %></li>
   <% source.quotes.each do |quote| %>
   <li><%= quote.content %></li>
+  <li></li>
   <% end %>
 </ul>
   <% end %>
