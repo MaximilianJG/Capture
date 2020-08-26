@@ -1,14 +1,3 @@
-<h1>Home</h1>
-<!-- build sort function sorting the sources by time added, newest to oldest -->
-<!-- calculate time by subtracting added_time by time.now, over 60 mins -> hours -> days -->
-<% @sources.sort.each do |source| %>
-<%= link_to "Destroy", source_path(source), method: :delete, data: { confirm: "Are you sure?" }  %>
-
-<div class="page-title">
-  <%= cl_image_tag('https://res.cloudinary.com/dt31vhhp6/image/upload/v1598450142/brush-stroke-banner-1-onlygfx-dot-com_wetwbe.svg', width: "180px", height: "90px;") %>
-  <h1>Home</h1>
-</div>
-
 <%= form_tag sources_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
@@ -83,11 +72,13 @@
 
     </div>
 
+
   </div>
-  
-  <%= link_to "Move folder", edit_source_path(source) %>
+    <%= link_to "Move folder", edit_source_path(source) %>
 
     <% end %>
+
+
 
 </div>
 
