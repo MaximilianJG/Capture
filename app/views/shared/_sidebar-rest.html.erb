@@ -25,11 +25,13 @@
 <div class="all-folders-in-sidebar">
   <ul>
   <% Folder.where(user: current_user).each do |folder| %>
-  <%= link_to folder_path(folder), class: "ul-text-decoration" do %>
+
     <div class="div-folder-in-sidebar">
-      <li class="folder-in-sidebar"> <i class="fa fa-archive"></i> <%= folder.folder_name %></li>
+      <%= link_to folder_path(folder), class: "folder-link ul-text-decoration" do %>
+          <li class="folder-in-sidebar"> <i class="fa fa-archive"></i> <%= folder.folder_name %></li>
+      <% end %>
     </div>
-  <% end %>
+
   <% end %>
 </ul>
 </div>

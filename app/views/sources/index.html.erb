@@ -1,4 +1,9 @@
-<h1>Home</h1>
+<div class="page-title">
+  <%= cl_image_tag('https://res.cloudinary.com/dt31vhhp6/image/upload/v1598450142/brush-stroke-banner-1-onlygfx-dot-com_wetwbe.svg', width: "180px", height: "90px;") %>
+  <h1>Home</h1>
+</div>
+
+
 <div class="all-sources-home">
   <% @sources.each do |source| %>
 
@@ -43,7 +48,7 @@
     <div class="d-flex-bottom-of-source-card">
 
       <div>
-        <p class="date_of_article"> <%= source.date_of_article %></p>
+        <p class="date_of_article"> <%= source.date_of_article %></p> <!-- strftime("%d. %b %Y") -->
       </div>
 
       <div class="d-flex">
