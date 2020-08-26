@@ -25,7 +25,7 @@
     <div class="display-flex-container">
 
       <div class="sidebar-rest">
-        <%= render 'shared/sidebar-rest' %>
+        <%= render 'shared/sidebar-rest', folders: @folders %> <!-- this is comming from the application controller (set_folder method) -->
       </div>
 
       <div class="">

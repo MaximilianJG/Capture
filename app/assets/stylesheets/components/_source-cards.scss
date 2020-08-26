@@ -1,8 +1,10 @@
 .all-sources-home {
-  height: 90vh;
+  height: 70vh;
   overflow-y: scroll;
   margin: 20px;
-  padding: 10px;
+  padding-right: 10px;
+  padding-left: 5px;
+  padding-top: 3px;
 }
 
 .source-card {
@@ -62,12 +64,13 @@
 }
 
 .quote-overflow-source-card {
-  margin-left: 10px;
-  padding-bottom: 10px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  overflow-x: scroll;
+    display: block;
+    margin-left: 10px;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+    overflow-x: scroll;
 }
 
 .d-flex-bottom-of-source-card {
