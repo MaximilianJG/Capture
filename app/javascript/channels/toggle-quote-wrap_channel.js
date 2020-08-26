@@ -22,8 +22,6 @@ for (let quote_javascript of quote_javascripts) {
 //   console.log(quote_symbol)
 // });
 
-
-
 // quote_symbols.forEach do
 
       // for (let quote_content of quote_contents) {
