@@ -3,15 +3,93 @@
 <!-- calculate time by subtracting added_time by time.now, over 60 mins -> hours -> days -->
 <% @sources.sort.each do |source| %>
 <%= link_to "Destroy", source_path(source), method: :delete, data: { confirm: "Are you sure?" }  %>
-<%= link_to "Move folder", edit_source_path(source) %>
-<ul>
-  <li> <%= source.title %> ----- <%= source.user.first_name %></li>
-  <% source.quotes.each do |quote| %>
-  <li><%= quote.content %></li>
-  <li></li>
-  <% end %>
-</ul>
-  <% end %>
+
+<div class="page-title">
+  <%= cl_image_tag('https://res.cloudinary.com/dt31vhhp6/image/upload/v1598450142/brush-stroke-banner-1-onlygfx-dot-com_wetwbe.svg', width: "180px", height: "90px;") %>
+  <h1>Home</h1>
+</div>
+
+<%= form_tag sources_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+
+<div class="all-sources-home">
+  <% @sources.each do |source| %>
+
+  <div class="source-card">
+    <%= link_to "#source-#{source.id}", data: {toggle: "collapse"}, class: "source-collapse-link" do %>
+      <ul class="source-list-top-div">
+
+        <div class="flex-div-favicon-and-title">
+          <div class="d-flex">
+            <%= cl_image_tag("1200x630wa-1_hbgeji",
+            width: 60, height: 60, class: "favicon-source-card") %>
+            <div>
+              <li class="source-card-title"> <strong> <%= source.title %> </strong></li>
+              <p class="saved-to"><strong>Saved to: <%= source.folder.folder_name %></strong></p>
+            </div>
+          </div>
+          <div class="time-since-save-source-card">
+            <p> Time </p>
+          </div>
+        </div>
+
+      </ul>
+    <% end %>
+
+    <ul class="source-list-quotes collapse" id="source-<%= source.id%>">
+      <% source.quotes.each do |quote| %>
+
+      <div class="flex-div-quote-and-content">
+        <li><i class="fas fa-quote-right"></i></li>
+        <div class="quote-overflow-source-card">
+          <li><%= quote.content %></li>
+        </div>
+      </div>
+
+      <% end %>
+    </ul>
+
+    <%= link_to source_path(source), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-source-card" do   %>
+      <p><i class="fas fa-trash-alt"></i></p>
+    <% end %>
+
+    <div class="d-flex-bottom-of-source-card">
+
+      <div>
+        <p class="date_of_article"> <%= source.date_of_article %></p> <!-- strftime("%d. %b %Y") -->
+      </div>
+
+      <div class="d-flex">
+        <%= link_to "#", class: "show-locally-link", target: :_blank do   %>
+        <div class="d-flex">
+          <p><i class="fas fa-newspaper"></i></p>
+          <p class="show-locally-text">Show Locally</p>
+        </div>
+        <% end %>
+
+        <%= link_to "#{source.url_of_website}", class: "show-on-website-link", target: :_blank do %>
+        <div class="d-flex">
+          <p><i class="fas fa-link"></i></p>
+          <p class="show-on-website-text">Show on Website</p>
+        </div>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+  
+  <%= link_to "Move folder", edit_source_path(source) %>
+
+    <% end %>
+
+</div>
 
 
 
