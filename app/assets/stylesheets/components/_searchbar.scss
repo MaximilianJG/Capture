@@ -1,9 +1,33 @@
-.form-control {
-  margin-top: 35px;
-  background-color: #F5F6F5;
+*:focus {outline:none !important}
+.searchbar {
   width: 100%;
-
 }
 
 .searchbar-field {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  background-color: #FFF;
+  border: 0px solid;
+  width: 100%;
+}
+.searchbar-field:hover {
+  background-color: #D6DFD3;
+}
+
+.searchbar-field:focus {
+  background-color: #D6DFD3;
+  outline: none !important;
+}
+
+.searchbar-field:active {
+  background-color: #D6DFD3;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.container {
+  display: flex;
 }
