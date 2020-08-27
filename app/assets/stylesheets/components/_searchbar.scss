@@ -4,15 +4,15 @@
 }
 
 .searchbar-field {
-  margin-top: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   background-color: #FFF;
   border: 0px solid;
   width: 100%;
 }
-.searchbar-field:hover {
-  background-color: #D6DFD3;
-}
+
+// .searchbar-field:hover {
+//   background-color: #E9EBE8;
+// }
 
 .searchbar-field:focus {
   background-color: #D6DFD3;
@@ -23,7 +23,24 @@
   background-color: #D6DFD3;
 }
 
-.form-control:focus {
+.searchbar .form-control {
+  padding-left: 35px;
+}
+
+.form-control[type=text] {
+  color: black;
+}
+
+.form-control::placeholder {
+  color: #C3C3C3;
+
+}
+
+.form-control:hover::placeholder {
+  color: black;
+}
+
+.searchbar .form-control:focus {
   box-shadow: none;
   border-color: transparent;
 }
@@ -31,3 +48,12 @@
 .container {
   display: flex;
 }
+
+.search-bar-icon {
+  color: #6B6B6B;
+  top: 111px;
+  left: 300px;
+  position: absolute;
+}
+
+

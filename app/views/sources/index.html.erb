@@ -1,9 +1,9 @@
 <div class="searchbar">
+  <p class="search-bar-icon"><i class="fas fa-search"></i></p>
   <%= form_tag sources_path, method: :get do %>
-    <%= text_field_tag :query, params[:query], class: "form-control searchbar-field", placeholder: "🔍 Search" %>
+    <%= text_field_tag :query, params[:query], class: "form-control searchbar-field", placeholder: "Search" %>
   <% end %>
 </div>
-
 
 <div class="all-sources-home">
   <% @sources.each do |source| %>
@@ -53,6 +53,10 @@
       <p><i class="fas fa-trash-alt"></i></p>
     <% end %>
 
+    <%= link_to edit_source_path(source), class: "move-link" do %>
+    <p><i class="fas fa-folder"></i></p>
+    <% end %>
+
     <div class="d-flex-bottom-of-source-card">
 
       <div>
@@ -80,16 +84,8 @@
 
   </div>
 
-<%= link_to "Move folder", edit_source_path(source) %>
-
     <% end %>
 
-
-
 </div>
-
-
-
-<%= link_to "Create a new quote", new_quote_path %>
 
 
