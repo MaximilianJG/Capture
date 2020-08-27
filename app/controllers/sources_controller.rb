@@ -4,14 +4,14 @@ class SourcesController < ApplicationController
   # READ
   def index
     # only show sources that the user has created himself (e.g. record.user == user)
-    @sources = policy_scope(Source).where(user: current_user).order(created_at: :desc)
-
     if params[:query].present?
       # @sources = policy_scope(Source).where(user: current_user)
       @sources = policy_scope(Source).search_for_all(params[:query]).where(user: current_user)
     else
       @sources = policy_scope(Source).where(user: current_user)
     end
+
+    @sources = @sources.order(created_at: :desc)
   end
 
   def show
@@ -42,9 +42,10 @@ class SourcesController < ApplicationController
 
   def update
     if @source.update(strong_source_params)
-      redirect_to sources_path(@source)
+      redirect_to sources_path
     else
       render :update
+      # add alert that it failed
     end
   end
 
@@ -56,7 +57,7 @@ class SourcesController < ApplicationController
   private
 
   def strong_source_params
-    params.require(:source).permit(:title, :website, :date_of_article, :date_time_of_save, :url_of_website, :folder_id)
+    params.require(:source).permit(:title, :website, :date_of_article, :date_time_of_save, :url_of_website, :folder_id, :photo)
   end
 
   def set_source

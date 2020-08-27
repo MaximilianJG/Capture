@@ -1,8 +1,3 @@
-<div class="page-title">
-  <%= cl_image_tag('https://res.cloudinary.com/dt31vhhp6/image/upload/v1598450142/brush-stroke-banner-1-onlygfx-dot-com_wetwbe.svg', width: "180px", height: "90px;") %>
-  <h1>Home</h1>
-</div>
-
 <div class="searchbar">
   <%= form_tag sources_path, method: :get do %>
     <%= text_field_tag :query, params[:query], class: "form-control searchbar-field", placeholder: "Search" %>
@@ -18,15 +13,20 @@
 
         <div class="flex-div-favicon-and-title">
           <div class="d-flex">
-            <%= cl_image_tag("1200x630wa-1_hbgeji",
-            width: 60, height: 60, class: "favicon-source-card") %>
+            <% if source.photo.attached? %>
+            <%= cl_image_tag source.photo.key,
+            width: 60, height: 60, class: "favicon-source-card" %>
+            <% else %>
+              <%= cl_image_tag("cropped-globe-favicon_dsbdl6",
+              width: 60, height: 60, class: "favicon-source-card") %>
+            <% end %>
             <div>
               <li class="source-card-title"> <strong> <%= source.title %> </strong></li>
-              <p class="saved-to"><strong>Saved to: <%= source.folder.folder_name %></strong></p>
+              <p class="saved-to"><strong>Saved to: <%= source.folder.folder_name %></strong> </p>
             </div>
           </div>
           <div class="time-since-save-source-card">
-            <p> Time </p>
+            <p> <%= time_ago_in_words(source.created_at).gsub('about','') %> </p>
           </div>
         </div>
 
@@ -36,10 +36,12 @@
     <ul class="source-list-quotes collapse" id="source-<%= source.id%>">
       <% source.quotes.each do |quote| %>
 
-      <div class="flex-div-quote-and-content">
-        <li><i class="fas fa-quote-right"></i></li>
-        <div class="quote-overflow-source-card">
+      <div class="flex-div-quote-and-content quote-javascript">
+        <i class="fas fa-quote-right"></i>
+
+        <div class="quote-content quote-source-card quote-overflow-source-card">
           <li><%= quote.content %></li>
+
         </div>
       </div>
 
@@ -74,8 +76,14 @@
 
     </div>
 
+
   </div>
+
+<%= link_to "Move folder", edit_source_path(source) %>
+
     <% end %>
+
+
 
 </div>
 

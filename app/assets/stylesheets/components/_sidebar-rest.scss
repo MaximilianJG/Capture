@@ -3,7 +3,6 @@
   list-style: none;
   margin-bottom: 5px;
 }
-
 .nav-bar-links li {
   font-size: 18px;
   display: inline;
@@ -30,6 +29,11 @@
 }
 
 .div-folder-in-sidebar:hover {
+  background-color: #D0DACD;
+  text-decoration: none;
+}
+
+.div-folder-in-sidebar.active {
   background-color: #D0DACD;
   text-decoration: none;
 }
