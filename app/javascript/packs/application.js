@@ -26,9 +26,19 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+import { toggleQuote } from '../components/toggle-quote';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  toggleQuote();
+
 });
+
+
+// JavaScript
+// create a file in components
+// create a function with the code
+// export the function
+// import the function in the application.JS
+// call the function in the turbolinks
