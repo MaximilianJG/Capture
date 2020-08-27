@@ -19,7 +19,7 @@
             width: 60, height: 60, class: "favicon-source-card") %>
             <div>
               <li class="source-card-title"> <strong> <%= source.title %> </strong></li>
-              <p class="saved-to"><strong>Saved to: <%= source.folder.folder_name %></strong></p>
+              <p class="saved-to"><strong>Saved to: <%= source.folder.folder_name %></strong> </p>
             </div>
           </div>
           <div class="time-since-save-source-card">
@@ -75,7 +75,8 @@
 
 
   </div>
-    <%= link_to "Move folder", edit_source_path(source) %>
+
+<%= link_to "Move folder", edit_source_path(source) %>
 
     <% end %>
 
