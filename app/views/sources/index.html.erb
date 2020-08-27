@@ -15,8 +15,13 @@
 
         <div class="flex-div-favicon-and-title">
           <div class="d-flex">
-            <%= cl_image_tag("1200x630wa-1_hbgeji",
-            width: 60, height: 60, class: "favicon-source-card") %>
+            <% if source.photo.attached? %>
+            <%= cl_image_tag source.photo.key,
+            width: 60, height: 60, class: "favicon-source-card" %>
+            <% else %>
+              <%= cl_image_tag("cropped-globe-favicon_dsbdl6",
+              width: 60, height: 60, class: "favicon-source-card") %>
+            <% end %>
             <div>
               <li class="source-card-title"> <strong> <%= source.title %> </strong></li>
               <p class="saved-to"><strong>Saved to: <%= source.folder.folder_name %></strong></p>
