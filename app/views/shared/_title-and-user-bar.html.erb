@@ -17,8 +17,20 @@
 
         <% end %>
 
+        <% elsif current_page?(new_quote_path) %>
+          <%= cl_image_tag('brush-stroke-banner-1-onlygfx-dot-com_wetwbe', width: "120%;", height: "90px;" ,class: "title-brush-big") %>
+          <h1>Create a new Quote</h1>
+
+          <% elsif current_page?(new_source_path) %>
+            <%= cl_image_tag('brush-stroke-banner-1-onlygfx-dot-com_wetwbe', width: "120%;", height: "90px;" ,class: "title-brush-big") %>
+            <h1>Create a new Source</h1>
+
+        <% elsif current_page?(new_folder_path) %>
+          <%= cl_image_tag('brush-stroke-banner-1-onlygfx-dot-com_wetwbe', width: "120%;", height: "90px;" ,class: "title-brush-big") %>
+          <h1>Create a new Folder</h1>
+
         <% else %>
-        <h1>hi</h1>
+        <h1>Capture</h1>
     <% end %>
 
   </div>
