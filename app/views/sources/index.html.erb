@@ -1,8 +1,7 @@
 <%= form_tag sources_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
-    class: "form-control"
-  %>
+    class: "form-control" %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
@@ -24,7 +23,7 @@
             </div>
           </div>
           <div class="time-since-save-source-card">
-            <p> Time </p>
+            <p> <%= time_ago_in_words(source.created_at).gsub('about','') %> </p>
           </div>
         </div>
 
