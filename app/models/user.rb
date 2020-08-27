@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :folders, dependent: :destroy
   has_many :sources, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_one_attached :photo
+
 
   validates :email, presence: true
   # validates :first_name, presence: true
