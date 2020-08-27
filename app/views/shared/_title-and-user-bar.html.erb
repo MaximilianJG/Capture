@@ -6,7 +6,7 @@
     <% if current_page?(sources_path) %>
       <%= cl_image_tag('brush-stroke-banner-1-onlygfx-dot-com_wetwbe', width: "120%;", height: "90px;", class: "title-brush-small") %>
       <h1>Home</h1>
-    <% elsif current_page?(folder_path)%>
+    <% elsif @folder_page %>
 
         <% if @folder.folder_name.length < 15 %>
         <%= cl_image_tag('brush-stroke-banner-1-onlygfx-dot-com_wetwbe', width: "120%;", height: "90px;", class: "title-brush-small") %>
@@ -16,6 +16,9 @@
         <h1> <%= @folder.folder_name %> </h1>
 
         <% end %>
+
+        <% else %>
+        <h1>hi</h1>
     <% end %>
 
   </div>

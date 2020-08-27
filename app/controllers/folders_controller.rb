@@ -1,4 +1,5 @@
 class FoldersController < ApplicationController
+  before_action :folder_page?, only: [:show]
 
   def show
     @folder = Folder.find(params[:id])
@@ -25,6 +26,10 @@ private
 
 def folder_params
   params.require(:source).permit(:folder_name)
+end
+
+def folder_page?
+  @folder_page = true
 end
 
 end
