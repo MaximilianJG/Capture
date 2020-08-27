@@ -27,7 +27,7 @@
 
   <% folders.each do |folder| %>
     <%= link_to folder_path(folder), class: "folder-link ul-text-decoration" do %>
-      <div class="div-folder-in-sidebar">
+      <div class="div-folder-in-sidebar <%= "active" if current_page?(folder_path(folder)) %>">
             <li class="folder-in-sidebar"> <i class="fa fa-archive"></i> <%= folder.folder_name %></li>
       </div>
     <% end %>
