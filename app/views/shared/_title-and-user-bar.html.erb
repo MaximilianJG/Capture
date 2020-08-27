@@ -1,10 +1,15 @@
-
-
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
 
+
   <div class="page-title">
-    <%= cl_image_tag('https://res.cloudinary.com/dt31vhhp6/image/upload/v1598450142/brush-stroke-banner-1-onlygfx-dot-com_wetwbe.svg', width: "180px", height: "90px;") %>
-    <h1> Home </h1>
+    <%= cl_image_tag('https://res.cloudinary.com/dt31vhhp6/image/upload/v1598450142/brush-stroke-banner-1-onlygfx-dot-com_wetwbe.svg', width: "110%;", height: "90px;") %>
+
+    <% if current_page?(sources_path) %>
+      <h1>Home</h1>
+    <% elsif current_page?(folder_path)%>
+      <h1> <%= @folder.folder_name %> </h1>
+    <% end %>
+
   </div>
 
   <!-- if it's a folder show page, do @folder.folder_name, if its the home page put home, if its notification put notifications ... there is only about 4 - 5 situations -->

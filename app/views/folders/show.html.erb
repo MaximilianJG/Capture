@@ -1,6 +1,4 @@
 <div class="container">
-  <h1> <%= @folder.folder_name %> </h1>
-
   <% @sources.each do |source| %>
     <li>
       <%= link_to source.title, source_path %>
