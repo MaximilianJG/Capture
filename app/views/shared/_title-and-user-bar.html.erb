@@ -2,12 +2,20 @@
 
 
   <div class="page-title">
-    <%= cl_image_tag('https://res.cloudinary.com/dt31vhhp6/image/upload/v1598450142/brush-stroke-banner-1-onlygfx-dot-com_wetwbe.svg', width: "110%;", height: "90px;") %>
 
     <% if current_page?(sources_path) %>
+      <%= cl_image_tag('brush-stroke-banner-1-onlygfx-dot-com_wetwbe', width: "120%;", height: "90px;", class: "title-brush-small") %>
       <h1>Home</h1>
     <% elsif current_page?(folder_path)%>
-      <h1> <%= @folder.folder_name %> </h1>
+
+        <% if @folder.folder_name.length < 15 %>
+        <%= cl_image_tag('brush-stroke-banner-1-onlygfx-dot-com_wetwbe', width: "120%;", height: "90px;", class: "title-brush-small") %>
+        <h1> <%= @folder.folder_name %> </h1>
+        <% else %>
+        <%= cl_image_tag('brush-stroke-banner-1-onlygfx-dot-com_wetwbe', width: "120%;", height: "90px;" ,class: "title-brush-big") %>
+        <h1> <%= @folder.folder_name %> </h1>
+
+        <% end %>
     <% end %>
 
   </div>
@@ -16,9 +24,8 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
 
-      <li class="d-flex nav-item dropdown">
+      <li class="d-flex nav-item dropdown align-items-center">
 
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <p class="username"> <%= current_user.username %> <i class="fas fa-caret-down"></i> </p>
