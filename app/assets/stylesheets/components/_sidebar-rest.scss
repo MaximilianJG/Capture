@@ -3,6 +3,7 @@
   list-style: none;
   margin-bottom: 5px;
 }
+
 .nav-bar-links li {
   font-size: 18px;
   display: inline;
@@ -29,7 +30,7 @@
 }
 
 .div-folder-in-sidebar:hover {
-  background-color: #D0DACD;
+  background-color: #E9EBE8;
   text-decoration: none;
 }
 
@@ -53,12 +54,7 @@
 
 .folder-in-sidebar:hover {
   text-decoration: none;
-  background-color: #D0DACD;
   color: black;
-}
-
-.folder-in-sidebar:active {
-  background-color: #D0DACD;
 }
 
 .ul-text-decoration:hover {
@@ -67,5 +63,31 @@
 
 .div-main-links-sidebar {
   border-bottom: 1px solid #B7B9BD;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.plus-add-folder {
+  position: absolute;
+  font-size: 20px;
+  top: 220px;
+  left: 245px;
+  // display: flex;
+  // justify-content: flex-end;
+  color: black;
+}
+
+.plus-add-folder:hover {
+  color: black;
+}
+
+.plus-add-folder p {
+  margin-top: 3px;
+  margin-bottom: 0rem;
+  margin-right: 8px;
+}
+
+.POS-ABS {
+  color: black;
+  position: absolute;
+  left: 25px;
 }

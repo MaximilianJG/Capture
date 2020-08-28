@@ -1,9 +1,9 @@
 <div class="searchbar">
+  <p class="search-bar-icon"><i class="fas fa-search"></i></p>
   <%= form_tag sources_path, method: :get do %>
-    <%= text_field_tag :query, params[:query], class: "form-control searchbar-field", placeholder: "🔍 Search" %>
+    <%= text_field_tag :query, params[:query], class: "form-control searchbar-field", placeholder: "Search Capture" %>
   <% end %>
 </div>
-
 
 <div class="all-sources-home">
   <% @sources.each do |source| %>
@@ -16,10 +16,10 @@
           <div class="d-flex">
             <% if source.photo.attached? %>
             <%= cl_image_tag source.photo.key,
-            width: 60, height: 60, class: "favicon-source-card" %>
+              width: 60, height: 60, class: "favicon-source-card" %>
             <% else %>
               <%= cl_image_tag("cropped-globe-favicon_dsbdl6",
-              width: 60, height: 60, class: "favicon-source-card") %>
+                width: 60, height: 60, class: "favicon-source-card") %>
             <% end %>
             <div>
               <li class="source-card-title"> <strong> <%= source.title %> </strong></li>
@@ -49,9 +49,23 @@
       <% end %>
     </ul>
 
-    <%= link_to source_path(source), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-source-card" do   %>
+
+
+    <h1 class="delete-and-move-dropdown" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></h1>
+    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+      <%= link_to "Move", edit_source_path(source), class: "dropdown-item" %>
+      <%= link_to "Delete", source_path(source), method: :delete, data: { confirm: "Are you sure?" }, class: "dropdown-item" %>
+    </div>
+
+<!--     <%= link_to source_path(source), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-source-card" do   %>
       <p><i class="fas fa-trash-alt"></i></p>
     <% end %>
+
+    <%= link_to edit_source_path(source), class: "move-link" do %>
+    <p><i class="fas fa-folder"></i></p>
+    <% end %> -->
+
+
 
     <div class="d-flex-bottom-of-source-card">
 
@@ -79,17 +93,12 @@
 
 
   </div>
-
-<%= link_to "Move folder", edit_source_path(source) %>
-
     <% end %>
 
-
+    <%= link_to new_quote_path, class: "create-new-quote-index-absolute" do  %>
+    <i class="fas fa-plus-square"></i>
+    <% end %>
 
 </div>
-
-
-
-<%= link_to "Create a new quote", new_quote_path %>
 
 

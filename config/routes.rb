@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 
   resources :quotes, only: [:new, :create]
 
-  resources :folders, only: [:show, :edit, :new]
+  resources :folders, only: [:show, :edit, :new, :create]
 end
