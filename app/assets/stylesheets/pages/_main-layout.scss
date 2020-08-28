@@ -8,7 +8,7 @@
 }
 
 .center-content {
-  width: 60vw;
+  flex-grow: 1;
 }
 
 .whole-container-right-of-sidebar {
@@ -16,6 +16,6 @@
 }
 
 .friends-bar {
-  width: 270px;
+  width: 290px;
   height: 70vh;
 }

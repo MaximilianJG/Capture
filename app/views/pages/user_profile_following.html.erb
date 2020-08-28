@@ -1,0 +1,22 @@
+<%= render 'shared/user-profile-header' %>
+
+<% @user.following.each do |followed_guy| %>
+<div class="follow-card">
+  <div class="d-flex">
+    <div>
+      <% if followed_guy.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "avatar-follow-card dropdown-toggle",
+          id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% else %>
+          <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-follow-card dropdown-toggle",
+          id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
+    </div>
+
+    <div>
+      <p class="follow-user-name"> <%= followed_guy.first_name %> <%= followed_guy.last_name %> </p>
+    </div>
+
+  </div>
+</div>
+<% end %>

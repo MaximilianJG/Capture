@@ -8,4 +8,11 @@ Rails.application.routes.draw do
   resources :quotes, only: [:new, :create]
 
   resources :folders, only: [:show, :edit, :new, :create]
+
+  get "user/:id/overview", to: "pages#user_profile_overview", as: "user_profile_overview"
+  get "user/:id/followers", to: "pages#user_profile_followers", as: "user_profile_followers"
+  get "user/:id/following", to: "pages#user_profile_following", as: "user_profile_following"
+
+
+
 end
