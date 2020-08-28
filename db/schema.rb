@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_28_123314) do
+ActiveRecord::Schema.define(version: 2020_08_28_135728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 2020_08_28_123314) do
     t.index ["source_id"], name: "index_quotes_on_source_id"
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.bigint "asker_id", null: false
+    t.bigint "receiver_id", null: false
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["asker_id"], name: "index_relationships_on_asker_id"
+    t.index ["receiver_id"], name: "index_relationships_on_receiver_id"
+  end
+
   create_table "sources", force: :cascade do |t|
     t.string "title"
     t.string "website"
@@ -96,6 +106,8 @@ ActiveRecord::Schema.define(version: 2020_08_28_123314) do
   add_foreign_key "comments", "users"
   add_foreign_key "folders", "users"
   add_foreign_key "quotes", "sources"
+  add_foreign_key "relationships", "users", column: "asker_id"
+  add_foreign_key "relationships", "users", column: "receiver_id"
   add_foreign_key "sources", "folders"
   add_foreign_key "sources", "users"
 end
