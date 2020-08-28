@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_101613) do
+ActiveRecord::Schema.define(version: 2020_08_28_123314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 2020_08_25_101613) do
     t.string "title"
     t.string "website"
     t.date "date_of_article"
-    t.datetime "date_time_of_save"
     t.string "url_of_website"
     t.bigint "user_id", null: false
     t.bigint "folder_id", null: false

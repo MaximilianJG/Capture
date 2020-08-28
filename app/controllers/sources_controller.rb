@@ -57,7 +57,7 @@ class SourcesController < ApplicationController
   private
 
   def strong_source_params
-    params.require(:source).permit(:title, :website, :date_of_article, :date_time_of_save, :url_of_website, :folder_id, :photo)
+    params.require(:source).permit(:title, :website, :date_of_article, :url_of_website, :folder_id, :photo)
   end
 
   def set_source
