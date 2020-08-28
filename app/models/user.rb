@@ -16,13 +16,13 @@ class User < ApplicationRecord
   # validates :username, presence: true, uniqueness: true
 
   def followers
-    Relationship.where(receiver: self, status: 1)
+    relationships = Relationship.where(receiver: self, status: 1)
+    users = relationships.map { |relationship| relationship.asker }
   end
 
   def following
     relationships = Relationship.where(asker: self, status: 1)
-    relationships.map { |relationship| relationship.receiver }
+    users = relationships.map { |relationship| relationship.receiver }
   end
-
 
 end
