@@ -50,7 +50,7 @@
             <% end %>
           <p class="username"> <%= current_user.username %> <i class="fas fa-caret-down"></i> </p>
 
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
           <%= link_to "Profile", "#", class: "dropdown-item" %>
           <%= link_to "Friends", "#", class: "dropdown-item" %>
           <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item"%>
