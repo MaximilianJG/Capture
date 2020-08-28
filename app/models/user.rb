@@ -20,7 +20,8 @@ class User < ApplicationRecord
   end
 
   def following
-    Relationship.where(asker: self, status: 1)
+    relationships = Relationship.where(asker: self, status: 1)
+    relationships.map { |relationship| relationship.receiver }
   end
 
 
