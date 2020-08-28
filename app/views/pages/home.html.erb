@@ -1,5 +1,16 @@
-<div class="banner" style='background-image: url("<%= cl_image_path('burnt-newspaper_xsbmth') %>");'>
-  <div class="Bannerbutton">
-    <%= link_to "See all Captures", sources_path, class: "btn draw-border"%>
+<div class="banner" style='background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url("<%= cl_image_path('burnt-newspaper_xsbmth', :effect=>"grayscale", :dpr=>"auto", :crop=>"scale", :use_root_path=>true, :client_hints=>true) %>");'>
+
+  <div class="banner-textfield">
+    <h1><font color=#FF6602>Capture</font> what is important</h1>
+    <h4>You always wanted to have all your interesting articles organized on one platform and available on demand?</h4>
+    <h4>Then try out the newest app from the founders of <strong>"rent a paddle"</strong></h4>
+  </div>
+
+  <div class="banner-button">
+    <%= link_to "Sign up now", sources_path, class: "btn draw-border"%>
   </div>
 </div>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+</style>
