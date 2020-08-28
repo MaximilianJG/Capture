@@ -3,9 +3,11 @@
   background-position: center;
   padding: 150px 0;
   height: 100vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+}
+
+.filtered {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 
 .banner h1 {
