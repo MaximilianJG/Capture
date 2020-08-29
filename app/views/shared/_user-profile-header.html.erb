@@ -13,10 +13,14 @@
   <div>
     <h1> <%= @user.first_name %> <%= @user.last_name %> </h1>
 
-    <% if ((Relationship.where(asker: current_user, receiver: @user, status: 1).size > 0)  ) %>
-      <%= link_to "Unfollow", delete_relationship_path(@user, current_user), method: :delete %>
-    <% else %>
-      <%= link_to "Follow", create_relationship_path(@user, current_user), method: :create %>
+    <% if (current_user != @user) %>
+    <div class="follow-btn-div">
+      <% if ((Relationship.where(asker: current_user, receiver: @user, status: 1).size > 0) ) %>
+        <%= link_to "Unfollow", delete_relationship_path(@user, current_user), method: :delete, class: "follow-btn" %>
+      <% else %>
+        <%= link_to "Follow", create_relationship_path(@user, current_user), method: :create, class: "follow-btn" %>
+      <% end %>
+    </div>
     <% end %>
 
   </div>

@@ -1,30 +1,33 @@
 <%= render 'shared/user-profile-header' %>
 
 <% @user.followers.each do |follower| %>
-<div class="follow-card">
-  <div class="d-flex">
-    <div class="d-flex">
-      <% if follower.photo.attached? %>
-        <%= cl_image_tag follower.photo.key, class: "avatar-follow-card dropdown-toggle",
-          id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-      <% else %>
-          <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-follow-card dropdown-toggle",
-          id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-      <% end %>
+  <div class="all-follow-cards">
+    <div class="follow-card">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex">
+          <% if follower.photo.attached? %>
+            <%= cl_image_tag follower.photo.key, class: "avatar-follow-card dropdown-toggle",
+              id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+              <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-follow-card dropdown-toggle",
+              id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
 
-      <div>
-        <p class="follow-user-name"> <%= follower.first_name %> <%= follower.last_name %> </p>
-        <p class="follow-follower-count"><%= follower.followers.count %> Followers </p>
+          <% follower_name = "#{follower.first_name} #{follower.last_name}" %>
+          <div>
+            <p class="follow-full-name"> <%= link_to follower_name, user_profile_overview_path(follower), class: "follow-full-name-link" %> </p>
+            <p class="follow-follower-count"><%= follower.followers.count %> Followers </p>
+          </div>
+        </div>
+
+        <div class="follow-btn-div">
+          <% if (Relationship.where(asker: current_user, receiver: follower, status: 1).size > 0) %>
+            <%= link_to "Unfollow", delete_relationship_path(follower), method: :delete, class: "follow-btn" %>
+          <% else %>
+            <%= link_to "Follow", create_relationship_path(follower), method: :create, class: "follow-btn" %>
+          <% end %>
+        </div>
       </div>
     </div>
-
-    <% if (Relationship.where(asker: current_user, receiver: follower, status: 1).size > 0) %>
-      <%= link_to "Unfollow", delete_relationship_path(follower), method: :delete %>
-    <% else %>
-      <%= link_to "Follow", create_relationship_path(follower), method: :create %>
-    <% end %>
-
   </div>
-
-</div>
 <% end %>

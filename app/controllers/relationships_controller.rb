@@ -24,5 +24,4 @@ class RelationshipsController < ApplicationController
 
   end
 
-
 end
