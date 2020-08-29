@@ -1,2 +1,30 @@
 <%= render 'shared/user-profile-header' %>
 
+<% @user.followers.each do |follower| %>
+<div class="follow-card">
+  <div class="d-flex">
+    <div class="d-flex">
+      <% if follower.photo.attached? %>
+        <%= cl_image_tag follower.photo.key, class: "avatar-follow-card dropdown-toggle",
+          id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% else %>
+          <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-follow-card dropdown-toggle",
+          id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
+
+      <div>
+        <p class="follow-user-name"> <%= follower.first_name %> <%= follower.last_name %> </p>
+        <p class="follow-follower-count"><%= follower.followers.count %> Followers </p>
+      </div>
+    </div>
+
+    <% if ((Relationship.where(asker: @user, receiver: follower, status: 1).size > 0)  ) %>
+      <%= link_to "Unfollow", delete_relationship_path(follower, @user), method: :delete %>
+    <% else %>
+      <%= link_to "Follow", create_relationship_path(follower, @user), method: :create %>
+    <% end %>
+
+  </div>
+
+</div>
+<% end %>

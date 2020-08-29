@@ -9,6 +9,11 @@ Rails.application.routes.draw do
 
   resources :folders, only: [:show, :edit, :new, :create]
 
+  resources :relationships, only: [:update, :destroy]
+
+  post "relationships/:follow_id/:user_id", to: "relationships#create", as: "create_relationship"
+  delete "relationship/:follow_id/:user_id", to: "relationships#destroy", as: "delete_relationship"
+
   get "user/:id/overview", to: "pages#user_profile_overview", as: "user_profile_overview"
   get "user/:id/followers", to: "pages#user_profile_followers", as: "user_profile_followers"
   get "user/:id/following", to: "pages#user_profile_following", as: "user_profile_following"
