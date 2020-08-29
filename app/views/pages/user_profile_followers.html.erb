@@ -18,10 +18,10 @@
       </div>
     </div>
 
-    <% if ((Relationship.where(asker: @user, receiver: follower, status: 1).size > 0)  ) %>
-      <%= link_to "Unfollow", delete_relationship_path(follower, @user), method: :delete %>
+    <% if (Relationship.where(asker: current_user, receiver: follower, status: 1).size > 0) %>
+      <%= link_to "Unfollow", delete_relationship_path(follower), method: :delete %>
     <% else %>
-      <%= link_to "Follow", create_relationship_path(follower, @user), method: :create %>
+      <%= link_to "Follow", create_relationship_path(follower), method: :create %>
     <% end %>
 
   </div>
