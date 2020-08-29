@@ -1,35 +1,35 @@
 <%= render 'shared/user-profile-header' %>
 
-<% @user.following.each do |followed_guy| %>
-  <div class="all-follow-cards">
-    <div class="follow-card">
-      <div class="d-flex align-items-center justify-content-between">
-        <div class="d-flex">
-          <% if followed_guy.photo.attached? %>
-            <%= cl_image_tag followed_guy.photo.key, class: "avatar-follow-card dropdown-toggle",
-              id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% else %>
-              <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-follow-card dropdown-toggle",
-              id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% end %>
+<div class="all-follow-cards">
+  <% @user.following.each do |followed_guy| %>
+      <div class="follow-card">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex">
+            <% if followed_guy.photo.attached? %>
+              <%= cl_image_tag followed_guy.photo.key, class: "avatar-follow-card dropdown-toggle",
+                id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+                <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-follow-card dropdown-toggle",
+                id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
 
-          <% followed_guy_name = "#{followed_guy.first_name} #{followed_guy.last_name}" %>
-          <div>
-            <p class="follow-full-name"> <%= link_to followed_guy_name, user_profile_overview_path(followed_guy), class: "follow-full-name-link" %> </p>
-            <p class="follow-follower-count"><%= followed_guy.followers.count %> Followers </p>
+            <% followed_guy_name = "#{followed_guy.first_name} #{followed_guy.last_name}" %>
+            <div>
+              <p class="follow-full-name"> <%= link_to followed_guy_name, user_profile_overview_path(followed_guy), class: "follow-full-name-link" %> </p>
+              <p class="follow-follower-count"><%= followed_guy.followers.count %> Followers </p>
+            </div>
+          </div>
+
+          <div class="follow-btn-div">
+            <% if (Relationship.where(asker: current_user, receiver: followed_guy, status: 1).size > 0) %>
+              <%= link_to "Unfollow", delete_relationship_path(followed_guy), method: :delete, class: "follow-btn" %>
+            <% else %>
+              <%= link_to "Follow", create_relationship_path(followed_guy), method: :create, class: "follow-btn" %>
+            <% end %>
           </div>
         </div>
-
-        <div class="follow-btn-div">
-          <% if (Relationship.where(asker: current_user, receiver: followed_guy, status: 1).size > 0) %>
-            <%= link_to "Unfollow", delete_relationship_path(followed_guy), method: :delete, class: "follow-btn" %>
-          <% else %>
-            <%= link_to "Follow", create_relationship_path(followed_guy), method: :create, class: "follow-btn" %>
-          <% end %>
-        </div>
       </div>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 
