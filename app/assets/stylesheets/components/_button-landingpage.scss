@@ -51,7 +51,7 @@
 }
 
 .draw-border {
-  @include btn-border-drawing(#eeeeee, #32e0c4, 4px, bottom, right);
+  @include btn-border-drawing(#FFFFFF, #FF6602, 4px, bottom, right);
 }
 
 //=== Button styling, semi-ignore
@@ -60,11 +60,11 @@
   border: none;
   cursor: pointer;
   line-height: 1.5;
-  font: 700 1.2rem 'Roboto Slab', sans-serif;
+  font: 700 1.8rem 'Inconsolata', monospace;
   padding: 1em 2em;
   letter-spacing: 0.05rem;
-  margin-left: 30px;
-
+  margin-top: 40px;
+  padding:20px 40px;
   &:focus { outline: 2px dotted #55d7dc; }
 }
 
