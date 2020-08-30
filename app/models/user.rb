@@ -14,4 +14,15 @@ class User < ApplicationRecord
   # validates :first_name, presence: true
   # validates :last_name, presence: true
   # validates :username, presence: true, uniqueness: true
+
+  def followers
+    relationships = Relationship.where(receiver: self, status: 1)
+    users = relationships.map { |relationship| relationship.asker }
+  end
+
+  def following
+    relationships = Relationship.where(asker: self, status: 1)
+    users = relationships.map { |relationship| relationship.receiver }
+  end
+
 end

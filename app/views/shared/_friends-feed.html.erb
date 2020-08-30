@@ -3,3 +3,11 @@
   <%= cl_image_tag('brush-stroke-banner-1-onlygfx-dot-com_wetwbe', width: "20%;", height: "70px;", class: "friend-actity-brush") %>
   <h2 class="mt-3 text-center friend-activity-title">Friend Activity</h2>
 </div>
+
+<%= current_user.following %>
+<% @sources = policy_scope(Source).where(user: current_user.following) %>
+<% @sources.order(created_at: :desc).each do |source| %>
+<ul>
+  <li><%= source.title %></li>
+</ul>
+<% end %>

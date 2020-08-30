@@ -1,0 +1,25 @@
+.user-show-avatar {
+  margin: 2rem;
+}
+
+.user-link {
+  color: black;
+  padding: 15px 20px 15px 20px;
+
+}
+
+.user-link:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.user-link-div {
+  border: 3px solid white;
+  margin-left: 70px;
+  margin-right: 40px;
+}
+
+.user-link-div-active {
+  border: 3px solid #D0DBCD !important;
+  border-radius: 5px;
+}
