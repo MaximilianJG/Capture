@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :folders, dependent: :destroy
   has_many :sources, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :users, dependent: :destroy
   has_one_attached :photo
 
 

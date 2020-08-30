@@ -30,6 +30,7 @@ class SourcesController < ApplicationController
     if @source.save!
       redirect_to sources_path
       # not for Chrome Extension
+      $quote.user_id = current_user.id
       $quote.source_id = @source.id
       $quote.save!
     else
