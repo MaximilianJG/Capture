@@ -12,8 +12,8 @@
 
       <div class="d-flex align-items-center p-2">
         <div>
-          <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+          <% if quote.user.photo.attached? %>
+            <%= cl_image_tag quote.user.photo.key, class: "avatar" %>
           <% else %>
             <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar" %>
           <% end %>
@@ -47,7 +47,7 @@
         <% end %>
 
         <%= link_to "#quote-#{quote.id}", data: {toggle: "collapse"} do   %>
-          <p class="comment-icon"><i class="far fa-comment"></i></p>
+          <p class="comment-icon"><i class="far fa-comment"></i> <%= quote.comments.count %></p>
         <% end %>
 
         <p class="share-icon"><i class="fas fa-share-square"></i></p>
@@ -55,14 +55,9 @@
 
         <% @comment = Comment.new %>
         <div id="quote-<%= quote.id%>" class="collapse" >
-          <%= simple_form_for [quote, @comment] do |f|%>
-            <div class="d-flex m-2">
-              <%= f.input :content, class: "comment-input-field", label: false  %>
-              <%= f.submit "Reply", class: "reply-btn" %>
-            </div>
-    <% end %>
-
-
+          <%= form_tag quote_create_comment_index_path(quote), method: :post do %>
+            <%= text_field_tag :content, params[:content], placeholder: "Say something", class: "comment-input-field" %>
+          <% end %>
         </div>
 
 

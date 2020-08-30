@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :sources, only: [:index, :new, :create, :show, :edit, :destroy, :update]
 
   resources :quotes, only: [:new, :create] do
-    resources :comments
+    resources :comments, only: [:create], as: "create_comment"
   end
 
   resources :folders, only: [:show, :edit, :new, :create]
