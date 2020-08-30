@@ -4,10 +4,68 @@
   <h2 class="mt-3 text-center friend-activity-title">Friend Activity</h2>
 </div>
 
-<%= current_user.following %>
-<% @sources = policy_scope(Source).where(user: current_user.following) %>
-<% @sources.order(created_at: :desc).each do |source| %>
-<ul>
-  <li><%= source.title %></li>
+<% @quotes = policy_scope(Quote).where(user: current_user.following) %>
+<% @quotes.order(created_at: :desc).each do |quote| %>
+<ul class="friend-quote-list">
+  <div class="friend-quote-card">
+    <div class="d-flex justify-content-between">
+
+      <div class="d-flex align-items-center p-2">
+        <div>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+          <% else %>
+            <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar" %>
+          <% end %>
+        </div>
+        <div class="ml-2">
+          <%= quote.user.username %>
+        </div>
+      </div>
+
+        <div class="m-2">
+          <p> <%= time_ago_in_words(quote.created_at).gsub('about','') %> </p>
+        </div>
+
+    </div>
+
+      <div class="flex-div-quote-and-content-friend-feed quote-javascript">
+        <i class="fas fa-quote-right"></i>
+
+        <div class="quote-content quote-friend-feed-card quote-overflow-source-card">
+          <li><%= quote.content %></li>
+
+        </div>
+      </div>
+      <div class="d-flex">
+        <%= link_to "#" do   %>
+        <p class="interesting-bulb"><i class="far fa-lightbulb"></i></p>
+        <% end %>
+
+        <%= link_to "#" do   %>
+        <p class="interesting-bulb"><i class="fas fa-lightbulb"></i></p>
+        <% end %>
+
+        <%= link_to "#quote-#{quote.id}", data: {toggle: "collapse"} do   %>
+          <p class="comment-icon"><i class="far fa-comment"></i></p>
+        <% end %>
+
+        <p class="share-icon"><i class="fas fa-share-square"></i></p>
+      </div>
+
+        <% @comment = Comment.new %>
+        <div id="quote-<%= quote.id%>" class="collapse" >
+          <%= simple_form_for [quote, @comment] do |f|%>
+            <div class="d-flex m-2">
+              <%= f.input :content, class: "comment-input-field", label: false  %>
+              <%= f.submit "Reply", class: "reply-btn" %>
+            </div>
+    <% end %>
+
+
+        </div>
+
+
+  </div>
 </ul>
 <% end %>

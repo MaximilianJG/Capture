@@ -1,0 +1,57 @@
+.friend-quote-card {
+  background-color: #D0DBCD;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.friend-quote-list {
+  list-style: none;
+  padding-inline-start: 0px;
+}
+
+.flex-div-quote-and-content-friend-feed {
+  display: flex;
+  align-items: flex-start;
+  margin-left: 10px;
+}
+
+.quote-friend-feed-card {
+  margin-left: 10px;
+  padding-bottom: 10px;
+  margin-right: 10px;
+}
+
+.quote-overflow-source-card {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+.interesting-bulb {
+  margin: 0px;
+  padding: 0px;
+  margin-left: 35px;
+  color: black;
+}
+
+.comment-icon {
+  margin: 0px;
+  margin-left: 35px;
+}
+
+.share-icon {
+  margin: 0px;
+  margin-left: 35px;
+}
+
+.reply-btn {
+  width: 60px;
+  height: 30px;
+}
+
+.comment-input-field {
+  max-height: 20px !important;
+  color: red;
+  background-color: red;
+}
