@@ -12,13 +12,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+
+    <%= favicon_link_tag asset_path('Favicon_capture.png') %>
+
   </head>
 
   <body>
     <%= render 'shared/flashes' %>
 
     <% if @landing_page_navbar %>
-      <%= render 'shared/navbar-landing-page' %>
+      <%# render 'shared/navbar-landing-page' %>
       <%= yield %>
     <% else %>
 
