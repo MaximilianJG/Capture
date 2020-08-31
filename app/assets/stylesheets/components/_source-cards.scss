@@ -100,7 +100,6 @@
 
 .show-locally-link {
   font-family: "TimesNewRoman";
-  margin-right: 10px;
   color: black;
 }
 
@@ -109,11 +108,6 @@
   color: black;
 }
 
-.show-locally-text {
-  margin-left: 10px;
-  padding-right: 10px;
-  border-right: 1px solid #9C9C9C;
-}
 
 .show-on-website-link {
   font-family: "TimesNewRoman";
@@ -125,10 +119,11 @@
   color: black;
 }
 
-.show-on-website-text {
-margin-left: 10px;
-margin-right: 10px;
+.source-icons-bottom-right {
+  margin-right: 20px;
+  padding-right: 5px;
 }
+
 
 // THIS IS FOR THE INDEPENDENT MOVE AND DELETE ICONS -> Maybe we'll need it later
 // .delete-source-card {

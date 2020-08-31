@@ -1,9 +1,15 @@
-<h1>Show Source</h1>
-
 <h2><%= @source.title %></h2>
-<p> <%= @source.website %></p>
-<p> <%= @source.url_of_website %></p>
-<p> <%= @source.date_time_of_save %></p>
 
-<h1><strong>Would be nice to add the quotes of the specific source here as well, Max! Thanks :D</strong></h1>
+<% @source.quotes.each do |quote| %>
+<ul class="quote-cards-list-source-show">
+  <div class="quote-card-source-show">
+    <li> <%= quote.content %> </li>
 
+    <%= link_to quote_path(quote) do   %>
+      <p class="comment-icon"><i class="far fa-comment"></i> <%= quote.comments.count %></p>
+    <% end %>
+
+  </div>
+</ul>
+
+<% end %>

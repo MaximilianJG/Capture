@@ -1,0 +1,9 @@
+<%= @quote.content %>
+
+<% @quote.comments.each do |comment| %>
+<ul>
+  <li>
+    <%= comment.content %>
+  </li>
+</ul>
+<% end %>

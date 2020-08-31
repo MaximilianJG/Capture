@@ -1,5 +1,10 @@
 class QuotesController < ApplicationController
 
+  def show
+    @quote = Quote.find(params[:id])
+    authorize @quote
+  end
+
   def new
     @quote = Quote.new
     authorize @quote

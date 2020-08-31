@@ -5,6 +5,10 @@ class QuotePolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    true
+  end
+
   def new?
     true
   end
