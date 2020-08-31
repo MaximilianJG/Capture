@@ -20,6 +20,11 @@ Rails.application.routes.draw do
   get "user/:id/followers", to: "pages#user_profile_followers", as: "user_profile_followers"
   get "user/:id/following", to: "pages#user_profile_following", as: "user_profile_following"
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :quotes, only: [ :create ]
+    end
+  end
 
 
 end
