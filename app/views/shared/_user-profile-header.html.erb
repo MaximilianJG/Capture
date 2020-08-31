@@ -1,0 +1,43 @@
+<div class="d-flex align-items-center">
+
+  <div class="user-show-avatar">
+    <% if @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key, class: "avatar-user-show dropdown-toggle",
+        id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <% else %>
+        <%= cl_image_tag "b08hxPY_jhyrxg", class: ".avatar-user-show dropdown-toggle",
+        id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <% end %>
+  </div>
+
+  <div>
+    <h1> <%= @user.first_name %> <%= @user.last_name %> </h1>
+
+    <% if (current_user != @user) %>
+    <div class="follow-btn-div">
+      <% if ((Relationship.where(asker: current_user, receiver: @user, status: 1).size > 0) ) %>
+        <%= link_to "Unfollow", delete_relationship_path(@user, current_user), method: :delete, class: "follow-btn" %>
+      <% else %>
+        <%= link_to "Follow", create_relationship_path(@user, current_user), method: :create, class: "follow-btn" %>
+      <% end %>
+    </div>
+    <% end %>
+
+  </div>
+</div>
+
+  <div class="d-flex">
+
+    <div class=" user-link-div <%= "user-link-div-active" if current_page?(user_profile_overview_path(@user)) %>">
+      <%= link_to "Overview", user_profile_overview_path(@user), class: 'user-link'  %>
+    </div>
+
+    <div class="user-link-div <%= "user-link-div-active" if current_page?(user_profile_followers_path(@user)) %>">
+      <%= link_to "Followers", user_profile_followers_path(@user), class: "user-link"  %>
+    </div>
+
+    <div class="user-link-div <%= "user-link-div-active" if current_page?(user_profile_following_path(@user)) %>">
+      <%= link_to "Following", user_profile_following_path(@user), class: "user-link"  %>
+    </div>
+
+  </div>

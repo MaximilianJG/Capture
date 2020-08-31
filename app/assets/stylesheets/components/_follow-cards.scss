@@ -1,0 +1,55 @@
+.all-follow-cards {
+  margin-top: 50px;
+}
+
+.follow-card {
+  width: 90%;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: #D0DBCD;
+}
+
+.avatar-follow-card {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.follow-full-name {
+  font-size: 20px;
+  margin-left: 20px;
+  margin-top: 13px;
+  margin-bottom: 3px;
+}
+
+.follow-full-name-link {
+  color: black;
+}
+
+.follow-full-name-link:hover {
+  color: black;
+}
+
+.follow-follower-count {
+  margin-left: 20px;
+  margin-top: 0px !important;
+}
+
+.follow-btn {
+  margin-right: 30px;
+  color: black;
+  border: 2px solid black;
+  padding: 10px 70px 10px 70px;
+  border-radius: 50px;
+}
+
+.follow-btn:hover {
+  text-decoration:none;
+  color: black;
+}
+
+.follow-btn-div:hover {
+  transform: scale(1.05);
+}

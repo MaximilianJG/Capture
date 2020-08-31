@@ -29,16 +29,19 @@
       </div>
 
       <div class="whole-container-right-of-sidebar">
-        <%= render('shared/title-and-user-bar') if user_signed_in? %> <!-- this should only be rendered on index, notification, search and folder pages -->
+        <%= render('shared/title-and-user-bar') if user_signed_in?  && !@profile_show_page %> <!-- this should only be rendered on index, notification, search and folder pages -->
 
         <div class="d-flex">
           <div class="center-content">
             <%= yield %>
           </div>
 
-          <div class="friends-bar"> <!-- this should only be on the sources index page make an if else statement with flex grow the center will then take up the won space-->
-            <%= render('shared/friends-feed') if user_signed_in? %>
-          </div>
+          <%  if user_signed_in? && !@profile_show_page %>
+            <div class="friends-bar"> <!-- this should only be on the sources index page make an if else statement with flex grow the center will then take up the won space-->
+              <%= render('shared/friends-feed') %>
+            </div>
+          <% end %>
+
         </div>
       </div>
 
