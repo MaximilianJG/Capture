@@ -16,11 +16,10 @@
             <% end %>
             <div>
               <li class="source-card-title"> <strong> <%= source.title %> </strong></li>
-              <p class="saved-to"><strong>Saved to: <%= source.folder.folder_name %></strong> </p>
             </div>
           </div>
           <div class="time-since-save-source-card">
-            <p> <%= time_ago_in_words(source.created_at).gsub('about','') %> </p>
+            <p> <%= time_ago_in_words(source.created_at).gsub('about','') %> ago</p>
           </div>
         </div>
 
@@ -70,8 +69,7 @@
     </div>
 
 
-
-    <div class="d-flex-bottom-of-source-card">
+<div class="d-flex-bottom-of-source-card">
 
       <div>
         <p class="date_of_article"> <%= source.date_of_article %></p> <!-- strftime("%d. %b %Y") -->
@@ -79,22 +77,19 @@
 
       <div class="d-flex">
         <%= link_to "#", class: "show-locally-link", target: :_blank do   %>
-        <div class="d-flex">
-          <p><i class="fas fa-newspaper"></i></p>
-          <p class="show-locally-text">Show Locally</p>
-        </div>
+          <p class="source-icons-bottom-right"><i class="fas fa-newspaper"></i></p>
         <% end %>
 
         <%= link_to "#{source.url_of_website}", class: "show-on-website-link", target: :_blank do %>
-        <div class="d-flex">
-          <p><i class="fas fa-link"></i></p>
-          <p class="show-on-website-text">Show on Website</p>
-        </div>
+          <p class="source-icons-bottom-right"><i class="fas fa-link"></i></p>
+        <% end %>
+
+        <%= link_to source_path(source), class: "show-on-website-link", target: :_blank do %>
+            <p class="source-icons-bottom-right"><i class="fab fa-cuttlefish"></i></p>
         <% end %>
       </div>
 
     </div>
-
 
   </div>
     <% end %>
