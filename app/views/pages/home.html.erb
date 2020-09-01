@@ -1,16 +1,66 @@
-<div class="banner" style='background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url("<%= cl_image_path('burnt-newspaper_xsbmth', :effect=>"grayscale", :dpr=>"auto", :crop=>"scale", :use_root_path=>true, :client_hints=>true) %>");'>
-
-  <div class="banner-textfield">
-    <h1><font color=#FF6602>Capture</font> what is important</h1>
-    <h4>You always wanted to have all your interesting articles organized on one platform and available on demand?</h4>
-    <h4>Then try out the newest app from the founders of <strong>"rent a paddle"</strong></h4>
-  </div>
-
-  <div class="banner-button">
-    <%= link_to "Sign up now", sources_path, class: "btn draw-border"%>
-  </div>
-</div>
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
 </style>
+
+<div class="first-landing-page">
+  <div class="banner" style='background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("<%= cl_image_path('burnt-newspaper_xsbmth', :effect=>"grayscale", :dpr=>"auto", :crop=>"scale", :use_root_path=>true, :client_hints=>true) %>");'>
+
+  <div class="lp-button-top">
+    <% if current_user %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn draw-border li-lo-btn"%>
+    <% else %>
+      <%= link_to "Log in", new_user_session_path, class: "btn draw-border li-lo-btn"%>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn draw-border li-lo-btn"%>
+    <% end %>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row d-flex justify-content-around banner-textfield">
+      <div class="col-5">
+
+          <h1><font color=#FF6602>Capture</font> what is important!</h1>
+          <h4>You always wanted to have all your interesting articles organized on one platform and available on demand?</h4>
+          <h4>Then try out the newest app from the founders of <strong>"rent a paddle"</strong></h4>
+          <div class="banner-button">
+            <% if current_user %>
+              <%= link_to "Go to Captures", sources_path, class: "btn draw-border tf-btn"%>
+            <% else %>
+              <%= link_to "Sign up", new_user_registration_path, class: "btn draw-border tf-btn"%>
+            <% end %>
+          </div>
+      </div>
+
+      <div class="col-5">
+        <div class="favs">
+          <ul>
+            <li><i class="fas fa-camera-retro fw-lp"></i><span class="icon-headline">Save your favorite quotes</span></li>
+            <li><i class="fas fa-sitemap fw-lp"></i><span class="icon-headline">Organize all your saved information</span></li>
+            <li><i class="fas fa-users fw-lp"></i><span class="icon-headline">Share your quotes with your friends</span></li>
+            <li><i class="far fa-comments fw-lp"></i><span class="icon-headline">Comment quotes of your friends</span></li>
+            <li><i class="fas fa-laugh-beam fw-lp"></i><span class="icon-headline">Be part of our wonderfull comunity</span></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <i class="fas fa-caret-down scroll-down fw-lp"></i>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="cards-how-to d-flex">
+        <div class="card-how-to-1">
+          <h1>Stuff you can do: </h1>
+        </div>
+        <div class="card-how-to-2">
+          <h1>blablabla</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

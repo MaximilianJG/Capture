@@ -1,15 +1,15 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
-  height: 91vh;
+  padding: 100px 0;
+  height: 100%;
 }
 
 .banner h1 {
   margin: 0;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 46px;
+  font-size: 52px;
   font-weight: bold;
   margin-bottom: 30px;
   font-family: 'Inconsolata', monospace;
@@ -28,8 +28,8 @@
 }
 
 .banner-textfield {
-  margin-left: 100px;
-  margin-top: 115px;
+  margin-left: 45px;
+  margin-top: 120px;
 }
 
 .banner-textfield h1 {
@@ -38,10 +38,38 @@
 
 .banner-textfield h4 {
   color: white;
-  width: 400px;
 }
 
-.banner-button {
-  margin-left: 100px;
+.lp-button-top {
+  float: right;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
 
+.fw-lp {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.favs {
+  margin-left: 100px;
+  margin-top: 270px;
+}
+
+.icon-headline {
+  font-family: 'Inconsolata', monospace;
+  font-size: 24px;
+  color: white;
+  margin-left: 15px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.scroll-down {
+  font-size: 72px;
+  margin-bottom: 80px;
 }
