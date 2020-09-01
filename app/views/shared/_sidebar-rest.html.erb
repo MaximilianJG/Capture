@@ -23,14 +23,15 @@
 
 
     </ul>
-    <%= link_to new_folder_path, class: "plus-add-folder" do %>
-    <p><i class="fas fa-folder-plus"></i></p>
-    <% end %>
+
 
 
 </div>
 
 <div class="all-folders-in-sidebar">
+  <%= link_to new_folder_path, class: "plus-add-folder" do %>
+    <p><i class="fas fa-folder-plus"></i></p>
+  <% end %>
 
   <ul>
   <% folders.each do |folder| %>

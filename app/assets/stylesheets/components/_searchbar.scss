@@ -1,6 +1,7 @@
 *:focus {outline:none !important}
 .searchbar {
   width: 100%;
+  margin-top: 20px;
 }
 
 .searchbar-field {
@@ -15,12 +16,12 @@
 // }
 
 .searchbar-field:focus {
-  background-color: #D6DFD3;
+  background-color: rgba(255, 255, 3, 0.19);
   outline: none !important;
 }
 
 .searchbar-field:active {
-  background-color: #D6DFD3;
+  background-color: rgba(255, 255, 3, 0.19);
 }
 
 .searchbar .form-control {
@@ -51,7 +52,7 @@
 
 .search-bar-icon {
   color: #6B6B6B;
-  top: 112px;
+  top: 133px;
   left: 300px;
   position: absolute;
 }

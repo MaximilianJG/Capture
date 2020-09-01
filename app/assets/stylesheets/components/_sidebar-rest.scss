@@ -33,18 +33,19 @@
 }
 
 .div-folder-in-sidebar:hover {
-  background-color: #E9EBE8;
+  background-color: rgba(255, 255, 3, 0.19);
   text-decoration: none;
 }
 
 .div-folder-in-sidebar.active {
-  background-color: #D0DACD;
+  background-color: #FFFF03;
   text-decoration: none;
 }
 
 .all-folders-in-sidebar ul {
   list-style: none;
   padding-inline-start: 0px;
+  padding-top: 28px;
 }
 
 .folder-in-sidebar {
@@ -67,13 +68,15 @@
 .div-main-links-sidebar {
   border-bottom: 1px solid #B7B9BD;
   margin-bottom: 20px;
+  margin-top: -10px;
+  padding-bottom: 10px;
 }
 
 .plus-add-folder {
   position: absolute;
-  font-size: 20px;
-  top: 220px;
-  left: 245px;
+  font-size: 28px;
+  top: 274px;
+  left: 239px;
   // display: flex;
   // justify-content: flex-end;
   color: black;
