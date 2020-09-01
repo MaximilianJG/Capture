@@ -15,13 +15,19 @@
 
         <div class="flex-div-favicon-and-title">
           <div class="d-flex">
-            <% if source.photo.attached? %>
+
+            <%= cl_image_tag "https://#{source.website}/apple-touch-icon.png", width: 60, height: 60, class: "favicon-source-card" %>
+
+
+<!--             <% if source.photo.attached? %>
             <%= cl_image_tag source.photo.key,
               width: 60, height: 60, class: "favicon-source-card" %>
             <% else %>
               <%= cl_image_tag("cropped-globe-favicon_dsbdl6",
                 width: 60, height: 60, class: "favicon-source-card") %>
-            <% end %>
+            <% end %> -->
+
+
             <div>
               <li class="source-card-title"> <strong> <%= source.title %> </strong></li>
               <p class="saved-to"><strong>Saved to: <%= source.folder.folder_name %></strong> </p>
