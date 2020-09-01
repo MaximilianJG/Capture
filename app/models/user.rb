@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :users, dependent: :destroy
   has_one_attached :photo
 
+  after_create :make_default_folder
 
   validates :email, presence: true
   # validates :first_name, presence: true
@@ -24,6 +25,12 @@ class User < ApplicationRecord
   def following
     relationships = Relationship.where(asker: self, status: 1)
     users = relationships.map { |relationship| relationship.receiver }
+  end
+
+private
+
+  def make_default_folder
+    Folder.create(folder_name: "My Latest Captures", user: self)
   end
 
 end
