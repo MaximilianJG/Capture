@@ -30,11 +30,9 @@ class Api::V1::QuotesController < Api::V1::BaseController
 
   def api_quote_params
     params.require(:quote).permit(:content, :url_of_quote) # how do we get a photo?
-  end
+  end #
 
   def api_source_params
-    params.permit(:title, :website, :date_of_article, :url_of_website)
+    params.require(:source).permit(:title, :website, :date_of_article, :url_of_website)
   end
-
-
 end
