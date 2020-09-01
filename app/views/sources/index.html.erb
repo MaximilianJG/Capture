@@ -16,10 +16,11 @@
         <div class="flex-div-favicon-and-title">
           <div class="d-flex">
 
+            <!-- This is a temporary solution  -->
             <%= cl_image_tag "https://#{source.website}/apple-touch-icon.png", width: 60, height: 60, class: "favicon-source-card" %>
 
 
-<!--             <% if source.photo.attached? %>
+            <!-- <% if source.photo.attached? %>
             <%= cl_image_tag source.photo.key,
               width: 60, height: 60, class: "favicon-source-card" %>
             <% else %>
