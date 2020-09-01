@@ -6,8 +6,9 @@
 
 .source-card {
   border: 1px solid #9C9C9C;
-  margin-top: -1px;
+  margin-bottom: 16px;
   position: relative;
+  border-radius: 2px;
 }
 
 .source-list-top-div {
@@ -38,11 +39,12 @@
 }
 
 .source-card-title {
-  font-family: "TimesNewRoman";
+  font-family: 'Merriweather', serif;
+  font-weight: lighter;
   font-size: 18px;
   margin-top: 10px;
   margin-right: 10px;
-  width: 620px;
+  width: 630px;
 }
 
 .flex-div-favicon-and-title {
@@ -74,6 +76,7 @@
   margin-left: 10px;
   padding-bottom: 10px;
   margin-right: 20px;
+  font-family: 'Inconsolata', monospace;
 }
 
 .quote-overflow-source-card {
@@ -160,7 +163,7 @@
 
 .create-new-quote-index-absolute {
   position: absolute;
-  top: 103px;
+  top: 126px;
   right: 290px;
   font-size: 25px;
   color: black;

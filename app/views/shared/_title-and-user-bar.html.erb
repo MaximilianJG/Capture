@@ -1,21 +1,11 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
 
+  <h1 class="heading"><span class="underline--magical">Home</span></h1>
 
-  <div class="page-title">
+  <!-- <div class="page-title">
 
     <% if current_page?(sources_path) %>
-      <%= cl_image_tag('brush-stroke-banner-1-onlygfx-dot-com_wetwbe', width: "120%;", height: "90px;", class: "title-brush-small") %>
-      <h1>Home</h1>
     <% elsif @folder_page %>
-
-        <% if @folder.folder_name.length < 15 %>
-        <%= cl_image_tag('brush-stroke-banner-1-onlygfx-dot-com_wetwbe', width: "120%;", height: "90px;", class: "title-brush-small") %>
-        <h1> <%= @folder.folder_name %> </h1>
-        <% else %>
-        <%= cl_image_tag('brush-stroke-banner-1-onlygfx-dot-com_wetwbe', width: "120%;", height: "90px;" ,class: "title-brush-big") %>
-        <h1> <%= @folder.folder_name %> </h1>
-
-        <% end %>
 
         <% elsif current_page?(new_quote_path) %>
           <%= cl_image_tag('brush-stroke-banner-1-onlygfx-dot-com_wetwbe', width: "120%;", height: "90px;" ,class: "title-brush-big") %>
@@ -33,7 +23,7 @@
         <h1>Capture</h1>
     <% end %>
 
-  </div>
+  </div> -->
 
   <!-- if it's a folder show page, do @folder.folder_name, if its the home page put home, if its notification put notifications ... there is only about 4 - 5 situations -->
 

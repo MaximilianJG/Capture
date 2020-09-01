@@ -51,7 +51,7 @@
 }
 
 .draw-border {
-  @include btn-border-drawing(#FFFFFF, #FF6602, 4px, bottom, right);
+  @include btn-border-drawing(#FFFFFF, #FFFF03, 4px, bottom, right);
 }
 
 //=== Button styling, semi-ignore
