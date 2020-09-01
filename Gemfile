@@ -35,7 +35,7 @@ gem 'devise'
 # Gems I added
 gem 'cloudinary', '~> 1.12.0'
 gem 'pg_search', '~> 2.3.0'
-
+gem 'rack-cors'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
