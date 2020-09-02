@@ -10,7 +10,8 @@ class SourcePolicy < ApplicationPolicy
   end
 
   def show?
-    record.user == user || user.admin
+    true # make it so that only people can see the cards of the people they are following
+    # record.user == user || user.admin
   end
 
   def new?
