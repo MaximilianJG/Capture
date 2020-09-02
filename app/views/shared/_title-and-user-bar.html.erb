@@ -1,6 +1,19 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
 
-  <h1 class="heading"><span class="underline--magical">Home</span></h1>
+  <% if current_page?(sources_path) %>
+    <h1 class="heading"><span class="underline--magical">Home</span></h1>
+  <% elsif @folder_page %>
+    <h1 class="heading"><span class="underline--magical"> <%= @folder.folder_name %> </span></h1>
+  <% elsif current_page?(new_quote_path) %>
+    <h1 class="heading"><span class="underline--magical">Add a Quote</span></h1>
+  <% elsif current_page?(new_source_path) %>
+    <h1 class="heading"><span class="underline--magical">Create a new Capture</span></h1>
+  <% elsif current_page?(new_folder_path) %>
+    <h1 class="heading"><span class="underline--magical">Create a new Folder</span></h1>
+  <% else %>
+    <h1 class="heading"><span class="underline--magical">Capture</span></h1>
+
+  <% end %>
 
   <!-- <div class="page-title">
 
@@ -24,7 +37,6 @@
     <% end %>
 
   </div> -->
-
   <!-- if it's a folder show page, do @folder.folder_name, if its the home page put home, if its notification put notifications ... there is only about 4 - 5 situations -->
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
