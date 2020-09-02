@@ -20,17 +20,15 @@
     <ul class="nav-bar-links">
       <li> <i class="fas fa-search"></i></li>
       <li class=""><strong>Search</strong></li>
-
-
     </ul>
-
-
-
 </div>
 
 <div class="all-folders-in-sidebar">
   <%= link_to new_folder_path, class: "plus-add-folder" do %>
+  <div class="d-flex align-items-center">
     <p><i class="fas fa-folder-plus"></i></p>
+    <p class="add-folder-text nav-bar-links"> <strong>Add a new Folder</strong> </p>
+  </div>
   <% end %>
 
   <ul>
@@ -43,15 +41,8 @@
         <li class="folder-in-sidebar"> <i class="fa fa-archive"></i> <%= folder.folder_name %></li>
       </div>
     <% end %>
-
-
   <% end %>
   </ul>
-
 </div>
-
-<!-- <div class="">
-  <%= link_to "Create a new quote", new_quote_path %>
-</div> -->
 
 
