@@ -8,7 +8,7 @@
 <div class="all-sources-home">
   <% @sources.each do |source| %>
 
-  <div class="source-card shadow">
+  <div class="source-card">
 
     <%= link_to "#source-#{source.id}", data: {toggle: "collapse"}, class: "source-collapse-link" do %>
       <ul class="source-list-top-div">
@@ -31,11 +31,11 @@
 
             <div>
               <li class="source-card-title"> <strong> <%= source.title %> </strong></li>
-              <p class="saved-to"><strong>Saved to: <%= source.folder.folder_name %></strong> </p>
+              <p class="saved-to"><i class="fa fa-archive"></i> Saved to: <strong><%= source.folder.folder_name %></strong> </p>
             </div>
           </div>
           <div class="time-since-save-source-card">
-            <p> <%= time_ago_in_words(source.created_at).gsub('about','') %>  ago </p>
+            <p><i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','') %>  ago </p>
           </div>
         </div>
 
@@ -78,7 +78,7 @@
     <div class="d-flex-bottom-of-source-card">
 
       <div>
-        <p class="date_of_article"> <%= source.date_of_article %></p> <!-- strftime("%d. %b %Y") -->
+        <p class="date_of_article"><i class="far fa-calendar-alt"></i> <%= source.date_of_article %></p> <!-- strftime("%d. %b %Y") -->
       </div>
 
       <div class="d-flex">
