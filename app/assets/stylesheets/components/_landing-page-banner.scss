@@ -2,14 +2,14 @@
   background-size: cover;
   background-position: center;
   padding: 100px 0;
-  height: 100%;
+  height: 100vh;
 }
 
 .banner h1 {
   margin: 0;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 52px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+  font-size: 50px;
   font-weight: bold;
   margin-bottom: 30px;
   font-family: 'Inconsolata', monospace;
@@ -18,7 +18,6 @@
 .banner h4 {
   font-family: 'Inconsolata', monospace;
   font-size: 24px;
-  letter-spacing: 8px;
 }
 
 .banner p {
@@ -49,19 +48,19 @@
 }
 
 .fw-lp {
-  font-size: 24px;
+  font-size: 18px;
   color: white;
   margin-bottom: 40px;
 }
 
 .favs {
   margin-left: 100px;
-  margin-top: 270px;
+  margin-top: 158px;
 }
 
 .icon-headline {
   font-family: 'Inconsolata', monospace;
-  font-size: 24px;
+  font-size: 18px;
   color: white;
   margin-left: 15px;
 }
@@ -71,6 +70,6 @@ ul {
 }
 
 .scroll-down {
-  font-size: 72px;
-  margin-bottom: 80px;
+  font-size: 50px;
+  // margin-bottom: 80px;
 }
