@@ -10,7 +10,7 @@
     <h1 class="heading"><span class="underline--magical">Create a new Capture</span></h1>
   <% elsif current_page?(new_folder_path) %>
     <h1 class="heading"><span class="underline--magical">Create a new Folder</span></h1>
-    <% elsif current_page?(source_path(@source)) %>
+    <% elsif (!@source.nil? && current_page?(source_path(@source.id))) %>
   <h1 class="subheading-source-show"><span class="underline--magical"> <%= @source.title %></span></h1>
   <% else %>
     <h1 class="heading"><span class="underline--magical">Capture</span></h1>
