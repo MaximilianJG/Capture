@@ -45,11 +45,11 @@
     <ul class="source-list-quotes collapse" id="source-<%= source.id%>">
       <% source.quotes.each do |quote| %>
 
-      <div class="flex-div-quote-and-content quote-javascript">
+      <div class="flex-div-quote-and-content quote-javascript quote-hover" style="cursor: pointer;">
         <i class="fas fa-quote-right"></i>
 
-        <div class="quote-content quote-source-card quote-overflow-source-card">
-          <li><%= quote.content %></li>
+        <div class="quote-content quote-source-card quote-overflow-source-card" style="cursor: pointer;">
+          <li class="quote-hover"><%= quote.content %></li>
 
         </div>
       </div>
