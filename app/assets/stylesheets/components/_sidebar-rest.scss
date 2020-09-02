@@ -38,7 +38,7 @@
 }
 
 .div-folder-in-sidebar.active {
-  background-color: #FFFF03;
+  background-color: #FFFF7F;
   text-decoration: none;
 }
 
@@ -51,7 +51,7 @@
 .folder-in-sidebar {
   text-decoration: none;
   padding-left: 40px;
-  margin-left: 0px;
+  margin-left: 2px;
   border-radius: 0px 30px 30px 0px;
   color: black;
 }
@@ -74,8 +74,8 @@
 
 .plus-add-folder {
   position: absolute;
-  font-size: 28px;
-  top: 274px;
+  font-size: 20px;
+  top: 280px;
   left: 42px;
   // display: flex;
   // justify-content: flex-end;
@@ -84,6 +84,10 @@
 
 .plus-add-folder:hover {
   color: black;
+}
+
+.add-folder-text {
+  font-size: 18px;
 }
 
 .plus-add-folder p {
