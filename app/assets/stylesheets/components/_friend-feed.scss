@@ -1,7 +1,17 @@
+.all-friends-cards {
+  overflow-y: scroll;
+  max-height: 80vh;
+  margin-top: 9px;
+}
+
 .friend-quote-card {
-  background-color: #D0DBCD;
-  margin: 20px;
-  border-radius: 10px;
+  background-color: #282828;
+  margin-right: 15px;
+  margin-top: 3px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15)
 }
 
 .friend-quote-list {
@@ -12,7 +22,7 @@
 .flex-div-quote-and-content-friend-feed {
   display: flex;
   align-items: flex-start;
-  margin-left: 10px;
+  margin-left: 25px;
 }
 
 .quote-friend-feed-card {
@@ -37,7 +47,7 @@
 
 .comment-icon {
   margin: 0px;
-  margin-left: 35px;
+  margin-left: 53px;
 }
 
 .share-icon {
@@ -59,4 +69,8 @@
 
 .friends-activity-title {
   margin-top: -8px;
+}
+
+.white-text-friend-card {
+  color: #B7B7B7;
 }
