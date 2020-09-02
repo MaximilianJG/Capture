@@ -18,6 +18,7 @@ class Api::V1::QuotesController < Api::V1::BaseController
       @source = Source.new(api_source_params)
       @source.folder = User.third.folders.first # When pushing to heroku change the Users
       @source.user = User.third # authentication
+      @source.date_of_article = "2.Sep.2020"
       @source.save!
       @quote.source = @source
     end
