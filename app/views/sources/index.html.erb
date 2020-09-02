@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="time-since-save-source-card">
-            <p><i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','') %>  ago </p>
+            <p><i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','').gsub("less than a", "1") %>  ago </p>
           </div>
         </div>
 
@@ -49,7 +49,7 @@
         <i class="fas fa-quote-right"></i>
 
         <div class="quote-content quote-source-card quote-overflow-source-card" style="cursor: pointer;">
-          <li class="quote-hover"><%= quote.content %></li>
+          <li class="quote-hover truncate"><%= quote.content %></li>
 
         </div>
       </div>

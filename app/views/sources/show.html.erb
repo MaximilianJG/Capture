@@ -1,6 +1,4 @@
 <div class="title-and-favicon">
-  <div><%= cl_image_tag "https://#{@source.website}/apple-touch-icon.png", width: 60, height: 60, class: "favicon-source-card" %></div>
-  <div class="show-source-title"><h2><%= @source.title %></h2></div>
 </div>
 
 
@@ -15,5 +13,7 @@
 
   </div>
 </ul>
+
+  <div><%= cl_image_tag "https://#{@source.website}/apple-touch-icon.png", width: 60, height: 60, class: "favicon-source-card" %></div>
 
 <% end %>
