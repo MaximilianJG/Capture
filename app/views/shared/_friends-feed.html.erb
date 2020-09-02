@@ -12,7 +12,7 @@
     <div class="friend-source-card">
       <div class="d-flex justify-content-between">
 
-        <div class="d-flex align-items-center p-2">
+        <div class="d-flex align-items-center mt-2 ml-2  avatar-and-username">
           <div>
             <% if source.user.photo.attached? %>
               <%= cl_image_tag source.user.photo.key, class: "avatar-small" %>
@@ -20,13 +20,13 @@
               <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-small" %>
             <% end %>
           </div>
-          <div class="ml-2 white-text-friend-card">
+          <div class="ml-2 white-text-friend-card friend-username-feed">
             <%= source.user.username %>
           </div>
         </div>
 
           <div class="m-2 white-text-friend-card time-friends-card">
-            <p> <%= time_ago_in_words(source.created_at).gsub('about','').gsub('less than', '') %> </p>
+            <p> <%= time_ago_in_words(source.created_at).gsub('about','').gsub('less than', '').gsub(' a ', '1 ') %> </p>
           </div>
 
       </div>

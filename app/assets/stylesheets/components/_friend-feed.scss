@@ -20,6 +20,11 @@
   padding-inline-start: 0px;
 }
 
+.avatar-and-username {
+  width: auto;
+  max-width: 170px;
+}
+
 .title-friend-feed-card {
   margin-left: 10px;
   padding-bottom: 10px;
@@ -47,4 +52,10 @@
 .friend-card-hover:hover {
   color: #666666;
   text-decoration: none;
+}
+
+.friend-username-feed {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
