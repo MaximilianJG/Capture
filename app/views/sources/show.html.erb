@@ -1,11 +1,15 @@
-<h2><%= @source.title %></h2>
+<div class="title-and-favicon">
+  <div><%= cl_image_tag "https://#{@source.website}/apple-touch-icon.png", width: 60, height: 60, class: "favicon-source-card" %></div>
+  <div class="show-source-title"><h2><%= @source.title %></h2></div>
+</div>
+
 
 <% @source.quotes.each do |quote| %>
 <ul class="quote-cards-list-source-show">
-  <div class="quote-card-source-show">
-    <li> <%= quote.content %> </li>
+  <div class="quote-card">
+    <li> <i class="fas fa-quote-right"></i>   <%= quote.content %> </li>
 
-    <%= link_to quote_path(quote) do   %>
+    <%= link_to quote_path(quote), class: "remove-underline" do   %>
       <p class="comment-icon"><i class="far fa-comment"></i> <%= quote.comments.count %></p>
     <% end %>
 
