@@ -2,7 +2,7 @@
 <% if @source.user != current_user %>
   <p>Captured by: <%= @source.user.username %></p>
   <% else %>
-  <br>
+  <p>Folder: <%= @source.folder.folder_name %>
 <% end %>
 
 <% @source.quotes.each do |quote| %>
