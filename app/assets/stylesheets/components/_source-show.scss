@@ -33,6 +33,7 @@
 .each-comment-source-show {
   padding-inline-start: 0px;
   margin-left: 20px;
+  margin-bottom: 10px;
 }
 
 
@@ -52,6 +53,12 @@
 .comment-user-show-text {
   font-family: 'Inconsolata', monospace;
   font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.user-avatar-information {
+  display: flex;
+  align-items: center;
 }
 
 #quote-5 {
