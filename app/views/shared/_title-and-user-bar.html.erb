@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-title-and-user">
 
   <% if current_page?(sources_path) %>
     <h1 class="heading"><span class="underline--magical">Home</span></h1>
@@ -10,6 +10,8 @@
     <h1 class="heading"><span class="underline--magical">Create a new Capture</span></h1>
   <% elsif current_page?(new_folder_path) %>
     <h1 class="heading"><span class="underline--magical">Create a new Folder</span></h1>
+    <% elsif (!@source.nil? && current_page?(source_path(@source.id))) %>
+  <h1 class="subheading-source-show"><span class="underline--magical"> <%= @source.title %></span></h1>
   <% else %>
     <h1 class="heading"><span class="underline--magical">Capture</span></h1>
 
@@ -44,11 +46,9 @@
 
       <li class="d-flex nav-item dropdown align-items-center">
           <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle",
-             id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else %>
-              <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar dropdown-toggle",
-             id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
           <p class="username"> <%= current_user.username %> <i class="fas fa-caret-down"></i> </p>
 

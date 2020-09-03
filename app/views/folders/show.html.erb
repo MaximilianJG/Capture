@@ -41,14 +41,6 @@
       <% end %>
     </ul>
 
-
-
-    <h1 class="delete-and-move-dropdown" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></h1>
-    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-      <button type="button" class="dropdown-item" data-toggle="modal" data-target=".bd-example-modal-sm">Change Folder</button>
-      <%= link_to "Delete", source_path(source), method: :delete, data: { confirm: "Are you sure?" }, class: "dropdown-item" %>
-    </div>
-
 <!--     <%= link_to source_path(source), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-source-card" do   %>
       <p><i class="fas fa-trash-alt"></i></p>
     <% end %>
@@ -57,6 +49,11 @@
     <p><i class="fas fa-folder"></i></p>
     <% end %> -->
 
+    <h1 class="delete-and-move-dropdown" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></h1>
+    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+      <button type="button" class="dropdown-item" data-toggle="modal" data-target=".bd-example-modal-sm">Change Folder</button>
+      <%= link_to "Delete", source_path(source), method: :delete, data: { confirm: "Are you sure?" }, class: "dropdown-item" %>
+    </div>
     <div class="modal fade bd-example-modal-sm" id="move-folder" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">

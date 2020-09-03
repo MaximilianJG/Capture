@@ -5,7 +5,7 @@
 }
 
 .source-card {
-  border: 1px solid #9C9C9C;
+  border: 1px solid #B5B6B5;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
   margin-bottom: 16px;
   position: relative;
@@ -17,6 +17,11 @@
   padding-inline-start: 0px;
   margin: 5px;
   color: black;
+}
+
+.quote-hover:hover {
+  transform: scale(1.002);
+  transition-duration: 0.5s;
 }
 
 .move-btn {
@@ -79,7 +84,7 @@
 
 // Javascript CSS
 .quote-source-card {
-  margin-left: 10px;
+  margin-left: 16px;
   padding-bottom: 10px;
   margin-right: 20px;
   font-family: 'Inconsolata', monospace;
@@ -153,7 +158,7 @@
 .create-new-quote-index-absolute {
   position: absolute;
   top: 126px;
-  right: 290px;
+  right: 303px;
   font-size: 25px;
   color: black;
 }
@@ -164,4 +169,11 @@
 // THIS IS THE MARGIN TO ALIGN THE CARDS ON FOLDER SHOW PAGE WITH CARDS ON INDEX SHOW PAGE, SHOULD BE CHANGED AT SOME POINT
 .folder-show {
   margin-top: 43px;
+}
+
+.truncate {
+  width: 760px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

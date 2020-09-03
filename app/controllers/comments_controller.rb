@@ -9,9 +9,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-        redirect_to sources_path
+      redirect_back(fallback_location: root_path)
       else
-        redirect_to sources_path # can we do a render here?
+      redirect_back(fallback_location: root_path)
     end
   end
 

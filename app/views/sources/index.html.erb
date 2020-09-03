@@ -31,11 +31,11 @@
 
             <div>
               <li class="source-card-title"> <strong> <%= source.title %> </strong></li>
-              <p class="saved-to"><i class="fa fa-archive"></i> Saved to: <strong><%= source.folder.folder_name %></strong> </p>
+              <p class="saved-to"><i class="fa fa-archive"></i> <strong><%= source.folder.folder_name %></strong> </p>
             </div>
           </div>
           <div class="time-since-save-source-card">
-            <p><i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','') %>  ago </p>
+            <p><i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','').gsub("less than a", "1") %>  ago </p>
           </div>
         </div>
 
@@ -45,11 +45,11 @@
     <ul class="source-list-quotes collapse" id="source-<%= source.id%>">
       <% source.quotes.each do |quote| %>
 
-      <div class="flex-div-quote-and-content quote-javascript">
+      <div class="flex-div-quote-and-content quote-javascript quote-hover" style="cursor: pointer;">
         <i class="fas fa-quote-right"></i>
 
-        <div class="quote-content quote-source-card quote-overflow-source-card">
-          <li><%= quote.content %></li>
+        <div class="quote-content quote-source-card quote-overflow-source-card" style="cursor: pointer;">
+          <li class="quote-hover truncate"><%= quote.content %></li>
 
         </div>
       </div>
@@ -76,14 +76,19 @@
 
       <div class="d-flex div-icons-bottom-right">
 
-
     <h1 class="delete-and-move-dropdown" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></h1>
     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
       <button type="button" class="dropdown-item" data-toggle="modal" data-target=".bd-example-modal-sm">Change Folder</button>
 
     </div>
 
-    <div class="modal fade bd-example-modal-sm" id="move-folder" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <h1 class="delete-and-move-dropdown" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></h1>
+    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+      <button type="button" class="dropdown-item" data-toggle="modal" data-target=".bd-example-modal-sm">Change Folder</button>
+      <%= link_to "Delete", source_path(source), method: :delete, data: { confirm: "Are you sure?" }, class: "dropdown-item" %>
+    </div>
+
+      <div class="modal fade bd-example-modal-sm" id="move-folder" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <%= simple_form_for(source) do |f| %>
@@ -94,9 +99,6 @@
       </div>
     </div>
 
-
-
-
         <%= link_to "#", class: "show-locally-link", target: :_blank do   %>
           <p class="source-icons-bottom-right"><i class="fas fa-newspaper"></i></p>
         <% end %>
@@ -105,7 +107,7 @@
           <p class="source-icons-bottom-right"><i class="fas fa-link"></i></p>
         <% end %>
 
-        <%= link_to source_path(source), class: "show-on-website-link", target: :_blank do %>
+        <%= link_to source_path(source), class: "show-on-website-link" do %>
             <p class="source-icons-bottom-right"><i class="fab fa-cuttlefish"></i></p>
         <% end %>
       </div>

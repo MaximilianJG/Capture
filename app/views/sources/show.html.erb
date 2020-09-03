@@ -1,19 +1,39 @@
-<div class="title-and-favicon">
-  <div><%= cl_image_tag "https://#{@source.website}/apple-touch-icon.png", width: 60, height: 60, class: "favicon-source-card" %></div>
-  <div class="show-source-title"><h2><%= @source.title %></h2></div>
-</div>
-
+<br>
+<% if @source.user != current_user %>
+  <p>Captured by: <%= @source.user.username %></p>
+  <% else %>
+  <br>
+<% end %>
 
 <% @source.quotes.each do |quote| %>
-<ul class="quote-cards-list-source-show">
-  <div class="quote-card">
-    <li> <i class="fas fa-quote-right"></i>   <%= quote.content %> </li>
+<ul class="quote-cards-list-source-show mt-3">
 
-    <%= link_to quote_path(quote), class: "remove-underline" do   %>
+  <div class="quote-card-text">
+
+    <li> <i class="fas fa-quote-right"></i> <%= quote.content %> </li>
+
+    <%= link_to "#quote-#{quote.id}", data: {toggle: "collapse"}, class: "remove-underline" do   %>
       <p class="comment-icon"><i class="far fa-comment"></i> <%= quote.comments.count %></p>
     <% end %>
 
   </div>
-</ul>
 
+  <% @comment = Comment.new %>
+    <div id="quote-<%= quote.id%>" class="collapse" >
+
+        <% quote.comments.each do |comment| %>
+        <ul class="each-comment-source-show" >
+          <li><%= comment.content %></li>
+        </ul>
+        <% end %>
+
+      <%= form_tag quote_create_comment_index_path(quote), method: :post do %>
+         <%= text_field_tag :content, params[:content], class: "comment-input-field", placeholder: "Say something"  %>
+      <% end %>
+    </div>
+
+</ul>
 <% end %>
+
+<!--   <div><%= cl_image_tag "https://#{@source.website}/apple-touch-icon.png", width: 60, height: 60, class: "favicon-source-card" %></div>
+ -->
