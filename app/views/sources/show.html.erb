@@ -23,7 +23,8 @@
 
         <% quote.comments.each do |comment| %>
         <ul class="each-comment-source-show" >
-          <li><%= comment.content %></li>
+          <li><span class="comment-user-show"><%= comment.user.username %></span>   <span class="comment-user-show-time"> <%= time_ago_in_words(comment.created_at) %></span></li>
+          <li><span class="comment-user-show-text"><%= comment.content %></span></li>
         </ul>
         <% end %>
 
