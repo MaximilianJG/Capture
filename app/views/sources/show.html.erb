@@ -1,8 +1,8 @@
 <br>
 <% if @source.user != current_user %>
-  <p>Captured by: <%= @source.user.username %></p>
+  <p class="info-field-format">Captured by: <%= @source.user.username %></p>
   <% else %>
-  <p>Folder: <%= @source.folder.folder_name %>
+  <p class="info-field-format">Folder: <%= @source.folder.folder_name %>
 <% end %>
 
 <% @source.quotes.each do |quote| %>
