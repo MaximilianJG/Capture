@@ -57,16 +57,6 @@
       <% end %>
     </ul>
 
-<!--     <%= link_to source_path(source), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-source-card" do   %>
-      <p><i class="fas fa-trash-alt"></i></p>
-    <% end %>
-
-    <%= link_to edit_source_path(source), class: "move-link" do %>
-    <p><i class="fas fa-folder"></i></p>
-    <% end %> -->
-
-
-
     <div class="d-flex-bottom-of-source-card">
 
       <div>
@@ -78,20 +68,23 @@
 
     <h1 class="delete-and-move-dropdown" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></h1>
     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-      <button type="button" class="dropdown-item" data-toggle="modal" data-target=".bd-example-modal-sm">Change Folder</button>
+
+      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal-<%= source.id %>">Change Folder</button>
+
+
       <%= link_to "Delete", source_path(source), method: :delete, data: { confirm: "Are you sure?" }, class: "dropdown-item dropdown-item" %>
     </div>
 
-      <div class="modal fade bd-example-modal-sm" id="move-folder" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <%= simple_form_for(source) do |f| %>
-          <%= f.input :folder_id, collection: Folder.where(user_id: current_user.id), label_method: :folder_name, value_method: :id, label: "Folder name", id: "move-folder-form", include_blank: false %>
-          <%= f.submit %>
-          <% end %>
+      <div id="modal-<%= source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <%= simple_form_for(source) do |f| %>
+            <%= f.input :folder_id, collection: Folder.where(user_id: current_user.id), label_method: :folder_name, label: "Folder name", id: "move-folder-form", include_blank: false %>
+            <%= f.submit %>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
 
         <%= link_to "#", class: "show-locally-link", target: :_blank do   %>
           <p class="source-icons-bottom-right"><i class="fas fa-newspaper"></i></p>

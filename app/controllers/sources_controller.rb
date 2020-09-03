@@ -43,8 +43,9 @@ class SourcesController < ApplicationController
   end
 
   def update
+    @source = Source.find(params[:id])
     if @source.update(strong_source_params)
-      redirect_to sources_path
+      redirect_back(fallback_location: root_path)
     else
       render :update
       # add alert that it failed
