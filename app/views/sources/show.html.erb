@@ -21,6 +21,7 @@
   <% @comment = Comment.new %>
     <div id="quote-<%= quote.id%>" class="collapse" >
 
+      <div class="all-comments-source-show">
         <% quote.comments.each do |comment| %>
         <ul class="each-comment-source-show" >
           <li>
@@ -36,6 +37,7 @@
           <li><div class="comment-user-show-text"><%= comment.content %></div></li>
         </ul>
         <% end %>
+      </div>
 
       <%= form_tag quote_create_comment_index_path(quote), method: :post do %>
          <%= text_field_tag :content, params[:content], class: "comment-input-field", placeholder: "Say something"  %>
