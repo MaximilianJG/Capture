@@ -25,6 +25,18 @@
       <li> <i class="fas fa-search"></i></li>
       <li class=""><strong>Search</strong></li>
     </ul>
+
+    <ul class="nav-bar-links">
+      <%= link_to user_profile_overview_path(current_user), class: "nav-bar-links" do  %>
+      <% if (current_page?(user_profile_overview_path(current_user)) || current_page?(user_profile_followers_path(current_user))||current_page?(user_profile_following_path(current_user))) %>
+      <li class="POS-ABS"><i class="fas fa-caret-right"></i></li>
+      <% end %>
+      <li><i class="fas fa-user"></i></li>
+      <li class="home-btn-navbar"><strong>Profile</strong></li>
+      <% end %>
+    </ul>
+
+
 </div>
 
   <ul class="ul-new-button">

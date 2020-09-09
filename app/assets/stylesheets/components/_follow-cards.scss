@@ -3,16 +3,18 @@
 }
 
 .follow-card {
-  width: 90%;
-  padding: 20px;
+  width: 100%;
   margin-top: 20px;
-  border-radius: 10px;
-  background-color: #D0DBCD;
+  border-radius: 2px;
+  background-color: white;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid #9C9C9C;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
 }
 
 .avatar-follow-card {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -38,11 +40,7 @@
 }
 
 .follow-btn {
-  margin-right: 30px;
   color: black;
-  border: 2px solid black;
-  padding: 10px 70px 10px 70px;
-  border-radius: 50px;
 }
 
 .follow-btn:hover {
@@ -51,5 +49,21 @@
 }
 
 .follow-btn-div:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
+  color: #666666;
+  cursor: pointer;
+}
+
+.follow-btn-div:hover .follow-btn {
+  color: #666666;
+}
+
+.follow-btn-div {
+  text-align: center;
+  margin-right: 20px;
+  width: 150px;
+  background-color: white;
+  padding: 10px 20px 10px 20px;
+  border: 1px solid #9C9C9C;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
 }
