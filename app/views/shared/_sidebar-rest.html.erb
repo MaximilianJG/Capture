@@ -27,15 +27,23 @@
     </ul>
 </div>
 
-<div class="all-folders-in-sidebar">
-  <%= link_to new_folder_path, class: "plus-add-folder" do %>
-  <div class="d-flex align-items-center">
-    <p><i class="fas fa-folder-plus"></i></p>
-    <p class="add-folder-text nav-bar-links"> <strong>Add a new Folder</strong> </p>
-  </div>
-  <% end %>
+  <ul class="ul-new-button">
+  <li class="d-flex dropdown align-items-center">
+    <div class="d-flex new-button align-items-center" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <p class="plus-icon-new-button"><i class="fas fa-plus"></i></p>
+        <p class="new-text-new-button">New</p>
+      </div>
 
-  <ul>
+    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+      <%= link_to "Folder", new_folder_path, class: "dropdown-item" %>
+      <%= link_to "Quote", new_quote_path, class: "dropdown-item" %>
+    </div>
+  </li>
+</ul>
+
+<div class="all-folders-in-sidebar">
+
+  <ul class="ul-all-folders">
   <% folders.each do |folder| %>
     <%= link_to folder_path(folder), class: "folder-link ul-text-decoration" do %>
       <div class="div-folder-in-sidebar <%= "active" if current_page?(folder_path(folder)) %>">

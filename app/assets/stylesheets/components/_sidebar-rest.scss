@@ -45,7 +45,6 @@
 .all-folders-in-sidebar ul {
   list-style: none;
   padding-inline-start: 0px;
-  padding-top: 28px;
 }
 
 .folder-in-sidebar {
@@ -67,42 +66,45 @@
 
 .div-main-links-sidebar {
   border-bottom: 1px solid #B7B9BD;
-  margin-bottom: 38px;
-  margin-top: -10px;
   padding-bottom: 10px;
-}
-
-.plus-add-folder {
-  position: absolute;
-  font-size: 20px;
-  top: 291px;
-  left: 42px;
-  // display: flex;
-  // justify-content: flex-end;
-  color: black;
-}
-
-.plus-add-folder:hover {
-  color: black;
-  text-decoration: none;
-}
-
-.add-folder-text {
-  font-size: 18px;
-}
-
-.add-folder-text:hover {
-  text-decoration: none;
-}
-
-.plus-add-folder p {
-  margin-top: 3px;
-  margin-bottom: 0rem;
-  margin-right: 8px;
 }
 
 .POS-ABS {
   color: black;
   position: absolute;
   left: 25px;
+}
+
+.ul-new-button {
+  margin-bottom: 0px;
+  padding-inline-start: 0px;
+}
+
+.new-button {
+  border-radius: 2px;
+  cursor: pointer;
+  margin: 10px 10px 10px 22px;
+  width: 38%;
+  background-color: white;
+  padding: 5px 10px 5px 18px;
+  border: 1px solid #9C9C9C;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+}
+
+.new-button:hover {
+  transform: scale(1.03);
+  color: #666666;
+}
+
+.plus-icon-new-button {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.new-text-new-button {
+  font-size: 15px;
+}
+
+.new-button p {
+  margin-block-end: 0px;
 }
