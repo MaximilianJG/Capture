@@ -1,4 +1,5 @@
 <h1 class="heading"><span class="underline--magical"> <%= @folder.folder_name %> </span></h1>
+
 <div class="searchbar">
   <p class="search-bar-icon"><i class="fas fa-search"></i></p>
   <%= form_tag sources_path, method: :get do %>
@@ -112,11 +113,6 @@
 
   </div>
     <% end %>
-
-    <%= link_to new_quote_path, class: "create-new-quote-index-absolute" do  %>
-    <i class="fas fa-plus-square"></i>
-    <% end %>
-
 </div>
 
 
