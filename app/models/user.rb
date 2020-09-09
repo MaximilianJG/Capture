@@ -17,6 +17,8 @@ class User < ApplicationRecord
   # validates :last_name, presence: true
   # validates :username, presence: true, uniqueness: true
 
+  acts_as_token_authenticatable
+
   def followers
     relationships = Relationship.where(receiver: self, status: 1)
     users = relationships.map { |relationship| relationship.asker }
