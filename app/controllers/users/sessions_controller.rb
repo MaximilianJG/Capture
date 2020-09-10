@@ -6,6 +6,7 @@ class Users::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   # def new
   #   super
+  #   current_user.save!
   # end
 
   # POST /resource/sign_in
