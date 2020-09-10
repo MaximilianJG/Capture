@@ -38,7 +38,7 @@
         <%= yield %>
       </div>
       <div class="friends-bar"> <!-- this should only be on the sources index page make an if else statement with flex grow the center will then take up the won space-->
-        <%= render('shared/friends-feed') %>
+        <%= render('shared/friends-feed') if user_signed_in? %>
       </div>
     </div>
 
