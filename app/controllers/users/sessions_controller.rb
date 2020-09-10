@@ -6,13 +6,13 @@ class Users::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   # def new
   #   super
-  #   current_user.save!
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super
+    current_user.update(authentication_token: nil)
+  end
 
   # DELETE /resource/sign_out
   # def destroy
