@@ -17,6 +17,7 @@ class Source < ApplicationRecord
     using: {
       tsearch: { prefix: true } # <-- to be able to search for not full words
     }
+
 end
 
 # for later versions some prioritizing:

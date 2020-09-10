@@ -5,7 +5,19 @@ class FoldersController < ApplicationController
   def show
     @folder = Folder.find(params[:id])
     authorize @folder
-    @sources = Source.where(user: current_user).select { |source| source.folder_id == @folder.id } # all has to be replaced by some pundit thing
+
+    if params[:query].present?
+      # search for sources with query
+      @sources = policy_scope(Source).search_for_all(params[:query]).where(user: current_user)
+      # search for sources that fit the query that are in the folder
+      @sources = @sources.where(user: current_user).select { |source| source.folder_id == @folder.id }
+    else
+      # search for sources in the folder
+      @sources = Source.where(user: current_user).select { |source| source.folder_id == @folder.id } # all has to be replaced by some pundit thing
+    end
+
+   @sources = @sources.sort_by { |source| source.created_at } # isn't working yet either
+    # @sources = @sources.order(created_at: :desc) <-- is not working because its not active record
   end
 
   def new
