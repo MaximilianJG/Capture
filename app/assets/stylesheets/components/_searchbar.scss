@@ -2,13 +2,14 @@
 .searchbar {
   width: 100%;
   margin-top: 20px;
+  position: relative;
 }
 
 .searchbar-field {
   margin-bottom: 5px;
   background-color: #FFF;
   border: 0px solid;
-  width: 97%;
+  width: 100%;
 }
 
 // .searchbar-field:hover {
@@ -52,9 +53,15 @@
 
 .search-bar-icon {
   color: #6B6B6B;
-  top: 133px;
-  left: 284px;
+  top: 9px;
+  left: 9px;
   position: absolute;
+}
+
+.search-capture-bar {
+  margin: 35px 20px 39px 20px;
+  border-radius: 2px;
+  background-color: #FFFFC2;
 }
 
 

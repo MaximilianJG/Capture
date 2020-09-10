@@ -1,7 +1,10 @@
+<h1 class="heading"><span class="underline--magical">Home</span></h1>
+
+
 <div class="searchbar">
   <p class="search-bar-icon"><i class="fas fa-search"></i></p>
   <%= form_tag sources_path, method: :get do %>
-    <%= text_field_tag :query, params[:query], class: "form-control searchbar-field", placeholder: "Search Capture" %>
+    <%= text_field_tag :query, params[:query], class: "form-control searchbar-field", placeholder: "Filter" %>
   <% end %>
 </div>
 
@@ -102,10 +105,6 @@
 
   </div>
 <% end %>
-
-    <%= link_to new_quote_path, class: "create-new-quote-index-absolute" do  %>
-    <i class="fas fa-plus-square"></i>
-    <% end %>
 
 </div>
 

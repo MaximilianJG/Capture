@@ -4,7 +4,8 @@
   <% @user.followers.each do |follower| %>
       <div class="follow-card">
         <div class="d-flex align-items-center justify-content-between">
-          <div class="d-flex">
+
+          <div class="d-flex align-items-center">
             <% if follower.photo.attached? %>
               <%= cl_image_tag follower.photo.key, class: "avatar-follow-card dropdown-toggle",
                 id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

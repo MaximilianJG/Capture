@@ -1,5 +1,5 @@
 .all-sources-home {
-  height: 80vh;
+  height: 83vh;
   overflow-y: scroll;
   padding-top: 3px;
 }
@@ -10,6 +10,7 @@
   margin-bottom: 16px;
   position: relative;
   border-radius: 2px;
+  width: 100%;
 }
 
 .source-list-top-div {
@@ -27,13 +28,13 @@
 .move-btn {
   color: black;
 }
-
 .source-collapse-link:hover {
   text-decoration: none;
   color: black;
 }
 
 .source-list-quotes {
+  width: 100%;
   list-style: none;
   padding-inline-start: 0px;
   margin-bottom: 0px !important;
@@ -172,7 +173,6 @@
 }
 
 .truncate {
-  width: 760px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
