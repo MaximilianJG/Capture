@@ -19,6 +19,9 @@ class User < ApplicationRecord
 
   acts_as_token_authenticatable
 
+  include PgSearch::Model
+  multisearchable against: [:username]
+
   def followers
     relationships = Relationship.where(receiver: self, status: 1)
     users = relationships.map { |relationship| relationship.asker }

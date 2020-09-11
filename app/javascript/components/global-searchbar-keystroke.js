@@ -1,0 +1,18 @@
+const keystrokeSearch = () => {
+  let globalSearchForm = document.getElementsByClassName("global-search-form")
+
+  if (window.location.pathname === "/search") {
+    document.getElementById("searchhaha").focus()
+  }
+  globalSearchForm[0].addEventListener('keyup', (event) => {
+    // console.log("yes")
+    // console.log(globalSearchForm[0].value)
+    var newurl = window.location.protocol + "//" + window.location.host + `/search?query=${globalSearchForm[0].value}`;
+    window.history.pushState({path:newurl},'',newurl);
+    location.replace(newurl)
+    // window.location.reload();
+    // $('#thisdiv').load(document.URL +  ' #thisdiv');
+  })
+}
+
+export { keystrokeSearch }

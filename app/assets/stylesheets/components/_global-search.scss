@@ -1,0 +1,62 @@
+.global-search-card-user {
+  padding: 5px;
+  color: black;
+}
+.remove-hover:hover {
+  text-decoration: none;
+}
+
+.global-search-card-user:hover {
+  background-color: #DFDFDF;
+  text-decoration: none;
+  color: black;
+}
+
+.avatar-global-search {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.global-search-username-follower-count-div {
+  margin-left: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.global-search-username-follower-count-div p {
+  margin: 0px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.global-search-username-follower-count-div .follower-count {
+  font-size: 13px;
+  color: #686868;
+}
+
+.col-6-global-search {
+  padding: 5px;
+}
+
+.global-search-card-source {
+  color: black;
+  border: 1px solid black;
+  height: 150px;
+}
+
+.global-search-source-banner {
+  width: 100%;
+  height: 35%;
+  margin: 0;
+  padding: 0px;
+  object-fit: cover;
+}
+
+.global-search-card-source p {
+  padding: 5px;
+}
+

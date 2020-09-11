@@ -27,11 +27,13 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { toggleQuote } from '../components/toggle-quote';
+// import { keystrokeSearch } from '../components/global-searchbar-keystroke' THIS NEEDS MORE ATTENTION
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   toggleQuote();
+  // keystrokeSearch(); THIS NEEDS MORE ATTENTION
 
 });
 

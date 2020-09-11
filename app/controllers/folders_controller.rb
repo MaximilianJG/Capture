@@ -8,7 +8,7 @@ class FoldersController < ApplicationController
 
     if params[:query].present?
       # search for sources with query
-      @sources = policy_scope(Source).search_for_all(params[:query]).where(user: current_user)
+      @sources = policy_scope(Source).filter_sources_with_quotes(params[:query]).where(user: current_user)
       # search for sources that fit the query that are in the folder
       @sources = @sources.where(user: current_user).select { |source| source.folder_id == @folder.id }
     else
