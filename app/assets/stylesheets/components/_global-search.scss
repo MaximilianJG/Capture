@@ -44,8 +44,13 @@
 
 .global-search-card-source {
   color: black;
-  border: 1px solid black;
   height: 150px;
+}
+
+.global-search-card-source:hover {
+  background-color: #DFDFDF;
+  text-decoration: none;
+  color: black;
 }
 
 .global-search-source-banner {
@@ -58,5 +63,27 @@
 
 .global-search-card-source p {
   padding: 5px;
+}
+
+.global-search-card-source .title {
+  margin: 0 0 1em 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.model-title {
+border-bottom: 1px solid #B7B9BD;
+padding: 0;
+margin: 0px 5px 10px 5px;
+font-size: 20px;
+font-weight: bold;
+color: #282829;
+}
+
+.no-marg-no-pad {
+  margin: 0px;
+  padding: 0px;
 }
 

@@ -1,13 +1,36 @@
 <!-- When search is filled -->
 <% if !@results.nil? %>
 
-  <div class="row mt-5">
+  <div class="row mt-5 m-1">
 
-    <% if @users.size > 0 %>
-      <div class="col-6">
-        <h5>Users</h5>
-        <div class="row">
-          <% @users.each do |user| %>
+        <% if @sources.size > 0 %>
+      <div class="col-6 no-marg-no-pad">
+        <p class="model-title">Captures</p>
+        <div class="row no-marg-no-pad">
+          <% @sources.take(4).each do |source| %>
+          <div class="col-6 col-6-global-search">
+
+            <%= link_to source_path(source), class: "remove-hover" do  %>
+            <div class="global-search-card-source">
+                <%= cl_image_tag "umnpg0sho7qgwftngqsn", class: "global-search-source-banner dropdown-toggle" %>
+                <div class="title">
+                  <p><%= source.title %></p>
+                </div>
+
+            </div>
+            <% end %>
+
+          </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+        <% if @users.size > 0 %>
+      <div class="col-6 no-marg-no-pad">
+        <p class="model-title">Users</p>
+        <div class="row no-marg-no-pad">
+          <% @users.take(8).each do |user| %>
           <div class="col-6 col-6-global-search">
 
             <%= link_to user_profile_overview_path(user), class: "remove-hover" do  %>
@@ -26,27 +49,6 @@
                 </div>
 
               </div>
-            <% end %>
-
-          </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-
-        <% if @sources.size > 0 %>
-      <div class="col-6">
-        <h5>Captures</h5>
-        <div class="row">
-          <% @sources.each do |source| %>
-          <div class="col-6 col-6-global-search">
-
-            <%= link_to source_path(source), class: "remove-hover" do  %>
-            <div class="global-search-card-source">
-                    <%= cl_image_tag "umnpg0sho7qgwftngqsn", class: "global-search-source-banner dropdown-toggle" %>
-                <p><%= source.title %></p>
-
-            </div>
             <% end %>
 
           </div>

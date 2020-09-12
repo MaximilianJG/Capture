@@ -9,10 +9,19 @@ const keystrokeSearch = () => {
     // console.log(globalSearchForm[0].value)
     var newurl = window.location.protocol + "//" + window.location.host + `/search?query=${globalSearchForm[0].value}`;
     window.history.pushState({path:newurl},'',newurl);
+
+   // '<% PagesController.search %>'
     location.replace(newurl)
     // window.location.reload();
     // $('#thisdiv').load(document.URL +  ' #thisdiv');
+
+   //  $.ajax({
+   //     method: "get",
+   //     url: path,
+   // });
+
   })
+
 }
 
 export { keystrokeSearch }

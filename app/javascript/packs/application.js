@@ -27,13 +27,16 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { toggleQuote } from '../components/toggle-quote';
-// import { keystrokeSearch } from '../components/global-searchbar-keystroke' THIS NEEDS MORE ATTENTION
+// import { keystrokeSearch } from '../components/global-searchbar-keystroke.js.erb' // THIS NEEDS MORE ATTENTION
+import { hello } from '../components/hello.js.erb' // THIS NEEDS MORE ATTENTION
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   toggleQuote();
-  // keystrokeSearch(); THIS NEEDS MORE ATTENTION
+  // keystrokeSearch(); // THIS NEEDS MORE ATTENTION
+  // hello();
 
 });
 
