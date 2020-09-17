@@ -7,6 +7,23 @@ class PagesController < ApplicationController
     @landing_page_navbar = true
   end
 
+  def search
+    if (params[:query].present?)
+      @results = PgSearch.multisearch(params[:query])
+        @users = []
+        @sources = []
+        @results.each do |result|
+          if result.searchable_type == "User"
+            @users << result.searchable
+          elsif result.searchable_type == "Source"
+            @sources << result.searchable
+          end
+        end
+    else
+      @ja = "hello"
+    end
+  end
+
   def user_profile_overview
   end
 

@@ -1,0 +1,24 @@
+.global-search-field-div {
+  position: relative;
+}
+
+.global-search-form {
+  background-color: white;
+  border: 1px solid #B7B9BD;
+  border-radius: 15px;
+  padding-left: 30px;
+  margin: 10px 0px 0px 0px;
+  width: 25%;
+}
+
+.global-search-form:placeholder {
+  color: red;
+}
+
+.search-icon-global-search {
+  position: absolute;
+  top: 13px;
+  left: 10px;
+  font-size: 15px;
+  color: #757575;
+}
