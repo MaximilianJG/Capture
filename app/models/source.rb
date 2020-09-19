@@ -7,9 +7,8 @@ class Source < ApplicationRecord
 
   # validates :title, :website, :url_of_website, presence: true
 
-  # initialize for pgsearch GEM
   include PgSearch::Model
-  pg_search_scope :search_for_all,
+  pg_search_scope :filter_sources_with_quotes,
     against: [ :title, :website ],
     associated_against: {
       quotes: [ :content ]
@@ -17,6 +16,8 @@ class Source < ApplicationRecord
     using: {
       tsearch: { prefix: true } # <-- to be able to search for not full words
     }
+
+  multisearchable against: [:title, :website]
 end
 
 # for later versions some prioritizing:

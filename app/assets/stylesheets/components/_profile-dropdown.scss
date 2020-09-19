@@ -1,0 +1,22 @@
+.profile-dropdown-avatar {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-dropdown .username {
+  color: black;
+  margin: 0px 0px 0px 10px;
+  border-bottom: 1px solid white;
+}
+
+.profile-dropdown .username:hover {
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+.profile-dropdown .caret p {
+  margin: 2px 0px 0px 15px;
+}
