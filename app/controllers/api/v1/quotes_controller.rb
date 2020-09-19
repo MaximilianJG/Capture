@@ -7,17 +7,27 @@ class Api::V1::QuotesController < Api::V1::BaseController
 
   def create
     @quote = Quote.new(api_quote_params)
-    @quote.user = User.first # Solved when implementing authentication
+    @quote.user = current_user
+    # @quote.user = User.first # Solved when implementing authentication
     authorize @quote
 
-    @source = Source.all.find { |source| source.url_of_website == @quote.url_of_quote } # refactor line 11
+    @source = Source.where(user: current_user).find { |source| source.url_of_website == @quote.url_of_quote } # refactor line 11
 
     if @source
       @quote.source_id = @source.id
     else
       @source = Source.new(api_source_params)
-      @source.folder = User.first.folders.first # When pushing to heroku change the Users
-      @source.user = User.first # authentication
+
+      # @source.folder = User.second.folders.first # When pushing to heroku change the Users
+      # @source.user = User.second # authentication
+
+      # @source.folder = User.find(session[:user_id]).folders.first
+      # @source.user = User.find(session[:user_id])
+
+      @source.folder = current_user.folders.first
+      @source.user = current_user
+
+
       @source.date_of_article = "2.Sep.2020"
       @source.save!
       @quote.source = @source
