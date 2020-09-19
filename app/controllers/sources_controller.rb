@@ -3,7 +3,6 @@ class SourcesController < ApplicationController
 
   # READ
   def index
-    raise
     if params[:query].present?
       # @sources = policy_scope(Source).where(user: current_user)
       @sources = policy_scope(Source).filter_sources_with_quotes(params[:query]).where(user: current_user)
