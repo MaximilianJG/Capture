@@ -36,11 +36,11 @@
         <%= render('shared/sidebar', folders: @folders) if user_signed_in? %> <!-- this is comming from the application controller (set_folder method) -->
       </div>
       <div class="center-content">
-        <%= render 'shared/search-user-bar' if user_signed_in?%>
+        <%= render 'shared/search-user-bar' if user_signed_in? %>
         <%= yield %>
       </div>
       <div class="friends-bar"> <!-- this should only be on the sources index page make an if else statement with flex grow the center will then take up the won space-->
-        <%= render('shared/friends-feed') if user_signed_in? %>
+        <%= render('shared/friends-feed') if user_signed_in?%>
       </div>
     </div>
 
