@@ -40,7 +40,6 @@ document.addEventListener('turbolinks:load', () => {
 
 });
 
-
 // JavaScript
 // create a file in components
 // create a function with the code
