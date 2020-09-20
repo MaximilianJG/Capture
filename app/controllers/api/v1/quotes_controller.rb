@@ -1,6 +1,5 @@
 class Api::V1::QuotesController < Api::V1::BaseController
 
-
   # def index
   #   @sources = policy_scope(Source)
   # end
