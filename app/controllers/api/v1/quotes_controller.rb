@@ -23,7 +23,6 @@ class Api::V1::QuotesController < Api::V1::BaseController
 
       # @source.folder = User.find(session[:user_id]).folders.first
       # @source.user = User.find(session[:user_id])
-raise
 
       @source.folder = current_user.folders.first
       @source.user = current_user
