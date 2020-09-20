@@ -23,16 +23,21 @@ class Api::V1::QuotesController < Api::V1::BaseController
 
       # @source.folder = User.find(session[:user_id]).folders.first
       # @source.user = User.find(session[:user_id])
+raise
 
       @source.folder = current_user.folders.first
       @source.user = current_user
-
 
       @source.date_of_article = "2.Sep.2020"
       @source.save!
       @quote.source = @source
     end
 
+    # if @quote.save!
+    #   render :show
+    # else
+    #   render_error
+    # end
       @quote.save!
       render :show
 
@@ -45,5 +50,10 @@ class Api::V1::QuotesController < Api::V1::BaseController
 
   def api_source_params
     params.require(:source).permit(:title, :website, :date_of_article, :url_of_website)
+  end
+
+  def render_error
+    render json: { errors: @restaurant.errors.full_messages },
+      status: :unprocessable_entity
   end
 end
