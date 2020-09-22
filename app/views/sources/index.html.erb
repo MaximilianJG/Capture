@@ -8,106 +8,78 @@
   <% end %>
 </div>
 
-<%= session[:user_id] %>
-
 <div class="all-sources-home">
   <% @sources.each do |source| %>
+    <div class="source-card">
 
-  <div class="source-card">
-
-    <%= link_to "#source-#{source.id}", data: {toggle: "collapse"}, class: "source-collapse-link" do %>
-      <ul class="source-list-top-div">
-
-        <div class="flex-div-favicon-and-title">
-          <div class="d-flex">
-
-            <!-- This is a temporary solution  -->
-            <%= cl_image_tag "https://#{source.website}/apple-touch-icon.png", width: 60, height: 60, class: "favicon-source-card" %>
-
-            <!-- <% if source.photo.attached? %>
-            <%= cl_image_tag source.photo.key,
-              width: 60, height: 60, class: "favicon-source-card" %>
-            <% else %>
-              <%= cl_image_tag("cropped-globe-favicon_dsbdl6",
-                width: 60, height: 60, class: "favicon-source-card") %>
-            <% end %> -->
-
-            <div>
-              <li class="source-card-title"> <strong> <%= source.title %> </strong></li>
-              <p class="saved-to"><i class="fa fa-archive"></i> <strong><%= source.folder.folder_name %></strong> </p>
+      <%= link_to "#source-#{source.id}", data: {toggle: "collapse"}, class: "source-collapse-link" do %>
+          <div class="d-flex justify-content-between">
+            <div class="d-flex">
+              <!-- This is a temporary solution  -->
+              <%= cl_image_tag "https://#{source.website}/apple-touch-icon.png", width: 60, height: 60, class: "favicon-source-card" %>
+              <div>
+                <p class="source-card-title"><strong> <%= source.title %> </strong></p>
+                <p class="saved-to"><i class="fa fa-archive"></i> <strong><%= source.folder.folder_name %></strong> </p>
+              </div>
+            </div>
+            <div class="source-time">
+              <p><i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','').gsub("less than a", "1") %>  ago </p>
             </div>
           </div>
-          <div class="time-since-save-source-card">
-            <p><i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','').gsub("less than a", "1") %>  ago </p>
-          </div>
-        </div>
-
-      </ul>
-    <% end %>
-
-    <ul class="source-list-quotes collapse" id="source-<%= source.id%>">
-      <% source.quotes.each do |quote| %>
-
-      <div class="flex-div-quote-and-content quote-javascript quote-hover" style="cursor: pointer;">
-        <i class="fas fa-quote-right"></i>
-
-        <div class="quote-content quote-source-card quote-overflow-source-card" style="cursor: pointer;">
-          <li class="quote-hover truncate"><%= quote.content %></li>
-
-        </div>
-      </div>
-
       <% end %>
-    </ul>
 
-    <div class="d-flex-bottom-of-source-card">
-
-      <div>
-        <p class="date_of_article"><i class="far fa-calendar-alt"></i> <%= source.date_of_article %></p> <!-- strftime("%d. %b %Y") -->
-      </div>
-
-
-      <div class="d-flex div-icons-bottom-right">
-
-    <h1 class="delete-and-move-dropdown" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></h1>
-    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-
-      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal-<%= source.id %>">Change Folder</button>
-
-
-      <%= link_to "Delete", source_path(source), method: :delete, data: { confirm: "Are you sure?" }, class: "dropdown-item dropdown-item" %>
-    </div>
-
-      <div id="modal-<%= source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <%= simple_form_for(source) do |f| %>
-            <%= f.input :folder_id, collection: Folder.where(user_id: current_user.id), label_method: :folder_name, label: "Folder name", id: "move-folder-form", include_blank: false %>
-            <%= f.submit %>
-            <% end %>
+      <ul class="source-list-quotes collapse" id="source-<%= source.id%>">
+        <% source.quotes.each do |quote| %>
+          <div class="source-quote-div" style="cursor: pointer;">
+            <i class="fas fa-quote-right"></i>
+            <div class="source-quote-text source-quote-overflow" style="cursor: pointer;">
+              <li class="truncate"><%= quote.content %></li>
+            </div>
           </div>
+        <% end %>
+      </ul>
+
+      <div class="d-flex justify-content-between pt-2">
+        <div>
+          <p class="date_of_article"><i class="far fa-calendar-alt"></i> <%= source.date_of_article %></p> <!-- strftime("%d. %b %Y") -->
+        </div>
+
+        <div class="d-flex">
+
+          <p class="source-icon" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></p>
+
+          <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+            <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modal-<%= source.id %>">Change Folder</button>
+            <%= link_to "Delete", source_path(source), method: :delete, data: { confirm: "Are you sure?" }, class: "dropdown-item dropdown-item" %>
+          </div>
+
+          <div id="modal-<%= source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <%= simple_form_for(source) do |f| %>
+                <%= f.input :folder_id, collection: Folder.where(user_id: current_user.id), label_method: :folder_name, label: "Folder name", id: "move-folder-form", include_blank: false %>
+                <%= f.submit %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <%= link_to "#", target: :_blank do   %>
+            <p class="source-icon"><i class="fas fa-newspaper"></i></p>
+          <% end %>
+          <%= link_to "#{source.url_of_website}", target: :_blank do %>
+            <p class="source-icon"><i class="fas fa-link"></i></p>
+          <% end %>
+          <%= link_to source_path(source) do %>
+              <p class="source-icon"><i class="fab fa-cuttlefish"></i></p>
+          <% end %>
         </div>
       </div>
 
-        <%= link_to "#", class: "show-locally-link", target: :_blank do   %>
-          <p class="source-icons-bottom-right"><i class="fas fa-newspaper"></i></p>
-        <% end %>
-
-        <%= link_to "#{source.url_of_website}", class: "show-on-website-link", target: :_blank do %>
-          <p class="source-icons-bottom-right"><i class="fas fa-link"></i></p>
-        <% end %>
-
-        <%= link_to source_path(source), class: "show-on-website-link" do %>
-            <p class="source-icons-bottom-right"><i class="fab fa-cuttlefish"></i></p>
-        <% end %>
-      </div>
-
     </div>
-
-
-  </div>
-<% end %>
-
+  <% end %>
 </div>
+
+
 
 

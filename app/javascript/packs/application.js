@@ -28,7 +28,6 @@ import "bootstrap";
 // Internal imports, e.g:
 import { toggleQuote } from '../components/toggle-quote';
 // import { keystrokeSearch } from '../components/global-searchbar-keystroke.js.erb' // THIS NEEDS MORE ATTENTION
-import { hello } from '../components/hello.js.erb' // THIS NEEDS MORE ATTENTION
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -36,7 +35,6 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   toggleQuote();
   // keystrokeSearch(); // THIS NEEDS MORE ATTENTION
-  // hello();
 
 });
 

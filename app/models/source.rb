@@ -5,7 +5,12 @@ class Source < ApplicationRecord
   has_one_attached :photo
 
 
-  # validates :title, :website, :url_of_website, presence: true
+  validates :title, presence: true
+  validates :website, presence: true
+  validates :date_of_article, presence: true
+  validates :user_id, presence: true
+  validates :folder_id, presence: true
+  validates :url_of_website, presence: true
 
   include PgSearch::Model
   pg_search_scope :filter_sources_with_quotes,
