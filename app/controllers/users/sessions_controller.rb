@@ -12,7 +12,7 @@ class Users::SessionsController < Devise::SessionsController
   def create
     super
     # current_user.update(authentication_token: nil)
-    # session[:user_id] = current_user.id
+    cookies[:capture_user_id]= current_user.id
   end
 
   # DELETE /resource/sign_out
