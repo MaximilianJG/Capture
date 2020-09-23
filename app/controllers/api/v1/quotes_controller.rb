@@ -1,4 +1,5 @@
 class Api::V1::QuotesController < Api::V1::BaseController
+require "open-uri"
 
   # def index
   #   @sources = policy_scope(Source)
@@ -18,6 +19,9 @@ class Api::V1::QuotesController < Api::V1::BaseController
     else
       @source = Source.new(api_source_params)
 
+      file = URI.open(api_photo_params[:photo_url])
+      @source.photo.attach(io: file, filename: 'test.jpg', content_type: 'image/jpg')
+
       @source.folder = current_user.folders.first
       @source.user = current_user
 
@@ -33,11 +37,15 @@ class Api::V1::QuotesController < Api::V1::BaseController
 
 
   def api_quote_params
-    params.require(:quote).permit(:content, :url_of_quote) # how do we get a photo?
+    params.require(:quote).permit(:content, :url_of_quote)
   end #
 
   def api_source_params
     params.require(:source).permit(:title, :website, :date_of_article, :url_of_website)
+  end
+
+  def api_photo_params
+    params.require(:photo).permit(:photo_url)
   end
 
   def api_user_params
