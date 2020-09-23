@@ -5,9 +5,10 @@ class Api::V1::QuotesController < Api::V1::BaseController
   # end
 
   def create
+    current_user = User.find(api_user_params[:user_id])
+
     @quote = Quote.new(api_quote_params)
     @quote.user = current_user
-    # @quote.user = User.first # Solved when implementing authentication
     authorize @quote
 
     @source = Source.where(user: current_user).find { |source| source.url_of_website == @quote.url_of_quote } # refactor line 11
@@ -17,12 +18,6 @@ class Api::V1::QuotesController < Api::V1::BaseController
     else
       @source = Source.new(api_source_params)
 
-      # @source.folder = User.second.folders.first # When pushing to heroku change the Users
-      # @source.user = User.second # authentication
-
-      # @source.folder = User.find(session[:user_id]).folders.first
-      # @source.user = User.find(session[:user_id])
-
       @source.folder = current_user.folders.first
       @source.user = current_user
 
@@ -31,11 +26,6 @@ class Api::V1::QuotesController < Api::V1::BaseController
       @quote.source = @source
     end
 
-    # if @quote.save!
-    #   render :show
-    # else
-    #   render_error
-    # end
       @quote.save!
       render :show
 
@@ -50,8 +40,12 @@ class Api::V1::QuotesController < Api::V1::BaseController
     params.require(:source).permit(:title, :website, :date_of_article, :url_of_website)
   end
 
+  def api_user_params
+    params.require(:user).permit(:user_id)
+  end
+
   def render_error
-    render json: { errors: @restaurant.errors.full_messages },
+    render json: { errors: @source.errors.full_messages },
       status: :unprocessable_entity
   end
 end
