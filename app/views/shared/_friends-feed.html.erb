@@ -3,47 +3,44 @@
 <br>
 <br>
 <br>
-<div class="friends-activity-title">
-  <h2 class="ml-4 subheading"><span class="underline--magical">Friend Activity</span></h2>
-</div>
+<br>
 
-<div class="all-source-cards">
+<h2 class="ml-4 subheading"><span class="underline--magical">Friend Activity</span></h2>
 
-<% @sources = policy_scope(Source).where(user: current_user.following) %>
-<% @sources.order(created_at: :desc).each do |source| %>
-<%= link_to source_path(source), class: "friend-card-hover friend-card" do  %>
-  <ul class="friend-source-list">
-    <div class="friend-source-card">
-      <div class="d-flex justify-content-between">
+<div class="friend-feed-cards">
 
-        <div class="d-flex align-items-center mt-2 ml-2  avatar-and-username">
-          <div>
+  <% @sources = policy_scope(Source).where(user: current_user.following) %>
+  <% @sources.order(created_at: :desc).each do |source| %>
+
+  <%= link_to source_path(source), class: "friend-card-link" do  %>
+
+      <div class="friend-card">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex align-items-center mt-2 ml-2 avatar-and-username">
             <% if source.user.photo.attached? %>
               <%= cl_image_tag source.user.photo.key, class: "avatar-small" %>
             <% else %>
               <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-small" %>
             <% end %>
+
+            <div class="ml-2 username">
+              <%= source.user.username %>
+            </div>
           </div>
-          <div class="ml-2 white-text-friend-card friend-username-feed">
-            <%= source.user.username %>
-          </div>
+
+            <div class="m-2 time">
+              <p> <%= time_ago_in_words(source.created_at).gsub('about','').gsub('less than', '').gsub(' a ', '1 ') %> </p>
+            </div>
         </div>
 
-          <div class="m-2 white-text-friend-card time-friends-card">
-            <p> <%= time_ago_in_words(source.created_at).gsub('about','').gsub('less than', '').gsub(' a ', '1 ') %> </p>
-          </div>
 
+          <div class="">
+            <p class="source-title"><%= source.title %></p>
+          </div>
       </div>
 
+    <% end %>
 
-          <div class="quote-content title-friend-feed-card white-text-friend-card">
-            <li class="title-source-friends"><%= source.title %></li>
-
-          </div>
-        </div>
-  </ul>
   <% end %>
-
-<% end %>
 </div>
 

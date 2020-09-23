@@ -1,68 +1,54 @@
-      <%= link_to root_path do  %>
-      <%= cl_image_tag("pngtree-camera-hand--logo-template-with-line-art-style-image_128418_hdebp6",
-      width: 110, height: 110, crop: :fit, class: "logo-sidebar") %>
-      <% end %>
+<%= link_to root_path do  %>
+<%= cl_image_tag("pngtree-camera-hand--logo-template-with-line-art-style-image_128418_hdebp6",
+width: 110, height: 110, crop: :fit, class: "logo-sidebar") %>
+<% end %>
 
-<div class="div-main-links-sidebar">
-    <ul class="nav-bar-links">
-      <%= link_to sources_path, class: "nav-bar-links" do  %>
+<div class="div-main-links">
+  <%= link_to sources_path, class: "main-link" do  %>
+    <div class="d-flex">
       <% if current_page?(sources_path) %>
-      <li class="POS-ABS"><i class="fas fa-caret-right"></i></li>
+        <p class="active-caret"><i class="fas fa-caret-right"></i></p>
       <% end %>
-      <li><i class="fas fa-home"></i></li>
-      <li class="home-btn-navbar"><strong>Home</strong></li>
-      <% end %>
-    </ul>
+      <p><i class="fas fa-home"></i></p>
+      <p class="main-link-text">Home</p>
+    </div>
+  <% end %>
 
-    <ul class="nav-bar-links">
-      <li> <i class="fas fa-bell"></i></li>
-      <li class=""><strong>Notifications</strong></li>
-    </ul>
-
-    <ul class="nav-bar-links">
-      <li> <i class="fas fa-search"></i></li>
-      <li class=""><strong>Search</strong></li>
-    </ul>
-
-    <ul class="nav-bar-links">
-      <%= link_to user_profile_overview_path(current_user), class: "nav-bar-links" do  %>
+  <%= link_to user_profile_overview_path(current_user), class: "main-link" do  %>
+    <div class="d-flex">
       <% if (current_page?(user_profile_overview_path(current_user)) || current_page?(user_profile_followers_path(current_user))||current_page?(user_profile_following_path(current_user))) %>
-      <li class="POS-ABS"><i class="fas fa-caret-right"></i></li>
+        <p class="active-caret"><i class="fas fa-caret-right"></i></p>
       <% end %>
-      <li><i class="fas fa-user"></i></li>
-      <li class="home-btn-navbar"><strong>Profile</strong></li>
-      <% end %>
-    </ul>
+      <p><i class="fas fa-user"></i></p>
+      <p class="main-link-text">Profile</p>
+    </div>
+  <% end %>
 </div>
 
-  <ul class="ul-new-button">
-  <li class="d-flex dropdown align-items-center">
+  <div class="d-flex dropdown align-items-center">
     <div class="d-flex new-button align-items-center" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <p class="plus-icon-new-button"><i class="fas fa-plus"></i></p>
-        <p class="new-text-new-button">New</p>
+      <p class="plus-icon"><i class="fas fa-plus"></i></p>
+      <p class="text">New</p>
     </div>
 
     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
       <%= link_to "Folder", new_folder_path, class: "dropdown-item" %>
       <%= link_to "Quote", new_quote_path, class: "dropdown-item" %>
     </div>
-  </li>
-</ul>
+  </div>
 
-<div class="all-folders-in-sidebar">
 
-  <ul class="ul-all-folders">
   <% folders.each do |folder| %>
-    <%= link_to folder_path(folder), class: "folder-link ul-text-decoration" do %>
-      <div class="div-folder-in-sidebar <%= "active" if current_page?(folder_path(folder)) %>">
-    <% if current_page?(folder_path(folder)) %>
-    <li class="POS-ABS"><i class="fas fa-caret-right"></i></li>
-    <% end %>
-        <li class="folder-in-sidebar"> <i class="fa fa-archive"></i> <%= folder.folder_name %></li>
+    <%= link_to folder_path(folder), class: "remove-hover" do %>
+      <div class="div-folder <%= "active" if current_page?(folder_path(folder)) %>">
+        <% if current_page?(folder_path(folder)) %>
+          <p class="active-caret"><i class="fas fa-caret-right"></i></p>
+        <% end %>
+        <p class="folder-text"> <i class="fa fa-archive"></i> <%= folder.folder_name %></p>
       </div>
     <% end %>
   <% end %>
-  </ul>
-</div>
+
+
 
 

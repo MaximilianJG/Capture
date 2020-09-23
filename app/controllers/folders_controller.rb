@@ -30,7 +30,7 @@ class FoldersController < ApplicationController
     @folder.user = current_user
     authorize @folder
     if @folder.save!
-      redirect_to sources_path
+      redirect_to sources_path # this could be redirect_back(fallback_location: root_path)
     else
       render :new
     end

@@ -1,52 +1,46 @@
 <h1 class="heading"><span class="underline--magical"> <%= @source.title %></span></h1>
 <br>
+
 <% if @source.user != current_user %>
-  <p class="info-field-format">Captured by: <%= @source.user.username %></p>
+  <p>Captured by: <%= @source.user.username %></p>
   <% else %>
-  <p class="info-field-format">Folder: <%= @source.folder.folder_name %>
+  <p>Folder: <%= @source.folder.folder_name %>
 <% end %>
 
 <% @source.quotes.each do |quote| %>
-<ul class="quote-cards-list-source-show mt-3">
+
+<div class="quote-card">
 
   <div class="quote-card-text">
-
-    <li> <i class="fas fa-quote-right"></i> <%= quote.content %> </li>
-
-    <%= link_to "#quote-#{quote.id}", data: {toggle: "collapse"}, class: "remove-underline" do   %>
-      <p class="comment-icon"><i class="far fa-comment"></i> <%= quote.comments.count %></p>
-    <% end %>
-
+    <p><i class="fas fa-quote-right"></i> <%= quote.content %> </p>
   </div>
 
-  <% @comment = Comment.new %>
+  <%= link_to "#quote-#{quote.id}", data: {toggle: "collapse"}, class: "remove-underline" do   %>
+    <p class="comment-icon"><i class="far fa-comment"></i> <%= quote.comments.count %></p>
+  <% end %>
+
     <div id="quote-<%= quote.id%>" class="collapse" >
 
-      <div class="all-comments-source-show">
+      <div class="quote-card-comments">
         <% quote.comments.each do |comment| %>
-        <ul class="each-comment-source-show" >
-          <li>
-            <div class="user-avatar-information">
-              <% if comment.user.photo.attached? %>
-                <%= cl_image_tag comment.user.photo.key, class: "avatar-extrasmall" %>
-              <% else %>
-                <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-extrasmall" %>
-              <% end %>
-               <span class="comment-user-show"><%= comment.user.username %></span>   <span class="comment-user-show-time"> <%= time_ago_in_words(comment.created_at) %></span>
-            </div>
-          </li>
-          <li><div class="comment-user-show-text"><%= comment.content %></div></li>
-        </ul>
+          <div class="d-flex align-items-center">
+            <% if comment.user.photo.attached? %>
+              <%= cl_image_tag comment.user.photo.key, class: "avatar-extrasmall" %>
+            <% else %>
+              <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-extrasmall" %>
+            <% end %>
+              <p class="comment-username"><%= comment.user.username %></p> <p class="comment-time"><%= time_ago_in_words(comment.created_at) %></p>
+          </div>
+          <p class="comment-content"><%= comment.content %></p>
         <% end %>
       </div>
 
       <%= form_tag quote_create_comment_index_path(quote), method: :post do %>
          <%= text_field_tag :content, params[:content], class: "comment-input-field", placeholder: "Say something"  %>
       <% end %>
+
     </div>
 
-</ul>
-<% end %>
+</div>
 
-<!--   <div><%= cl_image_tag "https://#{@source.website}/apple-touch-icon.png", width: 60, height: 60, class: "favicon-source-card" %></div>
- -->
+<% end %>
