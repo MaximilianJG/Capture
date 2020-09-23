@@ -4,7 +4,7 @@
 <div class="searchbar">
   <p class="search-bar-icon"><i class="fas fa-search"></i></p>
   <%= form_tag sources_path, method: :get do %>
-    <%= text_field_tag :query, params[:query], class: "form-control searchbar-field", placeholder: "Filter" %>
+    <%= text_field_tag :index_filter_query, params[:index_filter_query], class: "form-control searchbar-field", placeholder: "Filter" %>
   <% end %>
 </div>
 
