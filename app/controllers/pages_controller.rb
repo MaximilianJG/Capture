@@ -8,8 +8,8 @@ class PagesController < ApplicationController
   end
 
   def search
-    if (params[:query].present?)
-      @results = PgSearch.multisearch(params[:query])
+    if (params[:global_search_query].present?)
+      @results = PgSearch.multisearch(params[:global_search_query])
         @users = []
         @sources = []
         @results.each do |result|

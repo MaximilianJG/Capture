@@ -1,11 +1,9 @@
 class SourcesController < ApplicationController
   before_action :set_source, only: [:show, :edit, :update, :destroy]
 
-  # READ
   def index
-    if params[:query].present?
-      # @sources = policy_scope(Source).where(user: current_user)
-      @sources = policy_scope(Source).filter_sources_with_quotes(params[:query]).where(user: current_user)
+    if params[:index_filter_query].present?
+      @sources = policy_scope(Source).filter_sources_with_quotes(params[:index_filter_query]).where(user: current_user)
     else
       @sources = policy_scope(Source).where(user: current_user)
     end

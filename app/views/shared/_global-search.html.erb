@@ -1,7 +1,8 @@
 
 <div class="global-search-field-div">
   <p class="search-icon-global-search"><i class="fas fa-search"></i></p>
+
   <%= form_tag search_path, method: :get do %>
-    <%= text_field_tag :query, params[:query], onfocus: " let value = this.value; this.value = null; this.value=value", class: "global-search-form", placeholder: "Search Capture" %>
+    <%= text_field_tag :global_search_query, params[:global_search_query], onfocus: " let value = this.value; this.value = null; this.value=value", class: "global-search-form", placeholder: "Search Capture" %>
   <% end %>
 </div>

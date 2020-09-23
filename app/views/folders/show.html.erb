@@ -3,7 +3,7 @@
 <div class="searchbar">
   <p class="search-bar-icon"><i class="fas fa-search"></i></p>
   <%= form_tag folder_path(@folder), method: :get do %>
-    <%= text_field_tag :query, params[:query], class: "form-control searchbar-field", placeholder: "Filter" %>
+    <%= text_field_tag :folder_filter_query, params[:folder_filter_query], class: "form-control searchbar-field", placeholder: "Filter" %>
   <% end %>
 </div>
 
