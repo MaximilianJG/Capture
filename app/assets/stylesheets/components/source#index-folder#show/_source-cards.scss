@@ -9,37 +9,37 @@
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
   margin-bottom: 16px;
   position: relative;
-  border-radius: 2px;
+  border-radius: 15px;
   width: 100%;
-}
-
-.source-collapse-link:hover {
-  text-decoration: none;
-  color: black;
-}
-
-.favicon-source-card {
-  margin: 10px;
-  border-radius: 10px; // this is only for the temporary solution for favicons
+  padding: 15px;
 }
 
 .source-card-title {
-  font-family: 'Merriweather', serif;
+  font-family: 'Arial', serif;
   color: black;
-  font-weight: lighter;
+  font-weight: bold;
   font-size: 18px;
-  margin-top: 10px;
-  margin-right: 10px;
-  width: 630px;
+  margin: 0px 0px 0px 15px;
 }
 
-.saved-to {
+.source-card-title:hover {
+  color: #4E4E4E;
+}
+
+.info-tag {
+  background-color: #D0E7FC;
+  padding: 2px 15px 2px 15px;
+  border-radius: 15px;
+  display: inline-block;
   font-family: "TimesNewRoman";
   font-size: 14px;
   font-weight: 300;
   color: #666666;
-  margin-top: 8px;
-  margin-bottom: 0px;
+  margin: 5px 0px 0px 15px;
+}
+
+.info-tag:hover {
+  background-color: #C4DFF6;
 }
 
 .source-time {
@@ -47,8 +47,10 @@
   font-size: 14px;
   font-weight: 300;
   color: #666666;
-  margin-right: 10px;
-  margin-top: 10px;
+  width: 15%;
+  margin-left: 8px;
+  // margin-right: 10px;
+  // margin-top: 10px;
 }
 
 .source-list-quotes {
@@ -61,7 +63,7 @@
 .source-quote-div {
   display: flex;
   align-items: flex-start;
-  margin-left: 53px;
+  margin: 10px 0px 0px 8px;
 }
 
 .source-quote-div:hover {
@@ -109,10 +111,18 @@
   margin-right: 20px;
   padding-right: 5px;
   color: black;
-  font-family: "TimesNewRoman"
+  font-family: "TimesNewRoman";
+  margin-bottom: 0px;
 }
 
 .source-icon:hover {
   color: black;
   text-decoration: none;
+}
+
+.source-photo {
+  width: 300px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 15px;
 }
