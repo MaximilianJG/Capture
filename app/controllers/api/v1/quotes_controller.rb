@@ -41,7 +41,7 @@ require "open-uri"
   end #
 
   def api_source_params
-    params.require(:source).permit(:title, :website, :date_of_article, :url_of_website)
+    params.require(:source).permit(:title, :website, :date_of_article, :url_of_website, :content)
   end
 
   def api_photo_params
