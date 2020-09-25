@@ -14,6 +14,10 @@
   padding: 15px;
 }
 
+.title-time-info-tags {
+  flex-grow: 1;
+}
+
 .source-card-title {
   font-family: 'Arial', serif;
   color: black;
@@ -26,8 +30,8 @@
   color: #4E4E4E;
 }
 
-.info-tag {
-  background-color: #D0E7FC;
+.info-tag-div {
+  background-color: #DED0B4;
   padding: 2px 15px 2px 15px;
   border-radius: 15px;
   display: inline-block;
@@ -38,8 +42,23 @@
   margin: 5px 0px 0px 15px;
 }
 
-.info-tag:hover {
-  background-color: #C4DFF6;
+.info-tag-div:hover {
+  background-color: #D8CAAF;
+  text-decoration: none;
+}
+
+.info-tag-div img {
+  border-radius: 5px;
+}
+
+.info-tag-text {
+  border-radius: 15px;
+  display: inline-block;
+  font-family: "TimesNewRoman";
+  font-size: 14px;
+  font-weight: 300;
+  color: #666666;
+  margin: 0px 0px 0px 0px;
 }
 
 .source-time {

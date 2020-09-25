@@ -21,28 +21,33 @@
                   id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <% end %>
 
-                <div>
+                <div class="title-time-info-tags d-flex flex-column justify-content-between">
                   <div class="d-flex justify-content-between">
-                    <div>
+                    <div class="">
                       <%= link_to "#source-#{source.id}", data: {toggle: "collapse"}, class: "remove-underline m-0" do %>
                       <p class="source-card-title"><strong> <%= source.title %> </strong></p>
                       <% end %>
 
-                      <%= link_to "#", data: {toggle: "modal", target: "#modal-#{source.id}"} do  %>
-                      <p class="info-tag"><i class="fa fa-archive"></i> <strong><%= source.folder.folder_name %></strong> </p><br>
-                      <% end %>
+                      <%= link_to "#", data: {toggle: "modal", target: "#modal-#{source.id}"}, class: "info-tag-div" do  %>
+                      <p class="info-tag-text"><i class="fa fa-archive"></i> <strong><%= source.folder.folder_name %></strong> </p>
+                      <% end %><br>
 
-                      <%= link_to "#" do %>
+<!--                  <%= link_to "#" do %>
                       <p class="info-tag"><i class="far fa-calendar-alt"></i> <strong><%= source.date_of_article %></strong> </p><br>
-                      <% end %>
+                      <% end %> -->
 
-                      <%= link_to "#" do %>
-                      <p class="info-tag"><strong></strong>'Author Name'</p><br>
+                      <%= link_to "#{source.url_of_website}", class: "info-tag-div" do %>
+                      <%= cl_image_tag "https://#{source.website}/favicon.ico", width: 17, height: 17, class: "" %>
+                      <p class="info-tag-text"><strong><%= source.website.gsub("www.", "") %></strong> </p><br>
+                      <% end %><br>
+
+                      <%= link_to "#", class: "info-tag-div" do %>
+                      <p class="info-tag-text"><strong></strong>'Author Name'</p><br>
                       <% end %>
                     </div>
 
                     <div class="source-time">
-                      <p><i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','').gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %>  ago </p>
+                      <p><i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','').gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h").gsub(" day", "d") %>  ago </p>
                     </div>
                   </div>
 
@@ -64,7 +69,8 @@
                     </div>
 
 <!--                     <p class="source-icon" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></p>-->
-                    <%= link_to "#", target: :_blank do   %>
+
+<!--                     <%= link_to "#", target: :_blank do   %>
                       <p class="source-icon"><i class="fas fa-newspaper"></i></p>
                     <% end %>
                     <%= link_to "#{source.url_of_website}", target: :_blank do %>
@@ -72,7 +78,11 @@
                     <% end %>
                     <%= link_to source_path(source) do %>
                         <p class="source-icon"><i class="fab fa-cuttlefish"></i></p>
-                    <% end %>
+                    <% end %> -->
+
+                      <%= link_to "#source-#{source.id}", data: {toggle: "collapse"}, class: "remove-underline m-0" do %>
+                        <p class="source-icon"><i class="fas fa-caret-down"></i></i></p>
+                      <% end %>
                   </div>
                 </div>
               </div>
