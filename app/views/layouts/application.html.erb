@@ -7,15 +7,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
     <title>Capture</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Merriweather&display=swap" rel="stylesheet">
-
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 
@@ -39,9 +34,11 @@
         <%= render 'shared/search-user-bar' if user_signed_in? %>
         <%= yield %>
       </div>
+
       <div class="friends-bar"> <!-- this should only be on the sources index page make an if else statement with flex grow the center will then take up the won space-->
-        <%= render('shared/friends-feed') if user_signed_in?%>
+        <%= render('shared/friends-feed') if (user_signed_in? && !@source_page)%>
       </div>
+
     </div>
 
     <% end %>

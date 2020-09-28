@@ -44,3 +44,5 @@ document.addEventListener('turbolinks:load', () => {
 // export the function
 // import the function in the application.JS
 // call the function in the turbolinks
+
+import "controllers"
