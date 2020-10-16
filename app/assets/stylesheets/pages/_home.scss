@@ -83,3 +83,25 @@
   margin: 15px 0px 0px 3px;
   font-size: 25px;
 }
+
+.log-in-homepage {
+  padding: 5px 14px 5px 14px;
+  margin: 300px 10px 10px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  background-color: #E0CEA0;
+}
+
+.log-in-homepage:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.log-in-homepage a {
+  color: #181A23;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+
