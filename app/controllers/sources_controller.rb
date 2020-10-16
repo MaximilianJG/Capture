@@ -2,6 +2,7 @@ class SourcesController < ApplicationController
   before_action :set_source, only: [:show, :edit, :update, :destroy]
 
   def index
+    @sources = Source.all
     if params[:index_filter_query].present?
       @sources = policy_scope(Source).filter_sources_with_quotes(params[:index_filter_query]).where(user: current_user)
     else
@@ -11,6 +12,14 @@ class SourcesController < ApplicationController
   end
 
   def show
+    @source_page = true
+
+   @source_quotes = @source.quotes
+
+    respond_to do |format|
+      format.html
+      format.json {render json: {source_quotes: @source_quotes }}
+    end
   end
 
   def new

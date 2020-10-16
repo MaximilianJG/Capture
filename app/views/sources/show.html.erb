@@ -1,46 +1,47 @@
-<h1 class="heading"><span class="underline--magical"> <%= @source.title %></span></h1>
-<br>
 
-<% if @source.user != current_user %>
-  <p>Captured by: <%= @source.user.username %></p>
-  <% else %>
-  <p>Folder: <%= @source.folder.folder_name %>
-<% end %>
+<div id="hallo" data-controller="highlightQuotes">
+  <h1 class="heading"><span class="underline--magical"> <%= @source.title %></span></h1>
+  <br>
 
-<% @source.quotes.each do |quote| %>
-
-<div class="quote-card">
-
-  <div class="quote-card-text">
-    <p><i class="fas fa-quote-right"></i> <%= quote.content %> </p>
-  </div>
-
-  <%= link_to "#quote-#{quote.id}", data: {toggle: "collapse"}, class: "remove-underline" do   %>
-    <p class="comment-icon"><i class="far fa-comment"></i> <%= quote.comments.count %></p>
+  <% if @source.user != current_user %>
+    <p>Captured by: <%= @source.user.username %></p>
+    <% else %>
+    <p>Folder: <%= @source.folder.folder_name %>
   <% end %>
 
-    <div id="quote-<%= quote.id%>" class="collapse" >
+  <div id="text">
+    <p>North Korea's leader Kim Jong-un has issued a rare personal apology for the killing of a South Korean official, Seoul says.</p>
+    <p>Mr Kim reportedly told South Korean leader Moon Jae-in that the "disgraceful affair" should not have happened.</p>
+    <p>South Korea has said the 47-year-old man was found by troops floating in the North's waters.</p>
+    <p>He was then shot dead and his body was set alight, according to Seoul.</p>
+    <p>It is not known what the man was doing there. The South Korean government has said he may have been trying to defect to the North but his family has denied this.</p>
+    <p>The killing - the first of a South Korean citizen by North Korean forces for a decade - has caused outrage in the South.</p>
+    <p>The border between the Koreas is tightly policed, and the North is thought to have a "shoot-to-kill" policy in place to prevent coronavirus from entering the country.</p>
 
-      <div class="quote-card-comments">
-        <% quote.comments.each do |comment| %>
-          <div class="d-flex align-items-center">
-            <% if comment.user.photo.attached? %>
-              <%= cl_image_tag comment.user.photo.key, class: "avatar-extrasmall" %>
-            <% else %>
-              <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-extrasmall" %>
-            <% end %>
-              <p class="comment-username"><%= comment.user.username %></p> <p class="comment-time"><%= time_ago_in_words(comment.created_at) %></p>
-          </div>
-          <p class="comment-content"><%= comment.content %></p>
-        <% end %>
-      </div>
+  </div>
 
-      <%= form_tag quote_create_comment_index_path(quote), method: :post do %>
-         <%= text_field_tag :content, params[:content], class: "comment-input-field", placeholder: "Say something"  %>
-      <% end %>
 
-    </div>
+  <script>
+    function highlight(text) {
+      var inputText = document.getElementById("text");
+      var innerHTML = inputText.innerHTML;
+      var index = innerHTML.indexOf(text);
+      if (index >= 0) {
+       innerHTML = innerHTML.substring(0,index) + "<span class='highlight'>" + innerHTML.substring(index,index+text.length) + "</span>" + innerHTML.substring(index + text.length);
+       inputText.innerHTML = innerHTML;
+      }
+    }
+
+// highlight("the")
+
+    fetch(`${window.location.pathname}`, { headers: { accept: "application/json"} })
+      .then(response => response.json())
+      .then((data) => {
+        data.source_quotes.forEach((d) => {
+          highlight(`${d.content.trim()}`)
+        })
+      });
+  </script>
 
 </div>
 
-<% end %>
