@@ -1,1 +1,85 @@
 // Specific CSS for your home-page
+.background-image-class {
+  opacity: 0.2;
+  background-color: #1E202C;
+  width: 100vw;
+  height: 100vh;
+}
+
+.banner-text {
+  margin-top: 220px;
+}
+
+.website-title {
+  color: white;
+  margin: 0px 0px 0px 10px;
+  font-family: 'Merriweather', serif;
+  font-weight: 700;
+  color: #E0CEA0;
+  font-size: 50px;
+}
+
+.website-subtitle {
+  color: white;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: 700;
+  font-size: 35px;
+}
+
+.early-access-form {
+  margin-top: 80px;
+}
+
+.early-access-form .form-email {
+  width: 400px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  padding-left: 15px;
+  margin-right: 1.5px;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.early-access-form .form-submit {
+  width: 170px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  padding-left: 15px;
+  margin-left: 1.5px;
+  background-color: #E0CEA0;
+  color: #181A23;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 0px;
+}
+
+.early-access-form .form-submit:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.watch-the-film {
+  display: inline-block;
+}
+.watch-the-film:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.watch-the-film-text {
+  color: white;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 15px 3px 0px 0px;
+}
+
+.watch-the-film-icon {
+  color: #E0CEA0;
+  margin: 15px 0px 0px 3px;
+  font-size: 25px;
+}
