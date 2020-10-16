@@ -12,6 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Merriweather&display=swap" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Quattrocento+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 
     <%= favicon_link_tag asset_path('capture_logo.png') %>
@@ -22,8 +26,8 @@
     <%= render 'shared/flashes' %>
 
     <% if @landing_page_navbar %>
+        <%= yield %>
       <%# render 'shared/navbar-landing-page' %>
-      <%= yield %>
     <% else %>
 
     <div class="display-flex-container">
@@ -42,9 +46,5 @@
     </div>
 
     <% end %>
-
-
-
-<%= link_to "hello", destroy_user_session_path, method: :delete  %>
   </body>
 </html>

@@ -3,79 +3,45 @@
 </style>
 
 <div class="first-landing-page">
-  <div class="banner" style='background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("<%= cl_image_path('burnt-newspaper_xsbmth', :effect=>"grayscale", :dpr=>"auto", :crop=>"scale", :use_root_path=>true, :client_hints=>true) %>");'>
 
-  <div class="lp-button-top">
-    <% if current_user %>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn draw-border li-lo-btn"%>
-    <% else %>
-      <%= link_to "Log in", new_user_session_path, class: "btn draw-border li-lo-btn"%>
-      <%= link_to "Sign up", new_user_registration_path, class: "btn draw-border li-lo-btn"%>
-    <% end %>
+  <div style="background-color: #1E202C; height: 100vh; z-index: -1; position: absolute; top: 0; left: 0; ">
+    <%= cl_image_tag "crowd_z9xbj9", class: "background-image-class" %>
   </div>
 
-  <div class="container-fluid">
-    <div class="row d-flex justify-content-around banner-textfield">
-      <div class="col-4">
-        <h1><span class="underline--magical">Capture what is important!</span></h1>
-        <h4>You always wanted to have all your interesting articles organized on one platform and available on demand?</h4>
-        <h4>Then try out the newest app from the founders of <strong>"rent a paddle"!</strong></h4>
-        <div class="banner-button">
-        <% if current_user %>
-          <%= link_to "Go to Captures", sources_path, class: "btn draw-border tf-btn"%>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path, class: "btn draw-border tf-btn"%>
+      <div class="text-center banner-text">
+        <div class="d-flex align-items-center justify-content-center">
+          <%= cl_image_tag "capture_logo_copy_q14wdh", width: 50 %>
+          <h1 class="website-title">Capture</h1>
+        </div>
+
+        <h3 class="website-subtitle mt-2">A Summary of the Internet</h3>
+
+        <% @source = Source.new %>
+          <%= form_for [@source] do |f| %>
+          <div class="d-flex justify-content-center early-access-form">
+            <div class="field">
+              <%= f.text_field :title, required: true, class: "form-email", placeholder: "Enter email address" %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Get Early Access", class: "form-submit" %>
+            </div>
+          </div>
         <% end %>
+
+        <div class="d-flex justify-content-center">
+          <div class="d-flex watch-the-film align-items-center">
+            <h5 class="watch-the-film-text">Watch the Video</h5>
+            <span class="watch-the-film-icon"><i class="fas fa-play-circle"></i></span>
+          </div>
         </div>
+
       </div>
 
-      <div class="col-5">
-        <div class="favs">
-          <table>
-            <tr>
-              <td class="fontawesome-align"><i class="fas fa-camera-retro fw-lp"></i></td>
-              <td><span class="icon-headline">Save your favorite quotes</span></td>
-            </tr>
-            <tr>
-              <td class="fontawesome-align"><i class="fas fa-sitemap fw-lp"></i></td>
-              <td><span class="icon-headline">Organize all your saved information</span></td>
-            </tr>
-            <tr>
-              <td class="fontawesome-align"><i class="fas fa-users fw-lp"></i></td>
-              <td><span class="icon-headline">Share your quotes with your friends</span></td>
-            </tr>
-            <tr>
-              <td class="fontawesome-align"><i class="far fa-comments fw-lp"></i></td>
-              <td><span class="icon-headline">Comment quotes of your friends</span></td>
-            </tr>
-            <tr>
-              <td class="fontawesome-align"><i class="fas fa-laugh-beam fw-lp"></i></td>
-              <td><span class="icon-headline">Be part of our wonderful community</span></td>
-            </tr>
 
-          </table>
-        </div>
-      </div>
-    </div>
 
-    <div class="row justify-content-center">
-      <i class="fas fa-caret-down scroll-down fw-lp"></i>
-    </div>
-  </div>
+
+
+
+
 </div>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-      <div class="cards-how-to d-flex">
-        <div class="card-how-to-1">
-          <h1>Stuff you can do: </h1>
-        </div>
-        <div class="card-how-to-2">
-          <h1>blablabla</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
