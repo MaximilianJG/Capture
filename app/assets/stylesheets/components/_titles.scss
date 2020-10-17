@@ -3,6 +3,7 @@
   font-size: 40px;
   margin-top: 20px;
   margin-bottom: 0px;
+  color: white;
 }
 
 .subheading {
@@ -18,6 +19,15 @@
   font-family: 'Merriweather', serif !important;
   font-size: 35px !important;
   // line-height: 1.5;
+}
+
+.right-column-heading {
+  font-family: 'Merriweather', serif !important;
+  font-size: 20px !important;
+  border-bottom: 1px solid #D8CAAF;
+  padding-bottom: 15px;
+  margin-bottom: 4px;
+  color: white;
 }
 
 

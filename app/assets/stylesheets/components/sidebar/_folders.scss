@@ -1,24 +1,16 @@
-.div-folder {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-radius: 0px 30px 30px 0px;
-  width: 255px;
-}
-
-.div-folder:hover {
-  background-color: rgba(255, 255, 3, 0.19);
-  text-decoration: none;
-}
-
-.div-folder.active {
-  background-color: #FFFF7F;
-  text-decoration: none;
-}
-
 .folder-text {
   text-decoration: none;
-  padding-left: 40px;
-  margin: 0px 0px 0px 2px;
-  border-radius: 0px 30px 30px 0px;
-  color: black;
+  font-family: 'Quattrocento Sans', sans-serif;
+  color: white;
+
+  margin: 0px 0px 10px 3rem;
+  line-height: 20px;
+
+}
+
+.your-folders {
+  color: white;
+  margin: 3rem 0rem 0.8rem 2.5rem;
+  font-weight: bold;
+  font-family: 'Quattrocento Sans', sans-serif;
 }
