@@ -6,29 +6,30 @@
     <% @sources = policy_scope(Source).where(user: current_user.following) %>
     <% @sources.order(created_at: :desc).each do |source| %>
 
-    <%= link_to source_path(source), class: "friend-card-link" do  %>
 
         <div class="friend-card">
-          <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center avatar-and-username">
-              <% if source.user.photo.attached? %>
-                <%= cl_image_tag source.user.photo.key, class: "friend-card-avatar" %>
-              <% else %>
-                <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-small" %>
-              <% end %>
 
-              <div class="ml-2 username">
-                <%= source.user.username %>
-                <p class="action">commented on: </p>
+          <div class="d-flex justify-content-between">
+            <%= link_to user_profile_overview_path(source.user), class: "friend-card-link" do %>
+              <div class="d-flex align-items-center avatar-and-username">
+                <% if source.user.photo.attached? %>
+                  <%= cl_image_tag source.user.photo.key, class: "friend-card-avatar" %>
+                <% else %>
+                  <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-small" %>
+                <% end %>
+                <div class="ml-2 username">
+                  <%= source.user.username %>
+                  <p class="action">commented on: </p>
+                </div>
               </div>
-            </div>
+            <% end %>
 
               <div class="time">
                 <p> <%= time_ago_in_words(source.created_at).gsub('about','').gsub('less than', '').gsub(' a ', '1 ') %> </p>
               </div>
           </div>
 
-
+          <%= link_to source_path(source), class: "friend-card-link" do  %>
           <div class="friend-source-title">
             <p class="source-title"><%= source.title %></p>
           </div>
@@ -36,11 +37,7 @@
           <div>
             <p class="source-sub-info"><%= link_to "#{source.website.gsub("www.", "")}", "#{source.url_of_website}", class: "source-sub-info" %> · by <%= link_to "Tara McKelvey Sterling", "#", class: "source-sub-info"  %> </p>
           </div>
-
-
-
         </div>
-
       <% end %>
 
     <% end %>

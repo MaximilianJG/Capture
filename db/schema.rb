@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_11_081253) do
+ActiveRecord::Schema.define(version: 2020_10_17_114339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,12 @@ ActiveRecord::Schema.define(version: 2020_09_11_081253) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["quote_id"], name: "index_comments_on_quote_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "folders", force: :cascade do |t|
@@ -93,6 +99,7 @@ ActiveRecord::Schema.define(version: 2020_09_11_081253) do
     t.bigint "folder_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "content"
     t.index ["folder_id"], name: "index_sources_on_folder_id"
     t.index ["user_id"], name: "index_sources_on_user_id"
   end
