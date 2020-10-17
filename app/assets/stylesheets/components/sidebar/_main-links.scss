@@ -1,26 +1,53 @@
 .div-main-links {
-  border-bottom: 1px solid #B7B9BD;
-  padding-bottom: 10px;
-  margin-left: 3rem;
+  margin-top: 30px;
+  margin: 3rem 0rem 0rem 2.5rem;
 }
 
 .main-link {
-  font-size: 18px;
+  font-size: 24px;
   display: inline;
-  color: black;
+  color: white;
+  font-family: 'Merriweather', serif;
 }
 
 .main-link:hover {
   text-decoration: none;
-  color: black
+  color: white;
+}
+
+.main-link-icon {
+  width: 30px;
 }
 
 .main-link-text {
-  margin-left: 5px;
+  margin-left: 20px;
+  font-size: 16px;
 }
 
 .active-caret {
-  color: black;
+  color: #DED0B4;
+  background-color: #DED0B4;
+  line-height: 10px;
+  width: 8px;
   position: absolute;
-  left: 25px;
+  left: 0px;
+}
+
+.active-caret-horizontal {
+  font-size: 1px;
+  color: #DED0B4;
+  background-color: #DED0B4;
+  line-height: 10px;
+  width: 25px;
+  position: absolute;
+  left: 0px;
+  margin: 0px 0px 11px 0px;
+}
+
+.vertical-rectangle {
+  width: 8px;
+  height: 20px;
+  background-color: #DED0B4;
+  position: absolute;
+  left: 0px;
 }

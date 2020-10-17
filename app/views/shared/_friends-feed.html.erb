@@ -1,46 +1,49 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<div class="right-column">
+  <h2 class="right-column-heading mt-2"><span class="">Friend Activity</span></h2>
 
-<h2 class="ml-4 subheading"><span class="underline--magical">Friend Activity</span></h2>
+  <div class="friend-feed-cards">
 
-<div class="friend-feed-cards">
+    <% @sources = policy_scope(Source).where(user: current_user.following) %>
+    <% @sources.order(created_at: :desc).each do |source| %>
 
-  <% @sources = policy_scope(Source).where(user: current_user.following) %>
-  <% @sources.order(created_at: :desc).each do |source| %>
+    <%= link_to source_path(source), class: "friend-card-link" do  %>
 
-  <%= link_to source_path(source), class: "friend-card-link" do  %>
+        <div class="friend-card">
+          <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center avatar-and-username">
+              <% if source.user.photo.attached? %>
+                <%= cl_image_tag source.user.photo.key, class: "friend-card-avatar" %>
+              <% else %>
+                <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-small" %>
+              <% end %>
 
-      <div class="friend-card">
-        <div class="d-flex justify-content-between">
-          <div class="d-flex align-items-center mt-2 ml-2 avatar-and-username">
-            <% if source.user.photo.attached? %>
-              <%= cl_image_tag source.user.photo.key, class: "avatar-small" %>
-            <% else %>
-              <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-small" %>
-            <% end %>
-
-            <div class="ml-2 username">
-              <%= source.user.username %>
+              <div class="ml-2 username">
+                <%= source.user.username %>
+                <p class="action">commented on: </p>
+              </div>
             </div>
+
+              <div class="time">
+                <p> <%= time_ago_in_words(source.created_at).gsub('about','').gsub('less than', '').gsub(' a ', '1 ') %> </p>
+              </div>
           </div>
 
-            <div class="m-2 time">
-              <p> <%= time_ago_in_words(source.created_at).gsub('about','').gsub('less than', '').gsub(' a ', '1 ') %> </p>
-            </div>
-        </div>
 
-
-          <div class="">
+          <div class="friend-source-title">
             <p class="source-title"><%= source.title %></p>
           </div>
-      </div>
+
+          <div>
+            <p class="source-sub-info"><%= link_to "#{source.website.gsub("www.", "")}", "#{source.url_of_website}", class: "source-sub-info" %> · by <%= link_to "Tara McKelvey Sterling", "#", class: "source-sub-info"  %> </p>
+          </div>
+
+
+
+        </div>
+
+      <% end %>
 
     <% end %>
-
-  <% end %>
+  </div>
 </div>
 

@@ -3,14 +3,15 @@
 }
 
 .global-search-form {
-  background-color: white;
-  border: 1px solid #B7B9BD;
+  background-color: #DED0B4;
+  border: 1px solid #181A23;
   border-radius: 15px;
   padding-left: 30px;
 }
 
-.global-search-form:placeholder {
-  color: red;
+.global-search-form::placeholder {
+  color: #181A23;
+  font-family: 'Quattrocento Sans', sans-serif;
 }
 
 .search-icon-global-search {
@@ -18,5 +19,5 @@
   top: 3px;
   left: 10px;
   font-size: 15px;
-  color: #757575;
+  color: #181A23;
 }
