@@ -4,6 +4,7 @@
   background-color: #1E202C;
   width: 100vw;
   height: 100vh;
+  object-fit: cover;
 }
 
 .banner-text {
@@ -102,6 +103,48 @@
   font-family: 'Quattrocento Sans', sans-serif;
   font-weight: 700;
   font-size: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .banner-text {
+  margin-top: 120px;
+  }
+
+  .website-subtitle {
+  color: white;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+  .early-access-form .form-submit {
+    width: 30vw;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 15px;
+    margin-left: 1.5px;
+    background-color: #E0CEA0;
+    color: #181A23;
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 0px;
+  }
+
+  .early-access-form .form-email {
+  width: 60vw;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  padding-left: 15px;
+  margin-right: 1.5px;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  }
+
 }
 
 
