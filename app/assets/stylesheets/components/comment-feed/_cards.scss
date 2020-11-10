@@ -1,4 +1,4 @@
-.friend-feed-cards {
+.comment-feed-cards {
   overflow-y: scroll;
   max-height: 93vh;
 }
@@ -7,21 +7,20 @@
   margin: 0px 16px 0px 24px;
 }
 
-.friend-card-link {
+.comment-card-link {
   color: black;
 }
 
-.friend-card-link:hover {
+.comment-card-link:hover {
   color: #666666;
   text-decoration: none;
 }
 
-.friend-card {
+.comment-card {
   background-color: white;
   margin-top: 16px;
   border-radius: 20px;
   padding: 10px;
-  height: 140px;
 }
 
 .avatar-and-username {
@@ -29,20 +28,20 @@
   max-width: 180px;
 }
 
-.friend-card .username {
+.comment-card .username {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.2;
 }
 
-.friend-card .time {
+.comment-card .time {
   font-family: 'TimesNewRoman';
   font-size: 14px;
   color: #666666;
 }
 
-.friend-card .source-title {
+.comment-card .source-title {
   font-family: 'Merriweather', serif;
   margin: 0px 0px 0px 0px;
   font-weight: bold;
@@ -53,7 +52,7 @@
   -webkit-box-orient: vertical;
 }
 
-.friend-card .source-sub-info {
+.comment-card .source-sub-info {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -64,17 +63,37 @@
   margin: 0px;
 }
 
-.friend-card .action {
+.comment-card .action {
   margin: 0px;
   font-size: 14px;
   color: #797979 !important;
   font-family: 'Quattrocento Sans', sans-serif;
 }
 
-.friend-card .friend-card-avatar {
+.comment-card .comment-card-avatar {
   width: 50px;
   height: 50px;
   object-fit: cover;
   border-radius: 50%;
 }
 
+.edit-tool-card {
+  margin-top: 8px;
+  border-radius: 20px;
+}
+
+.edit-tool-card .quote-display-text {
+  width: 230px;
+  color: white;
+}
+
+.edit-tool-card .highlight-btn {
+  color: #D8CAAF;
+  padding: 3px;
+  border-radius: 2px;
+}
+
+.edit-tool-card .highlight-btn:hover {
+  color: #D8CAAF;
+  background-color: #797979;
+}

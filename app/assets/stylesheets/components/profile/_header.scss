@@ -1,13 +1,18 @@
+.profile-username {
+  color: white;
+  font-family: 'Merriweather', serif;
+}
+
 .user-show-avatar {
   margin: 2rem;
 }
 
 .user-link {
-  color: black;
+  color: white;
 }
 
 .user-link:hover {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -15,11 +20,8 @@
   margin-left: 70px;
   margin-right: 40px;
   padding: 5px 0px 0px 0px;
-  border: 3px solid white;
 }
 
 .user-link-div-active {
-  border-radius: 2px;
-  background-color: white;
-  border-bottom: 3px solid #9C9C9C;
+  border-bottom: 3px solid #ffffff;
 }

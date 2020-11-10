@@ -1,7 +1,20 @@
 .global-search-card-user {
   padding: 5px;
-  color: black;
+  background-color: #FFFFFF;
+  border-radius: 15px;
 }
+
+.global-search-card-user p {
+  color: black;
+  font-family: 'Merriweather', serif;
+  font-size: 15px;
+}
+
+.global-search-card-user .follower-count {
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-size: 14px !important;
+}
+
 .remove-hover:hover {
   text-decoration: none;
 }
@@ -45,6 +58,13 @@
 .global-search-card-source {
   color: black;
   height: 150px;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+}
+
+.global-search-card-source .title {
+  font-family: 'Merriweather', serif;
+  font-size: 15px;
 }
 
 .global-search-card-source:hover {
@@ -55,10 +75,11 @@
 
 .global-search-source-banner {
   width: 100%;
-  height: 35%;
+  height: 40%;
   margin: 0;
   padding: 0px;
   object-fit: cover;
+  border-radius: 15px 15px 0px 0px;
 }
 
 .global-search-card-source p {
@@ -74,16 +95,71 @@
 }
 
 .model-title {
-border-bottom: 1px solid #B7B9BD;
+border-bottom: 1px solid #D8CAAF;
 padding: 0;
 margin: 0px 5px 10px 5px;
 font-size: 20px;
 font-weight: bold;
-color: #282829;
+color: #DFDFDF;
+font-family: 'Merriweather', serif;
 }
 
 .no-marg-no-pad {
   margin: 0px;
   padding: 0px;
 }
+
+
+
+
+
+.global-search-card-folder {
+  color: black;
+  height: 150px;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+}
+
+.global-search-card-folder .title p {
+  font-family: 'Merriweather', serif;
+  font-size: 15px;
+  margin-bottom: 0px !important;
+  padding-bottom: 0px;
+}
+
+.global-search-card-folder .folder-user {
+  font-family: 'Quattrocento Sans', sans-serif !important;
+  font-size: 14px !important;
+  color: #797979;
+  padding-top: 0px;
+
+}
+
+.global-search-card-folder:hover {
+  background-color: #DFDFDF;
+  text-decoration: none;
+  color: black;
+}
+
+.global-search-folder-banner {
+  width: 100%;
+  height: 40%;
+  margin: 0;
+  padding: 0px;
+  object-fit: cover;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.global-search-card-folder p {
+  padding: 5px;
+}
+
+.global-search-card-folder .title {
+  margin: 0 0 1em 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
 

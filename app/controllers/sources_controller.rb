@@ -14,12 +14,19 @@ class SourcesController < ApplicationController
   def show
     @source_page = true
 
-   @source_quotes = @source.quotes
+    @all_comments = []
+    @source.quotes.each do |quote|
+      quote.comments.each do |comment|
+        @all_comments << comment
+      end
+    end
+    @source_quotes = @source.quotes
 
     respond_to do |format|
       format.html
       format.json {render json: {source_quotes: @source_quotes }}
     end
+
   end
 
   def new

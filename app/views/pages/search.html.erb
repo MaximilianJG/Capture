@@ -3,30 +3,48 @@
 
   <div class="row mt-5 m-1">
 
-        <% if @sources.size > 0 %>
+    <% if @sources.size > 0 %>
       <div class="col-6 no-marg-no-pad">
         <p class="model-title">Captures</p>
         <div class="row no-marg-no-pad">
           <% @sources.take(4).each do |source| %>
-          <div class="col-6 col-6-global-search">
-
-            <%= link_to source_path(source), class: "remove-hover" do  %>
-            <div class="global-search-card-source">
+            <div class="col-6 col-6-global-search">
+              <%= link_to source_path(source), class: "remove-hover" do  %>
+                <div class="global-search-card-source">
                 <%= cl_image_tag "umnpg0sho7qgwftngqsn", class: "global-search-source-banner dropdown-toggle" %>
-                <div class="title">
-                  <p><%= source.title %></p>
+                  <div class="title">
+                    <p><%= source.title %></p>
+                  </div>
                 </div>
-
+              <% end %>
             </div>
-            <% end %>
-
-          </div>
           <% end %>
         </div>
       </div>
     <% end %>
 
-        <% if @users.size > 0 %>
+    <% if @searched_folders.size > 0 %>
+      <div class="col-6 no-marg-no-pad">
+        <p class="model-title">Folders</p>
+        <div class="row no-marg-no-pad">
+          <% @searched_folders.take(4).each do |folder| %>
+            <div class="col-6 col-6-global-search">
+              <%= link_to folder_path(folder), class: "remove-hover" do  %>
+                <div class="global-search-card-folder">
+                <%= cl_image_tag "umnpg0sho7qgwftngqsn", class: "global-search-folder-banner dropdown-toggle" %>
+                  <div class="title">
+                    <p><%= folder.folder_name %></p>
+                    <p class="folder-user"><%= folder.user.username %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @users.size > 0 %>
       <div class="col-6 no-marg-no-pad">
         <p class="model-title">Users</p>
         <div class="row no-marg-no-pad">
@@ -56,6 +74,8 @@
         </div>
       </div>
     <% end %>
+
+
 
   </div>
 

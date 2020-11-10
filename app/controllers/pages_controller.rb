@@ -10,15 +10,18 @@ class PagesController < ApplicationController
   def search
     if (params[:global_search_query].present?)
       @results = PgSearch.multisearch(params[:global_search_query])
-        @users = []
-        @sources = []
-        @results.each do |result|
-          if result.searchable_type == "User"
-            @users << result.searchable
-          elsif result.searchable_type == "Source"
-            @sources << result.searchable
-          end
+      @users = []
+      @sources = []
+      @searched_folders = []
+      @results.each do |result|
+        if result.searchable_type == "User"
+          @users << result.searchable
+        elsif result.searchable_type == "Source"
+          @sources << result.searchable
+        elsif result.searchable_type == "Folder"
+          @searched_folders << result.searchable
         end
+      end
     else
       @ja = "hello"
     end

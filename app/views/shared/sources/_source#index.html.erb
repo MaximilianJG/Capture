@@ -8,8 +8,7 @@
               <% if source.photo.attached? %>
                 <%= cl_image_tag source.photo.key, class: "source-photo" %>
               <% else %>
-                <%= cl_image_tag "b08hxPY_jhyrxg", class: "source-photo",
-                id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <%= cl_image_tag "b08hxPY_jhyrxg", class: "source-photo" %>
               <% end %>
           </div>
 

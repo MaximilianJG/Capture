@@ -1,0 +1,26 @@
+.paragraph-text p {
+  color: white;
+}
+
+.article-info-subtitle {
+  margin: 0px 0px 8px 0px;
+  color: #797979 !important;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.article-info-subtitle a {
+  margin: 0px 0px 8px 0px;
+  color: #797979 !important;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.article-source-photo {
+  width: 70%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+}

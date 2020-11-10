@@ -4,4 +4,7 @@ class Folder < ApplicationRecord
 
   validates :folder_name, presence: true
 
+  include PgSearch::Model
+  multisearchable against: [:folder_name]
+
 end

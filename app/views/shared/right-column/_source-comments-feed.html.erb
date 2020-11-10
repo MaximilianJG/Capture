@@ -1,0 +1,62 @@
+<div class="right-column">
+  <h2 class="right-column-heading mt-2"><span class="">Comments</span></h2>
+
+  <div class="comment-feed-cards">
+
+    <div class="edit-tool-card">
+      <% @comment = Comment.new %>
+
+        <div class="mt-0 d-flex" id="learn">
+          <p class="truncate mb-1 quote-display-text" id="quote-display">Comment on a quote</p>
+          <%= link_to "#" do %>
+          <span class="mr-2 highlight-btn"><i class="fas fa-highlighter"></i></span>
+          <% end %>
+        </div>
+
+        <div> <!--- This has to change to quote_create_comment_index_path(@quote) (where quote is the selected text) (has to be changed in routes aswell) -->
+          <%= form_tag source_create_comment_index_path(@source), method: :post do %>
+            <%= text_field_tag :content, params[:content], class: "comment-input-field", placeholder: "Say something"  %>
+          <% end %>
+        </div>
+    </div>
+
+    <% @comments = policy_scope(Comment).where(user: current_user, quote: @source.quotes) %>
+   <% @comments.order(created_at: :desc).each do |source| %>
+
+
+        <div class="comment-card">
+
+          <div class="">
+            <%= link_to user_profile_overview_path(source.user), class: "comment-card-link" do %>
+              <div class="d-flex align-items-center ">
+                <% if source.user.photo.attached? %>
+                  <%= cl_image_tag source.user.photo.key, class: "comment-card-avatar" %>
+                <% else %>
+                  <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-small" %>
+                <% end %>
+
+                <div class="ml-2 username">
+                  <%= source.user.username %>
+                  <p class="action truncate w-100">"<%= source.quote.content %>"</p>
+                </div>
+
+              </div>
+            <% end %>
+
+
+          </div>
+
+          <%= link_to source_path(source), class: "comment-card-link" do  %>
+          <div class="comment-source-title">
+            <p class="source-title"><%= source.content %></p>
+          </div>
+
+          <div>
+          </div>
+        </div>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>
+

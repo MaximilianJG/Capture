@@ -3,11 +3,15 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resources :sources, only: [:index, :new, :create, :show, :edit, :destroy, :update]
-
-  resources :quotes, only: [:new, :create, :show] do
+  resources :sources, only: [:index, :new, :create, :show, :edit, :destroy, :update] do
     resources :comments, only: [:create], as: "create_comment"
   end
+
+
+  resources :quotes, only: [:new, :show]
+
+  post 'quotes/create/:quote', to: 'quotes#create', as: "quotes/create"
+
 
   resources :folders, only: [:show, :edit, :new, :create]
 

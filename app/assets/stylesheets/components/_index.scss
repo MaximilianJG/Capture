@@ -2,6 +2,9 @@
 
 @import "friend-feed/cards";
 
+@import "comment-feed/cards";
+
+
 @import "global-search/results";
 @import "global-search/field";
 
@@ -27,6 +30,8 @@
 @import "source#index-folder#show/source-cards";
 
 @import "source#show/quote-cards";
+@import "source#show/article";
+
 
 // ______
 

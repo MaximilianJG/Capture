@@ -6,9 +6,10 @@ require "open-uri"
   # end
 
   def create
-    current_user = User.find(api_user_params[:user_id])
 
+    current_user = User.find(api_user_params[:user_id])
     @quote = Quote.new(api_quote_params)
+
     @quote.user = current_user
     authorize @quote
 

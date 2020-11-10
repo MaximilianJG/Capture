@@ -1,7 +1,12 @@
 class CommentsController < ApplicationController
 
   def create
-    @quote = Quote.find(params[:quote_id])
+
+    @source = Source.find(params[:source_id])
+    @quote = @source.quotes.first
+
+    # @quote = Quote.find(params[:quote_id])
+
     @comment = Comment.new(content: params[:content]) # how do I build this with strong_comment_params
     authorize @comment
 
