@@ -4,14 +4,17 @@
   <div class="comment-feed-cards">
 
     <div class="edit-tool-card">
-      <% @comment = Comment.new %>
 
+
+
+      <% @comment = Comment.new %>
         <div class="mt-0 d-flex" id="learn">
           <p class="truncate mb-1 quote-display-text" id="quote-display">Comment on a quote</p>
           <%= link_to "#" do %>
           <span class="mr-2 highlight-btn"><i class="fas fa-highlighter"></i></span>
           <% end %>
         </div>
+
 
         <div> <!--- This has to change to quote_create_comment_index_path(@quote) (where quote is the selected text) (has to be changed in routes aswell) -->
           <%= form_tag source_create_comment_index_path(@source), method: :post do %>

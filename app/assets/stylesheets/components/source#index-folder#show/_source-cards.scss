@@ -158,5 +158,10 @@
   text-decoration: none;
 }
 
+.source-icon-rotate {
+  transform: rotateZ(180deg) !important;
+  transition-duration: 0.5s;
+}
+
 
 

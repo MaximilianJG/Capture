@@ -12,8 +12,18 @@ class QuotesController < ApplicationController
 
   def create
 
-      @quote = params[:quote]
-      raise
+    # @quote = params[:quote]
+    @quote = Quote.new(strong_quote_params)
+    @source = Source.find(params[:source_id])
+    @quote.source = @source
+    @quote.user = current_user
+    @quote.url_of_quote = @source.url_of_website
+    raise
+
+
+
+
+
 
     # When building the chrome extension the $ goes away and use the @ sign. and after the create sources just call create a quote (or keep it the same)
     $quote = Quote.new(strong_quote_params)
@@ -30,6 +40,6 @@ class QuotesController < ApplicationController
   end
 
   def strong_quote_params
-    params.require(:quote).permit(:content, :url_of_quote)
+    params.require(:quote).permit(:content, :url_of_quote, :source_id)
   end
 end

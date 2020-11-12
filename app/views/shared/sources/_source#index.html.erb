@@ -44,28 +44,26 @@
           </div>
 
         </div>
-
-            <div id="modal-<%= source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <%= simple_form_for(source) do |f| %>
-                  <%= f.input :folder_id, collection: Folder.where(user_id: current_user.id), label_method: :folder_name, label: "Folder name", id: "move-folder-form", include_blank: false %>
-                  <%= f.submit %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-
-      <ul class="source-list-quotes collapse" id="source-<%= source.id%>">
-        <% source.quotes.each do |quote| %>
-          <div class="source-quote-div" style="cursor: pointer;">
-            <i class="fas fa-quote-right"></i>
-            <div class="source-quote-text source-quote-overflow" style="cursor: pointer;">
-              <li class="truncate"><%= quote.content %></li>
+        <div id="modal-<%= source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <%= simple_form_for(source) do |f| %>
+              <%= f.input :folder_id, collection: Folder.where(user_id: current_user.id), label_method: :folder_name, label: "Folder name", id: "move-folder-form", include_blank: false %>
+              <%= f.submit %>
+              <% end %>
             </div>
           </div>
-        <% end %>
-      </ul>
+        </div>
+        <ul class="source-list-quotes collapse" id="source-<%= source.id%>">
+          <% source.quotes.each do |quote| %>
+            <div class="source-quote-div" style="cursor: pointer;">
+              <i class="fas fa-quote-right"></i>
+              <div class="source-quote-text source-quote-overflow" style="cursor: pointer;">
+                <li class="truncate"><%= quote.content %></li>
+              </div>
+            </div>
+          <% end %>
+        </ul>
 
     </div>
   <% end %>

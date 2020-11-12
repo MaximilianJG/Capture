@@ -5,12 +5,13 @@ Rails.application.routes.draw do
 
   resources :sources, only: [:index, :new, :create, :show, :edit, :destroy, :update] do
     resources :comments, only: [:create], as: "create_comment"
+    resources :quotes, only: [:create]
   end
 
 
-  resources :quotes, only: [:new, :show]
+  resources :quotes, only: [:new, :create, :show]
 
-  post 'quotes/create/:quote', to: 'quotes#create', as: "quotes/create"
+  # post 'quotes/create/:quote', to: 'quotes#create', as: "quotes/create"
 
 
   resources :folders, only: [:show, :edit, :new, :create]

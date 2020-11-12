@@ -1,4 +1,3 @@
-
 <div id="hallo" data-controller="highlightQuotes">
   <h1 class="heading"><span class=""> <%= @source.title %></span></h1>
 
@@ -29,6 +28,17 @@
         <% end %>
       </div>
 
+      <div id="modal-<%= @source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <%= simple_form_for(@source) do |f| %>
+            <%= f.input :folder_id, collection: Folder.where(user_id: current_user.id), label_method: :folder_name, label: "Folder name", id: "move-folder-form", include_blank: false %>
+            <%= f.submit %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
   <div id="text" class="paragraph-text">
     <p>North Korea's leader Kim Jong-un has issued a rare personal apology for the killing of a South Korean official, Seoul says.</p>
     <p>Mr Kim reportedly told South Korean leader Moon Jae-in that the "disgraceful affair" should not have happened.</p>
@@ -38,6 +48,7 @@
     <p>The killing - the first of a South Korean citizen by North Korean forces for a decade - has caused outrage in the South.</p>
     <p>The border between the Koreas is tightly policed, and the North is thought to have a "shoot-to-kill" policy in place to prevent coronavirus from entering the country.</p>
   </div>
+          <button id="apibtn">hello</button>
 
 
   <script>
@@ -54,27 +65,64 @@
       }
     }
 
-    fetch(`${window.location.pathname}`, {headers: { accept: "application/json"}})
-      .then(response => response.json())
-      .then((data) => {
-        data.source_quotes.forEach((d) => {
-          highlight(`${d.content.trim()}`)
-        })
-      });
+      fetch(`${window.location.pathname}`, {headers: { accept: "application/json"}})
+        .then(response => response.json())
+        .then((data) => {
+          data.source_quotes.forEach((d) => {
+            highlight(`${d.content.trim()}`)
+          })
+        });
 
-////////////////////////////////////////////////////////////////////////////////////////////
-  const midPage = document.getElementById('hallo')
-  midPage.addEventListener('mouseup', e => {
+
+  var highlightButton = document.getElementById('apibtn')
+  console.log(highlightButton)
+
+  const commentField = document.getElementsByClassName('comment-input-field')
+  console.log(commentField)
+
+//   text.addEventListener('mouseup', e => {
+//     const selectedText = window.getSelection().toString();
+//     console.log(selectedText)
+
+// })
+
+
+
+  highlightButton.addEventListener('click', e => {
+    function fetchData() {
     const selectedText = window.getSelection().toString();
-
-    if (selectedText.length > 0 && selectedText !== " ") {
-      console.log(selectedText)
-      document.getElementById('quote-display').innerText = `"${selectedText.trim()}"`;
-    } else {
-      document.getElementById('quote-display').innerText = `Comment on a quote`;
+    const sourceId = window.location.pathname.split("/").pop()
+    return {
+      user: '<%= current_user.id %>',
+      content: selectedText,
+      source: sourceId
     }
-  });
+  }
+
+  function sendData(data) {
+    const url = 'http://localhost:3000/api/v1/quotes';
+    const params = {
+      user: { user_id: data.user },
+      quote: { content: data.content},
+      source: { id: data.source }
+    }
+    const options = {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify(params)
+    }
+    fetch(url, options)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    location.reload()
+  }
+  sendData(fetchData());
+  })
+
 
   </script>
 </div>
+
+
+
 

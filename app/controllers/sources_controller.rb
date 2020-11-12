@@ -20,6 +20,7 @@ class SourcesController < ApplicationController
         @all_comments << comment
       end
     end
+
     @source_quotes = @source.quotes
 
     respond_to do |format|
