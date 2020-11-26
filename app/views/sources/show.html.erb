@@ -48,7 +48,6 @@
     <p>The killing - the first of a South Korean citizen by North Korean forces for a decade - has caused outrage in the South.</p>
     <p>The border between the Koreas is tightly policed, and the North is thought to have a "shoot-to-kill" policy in place to prevent coronavirus from entering the country.</p>
   </div>
-          <button id="apibtn">hello</button>
 
 
   <script>
@@ -60,7 +59,7 @@
       var innerHTML = inputText.innerHTML;
       var index = innerHTML.indexOf(text);
       if (index >= 0) {
-       innerHTML = innerHTML.substring(0,index) + "<span class='highlight'>" + innerHTML.substring(index,index+text.length) + "</span>" + innerHTML.substring(index + text.length);
+       innerHTML = innerHTML.substring(0,index) + "<span class='permanent-highlight'>" + innerHTML.substring(index,index+text.length) + "</span>" + innerHTML.substring(index + text.length);
        inputText.innerHTML = innerHTML;
       }
     }
@@ -74,50 +73,50 @@
         });
 
 
-  var highlightButton = document.getElementById('apibtn')
-  console.log(highlightButton)
+//   var highlightButton = document.getElementById('apibtn')
+//   console.log(highlightButton)
 
-  var commentField = document.getElementsByClassName('comment-input-field')
-  console.log(commentField)
+//   var commentField = document.getElementsByClassName('comment-input-field')
+//   console.log(commentField)
 
-//   text.addEventListener('mouseup', e => {
+// //   text.addEventListener('mouseup', e => {
+// //     const selectedText = window.getSelection().toString();
+// //     console.log(selectedText)
+
+// // })
+
+
+
+//   highlightButton.addEventListener('click', e => {
+//     function fetchData() {
 //     const selectedText = window.getSelection().toString();
-//     console.log(selectedText)
+//     const sourceId = window.location.pathname.split("/").pop()
+//     return {
+//       user: '<%= current_user.id %>',
+//       content: selectedText,
+//       source: sourceId
+//     }
+//   }
 
-// })
-
-
-
-  highlightButton.addEventListener('click', e => {
-    function fetchData() {
-    const selectedText = window.getSelection().toString();
-    const sourceId = window.location.pathname.split("/").pop()
-    return {
-      user: '<%= current_user.id %>',
-      content: selectedText,
-      source: sourceId
-    }
-  }
-
-  function sendData(data) {
-    const url = 'http://localhost:3000/api/v1/quotes';
-    const params = {
-      user: { user_id: data.user },
-      quote: { content: data.content},
-      source: { id: data.source }
-    }
-    const options = {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify(params)
-    }
-    fetch(url, options)
-    .then(response => response.json())
-    .then(data => console.log(data))
-    location.reload()
-  }
-  sendData(fetchData());
-  })
+//   function sendData(data) {
+//     const url = 'http://localhost:3000/api/v1/quotes';
+//     const params = {
+//       user: { user_id: data.user },
+//       quote: { content: data.content},
+//       source: { id: data.source }
+//     }
+//     const options = {
+//       method: "POST",
+//       headers: { 'Content-Type': 'application/json'},
+//       body: JSON.stringify(params)
+//     }
+//     fetch(url, options)
+//     .then(response => response.json())
+//     .then(data => console.log(data))
+//     location.reload()
+//   }
+//   sendData(fetchData());
+//   })
 
 
   </script>

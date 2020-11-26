@@ -57,9 +57,12 @@
   padding-left: 5px;
 }
 
-.highlight {
-  padding: 1px;
-  border-radius: 3px;
+.permanent-highlight {
   background-color: #D8CAAF;
-  color: black
+  color: black;
+}
+
+.stored-highlight {
+  background-color: #AAB1BB;
+  color: black;
 }
