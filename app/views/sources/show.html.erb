@@ -1,53 +1,56 @@
-<div id="hallo" data-controller="highlightQuotes">
-  <h1 class="heading"><span class=""> <%= @source.title %></span></h1>
+<div class="source-show-page">
+  <div id="hallo" data-controller="highlightQuotes">
+    <h1 class="heading"><span class=""> <%= @source.title %></span></h1>
 
-    <p class="article-info-subtitle"><%= link_to "#{@source.website.gsub("www.", "")}", "#{@source.url_of_website}"%> · by <%= link_to "Tara McKelvey Sterling", "#"  %>, Virginia, ·  September 22, 2020</p>
+      <p class="article-info-subtitle"><%= link_to "#{@source.website.gsub("www.", "")}", "#{@source.url_of_website}"%> · by <%= link_to "Tara McKelvey Sterling", "#"  %>, Virginia, ·  September 22, 2020</p>
 
-    <% if @source.user != current_user %>
-      <p>Captured by: <%= @source.user.username %></p>
-    <% else %>
+      <% if @source.user != current_user %>
+        <p>Captured by: <%= @source.user.username %></p>
+      <% else %>
 
-      <%= link_to "#", data: {toggle: "modal", target: "#modal-#{@source.id}"}, class: "info-tag-div" do  %>
-        <p class="info-tag-text"><i class="fas fa-folder"></i> <strong><%= @source.folder.folder_name %></strong> </p>
-      <% end %>
-    <% end %>
-
-      <%= link_to "#", class: "info-tag-div" do  %>
-        <p class="info-tag-text "><i class="fas fa-quote-right"></i><strong class="ml-1"><%= @source.quotes.count %></strong> </p>
-      <% end %>
-
-      <%= link_to "#", class: "info-tag-div" do  %>
-        <p class="info-tag-text "><i class="fas fa-comment"></i></i><strong class="ml-1"><%= @all_comments.count %></strong> </p>
-      <% end %>
-
-      <div class="mt-2 mb-2">
-        <% if @source.photo.attached? %>
-          <%= cl_image_tag @source.photo.key, class: "article-source-photo" %>
-        <% else %>
-          <%= cl_image_tag "5v1a9wm3yevk4b8wsuqosjaaou2k", class: "article-source-photo" %>
+        <%= link_to "#", data: {toggle: "modal", target: "#modal-#{@source.id}"}, class: "info-tag-div" do  %>
+          <p class="info-tag-text"><i class="fas fa-folder"></i> <strong><%= @source.folder.folder_name %></strong> </p>
         <% end %>
-      </div>
+      <% end %>
 
-      <div id="modal-<%= @source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <%= simple_form_for(@source) do |f| %>
-            <%= f.input :folder_id, collection: Folder.where(user_id: current_user.id), label_method: :folder_name, label: "Folder name", id: "move-folder-form", include_blank: false %>
-            <%= f.submit %>
-            <% end %>
+        <%= link_to "#", class: "info-tag-div" do  %>
+          <p class="info-tag-text "><i class="fas fa-quote-right"></i><strong class="ml-1"><%= @source.quotes.count %></strong> </p>
+        <% end %>
+
+        <%= link_to "#", class: "info-tag-div" do  %>
+          <p class="info-tag-text "><i class="fas fa-comment"></i></i><strong class="ml-1"><%= @all_comments.count %></strong> </p>
+        <% end %>
+
+        <div class="mt-2 mb-2">
+          <% if @source.photo.attached? %>
+            <%= cl_image_tag @source.photo.key, class: "article-source-photo" %>
+          <% else %>
+            <%= cl_image_tag "5v1a9wm3yevk4b8wsuqosjaaou2k", class: "article-source-photo" %>
+          <% end %>
+        </div>
+
+        <div id="modal-<%= @source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <%= simple_form_for(@source) do |f| %>
+              <%= f.input :folder_id, collection: Folder.where(user_id: current_user.id), label_method: :folder_name, label: "Folder name", id: "move-folder-form", include_blank: false %>
+              <%= f.submit %>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
 
-  <div id="text" class="paragraph-text">
-    <p>North Korea's leader Kim Jong-un has issued a rare personal apology for the killing of a South Korean official, Seoul says.</p>
-    <p>Mr Kim reportedly told South Korean leader Moon Jae-in that the "disgraceful affair" should not have happened.</p>
-    <p>South Korea has said the 47-year-old man was found by troops floating in the North's waters.</p>
-    <p>He was then shot dead and his body was set alight, according to Seoul.</p>
-    <p>It is not known what the man was doing there. The South Korean government has said he may have been trying to defect to the North but his family has denied this.</p>
-    <p>The killing - the first of a South Korean citizen by North Korean forces for a decade - has caused outrage in the South.</p>
-    <p>The border between the Koreas is tightly policed, and the North is thought to have a "shoot-to-kill" policy in place to prevent coronavirus from entering the country.</p>
-  </div>
+    <div id="text" class="paragraph-text">
+      <p>North Korea's leader Kim Jong-un has issued a rare personal apology for the killing of a South Korean official, Seoul says.</p>
+      <p>Mr Kim reportedly told South Korean leader Moon Jae-in that the "disgraceful affair" should not have happened.</p>
+      <p>South Korea has said the 47-year-old man was found by troops floating in the North's waters.</p>
+      <p>He was then shot dead and his body was set alight, according to Seoul.</p>
+      <p>It is not known what the man was doing there. The South Korean government has said he may have been trying to defect to the North but his family has denied this.</p>
+      <p>The killing - the first of a South Korean citizen by North Korean forces for a decade - has caused outrage in the South.</p>
+      <p>The border between the Koreas is tightly policed, and the North is thought to have a "shoot-to-kill" policy in place to prevent coronavirus from entering the country.</p>
+    </div>
+
+</div>
 
 
   <script>

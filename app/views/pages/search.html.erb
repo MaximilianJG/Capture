@@ -1,6 +1,5 @@
 <!-- When search is filled -->
 <% if !@results.nil? %>
-
   <div class="row mt-5 m-1">
 
     <% if @sources.size > 0 %>
@@ -11,7 +10,12 @@
             <div class="col-6 col-6-global-search">
               <%= link_to source_path(source), class: "remove-hover" do  %>
                 <div class="global-search-card-source">
-                <%= cl_image_tag "umnpg0sho7qgwftngqsn", class: "global-search-source-banner dropdown-toggle" %>
+                  <% if source.photo.attached? %>
+                    <%= cl_image_tag source.photo.key, class: "global-search-source-banner dropdown-toggle" %>
+                  <% else %>
+                    <%= cl_image_tag "newspapers-stack-1to2_svlmsn", class: "global-search-source-banner dropdown-toggle" %>
+                  <% end %>
+
                   <div class="title">
                     <p><%= source.title %></p>
                   </div>
@@ -30,12 +34,17 @@
           <% @searched_folders.take(4).each do |folder| %>
             <div class="col-6 col-6-global-search">
               <%= link_to folder_path(folder), class: "remove-hover" do  %>
-                <div class="global-search-card-folder">
-                <%= cl_image_tag "umnpg0sho7qgwftngqsn", class: "global-search-folder-banner dropdown-toggle" %>
-                  <div class="title">
-                    <p><%= folder.folder_name %></p>
-                    <p class="folder-user"><%= folder.user.username %></p>
-                  </div>
+                <div class="d-flex align-items-center global-search-card-folder">
+                  <% if folder.sources.first && folder.sources.first.photo.attached? %>
+                    <%= cl_image_tag folder.sources.first.photo.key, class: "ml-2 global-search-folder-banner dropdown-toggle" %>
+                  <% else %>
+                    <%= cl_image_tag "1024px-Newspaper_Cover.svg_n0hnt9", class: "ml-2 global-search-folder-banner dropdown-toggle" %>
+                  <% end %>
+
+                    <div class="title">
+                      <p><%= folder.folder_name %></p>
+                      <p class="folder-user"><%= folder.user.username %></p>
+                    </div>
                 </div>
               <% end %>
             </div>

@@ -25,7 +25,7 @@
             <% end %>
 
               <div class="time">
-                <p> <%= time_ago_in_words(source.created_at).gsub('about','').gsub('less than', '').gsub(' a ', '1 ') %> </p>
+                <p> <%= time_ago_in_words(source.created_at).gsub('about','').gsub('less than', '').gsub(' a ', '1 ').gsub("months", "mon") %> </p>
               </div>
           </div>
 
