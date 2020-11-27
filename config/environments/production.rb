@@ -22,8 +22,8 @@ Rails.application.configure do
   domain:               'example.com',
   user_name:            'maximilian.capture@gmail.com',
   password:             'ChromeEx!2020CaptureIt%!!',
-  authentication:       'plain',
-  enable_starttls_auto: true }
+  authentication:       'plain'
+  }
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
