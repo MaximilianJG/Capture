@@ -1,3 +1,29 @@
 <%= render 'shared/profile-user-header' %>
 
+<div class="row">
+  <div class="col-6">
+    <h1>Public Folders</h1>
+    <div class="row">
+      <% @public_folders.take(4).each do |folder| %>
+        <div class="col-6">
+          <% if folder.sources.first.photo.attached? %>
+            <%= cl_image_tag folder.sources.first.photo.key, class: "global-search-source-banner dropdown-toggle" %>
+          <% else %>
+            <%= cl_image_tag "newspapers-stack-1to2_svlmsn", class: "global-search-source-banner dropdown-toggle" %>
+          <% end %>
+         <p><%= folder.folder_name %> <%= folder.sources.count %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <h1>Recent Activity</h1>
+
+    <% @recent_activity.each do |activity| %>
+    <%= activity.class %>
+    <% end %>
+  </div>
+</div>
+
 

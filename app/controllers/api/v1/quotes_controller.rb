@@ -8,13 +8,16 @@ require "open-uri"
   def create
     if api_quote_params[:url_of_quote].nil?
       current_user = User.find(api_user_params[:user_id])
-      @quote = Quote.new(api_quote_params)
-      authorize @quote
-      @source = Source.find(api_source_params[:id])
-      @quote.source = @source
-      @quote.url_of_quote = @source.url_of_website
-      @quote.user = current_user
-      @quote.save!
+
+      if Quote.where(content: api_quote_params[:content], user_id: current_user.id, source_id: api_source_params[:id])[0].nil?
+        @quote = Quote.new(api_quote_params)
+        authorize @quote
+        @source = Source.find(api_source_params[:id])
+        @quote.source = @source
+        @quote.url_of_quote = @source.url_of_website
+        @quote.user = current_user
+        @quote.save!
+      end
 
       if !api_comment_params.nil?
         @comment = Comment.new(api_comment_params)

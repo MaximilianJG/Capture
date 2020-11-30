@@ -7,7 +7,7 @@ class Source < ApplicationRecord
 
   validates :title, presence: true
   validates :website, presence: true
-  validates :date_of_article, presence: true
+  # validates :date_of_article, presence: true
   validates :user_id, presence: true
   validates :folder_id, presence: true
   validates :url_of_website, presence: true

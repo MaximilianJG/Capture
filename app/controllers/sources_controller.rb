@@ -56,7 +56,7 @@ class SourcesController < ApplicationController
 
   def update
     # @source = Source.find(params[:id]) # can't this go away because we have @source ?
-    if @source.update(strong_source_params)
+    if @source.update!(strong_source_params)
       redirect_back(fallback_location: root_path)
     else
       render :update

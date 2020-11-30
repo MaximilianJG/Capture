@@ -28,6 +28,22 @@ class PagesController < ApplicationController
   end
 
   def user_profile_overview
+    @public_folders = Folder.where(user_id: params[:id])
+    # @public_folders.sort_by{|folder| folder.sources.count} ## public folders has to be sorted by amount of sources in each folder. (only folders with most sources should show.)
+
+    @recent_activity = []
+    @sources = policy_scope(Source).where(user: params[:id])
+    @comments = policy_scope(Comment).where(user: params[:id])
+
+    @sources.each do |source|
+      @recent_activity << source
+    end
+
+    @comments.each do |comment|
+      @recent_activity << comment
+    end
+
+    @recent_activity.sort_by{|e| !e[:created_at]}
   end
 
   def user_profile_followers

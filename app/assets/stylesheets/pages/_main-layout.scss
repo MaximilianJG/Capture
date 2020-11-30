@@ -1,5 +1,6 @@
 .display-flex-container {
   display: flex;
+  justify-content: space-between;
 }
 
 .sidebar-rest {
@@ -9,7 +10,6 @@
 
 .center-content {
   width: 60vw;
-  margin-right: 2vh;
 }
 
 .whole-container-right-of-sidebar {
@@ -18,4 +18,5 @@
 
 .friends-bar {
   width: 20vw;
+  margin: 0px 12px 0px 24px;
 }

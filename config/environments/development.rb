@@ -35,7 +35,7 @@ config.action_mailer.smtp_settings = {
   port:                 587,
   domain:               'example.com',
   user_name:            'maximilian.capture@gmail.com',
-  password:             'ChromeEx!2020CaptureIt%!!',
+  password:             '8481zO$#QF}09.Z0Zks$G^L>la',
   authentication:       'plain',
   enable_starttls_auto: true }
 

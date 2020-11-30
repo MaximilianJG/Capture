@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "https://capture-maximilianjg.herokuapp.com/" }
+  config.action_mailer.default_url_options = { host: "https://capture-maximilianjg.herokuapp.com" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -21,9 +21,9 @@ Rails.application.configure do
   port:                 587,
   domain:               'example.com',
   user_name:            'maximilian.capture@gmail.com',
-  password:             'ChromeEx!2020CaptureIt%!!',
-  authentication:       'plain'
-  }
+  password:             '8481zO$#QF}09.Z0Zks$G^L>la',
+  authentication:       'plain',
+  enable_starttls_auto: true }
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
