@@ -6,7 +6,7 @@
     <div class="row">
       <% @public_folders.take(4).each do |folder| %>
         <div class="col-6">
-          <% if folder.sources.first.photo.attached? %>
+          <% if folder.sources.first && folder.sources.first.photo.attached? %>
             <%= cl_image_tag folder.sources.first.photo.key, class: "global-search-source-banner dropdown-toggle" %>
           <% else %>
             <%= cl_image_tag "newspapers-stack-1to2_svlmsn", class: "global-search-source-banner dropdown-toggle" %>

@@ -24,7 +24,7 @@
       <button id="apibtn">Highlight</button>
 
 
-    <% @comments = policy_scope(Comment).where(user: current_user, quote: @source.quotes) %>
+    <% @comments = policy_scope(Comment).where(quote: @source.quotes) %>
    <% @comments.order(created_at: :desc).each do |source| %>
 
 
