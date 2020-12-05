@@ -5,7 +5,9 @@
       <p class="article-info-subtitle"><%= link_to "#{@source.website.gsub("www.", "")}", "#{@source.url_of_website}"%> · by <%= link_to "Tara McKelvey Sterling", "#"  %>, Virginia, ·  September 22, 2020</p>
 
       <% if @source.user != current_user %>
-        <p>Captured by: <%= @source.user.username %></p>
+        <%= link_to "#", class: "info-tag-div" do  %>
+          <p class="info-tag-text "><i class="fas fa-user"></i><strong class="ml-1"><%= @source.user.username %></strong> </p>
+        <% end %>
       <% else %>
 
         <%= link_to "#", data: {toggle: "modal", target: "#modal-#{@source.id}"}, class: "info-tag-div" do  %>

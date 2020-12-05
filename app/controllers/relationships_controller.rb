@@ -18,10 +18,9 @@ class RelationshipsController < ApplicationController
 
     @relationship = Relationship.where(asker: current_user, receiver: @follower)[0]
     authorize @relationship
-    @relationship.destroy
+    @relationship.destroy!
 
     redirect_back(fallback_location: root_path)
-
   end
 
 end
