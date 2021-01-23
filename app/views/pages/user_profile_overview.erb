@@ -24,8 +24,17 @@
     <h3 class="overview-header">Recent Activity</h3>
 
     <% @recent_activity.each do |activity| %>
-    <%= activity.class %>
+
+    <% if activity.class == Source %>
+    <%= link_to ,  %>
+    captured: <%= activity.title %> <br>
+    <% else %>
+    commented: <%= activity.class %> <br>
     <% end %>
+
+
+    <% end %>
+
   </div>
 </div>
 
