@@ -26,8 +26,13 @@
     <% @recent_activity.each do |activity| %>
 
     <% if activity.class == Source %>
-    <%= link_to ,  %>
-    captured: <%= activity.title %> <br>
+
+    <div class="recent-capture">
+      <%= link_to source_path(activity), class: "recent-capture-link" do %>
+        Captured: <%= activity.title %>
+      <% end %>
+      <span class="recent-capture-sub-info"><%= link_to "#{activity.website.gsub("www.", "")}", "#{activity.url_of_website}", class: "source-sub-info" %> · by <%= link_to "Tara McKelvey Sterling", "#", class: "source-sub-info"  %> </span>
+    </div>
     <% else %>
     commented: <%= activity.class %> <br>
     <% end %>
