@@ -1,0 +1,30 @@
+.recent-capture {
+  margin-bottom: 10px;
+}
+
+.recent-capture-link {
+  color: white;
+  text-decoration: none;
+  line-height: 15px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.recent-capture-link:hover {
+  color: #ECECEC;
+  text-decoration: none;
+}
+
+.recent-capture-sub-info {
+  color: #797979;
+  text-decoration: none;
+  font-size: 15px;
+  a {
+  color: #797979;
+  font-size: 15px;
+
+  }
+
+}
