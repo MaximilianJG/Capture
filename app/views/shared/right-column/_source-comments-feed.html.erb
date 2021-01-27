@@ -20,46 +20,38 @@
         </div>
     </div>
 
-      <button id="apibtn">Highlight</button>
+    <button id="apibtn">Highlight</button>
 
-
-    <% @comments = policy_scope(Comment).where(quote: @source.quotes) %>
-   <% @comments.order(created_at: :desc).each do |source| %>
-
+    <div class='discussion-container'>
+      <div class='comment-container'>
+        <% @comments = policy_scope(Comment).where(quote: @source.quotes) %>
+        <% @comments.order(created_at: :desc).each do |source| %>
 
         <div class="comment-card">
-
           <div class="">
             <%= link_to user_profile_overview_path(source.user), class: "comment-card-link" do %>
               <div class="d-flex align-items-center ">
                 <% if source.user.photo.attached? %>
-                  <%= cl_image_tag source.user.photo.key, class: "comment-card-avatar" %>
+                  <%# <%= cl_image_tag source.user.photo.key, class: "comment-card-avatar" %> %>
                 <% else %>
-                  <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-small" %>
+                  <%# <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-small" %> %>
                 <% end %>
-
                 <div class="ml-2 username">
                   <%= source.user.username %>
                   <p class="action truncate w-100">"<%= source.quote.content %>"</p>
                 </div>
-
               </div>
             <% end %>
-
-
           </div>
-
           <%= link_to source_path(source), class: "comment-card-link" do  %>
           <div class="comment-source-title">
             <p class="source-title"><%= source.content %></p>
           </div>
-
-          <div>
-          </div>
+          <% end %>
         </div>
-      <% end %>
-
-    <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 

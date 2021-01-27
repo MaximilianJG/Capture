@@ -11,9 +11,9 @@
               <%= link_to source_path(source), class: "remove-hover" do  %>
                 <div class="global-search-card-source">
                   <% if source.photo.attached? %>
-                    <%= cl_image_tag source.photo.key, class: "global-search-source-banner dropdown-toggle" %>
+                    <%# <%= cl_image_tag source.photo.key, class: "global-search-source-banner dropdown-toggle" %> %>
                   <% else %>
-                    <%= cl_image_tag "newspapers-stack-1to2_svlmsn", class: "global-search-source-banner dropdown-toggle" %>
+                    <%# <%= cl_image_tag "newspapers-stack-1to2_svlmsn", class: "global-search-source-banner dropdown-toggle" %> %>
                   <% end %>
 
                   <div class="title">
@@ -36,9 +36,9 @@
               <%= link_to folder_path(folder), class: "remove-hover" do  %>
                 <div class="d-flex align-items-center global-search-card-folder">
                   <% if folder.sources.first && folder.sources.first.photo.attached? %>
-                    <%= cl_image_tag folder.sources.first.photo.key, class: "ml-2 global-search-folder-banner dropdown-toggle" %>
+                    <%# <%= cl_image_tag folder.sources.first.photo.key, class: "ml-2 global-search-folder-banner dropdown-toggle" %> %>
                   <% else %>
-                    <%= cl_image_tag "1024px-Newspaper_Cover.svg_n0hnt9", class: "ml-2 global-search-folder-banner dropdown-toggle" %>
+                    <%# <%= cl_image_tag "1024px-Newspaper_Cover.svg_n0hnt9", class: "ml-2 global-search-folder-banner dropdown-toggle" %> %>
                   <% end %>
 
                     <div class="title">
@@ -63,11 +63,11 @@
             <%= link_to user_profile_overview_path(user), class: "remove-hover" do  %>
               <div class="global-search-card-user d-flex align-items-center">
                 <% if user.photo.attached? %>
-                  <%= cl_image_tag user.photo.key, class: "avatar-global-search dropdown-toggle",
-                    id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                  <%# <%= cl_image_tag user.photo.key, class: "avatar-global-search dropdown-toggle",
+                    id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> %>
                 <% else %>
-                    <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-global-search dropdown-toggle",
-                    id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <%# <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-global-search dropdown-toggle",
+                    id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> %>
                 <% end %>
 
                 <div class="global-search-username-follower-count-div">

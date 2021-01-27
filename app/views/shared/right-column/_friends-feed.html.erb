@@ -24,9 +24,9 @@
             <%= link_to user_profile_overview_path(item.user), class: "friend-card-link" do %>
               <div class="d-flex align-items-center avatar-and-username">
                 <% if item.user.photo.attached? %>
-                  <%= cl_image_tag item.user.photo.key, class: "friend-card-avatar" %>
+                  <%# <%= cl_image_tag item.user.photo.key, class: "friend-card-avatar" %> %>
                 <% else %>
-                  <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-small" %>
+                  <%# <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-small" %> %>
                 <% end %>
                 <div class="ml-2 username">
                   <%= item.user.username %>

@@ -1,10 +1,29 @@
 .comment-feed-cards {
-  overflow-y: scroll;
-  max-height: 93vh;
+  // overflow-y: scroll;
+  // max-height: 93vh;
+  height: 100vh;
 }
 
-.right-column {
+.discussion-container {
+  height: 100%;
+  display: flex;
 }
+
+
+.comment-container {
+  height: 100%;
+  // width: 22%;
+  padding-top: 40px;
+  transition: all 400ms ease-in-out;
+  transform: translateY(0px);
+}
+
+
+///
+
+
+
+.right-column {}
 
 .comment-card-link {
   color: black;
