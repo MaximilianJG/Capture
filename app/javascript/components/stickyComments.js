@@ -2,6 +2,7 @@ const initComments = async () => {
   // let p = await stickyComment();
   // if (p == 'complete') {
   handleCommentClick();
+  handleQuoteClick();
   // }
 }
 
@@ -35,6 +36,8 @@ const stickyComment = () => {
   return p;
 }
 
+// refactor to new function
+
 const handleCommentClick = () => {
   setTimeout(() => {
     const comments = document.querySelectorAll('.comment-card');
@@ -47,6 +50,20 @@ const handleCommentClick = () => {
   }, 500)
 }
 
+const handleQuoteClick = () => {
+  setTimeout(() => {
+    const quotes = document.querySelectorAll('.permanent-highlight');
+    // add click listeners to all comments
+    if (quotes.length > 0) {
+      quotes.forEach((c) => {
+        c.addEventListener('click', rearrangeTiles, false)
+      })
+    }
+  }, 500)
+}
+
+
+
 const removeActiveComments = () => {
   const comments = document.querySelectorAll('.comment-card')
   comments.forEach((c) => {
@@ -55,7 +72,7 @@ const removeActiveComments = () => {
 }
 
 const removeActiveQuotes = () => {
-  const quotes = document.querySelectorAll('.quote')
+  const quotes = document.querySelectorAll('.permanent-highlight')
   quotes.forEach((c) => {
     c.classList.remove('active-quote')
   })
@@ -78,24 +95,26 @@ const getPixelsFromTranslate = (e) => {
 }
 
 const rearrangeTiles = (e) => {
+
   // grab ID of quote from target to use in selector for quotes
-  let quoteId = e.target.dataset.quoteId
+  let quoteId = e.target.dataset.id
   let quote = document.querySelector(`span[data-id = '${quoteId}']`)
+  let comment = document.querySelector(`div[data-id = '${quoteId}']`)
   let commentCont = document.querySelector('.comment-container')
 
   // remove any active styling present
-  // removeActiveQuotes()
-  // removeActiveComments()
+  removeActiveQuotes()
+  removeActiveComments()
 
   // apply active styling to quote and comment
-  // quote.classList.toggle('active-quote')
-  // e.target.classList.toggle('active-comment')
+  quote.classList.toggle('active-quote')
+  comment.classList.toggle('active-comment')
 
   // get coordinates of quote
   let quotePos = getCoords(quote)
 
   // get coordinates of clicked comment
-  let commentPos = getCoords(e.target)
+  let commentPos = getCoords(comment);
 
   // get current translation of comment container
   let transY = getPixelsFromTranslate(commentCont)

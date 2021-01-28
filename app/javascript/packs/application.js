@@ -36,6 +36,10 @@ import {
   initComments
 } from '../components/stickyComments'
 
+import {
+  temporaryHighlight
+} from '../components/temporaryHighlight'
+
 // import { keystrokeSearch } from '../components/global-searchbar-keystroke.js.erb' // THIS NEEDS MORE ATTENTION
 
 
@@ -46,6 +50,7 @@ document.addEventListener('turbolinks:load', () => {
   toggleCaret();
   // keystrokeSearch(); // THIS NEEDS MORE ATTENTION
   initComments();
+  temporaryHighlight();
 });
 
 // JavaScript
