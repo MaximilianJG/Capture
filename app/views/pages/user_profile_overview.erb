@@ -7,6 +7,7 @@
       <% @public_folders.take(4).each do |folder| %>
         <div class="col-6">
 
+          <%= link_to folder_path(folder) do  %>
           <% if folder.sources.first && folder.sources.first.photo.attached? %>
             <%= cl_image_tag folder.sources.first.photo.key, class: "overview-folder-img dropdown-toggle" %>
           <% else %>
@@ -14,6 +15,7 @@
           <% end %>
           <p class="overview-folder-name mt-1 mb-0"><%= folder.folder_name %></p>
           <p class="overview-folder-name mb-1"><%= folder.sources.count %> Captures</p>
+          <% end %>
 
         </div>
       <% end %>
