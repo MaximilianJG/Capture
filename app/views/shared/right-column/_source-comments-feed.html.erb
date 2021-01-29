@@ -24,6 +24,7 @@
 
     <div class='discussion-container'>
       <div class='comment-container'>
+      <!-- This needs to be refactored  -->
         <% @comments = policy_scope(Comment).where(quote: @source.quotes) %>
         <% @comments.order(created_at: :desc).each do |comment| %>
 
@@ -32,9 +33,9 @@
             <%= link_to user_profile_overview_path(comment.user), class: "comment-card-link" do %>
               <div class="d-flex align-items-center ">
                 <% if comment.user.photo.attached? %>
-                  <%# <%= cl_image_tag comment.user.photo.key, class: "comment-card-avatar" %> %>
+                  <%= cl_image_tag comment.user.photo.key, class: "comment-card-avatar" %>
                 <% else %>
-                  <%# <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-small" %> %>
+                  <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-small" %>
                 <% end %>
                 <div class="ml-2 username">
                   <%= comment.user.username %>

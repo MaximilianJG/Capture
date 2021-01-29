@@ -7,11 +7,11 @@
 
           <div class="d-flex align-items-center">
             <% if follower.photo.attached? %>
-              <%# <%= cl_image_tag follower.photo.key, class: "avatar-follow-card dropdown-toggle", %>
-                <%# id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> %>
+              <%= cl_image_tag follower.photo.key, class: "avatar-follow-card dropdown-toggle", %>
+                <%= id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% else %>
-                <%# <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-follow-card dropdown-toggle",
-                id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> %>
+                <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-follow-card dropdown-toggle",
+                id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> 
             <% end %>
 
             <% follower_name = "#{follower.first_name} #{follower.last_name}" %>

@@ -6,9 +6,9 @@
         <div class="d-flex card-summary">
           <div class="">
               <% if source.photo.attached? %>
-                <%# <%= cl_image_tag source.photo.key, class: "source-photo" %> %>
+                <%= cl_image_tag source.photo.key, class: "source-photo" %>
               <% else %>
-                <%# <%= cl_image_tag "b08hxPY_jhyrxg", class: "source-photo" %> %>
+                <%= cl_image_tag "b08hxPY_jhyrxg", class: "source-photo" %>
               <% end %>
           </div>
 

@@ -25,9 +25,9 @@
 
         <div class="mt-2 mb-2">
           <% if @source.photo.attached? %>
-            <%# <%= cl_image_tag @source.photo.key, class: "article-source-photo" %> %>
+            <%= cl_image_tag @source.photo.key, class: "article-source-photo" %>
           <% else %>
-            <%# <%= cl_image_tag "5v1a9wm3yevk4b8wsuqosjaaou2k", class: "article-source-photo" %> %>
+            <%= cl_image_tag "5v1a9wm3yevk4b8wsuqosjaaou2k", class: "article-source-photo" %>
           <% end %>
         </div>
 
