@@ -26,8 +26,19 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
-import { toggleQuote } from '../components/toggle-quote';
-import { toggleCaret } from '../components/toggle-caret';
+import {
+  toggleQuote
+} from '../components/toggle-quote';
+import {
+  toggleCaret
+} from '../components/toggle-caret';
+import {
+  initComments
+} from '../components/stickyComments'
+
+import {
+  temporaryHighlight
+} from '../components/temporaryHighlight'
 
 // import { keystrokeSearch } from '../components/global-searchbar-keystroke.js.erb' // THIS NEEDS MORE ATTENTION
 
@@ -38,7 +49,8 @@ document.addEventListener('turbolinks:load', () => {
   toggleQuote();
   toggleCaret();
   // keystrokeSearch(); // THIS NEEDS MORE ATTENTION
-
+  initComments();
+  temporaryHighlight();
 });
 
 // JavaScript

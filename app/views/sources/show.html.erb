@@ -59,12 +59,12 @@
 
 // HIGHLIGHT EXISTING QUOTES
 
-    function highlight(text) {
+    function highlight(text, id) {
       var inputText = document.getElementById("text");
       var innerHTML = inputText.innerHTML;
       var index = innerHTML.indexOf(text);
       if (index >= 0) {
-       innerHTML = innerHTML.substring(0,index) + "<span class='permanent-highlight'>" + innerHTML.substring(index,index+text.length) + "</span>" + innerHTML.substring(index + text.length);
+       innerHTML = innerHTML.substring(0,index) + `<span data-id=${id} class="permanent-highlight">` + innerHTML.substring(index,index+text.length) + "</span>" + innerHTML.substring(index + text.length);
        inputText.innerHTML = innerHTML;
       }
     }
@@ -73,7 +73,7 @@
         .then(response => response.json())
         .then((data) => {
           data.source_quotes.forEach((d) => {
-            highlight(`${d.content.trim()}`)
+            highlight(`${d.content.trim()}`, d.id )
           })
         });
 

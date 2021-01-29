@@ -20,46 +20,39 @@
         </div>
     </div>
 
-      <button id="apibtn">Highlight</button>
+    <button id="apibtn">Highlight</button>
 
+    <div class='discussion-container'>
+      <div class='comment-container'>
+      <!-- This needs to be refactored  -->
+        <% @comments = policy_scope(Comment).where(quote: @source.quotes) %>
+        <% @comments.order(created_at: :desc).each do |comment| %>
 
-    <% @comments = policy_scope(Comment).where(quote: @source.quotes) %>
-   <% @comments.order(created_at: :desc).each do |source| %>
-
-
-        <div class="comment-card">
-
+         <div data-id= <%=%"#{comment.quote.id}"%> class="comment-card"> 
           <div class="">
-            <%= link_to user_profile_overview_path(source.user), class: "comment-card-link" do %>
+            <%= link_to user_profile_overview_path(comment.user), class: "comment-card-link" do %>
               <div class="d-flex align-items-center ">
-                <% if source.user.photo.attached? %>
-                  <%= cl_image_tag source.user.photo.key, class: "comment-card-avatar" %>
+                <% if comment.user.photo.attached? %>
+                  <%= cl_image_tag comment.user.photo.key, class: "comment-card-avatar" %>
                 <% else %>
                   <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-small" %>
                 <% end %>
-
                 <div class="ml-2 username">
-                  <%= source.user.username %>
-                  <p class="action truncate w-100">"<%= source.quote.content %>"</p>
+                  <%= comment.user.username %>
+                  <p class="action truncate w-100">"<%= comment.quote.content %>"</p>
                 </div>
-
               </div>
             <% end %>
-
-
           </div>
-
-          <%= link_to source_path(source), class: "comment-card-link" do  %>
+          <%# <%= link_to source_path(comment), class: "comment-card-link" do  %>
           <div class="comment-source-title">
-            <p class="source-title"><%= source.content %></p>
+            <p class="source-title"><%= comment.content %></p>
           </div>
-
-          <div>
-          </div>
+          <%# <% end %> 
         </div>
-      <% end %>
-
-    <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -68,128 +61,128 @@
   var highlightButton = document.getElementById('apibtn')
   console.log(highlightButton)
 
-  var commentField = document.getElementById('content')
-  console.log(commentField.value)
+  // var commentField = document.getElementById('content')
+  // console.log(commentField.value)
 
-  commentField.addEventListener('focus', e => {
-    const storedText = window.getSelection().toString();
-    console.log(storedText)
+  // commentField.addEventListener('focus', e => {
+  //   const storedText = window.getSelection().toString();
+  //   console.log(storedText)
 
-    function highlight(text) {
-      var inputText = document.getElementById("text");
-      var innerHTML = inputText.innerHTML;
-      var index = innerHTML.indexOf(text);
-      if (index >= 0 && innerHTML.substring(8,42) !== '<span class="permanent-highlight">') {
-       innerHTML = innerHTML.substring(0,index) + "<span class='stored-highlight'>" + innerHTML.substring(index,index+text.length) + "</span>" + innerHTML.substring(index + text.length);
-       inputText.innerHTML = innerHTML;
-      }
-    }
+    // function highlight(text) {
+    //   var inputText = document.getElementById("text");
+    //   var innerHTML = inputText.innerHTML;
+    //   var index = innerHTML.indexOf(text);
+    //   if (index >= 0 && innerHTML.substring(8,42) !== '<span class="permanent-highlight">') {
+    //    innerHTML = innerHTML.substring(0,index) + "<span class='stored-highlight'>" + innerHTML.substring(index,index+text.length) + "</span>" + innerHTML.substring(index + text.length);
+    //    inputText.innerHTML = innerHTML;
+    //   }
+    // }
 
-    if (storedText.length > 0) {
-      highlight(storedText.trim())
-    }
+  //   if (storedText.length > 0) {
+  //     highlight(storedText.trim())
+  //   }
 
-    // When you type into form and press Enter
-    document.getElementById("content")
-        .addEventListener("keyup", function(event) {
-        event.preventDefault();
-        if (event.keyCode === 13) {
-          sendData(fetchData());
-        }
-    });
+  //   // When you type into form and press Enter
+  //   document.getElementById("content")
+  //       .addEventListener("keyup", function(event) {
+  //       event.preventDefault();
+  //       if (event.keyCode === 13) {
+  //         sendData(fetchData());
+  //       }
+  //   });
 
-    // When you type into form and press Highlight Button
-    highlightButton.addEventListener('click', e => {
-      sendData(fetchData());
-    })
+  //   // When you type into form and press Highlight Button
+  //   highlightButton.addEventListener('click', e => {
+  //     sendData(fetchData());
+  //   })
 
-      function fetchData() {
-      const selectedText = storedText
-      const comment = commentField.value
-      const sourceId = window.location.pathname.split("/").pop()
-      return {
-        user: '<%= current_user.id %>',
-        content: storedText,
-        source: sourceId,
-        comment: comment
-      }
-    }
+  //     function fetchData() {
+  //     const selectedText = storedText
+  //     const comment = commentField.value
+  //     const sourceId = window.location.pathname.split("/").pop()
+  //     return {
+  //       user: '<%= current_user.id %>',
+  //       content: storedText,
+  //       source: sourceId,
+  //       comment: comment
+  //     }
+  //   }
 
-    function sendData(data) {
-      const url = 'http://localhost:3000/api/v1/quotes';
-      const params = {
-        user: { user_id: data.user },
-        quote: { content: data.content},
-        source: { id: data.source },
-        comment: { content: data.comment}
-      }
-      const options = {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify(params)
-      }
-      fetch(url, options)
-      .then(response => response.json())
-      .then(data => console.log(data))
-      location.reload()
-    }
+  //   function sendData(data) {
+  //     const url = 'http://localhost:3000/api/v1/quotes';
+  //     const params = {
+  //       user: { user_id: data.user },
+  //       quote: { content: data.content},
+  //       source: { id: data.source },
+  //       comment: { content: data.comment}
+  //     }
+  //     const options = {
+  //       method: "POST",
+  //       headers: { 'Content-Type': 'application/json'},
+  //       body: JSON.stringify(params)
+  //     }
+  //     fetch(url, options)
+  //     .then(response => response.json())
+  //     .then(data => console.log(data))
+  //     location.reload()
+  //   }
 
-    window.addEventListener('mousedown', e => {
-      function deHighlight(text) {
-        var inputText = document.getElementById("text");
-        var innerHTML = inputText.innerHTML;
-        var index = innerHTML.indexOf(text);
-        console.log(innerHTML.substring(8,42))
-        if (index >= 0 && innerHTML.substring(8,42) !== '<span class="permanent-highlight">') {
-         innerHTML = innerHTML.substring(0,8) + innerHTML.substring(index,index+text.length) + innerHTML.substring(index + text.length);
-         inputText.innerHTML = innerHTML;
-        } else if (innerHTML.substring(8,42) === '<span class="permanent-highlight">') {
-          innerHTML = innerHTML.substring(0,index) + innerHTML.substring(index,index+text.length) + innerHTML.substring(index + text.length);
-          inputText.innerHTML = innerHTML;
-        } else {
-          return;
-        }
-
-
-      }
-
-      deHighlight(storedText.trim())
-
-    }, {once: true});
-  });
+  //   window.addEventListener('mousedown', e => {
+  //     function deHighlight(text) {
+  //       var inputText = document.getElementById("text");
+  //       var innerHTML = inputText.innerHTML;
+  //       var index = innerHTML.indexOf(text);
+  //       console.log(innerHTML.substring(8,42))
+  //       if (index >= 0 && innerHTML.substring(8,42) !== '<span class="permanent-highlight">') {
+  //        innerHTML = innerHTML.substring(0,8) + innerHTML.substring(index,index+text.length) + innerHTML.substring(index + text.length);
+  //        inputText.innerHTML = innerHTML;
+  //       } else if (innerHTML.substring(8,42) === '<span class="permanent-highlight">') {
+  //         innerHTML = innerHTML.substring(0,index) + innerHTML.substring(index,index+text.length) + innerHTML.substring(index + text.length);
+  //         inputText.innerHTML = innerHTML;
+  //       } else {
+  //         return;
+  //       }
 
 
+  //     }
 
-  highlightButton.addEventListener('click', e => {
-    function fetchData() {
-    const selectedText = window.getSelection().toString();
-    const sourceId = window.location.pathname.split("/").pop()
-    return {
-      user: '<%= current_user.id %>',
-      content: selectedText,
-      source: sourceId
-    }
-  }
+  //     deHighlight(storedText.trim())
 
-  function sendData(data) {
-    const url = 'http://localhost:3000/api/v1/quotes';
-    const params = {
-      user: { user_id: data.user },
-      quote: { content: data.content},
-      source: { id: data.source }
-    }
-    const options = {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify(params)
-    }
-    fetch(url, options)
-    .then(response => response.json())
-    .then(data => console.log(data))
-    location.reload()
-  }
-  sendData(fetchData());
-  })
+  //   }, {once: true});
+  // });
+
+
+
+  // highlightButton.addEventListener('click', e => {
+  //   function fetchData() {
+  //   const selectedText = window.getSelection().toString();
+  //   const sourceId = window.location.pathname.split("/").pop()
+  //   return {
+  //     user: '<%= current_user.id %>',
+  //     content: selectedText,
+  //     source: sourceId
+  //   }
+  // }
+
+  // function sendData(data) {
+  //   const url = 'http://localhost:3000/api/v1/quotes';
+  //   const params = {
+  //     user: { user_id: data.user },
+  //     quote: { content: data.content},
+  //     source: { id: data.source }
+  //   }
+  //   const options = {
+  //     method: "POST",
+  //     headers: { 'Content-Type': 'application/json'},
+  //     body: JSON.stringify(params)
+  //   }
+  //   fetch(url, options)
+  //   .then(response => response.json())
+  //   .then(data => console.log(data))
+  //   location.reload()
+  // }
+  // sendData(fetchData());
+  // })
 
 
 

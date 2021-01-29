@@ -60,9 +60,13 @@
 .permanent-highlight {
   background-color: #D8CAAF;
   color: black;
+
+  &.active-quote {
+    background-color: gold;
+  }
 }
 
-.stored-highlight {
+.temporary-highlight {
   background-color: #AAB1BB;
   color: black;
 }

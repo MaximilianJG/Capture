@@ -4,8 +4,8 @@
 <% if current_user.photo.attached? %>
       <%= cl_image_tag current_user.photo.key, class: "profile-dropdown-avatar" %>
     <% else %>
-        <%= cl_image_tag "b08hxPY_jhyrxg", class: ".avatar-user-show dropdown-toggle",
-        id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-user-show dropdown-toggle",
+        id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> 
     <% end %>
 
   <%= link_to "#{current_user.username}", user_profile_overview_path(current_user), class: "username" %>

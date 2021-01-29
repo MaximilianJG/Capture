@@ -7,10 +7,10 @@
           <div class="d-flex align-items-center">
             <% if followed_guy.photo.attached? %>
               <%= cl_image_tag followed_guy.photo.key, class: "avatar-follow-card dropdown-toggle",
-                id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> 
             <% else %>
-                <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-follow-card dropdown-toggle",
-                id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-follow-card dropdown-toggle",
+                id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> 
             <% end %>
 
             <% followed_guy_name = "#{followed_guy.first_name} #{followed_guy.last_name}" %>
