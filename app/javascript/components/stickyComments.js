@@ -3,38 +3,39 @@ const initComments = async () => {
   // if (p == 'complete') {
   handleCommentClick();
   handleQuoteClick();
+  deselectQuoteAndComment();
   // }
 }
 
-const stickyComment = () => {
-  // create promise to tell OnClick when comments have been successfully added
-  let p = new Promise(function (resolve, reject) {
-    // delay to ensure page is mounted fully
-    setTimeout(() => {
-      //find all quotes 
-      const quotes = document.querySelectorAll('.quote');
-      if (quotes.length > 0) {
-        const commentContainer = document.querySelector(
-          '.comment-container')
-        quotes.forEach((q) => {
-          //get location of quote on screen)
-          let rect = q.getBoundingClientRect();
-          // get id of quote 
-          let id = q.dataset.id
-          // insert comment html with appropriate class
-          commentContainer.insertAdjacentHTML('beforeend', `<div data-quote-id=${id} class='test-comment'>${id}</div>`);
-          // set top css prop to quote location accounting for window scroll
-          const comment = document.querySelector(`div[data-quote-id='${id}']`);
-          // console.log(rect.top)
-          // comment.style.top = rect.top + window.scrollY + 'px';
+// const stickyComment = () => {
+//   // create promise to tell OnClick when comments have been successfully added
+//   let p = new Promise(function (resolve, reject) {
+//     // delay to ensure page is mounted fully
+//     setTimeout(() => {
+//       //find all quotes
+//       const quotes = document.querySelectorAll('.quote');
+//       if (quotes.length > 0) {
+//         const commentContainer = document.querySelector(
+//           '.comment-container')
+//         quotes.forEach((q) => {
+//           //get location of quote on screen)
+//           let rect = q.getBoundingClientRect();
+//           // get id of quote
+//           let id = q.dataset.id
+//           // insert comment html with appropriate class
+//           commentContainer.insertAdjacentHTML('beforeend', `<div data-quote-id=${id} class='test-comment'>${id}</div>`);
+//           // set top css prop to quote location accounting for window scroll
+//           const comment = document.querySelector(`div[data-quote-id='${id}']`);
+//           // console.log(rect.top)
+//           // comment.style.top = rect.top + window.scrollY + 'px';
 
-        })
-      }
-    }, 500)
-    resolve('complete')
-  })
-  return p;
-}
+//         })
+//       }
+//     }, 500)
+//     resolve('complete')
+//   })
+//   return p;
+// }
 
 // refactor to new function
 
@@ -62,7 +63,16 @@ const handleQuoteClick = () => {
   }, 500)
 }
 
-
+const deselectQuoteAndComment = () => {
+  setTimeout(() => {
+      window.addEventListener('click', e => {
+        if (!e.target.classList.contains('permanent-highlight')) {
+          removeActiveComments()
+          removeActiveQuotes()
+        }
+      })
+  }, 500)
+}
 
 const removeActiveComments = () => {
   const comments = document.querySelectorAll('.comment-card')
