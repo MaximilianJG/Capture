@@ -57,113 +57,58 @@
 </div>
 
 <script>
+    var commentField = document.getElementById('content')
+    var highlightButton = document.getElementById('apibtn')
 
-  var highlightButton = document.getElementById('apibtn')
-  console.log(highlightButton)
+    highlightButton.addEventListener('click', e => {
+      if (document.querySelector('.temporary-highlight')) {
+        sendDataWithComment(fetchDataWithComment());
+      } else {
+        sendDataWithoutComment(fetchDataWithoutComment())
+      }
+    })
 
+    // When you type into form and press Enter
+    document.getElementById("content")
+      .addEventListener("keyup", function(event) {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+        sendDataWithComment(fetchDataWithComment());
+      }
+    });
 
-//
+    function fetchDataWithComment() {
+      const storedText = document.querySelector('.temporary-highlight').innerText
+      const comment = commentField.value
+      const sourceId = window.location.pathname.split("/").pop()
+      return {
+        user: '<%= current_user.id %>',
+        content: storedText,
+        source: sourceId,
+        comment: comment
+      }
+    }
 
-  // var commentField = document.getElementById('content')
-  // console.log(commentField.value)
+    function sendDataWithComment(data) {
+      const url = 'http://localhost:3000/quotes';
+      const params = {
+        user: { user_id: data.user },
+        quote: { content: data.content},
+        source: { id: data.source },
+        comment: { content: data.comment}
+      }
+      const options = {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json', 'Accept': "application/json"},
+        body: JSON.stringify(params)
+      }
+      fetch(url, options)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      location.reload()
+    }
 
-  // commentField.addEventListener('focus', e => {
-  //   const storedText = window.getSelection().toString();
-  //   console.log(storedText)
-
-  //   function highlight(text) {
-  //     var inputText = document.getElementById("text");
-  //     var innerHTML = inputText.innerHTML;
-  //     var index = innerHTML.indexOf(text);
-  //     if (index >= 0 && innerHTML.substring(8,42) !== '<span class="permanent-highlight">') {
-  //      innerHTML = innerHTML.substring(0,index) + "<span class='stored-highlight'>" + innerHTML.substring(index,index+text.length) + "</span>" + innerHTML.substring(index + text.length);
-  //      inputText.innerHTML = innerHTML;
-  //     }
-  //   }
-
-  //   if (storedText.length > 0) {
-  //     highlight(storedText.trim())
-  //   }
-
-
-
-  //     function fetchData() {
-  //     const selectedText = storedText
-  //     const comment = commentField.value
-  //     const sourceId = window.location.pathname.split("/").pop()
-  //     return {
-  //       user: '<%= current_user.id %>',
-  //       content: storedText,
-  //       source: sourceId,
-  //       comment: comment
-  //     }
-  //   }
-
-  //   function sendData(data) {
-  //     const url = 'http://localhost:3000/api/v1/quotes';
-  //     const params = {
-  //       user: { user_id: data.user },
-  //       quote: { content: data.content},
-  //       source: { id: data.source },
-  //       comment: { content: data.comment}
-  //     }
-  //     const options = {
-  //       method: "POST",
-  //       headers: { 'Content-Type': 'application/json'},
-  //       body: JSON.stringify(params)
-  //     }
-  //     fetch(url, options)
-  //     .then(response => response.json())
-  //     .then(data => console.log(data))
-  //     location.reload()
-  //   }
-
-  //   window.addEventListener('mousedown', e => {
-  //     function deHighlight(text) {
-  //       var inputText = document.getElementById("text");
-  //       var innerHTML = inputText.innerHTML;
-  //       var index = innerHTML.indexOf(text);
-  //       console.log(innerHTML.substring(8,42))
-  //       if (index >= 0 && innerHTML.substring(8,42) !== '<span class="permanent-highlight">') {
-  //        innerHTML = innerHTML.substring(0,8) + innerHTML.substring(index,index+text.length) + innerHTML.substring(index + text.length);
-  //        inputText.innerHTML = innerHTML;
-  //       } else if (innerHTML.substring(8,42) === '<span class="permanent-highlight">') {
-  //         innerHTML = innerHTML.substring(0,index) + innerHTML.substring(index,index+text.length) + innerHTML.substring(index + text.length);
-  //         inputText.innerHTML = innerHTML;
-  //       } else {
-  //         return;
-  //       }
-
-
-  //     }
-
-  //     deHighlight(storedText.trim())
-
-  //   }, {once: true});
-  // });
-
-
-//
-
-    // // When you type into form and press Enter
-    // document.getElementById("content")
-    //     .addEventListener("keyup", function(event) {
-    //     event.preventDefault();
-    //     if (event.keyCode === 13) {
-    //       sendData(fetchData());
-    //     }
-    // });
-
-    // // When you type into form and press Highlight Button
-    // highlightButton.addEventListener('click', e => {
-    //   sendData(fetchData());
-    // })
-
-
-
-
-  highlightButton.addEventListener('click', e => {
-    function fetchData() {
+    function fetchDataWithoutComment() {
     const selectedText = window.getSelection().toString();
     const sourceId = window.location.pathname.split("/").pop()
     return {
@@ -173,8 +118,8 @@
     }
   }
 
-  function sendData(data) {
-    const url = 'http://localhost:3000/api/v1/quotes';
+  function sendDataWithoutComment(data) {
+    const url = 'http://localhost:3000/quotes';
     const params = {
       user: { user_id: data.user },
       quote: { content: data.content},
@@ -182,27 +127,14 @@
     }
     const options = {
       method: "POST",
-      headers: { 'Content-Type': 'application/json'},
+      headers: { 'Content-Type': "application/json", 'Accept': "application/json"},
       body: JSON.stringify(params)
     }
     fetch(url, options)
     .then(response => response.json())
     .then(data => console.log(data))
-    // location.reload()
+    location.reload()
   }
-  sendData(fetchData());
-  })
 
-
-
- // COMMENT PSEUDOCODE
-
- // 1. User highlights text.
- // 2. Selection gets stored
- // 3. Selection gets highlighted(different color), when user clicks on comment input field
- // 4. User types a comment.
- // 5. API to quotes controller
- // 6. creates a quote with selected text
- // 7. creates comment assigning that quote.
   </script>
 

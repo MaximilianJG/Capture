@@ -66,7 +66,7 @@ const handleQuoteClick = () => {
 const deselectQuoteAndComment = () => {
   setTimeout(() => {
       window.addEventListener('click', e => {
-        if (!e.target.classList.contains('permanent-highlight')) {
+        if (!e.target.classList.contains('permanent-highlight') && !e.target.classList.contains('comment-card')) {
           removeActiveComments()
           removeActiveQuotes()
         }
