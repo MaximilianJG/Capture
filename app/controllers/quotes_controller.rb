@@ -1,5 +1,8 @@
 class QuotesController < ApplicationController
 
+  skip_before_action :verify_authenticity_token, only: [:create, :create_quote_within_app]
+
+
   def show
     @quote = Quote.find(params[:id])
     authorize @quote
@@ -11,32 +14,32 @@ class QuotesController < ApplicationController
   end
 
   def create
+    @quote = Quote.new(content: post_quote_params[:content], source_id: post_source_params[:id], user_id: post_user_params[:user_id])
+    authorize @quote
+    @quote.save
 
-    # @quote = params[:quote]
-    @quote = Quote.new(strong_quote_params)
-    @source = Source.find(params[:source_id])
-    @quote.source = @source
-    @quote.user = current_user
-    @quote.url_of_quote = @source.url_of_website
-    raise
-
-
-
-
-
-
-    # When building the chrome extension the $ goes away and use the @ sign. and after the create sources just call create a quote (or keep it the same)
-    $quote = Quote.new(strong_quote_params)
-    authorize $quote
-    @source = Source.all.find { |source| source.url_of_website == $quote.url_of_quote } # changes sources.all -> to only sources of current user
-    if @source
-      $quote.source_id = @source.id
-      $quote.user_id = current_user.id
-      $quote.save!
-      redirect_to sources_path
-    else
-      redirect_to new_source_path
+    if !post_comment_params[:content].nil?
+      @comment = Comment.new(content: post_comment_params[:content], user_id: post_user_params[:user_id])
+      @comment.quote = @quote
+      authorize @comment
+      @comment.save!
     end
+  end
+
+  def post_quote_params
+    params.require(:quote).permit(:content)
+  end #
+
+  def post_source_params
+    params.require(:source).permit(:id)
+  end
+
+    def post_user_params
+    params.require(:user).permit(:user_id)
+  end
+
+  def post_comment_params
+    params.require(:comment).permit(:content)
   end
 
   def strong_quote_params

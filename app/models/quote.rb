@@ -4,5 +4,5 @@ class Quote < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :content, presence: true
-  validates :url_of_quote, presence: true
+  # validates :url_of_quote, presence: true
 end

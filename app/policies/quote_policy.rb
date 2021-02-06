@@ -17,4 +17,8 @@ class QuotePolicy < ApplicationPolicy
     true
   end
 
+  def create_quote_within_app
+    true
+  end
+
 end
