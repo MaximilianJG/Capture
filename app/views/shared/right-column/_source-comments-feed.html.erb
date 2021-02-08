@@ -90,7 +90,7 @@
     }
 
     function sendDataWithComment(data) {
-      const url = 'http://localhost:3000/quotes';
+      const url = `${window.location.origin}/quotes`;
       const params = {
         user: { user_id: data.user },
         quote: { content: data.content},
@@ -119,7 +119,7 @@
   }
 
   function sendDataWithoutComment(data) {
-    const url = 'http://localhost:3000/quotes';
+    const url = `${window.location.origin}/quotes`;
     const params = {
       user: { user_id: data.user },
       quote: { content: data.content},
