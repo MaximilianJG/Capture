@@ -63,8 +63,8 @@
             <%= link_to user_profile_overview_path(user), class: "remove-hover" do  %>
               <div class="global-search-card-user d-flex align-items-center">
                 <% if user.photo.attached? %>
-                   <%= cl_image_tag user.photo.key, class: "avatar-global-search dropdown-toggle", %>
-                   <%= id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                   <%= cl_image_tag user.photo.key, class: "avatar-global-search dropdown-toggle",
+                    id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <% else %>
                     <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-global-search dropdown-toggle",
                     id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
