@@ -13,7 +13,8 @@ class FoldersController < ApplicationController
       @sources = @sources.where(user: current_user).select { |source| source.folder_id == @folder.id }
     else
       # search for sources in the folder
-      @sources = Source.where(user: current_user).select { |source| source.folder_id == @folder.id } # all has to be replaced by some pundit thing
+      @sources = Source.select { |source| source.folder_id == @folder.id } # all has to be replaced by some pundit thing
+      # where(user: current_user)
     end
 
    @sources = @sources.sort_by { |source| source.created_at } # isn't working yet either
