@@ -17,10 +17,8 @@
 @import "profile/header";
 @import "profile/recent-activity";
 
-@import "sidebar/main-links";
-@import "sidebar/folders";
-@import "sidebar/new-button";
-@import "sidebar/logo";
+@import "navbars/side-navbar";
+@import "navbars/top-navbar";
 
 @import "search-user-bar/search-user-bar";
 
@@ -30,8 +28,7 @@
 @import "source#index-folder#show/filter-field";
 @import "source#index-folder#show/source-cards";
 
-@import "source#show/quote-cards";
-@import "source#show/article";
+@import "source#show/quote-cards"; // nicht genutzt
 @import "source#show/source-show-page";
 
 

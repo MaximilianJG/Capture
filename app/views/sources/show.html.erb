@@ -1,11 +1,13 @@
-<div class="source-show-page">
+<div class="">
+
   <div id="hallo" data-controller="highlightQuotes">
-    <h1 class="heading"><span class=""> <%= @source.title %></span></h1>
 
-      <p class="article-info-subtitle"><%= link_to "#{@source.website.gsub("www.", "")}", "#{@source.url_of_website}"%> · by <%= link_to "Tara McKelvey Sterling", "#"  %>, Virginia, ·  September 22, 2020</p>
+    <h1 class="heading mb-2"><%= @source.title %></h1>
+
+      <p class="source-show-citation"><%= link_to "#{@source.website.gsub("www.", "")}", "#{@source.url_of_website}"%> · by <%= link_to "Tara McKelvey Sterling", "#"  %>, Virginia, ·  September 22, 2020</p>
 
 
-      <% if @source.user != current_user %>
+<!--       <% if @source.user != current_user %>
         <%= link_to "#", class: "info-tag-div" do  %>
           <p class="info-tag-text "><i class="fas fa-user"></i><strong class="ml-1"><%= @source.user.username %></strong> </p>
         <% end %>
@@ -14,25 +16,26 @@
         <%= link_to "#", data: {toggle: "modal", target: "#modal-#{@source.id}"}, class: "info-tag-div" do  %>
           <p class="info-tag-text"><i class="fas fa-folder"></i> <strong><%= @source.folder.folder_name %></strong> </p>
         <% end %>
-      <% end %>
+      <% end %> -->
 
-        <%= link_to "#", class: "info-tag-div" do  %>
+<!--         <%= link_to "#", class: "info-tag-div" do  %>
           <p class="info-tag-text "><i class="fas fa-quote-right"></i><strong class="ml-1"><%= @source.quotes.count %></strong> </p>
         <% end %>
 
         <%= link_to "#", class: "info-tag-div" do  %>
           <p class="info-tag-text "><i class="fas fa-comment"></i></i><strong class="ml-1"><%= @all_comments.count %></strong> </p>
-        <% end %>
+        <% end %> -->
 
+        <!-- Source Image -->
         <div class="mt-2 mb-2">
           <% if @source.photo.attached? %>
-            <%= cl_image_tag @source.photo.key, class: "article-source-photo" %>
+            <%= cl_image_tag @source.photo.key, class: "source-show-image" %>
           <% else %>
-            <%= cl_image_tag "5v1a9wm3yevk4b8wsuqosjaaou2k", class: "article-source-photo" %>
+            <%= cl_image_tag "5v1a9wm3yevk4b8wsuqosjaaou2k", class: "source-show-image" %>
           <% end %>
         </div>
 
-        <div id="modal-<%= @source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+<!--         <div id="modal-<%= @source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <%= simple_form_for(@source) do |f| %>
@@ -41,7 +44,7 @@
               <% end %>
             </div>
           </div>
-        </div>
+        </div> -->
 
 
 
@@ -52,7 +55,6 @@
         <!-- "\r\n\r\ " for a paragraph with a space, don't forget the space! and replace all " with ' -->
 
 </div>
-
 
   <script>
 

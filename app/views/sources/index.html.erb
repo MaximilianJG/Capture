@@ -1,12 +1,11 @@
-<h1 class="heading"><span class="">Home</span></h1>
+<h1 class="heading"><span class="">My Captures</span></h1>
 
-
-<div class="searchbar">
+<!-- <div class="searchbar">
   <p class="search-bar-icon"><i class="fas fa-search"></i></p>
   <%= form_tag sources_path, method: :get do %>
     <%= text_field_tag :index_filter_query, params[:index_filter_query], class: "form-control searchbar-field", placeholder: "Filter" %>
   <% end %>
-</div>
+</div> -->
 
 <%= render 'shared/sources/source#index' %>
 

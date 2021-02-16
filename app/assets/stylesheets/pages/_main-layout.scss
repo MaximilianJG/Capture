@@ -1,22 +1,21 @@
 .display-flex-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 80px;
 }
 
 .sidebar-rest {
-  width: 18vw;
-  padding-right: 20px;
+  width: 20%;
 }
 
 .center-content {
-  width: 60vw;
-}
-
-.whole-container-right-of-sidebar {
-  width: 100%;
+  width: 60%;
+  padding: 30px;
+  padding-top: 0px;
 }
 
 .friends-bar {
-  width: 20vw;
-  margin: 0px 12px 0px 24px;
+  width: 20%;
 }
