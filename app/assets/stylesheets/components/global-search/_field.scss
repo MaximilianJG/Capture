@@ -1,23 +1,24 @@
 .global-search-field-div {
   position: relative;
+
+  i {
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    font-size: 15px;
+    color: #797979;
+  }
 }
 
 .global-search-form {
-  background-color: #DED0B4;
-  border: 1px solid #181A23;
+  background-color: #F6F6F4;
+  border: 1px solid #797979;
   border-radius: 15px;
   padding-left: 30px;
 }
 
 .global-search-form::placeholder {
-  color: #181A23;
-  font-family: 'Quattrocento Sans', sans-serif;
-}
-
-.search-icon-global-search {
-  position: absolute;
-  top: 3px;
-  left: 10px;
+  color: #797979;
   font-size: 15px;
-  color: #181A23;
+  font-family: 'Open Sans', sans-serif;
 }

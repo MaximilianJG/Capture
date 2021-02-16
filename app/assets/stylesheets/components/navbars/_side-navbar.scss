@@ -1,0 +1,29 @@
+.side-navbar {
+  background-color: #A72301;
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 125px;
+  width: 200px;
+  position: fixed;
+
+}
+
+.sidebar-link {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 10px;
+  align-items: center;
+
+  p {
+    margin-bottom: 0px;
+  }
+
+  .icon {
+    margin-right: 6px;
+  }
+
+  .active {
+    color: black;
+    font-weight: bold;
+  }
+}

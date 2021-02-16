@@ -1,4 +1,23 @@
-.source-show-page {
-  height: 85vh;
-  // overflow-y: scroll;
+.source-show-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 2px;
 }
+
+.source-show-citation {
+  text-align: center;
+  color: #797979 !important;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+
+  a {
+    color: #797979 !important;
+  }
+}
+
+.paragraph-text p {
+  color: white;
+}
+

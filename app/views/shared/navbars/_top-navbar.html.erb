@@ -1,0 +1,30 @@
+<div class="global-nav">
+  <div class="top-navbar">
+
+      <!-- Logo and Name -->
+      <div class="my-2 logo-and-name">
+        <%= link_to sources_path, class: "remove-underline" do  %>
+          <div class="logo-name-d-flex">
+            <%= cl_image_tag "Screenshot_2021-02-14_at_00.59.44_mafn2e", class: "logo", width: 35 %>
+            <h1 class="capture-logo-title">Capture</h1>
+          </div>
+        <% end %>
+      </div>
+      <!--  -->
+
+      <div class="top-navbar-middle">
+        <%= link_to sources_path do  %>
+          <i class="back-btn fas fa-arrow-left"></i>
+        <% end %>
+      </div>
+
+      <div class="top-navbar-global-search">
+        <%= render 'shared/global-search' %>
+      </div>
+
+  </div>
+</div>
+
+
+
+
