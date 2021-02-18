@@ -1,7 +1,7 @@
 
 .overview-header {
-  font-family: 'Quattrocento Sans', sans-serif;
-  color: white;
+  font-family: 'Open Sans';
+  color: black;
   margin-left: -2px;
 }
 
@@ -16,9 +16,11 @@
   padding: 0px;
   border-radius: 8px;
   object-fit: cover;
+  font-family: 'Open Sans';
+  color: black;
 }
 
 .overview-folder-name {
-  color: white;
-  font-family: 'Quattrocento Sans', sans-serif !important;
+  color: black;
+  font-family: 'Open Sans';
 }
