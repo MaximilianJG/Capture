@@ -5,9 +5,11 @@ class SourcePolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    return true
-  end
+  # def index?
+  #   return true
+  # end
+
+
 
   def show?
     true # make it so that only people can see the cards of the people they are following
@@ -32,6 +34,10 @@ class SourcePolicy < ApplicationPolicy
 
   def destroy?
     record.user == user || user.admin
+  end
+
+  def feed?
+    return true
   end
 
 end

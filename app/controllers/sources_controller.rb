@@ -51,9 +51,6 @@ class SourcesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     # @source = Source.find(params[:id]) # can't this go away because we have @source ?
     if @source.update!(strong_source_params)
@@ -67,6 +64,13 @@ class SourcesController < ApplicationController
   def destroy
     @source.destroy
     redirect_to sources_path
+  end
+
+
+  def feed
+    @feed_page = true
+    @sources = policy_scope(Source).where(user: current_user.following)
+    authorize @sources
   end
 
   private

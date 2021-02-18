@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:update, :destroy]
 
+  resources :contacts, only: [:create]
+
   post "relationships/:id", to: "relationships#create", as: "create_relationship"
   delete "relationship/:id", to: "relationships#destroy", as: "delete_relationship"
 
@@ -32,6 +34,7 @@ Rails.application.routes.draw do
 
   get "search", to: "pages#search"
 
-  resources :contacts, only: [:create]
+  get "feed", to: "sources#feed", as: "feed"
+
 
 end

@@ -5,6 +5,8 @@
   max-width: 100%;
   background-color: white;
   border: 1px solid #D8D7D5;
+  flex-grow: 1;
+  width: 65%;
 }
 
 .source-photo {
@@ -33,6 +35,31 @@
   }
 }
 
+
+.source-owner {
+
+  .profile-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 8px;
+  }
+
+  .username {
+    margin: 0px;
+    color: black;
+    font-size: 16px;
+  }
+
+  .time-ago {
+    margin: 0px;
+    color: #797979;
+    font-size: 14px;
+    line-height: 15px;
+
+  }
+}
 
 
 .info-subtitle {
