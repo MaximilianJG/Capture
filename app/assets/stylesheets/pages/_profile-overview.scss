@@ -7,6 +7,24 @@
 
 .folders-activity-div {
   margin-top: 20px;
+  display: flex;
+
+  .col-6 {
+    max-width: 100%;
+    padding: 0px;
+    margin-bottom: 10px;
+  }
+}
+
+#activity-wrapper {
+  margin-left: 20px;
+}
+
+#activity-box {
+  background: white;
+  border: 1px solid #D8D7D5;
+  border-radius: 8px;
+  padding: 5px;
 }
 
 .overview-folder-img {
@@ -24,3 +42,31 @@
   color: black;
   font-family: 'Open Sans';
 }
+
+
+
+.folder {
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid #D8D7D5;
+  border-radius: 8px;
+  color: black;
+
+  :hover {
+    text-decoration: none;
+  }
+
+  .folder-content {
+  display: flex;
+  align-items: center;
+    p {
+      margin-left: 12px;
+      margin-bottom: 0px;
+    }
+  }
+}
+
+
+
+
+
