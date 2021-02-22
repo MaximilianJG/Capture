@@ -50,7 +50,7 @@
               <%= yield %>
             </div>
 
-            <% if @feed_page != true %>
+            <% if @no_right_column != true %>
             <div class="friends-bar"> <!-- this should only be on the sources index page make an if else statement with flex grow the center will then take up the won space-->
               <%= render('shared/right-column/friends-feed') if (user_signed_in? && !@source_page)%>
               <%= render('shared/right-column/source-comments-feed') if (user_signed_in? && @source_page)%>
