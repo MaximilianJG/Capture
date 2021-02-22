@@ -2,8 +2,14 @@ class CommentsController < ApplicationController
 
   def create
 
-    @source = Source.find(params[:source_id])
-    @quote = @source.quotes.first
+    @quote = Quote.find(params[:quote_id])
+
+    if !params[:source_id].nil?
+      @source = Source.find(params[:source_id])
+    else
+      @source = Source.find(@quote.source_id)
+    end
+
 
     # @quote = Quote.find(params[:quote_id])
 
