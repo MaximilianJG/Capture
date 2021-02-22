@@ -1,20 +1,21 @@
 <%= render 'shared/profile-user-header' %>
 
 <div class="row folders-activity-div">
-  <div class="col-6">
+  <div>
     <h3 class="overview-header">Public Folders</h3>
-    <div class="row">
+    <div>
       <% @public_folders.take(4).each do |folder| %>
         <div class="col-6">
 
-          <%= link_to folder_path(folder) do  %>
-          <% if folder.sources.first && folder.sources.first.photo.attached? %>
-            <%= cl_image_tag folder.sources.first.photo.key, class: "overview-folder-img dropdown-toggle" %>
-          <% else %>
-            <%= cl_image_tag "Screenshot_2020-11-30_at_21.47.45_bbqatn", class: "overview-folder-img dropdown-toggle" %>
-          <% end %>
-          <p class="overview-folder-name mt-1 mb-0"><%= folder.folder_name %></p>
-          <p class="overview-folder-name mb-1"><%= folder.sources.count %> Captures</p>
+          <%= link_to folder_path(folder), class: "remove-underline" do  %>
+            <div class="folder">
+              <div class="folder-content">
+                <i class="far fa-folder"></i>
+                <p><%= folder.folder_name %></p>
+              </div>
+            </div>
+        
+          <p class="overview-folder-name mb-1"></p>
           <% end %>
 
         </div>
@@ -22,25 +23,29 @@
     </div>
   </div>
 
-  <div class="col-6">
+  <div class="col-6" id="activity-wrapper">
     <h3 class="overview-header">Recent Activity</h3>
+    
+    <div id=activity-box>
 
-    <% @recent_activity.take(8).each do |activity| %>
+      <% @recent_activity.take(8).each do |activity| %>
 
-    <% if activity.class == Source %>
+        <% if activity.class == Source %>
 
-    <div class="recent-capture">
-      <%= link_to source_path(activity), class: "recent-capture-link" do %>
-        Captured: <%= activity.title %>
+          <div class="recent-capture">
+            <%= link_to source_path(activity), class: "recent-capture-link" do %>
+              Captured: <%= activity.title %>
+            <% end %>
+            <span class="recent-capture-sub-info"><%= link_to "#{activity.website.gsub("www.", "")}", "#{activity.url_of_website}", class: "source-sub-info" %> · by <%= link_to "Tara McKelvey Sterling", "#", class: "source-sub-info"  %> </span>
+          </div>
+        <% else %>
+        commented: <%= activity.class %> <br>
+        <% end %>
+
+
       <% end %>
-      <span class="recent-capture-sub-info"><%= link_to "#{activity.website.gsub("www.", "")}", "#{activity.url_of_website}", class: "source-sub-info" %> · by <%= link_to "Tara McKelvey Sterling", "#", class: "source-sub-info"  %> </span>
+
     </div>
-    <% else %>
-    commented: <%= activity.class %> <br>
-    <% end %>
-
-
-    <% end %>
 
   </div>
 </div>
