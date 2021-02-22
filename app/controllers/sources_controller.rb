@@ -1,6 +1,7 @@
 class SourcesController < ApplicationController
   before_action :set_source, only: [:show, :edit, :update, :destroy]
 
+  # AKA My captures
   def index
     @sources = Source.all
     if params[:index_filter_query].present?
@@ -9,6 +10,9 @@ class SourcesController < ApplicationController
       @sources = policy_scope(Source).where(user: current_user)
     end
     @sources = @sources.order(created_at: :desc)
+
+
+    @folders = Folder.where(user: current_user)
   end
 
   def show
@@ -51,9 +55,6 @@ class SourcesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     # @source = Source.find(params[:id]) # can't this go away because we have @source ?
     if @source.update!(strong_source_params)
@@ -67,6 +68,13 @@ class SourcesController < ApplicationController
   def destroy
     @source.destroy
     redirect_to sources_path
+  end
+
+
+  def feed
+    @feed_page = true
+    @sources = policy_scope(Source).where(user: current_user.following)
+    authorize @sources
   end
 
   private

@@ -24,8 +24,24 @@ sports_max = Folder.create!(folder_name: "Sports", user_id: max.id)
 
 # US POLITICS
 # Tim
-Source.create!(title: "Trump's postal-vote tweet misleading, says Twitter", website: "bbc.co.uk", url_of_website: "https://www.bbc.com/news/technology-53888376", user_id: tim.id, folder_id: us_politics_tim.id)
-Source.create!(title: "Joe Biden formally accepts Democratic nomination", website: "bbc.co.uk", url_of_website: "https://www.bbc.co.uk/programmes/w172x2yv3thdy4k", user_id: tim.id, folder_id: us_politics_tim.id)
+source = Source.create!(title: "Trump's postal-vote tweet misleading, says Twitter", website: "bbc.co.uk", url_of_website: "https://www.bbc.com/news/technology-53888376", user_id: tim.id, folder_id: us_politics_tim.id)
+quote = Quote.create!(content: "this is such a great first quote this is such a great first quote this is such a great first quote this is such a great first quote this is such a great first quote", source_id: source.id, url_of_quote: source.url_of_website, user_id: tim.id)
+Comment.create!(content: "this is so absolutely great and I think this is so true aswell!", quote_id: quote.id, user_id: tim.id)
+
+Quote.create!(content: "tim quote 2", source_id: source.id, url_of_quote: source.url_of_website, user_id: tim.id)
+Quote.create!(content: "tim quote 3", source_id: source.id, url_of_quote: source.url_of_website, user_id: tim.id)
+Quote.create!(content: "tim quote 4", source_id: source.id, url_of_quote: source.url_of_website, user_id: tim.id)
+Quote.create!(content: "tim quote 5", source_id: source.id, url_of_quote: source.url_of_website, user_id: tim.id)
+Quote.create!(content: "tim quote 6", source_id: source.id, url_of_quote: source.url_of_website, user_id: tim.id)
+
+
+source = Source.create!(title: "Joe Biden formally accepts Democratic nomination", website: "bbc.co.uk", url_of_website: "https://www.bbc.co.uk/programmes/w172x2yv3thdy4k", user_id: tim.id, folder_id: us_politics_tim.id)
+Quote.create!(content: "tim quote 1", source_id: source.id, url_of_quote: source.url_of_website, user_id: tim.id)
+Quote.create!(content: "tim quote 2", source_id: source.id, url_of_quote: source.url_of_website, user_id: tim.id)
+Quote.create!(content: "tim quote 3", source_id: source.id, url_of_quote: source.url_of_website, user_id: tim.id)
+Quote.create!(content: "tim quote 4", source_id: source.id, url_of_quote: source.url_of_website, user_id: tim.id)
+Quote.create!(content: "tim quote 5", source_id: source.id, url_of_quote: source.url_of_website, user_id: tim.id)
+Quote.create!(content: "tim quote 6", source_id: source.id, url_of_quote: source.url_of_website, user_id: tim.id)
 
 # Marc
 Source.create!(title: "Trump's postal-vote tweet misleading, says Twitter", website: "bbc.co.uk", url_of_website: "https://www.bbc.com/news/technology-53888376", user_id: marc.id, folder_id: us_politics_marc.id)

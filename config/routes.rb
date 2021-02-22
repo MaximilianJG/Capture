@@ -10,12 +10,18 @@ Rails.application.routes.draw do
 
 
 
-  resources :quotes, only: [:new, :create, :show]
+
+
+  resources :quotes, only: [:new, :create, :show] do
+    resources :comments, only: [:create], as: "create_comment_from_feed"
+  end
   # post "quotes/create_quote_within_app", to: "quotes#create_quote_within_app", as: "create_quote_within_app"
 
   resources :folders, only: [:show, :edit, :new, :create]
 
   resources :relationships, only: [:update, :destroy]
+
+  resources :contacts, only: [:create]
 
   post "relationships/:id", to: "relationships#create", as: "create_relationship"
   delete "relationship/:id", to: "relationships#destroy", as: "delete_relationship"
@@ -32,6 +38,7 @@ Rails.application.routes.draw do
 
   get "search", to: "pages#search"
 
-  resources :contacts, only: [:create]
+  get "feed", to: "sources#feed", as: "feed"
+
 
 end

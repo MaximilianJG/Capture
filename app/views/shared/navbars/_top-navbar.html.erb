@@ -13,8 +13,11 @@
       <!--  -->
 
       <div class="top-navbar-middle">
-        <%= link_to sources_path do  %>
-          <i class="back-btn fas fa-arrow-left"></i>
+        <!-- Back Arrow -->
+        <% if @source_page == true %>
+          <%= link_to sources_path do  %>
+            <i class="back-btn fas fa-arrow-left"></i>
+          <% end %>
         <% end %>
       </div>
 

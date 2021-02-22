@@ -2,9 +2,12 @@
   background-color: #A72301;
   border-radius: 8px;
   padding: 24px;
-  margin-top: 125px;
+  // margin-top: 91px;
+  // position: fixed;
   width: 200px;
-  position: fixed;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 173px;
 
 }
 

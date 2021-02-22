@@ -1,70 +1,54 @@
 <div class="">
   <% @sources.each do |source| %>
     <div class="source-card">
+      <div class="d-flex">
 
-        <div class="d-flex">
-
-          <div class="">
-              <% if source.photo.attached? %>
-                <%= cl_image_tag source.photo.key, class: "source-photo" %>
-              <% else %>
-                <%= cl_image_tag "b08hxPY_jhyrxg", class: "source-photo" %>
-              <% end %>
-          </div>
-
-          <div class="">
-
-            <!-- Source Card Title -->
-            <%= link_to source_path(source),class: "remove-underline m-0" do %>
-              <p class="source-card-title"><strong><%= source.title %></strong></p>
-            <% end %>
-
-            <!-- Source Card Citation -->
-            <p class="info-subtitle"><%= link_to "#{source.website.gsub("www.", "")}", "#{source.url_of_website}"%> · by <%= link_to "Tara McKelvey Sterling", "#"  %>, Virginia, ·  September 22, 2020</p>
-
-            <%= link_to "#", data: {toggle: "modal", target: "#modal-#{source.id}"}, class: "info-tag-div" do  %>
-            <p class="info-tag-text"><i class="fas fa-folder"></i> <strong><%= source.folder.folder_name %></strong> </p>
-            <% end %>
-
-          </div>
-
-<!--           <div class="ml-auto  d-flex flex-column align-items-end">
-
-
-            <%= link_to "#source-#{source.id}", data: {toggle: "collapse"}, class: "remove-underline m-0" do %>
-              <span class="source-icon"><i class="fas fa-caret-down"></i></span>
-            <% end %>
-          </div> -->
-
-        </div>
-
-
-
-
-
-
-<!--
-        <div id="modal-<%= source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <%= simple_form_for(source) do |f| %>
-              <%= f.input :folder_id, collection: Folder.where(user_id: current_user.id), label_method: :folder_name, label: "Folder name", id: "move-folder-form", include_blank: false %>
-              <%= f.submit %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <ul class="source-list-quotes collapse" id="source-<%= source.id%>">
-          <% source.quotes.each do |quote| %>
-            <div class="source-quote-div" style="cursor: pointer;">
-              <i class="fas fa-quote-right"></i>
-              <div class="source-quote-text source-quote-overflow" style="cursor: pointer;">
-                <li class="truncate"><%= quote.content %></li>
-              </div>
-            </div>
+        <div class="">
+          <% if source.photo.attached? %>
+            <%= cl_image_tag source.photo.key, class: "source-photo" %>
+          <% else %>
+            <%= cl_image_tag "b08hxPY_jhyrxg", class: "source-photo" %>
           <% end %>
-        </ul>
- -->
+        </div>
+
+        <div class="">
+          <!-- Source Card Title -->
+          <%= link_to source_path(source),class: "remove-underline m-0" do %>
+            <p class="source-card-title"><strong><%= source.title %></strong></p>
+          <% end %>
+
+          <!-- Source Card Citation -->
+          <p class="info-subtitle"><%= link_to "#{source.website.gsub("www.", "")}", "#{source.url_of_website}"%> · by <%= link_to "Tara McKelvey Sterling", "#"  %>, Virginia, ·  September 22, 2020</p>
+
+          <!-- Source Owner -->
+          <div class="d-flex source-owner">
+            <div>
+              <% if source.user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class: "profile-avatar" %>
+              <% else %>
+                <%= cl_image_tag "b08hxPY_jhyrxg", class: "profile-avatar" %>
+              <% end %>
+            </div>
+
+            <div>
+              <p class="username"> <%= source.user.username %> </p>
+              <p class="time-ago"> <%= time_ago_in_words(source.created_at).gsub('about','').gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago </p>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+      </div>
     </div>
   <% end %>
 </div>
+
