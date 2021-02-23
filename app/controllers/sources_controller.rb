@@ -3,6 +3,7 @@ class SourcesController < ApplicationController
 
   # AKA My captures
   def index
+    @no_right_column = true
     @sources = Source.all
     if params[:index_filter_query].present?
       @sources = policy_scope(Source).filter_sources_with_quotes(params[:index_filter_query]).where(user: current_user)
@@ -72,7 +73,7 @@ class SourcesController < ApplicationController
 
 
   def feed
-    @feed_page = true
+    @no_right_column = true
     @sources = policy_scope(Source).where(user: current_user.following)
     authorize @sources
   end

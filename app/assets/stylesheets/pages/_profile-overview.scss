@@ -52,6 +52,7 @@
   border-radius: 8px;
   color: black;
 
+
   :hover {
     text-decoration: none;
   }
@@ -59,11 +60,32 @@
   .folder-content {
   display: flex;
   align-items: center;
+
     p {
       margin-left: 12px;
       margin-bottom: 0px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis !important;
     }
   }
+}
+// hello
+
+.folder:hover {
+  background: #F7F7F7;
+}
+
+
+// MY CAPTURES FOLDER
+
+.my-captures-folder-row {
+  margin-right: -7.5px;
+  margin-left: -7.5px;
+}
+
+.my-captures-folder {
+  padding: 7.5px;
 }
 
 
