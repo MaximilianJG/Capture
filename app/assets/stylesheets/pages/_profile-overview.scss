@@ -18,13 +18,31 @@
 
 #activity-wrapper {
   margin-left: 20px;
+  flex-grow: 1;
 }
 
-#activity-box {
-  background: white;
-  border: 1px solid #D8D7D5;
+.activity-time-ago {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.activity-flex {
+  display: flex;
+  align-items: center;
+}
+
+#activity-card {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.activity-source-photo {
+  width: 60px;
+  height: 60px;
+  -o-object-fit: cover;
+  object-fit: cover;
   border-radius: 8px;
-  padding: 5px;
+  margin-right: 10px;
 }
 
 .overview-folder-img {

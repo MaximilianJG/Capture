@@ -48,9 +48,11 @@ class PagesController < ApplicationController
   end
 
   def user_profile_followers
+    @no_right_column = true
   end
 
   def user_profile_following
+    @no_right_column = true
   end
 
   private

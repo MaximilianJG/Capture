@@ -26,18 +26,42 @@
   <div class="col-6" id="activity-wrapper">
     <h3 class="overview-header">Recent Activity</h3>
     
-    <div id=activity-box>
+    <div>
 
       <% @recent_activity.take(8).each do |activity| %>
 
         <% if activity.class == Source %>
 
-          <div class="recent-capture">
-            <%= link_to source_path(activity), class: "recent-capture-link" do %>
-              Captured: <%= activity.title %>
-            <% end %>
-            <span class="recent-capture-sub-info"><%= link_to "#{activity.website.gsub("www.", "")}", "#{activity.url_of_website}", class: "source-sub-info" %> · by <%= link_to "Tara McKelvey Sterling", "#", class: "source-sub-info"  %> </span>
+
+          <div class="source-card mt-0" id="activity-card">
+
+            <div class="activity-flex">
+
+              <div class="">
+                <% if activity.photo.attached? %>
+                  <%= cl_image_tag activity.photo.key, class: "activity-source-photo" %>
+                <% else %>
+                  <%= cl_image_tag "b08hxPY_jhyrxg", class: "activity-source-photo" %>
+                <% end %>
+              </div>
+              <div>
+                <%= link_to source_path(activity), class: "recent-capture-link" do %>
+                  Captured: <%= activity.title %>
+                <% end %>
+                <span class="recent-capture-sub-info"><%= link_to "#{activity.website.gsub("www.", "")}", "#{activity.url_of_website}", class: "source-sub-info" %> · by <%= link_to "Tara McKelvey Sterling", "#", class: "source-sub-info"  %> </span>
+                <p class="activity-time-ago"> <%= time_ago_in_words(activity.created_at).gsub('about','').gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago </p>
+              </div>
+          
+            </div>
+
+
           </div>
+
+
+
+
+
+
         <% else %>
         commented: <%= activity.class %> <br>
         <% end %>
