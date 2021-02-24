@@ -3,6 +3,7 @@ class SourcesController < ApplicationController
 
   # AKA My captures
   def index
+    @heading = "My Captures"
     @no_right_column = true
     @sources = Source.all
     if params[:index_filter_query].present?
@@ -17,6 +18,7 @@ class SourcesController < ApplicationController
   end
 
   def show
+    @heading = "My Captures"
     @source_page = true
 
     @all_comments = []
@@ -73,6 +75,7 @@ class SourcesController < ApplicationController
 
 
   def feed
+    @heading = "Start"
     @no_right_column = true
     @sources = policy_scope(Source).where(user: current_user.following)
     authorize @sources

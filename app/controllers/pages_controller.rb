@@ -28,6 +28,7 @@ class PagesController < ApplicationController
   end
 
   def user_profile_overview
+    @no_right_column = true
     @public_folders = Folder.where(user_id: params[:id])
     # @public_folders.sort_by{|folder| folder.sources.count} ## public folders has to be sorted by amount of sources in each folder. (only folders with most sources should show.)
 
