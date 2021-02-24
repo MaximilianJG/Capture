@@ -1,7 +1,13 @@
 <div class="">
-  <% @sources.each do |source| %>
+  <% @sources.each_with_index do |source, index| %>
     <div class="source-and-quote-cards">
-    <div class="source-card">
+
+      <% if index > 0 %>
+        <div class="source-card">
+          <% else %>
+        <div class="source-card mt-0">
+      <% end %>
+
       <div class="d-flex">
 
         <div class="">
@@ -44,9 +50,11 @@
       </div>
     </div>
 
-      <div id="carouselExampleControls-<%= source.id %>" class="carousel slide feed-quote-cards" data-interval="false">
-
-
+      <% if index > 0 %>
+        <div id="carouselExampleControls-<%= source.id %>" class="carousel slide feed-quote-cards" data-interval="false">
+          <% else %>
+        <div id="carouselExampleControls-<%= source.id %>" class="carousel slide feed-quote-cards mt-0" data-interval="false">
+      <% end %>
 
         <div class="carousel-inner">
 

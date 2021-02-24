@@ -60,6 +60,7 @@
   .folder-content {
   display: flex;
   align-items: center;
+  font-size: 15px;
 
     p {
       margin-left: 12px;
@@ -79,15 +80,64 @@
 
 // MY CAPTURES FOLDER
 
-.my-captures-folder-row {
+.my-captures-row {
   margin-right: -7.5px;
   margin-left: -7.5px;
 }
 
-.my-captures-folder {
+.my-captures-col {
   padding: 7.5px;
+  padding-top: 0px;
 }
 
+// My Captures - Captures
+
+.my-captures-source {
+  background-color: white;
+  height: 200px;
+  border-radius: 8px;
+  border: 1px solid #D8D7D5;
+
+  .image img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px 8px 0px 0px;
+    border-bottom: 1px solid #D8D7D5;
+  }
+
+  .description {
+    padding: 10px;
+
+    .title {
+      font-size: 15px;
+      margin-bottom: 10px;
+      max-width: 100%;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      color: black;
+    }
+
+    .time-since-saved {
+      font-size: 13px;
+      color: #797979;
+    }
+
+    .move-folder-icon {
+      color: #797979;
+    }
+  }
+}
+
+.move-folder-icon:hover {
+  color: black !important;
+}
+
+.my-captures-source:hover {
+  background-color: #F7F7F7;
+}
 
 
 
