@@ -22,16 +22,11 @@
       <% end %>
     </div>
   </div>
-
   <div class="col-6" id="activity-wrapper">
     <h3 class="overview-header">Recent Activity</h3>
-    
     <div id=activity-box>
-
       <% @recent_activity.take(8).each do |activity| %>
-
         <% if activity.class == Source %>
-
           <div class="recent-capture">
             <%= link_to source_path(activity), class: "recent-capture-link" do %>
               Captured: <%= activity.title %>
@@ -41,12 +36,8 @@
         <% else %>
         commented: <%= activity.class %> <br>
         <% end %>
-
-
       <% end %>
-
     </div>
-
   </div>
 </div>
 
