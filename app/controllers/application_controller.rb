@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_folders, if: :user_signed_in?
+  before_action :set_folders, :set_users if :user_signed_in?
 
   include Pundit
 
@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
   end
 
   def set_folders
-      @folders = Folder.where(user: current_user)
+    @folders = Folder.where(user: current_user)
+  end
+
+  def set_users
+    @users = User.all- current_user.following
   end
 end

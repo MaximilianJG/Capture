@@ -45,6 +45,7 @@
 
             <div class="sidebar-rest">
               <%= render('shared/navbars/side-navbar', folders: @folders) if user_signed_in? %> <!-- this is comming from the application controller (set_folder method) -->
+              <%= render('shared/navbars/widget-navbar', users: @users) if user_signed_in? %> <!-- this is comming from the application controller (set_folder method) -->
             </div>
 
             <div class="center-content">

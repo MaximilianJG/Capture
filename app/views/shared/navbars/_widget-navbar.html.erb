@@ -1,0 +1,21 @@
+<!-- Links -->
+<div class="side-navbar">
+  <div class="sidebar-links">
+  
+    <% @users.each do |user| %>
+        <%= link_to create_relationship_path(user, current_user), method: :create, class: "" do  %>
+            <div class="d-flex sidebar-link ">
+                <i class="far fa-plus-square"></i>                
+                <p class="">Follow</p><%= user.email %>
+            </div>
+        <% end %>
+    <% end %>
+
+  </div>
+</div>
+
+
+
+
+
+
