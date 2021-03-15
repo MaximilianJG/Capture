@@ -1,7 +1,6 @@
 <!-- <h1 class="heading"><span class="">My Captures</span></h1>
  -->
 
-
 <!-- AKA My Captures -->
 
 <div class="row my-captures-row">
@@ -38,6 +37,19 @@
 
         <div class="description">
           <span class="title"><%= source.title %></span>
+
+              <% tags = "" %>
+              <% source.tags.each_with_index do |tag, index| %>
+                <% if index <= 0 %>
+                    <% tags << "##{tag.name}" %>
+                <% else %>
+                  <% tags << ", ##{tag.name}" %>
+                <% end %>
+              <% end %>
+
+              <span class="tags"><%= tags %></span>
+
+
           <div class="d-flex justify-content-between align-items-center">
             <span class="time-since-saved"> <%= time_ago_in_words(source.created_at).gsub('about','').gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago </span>
 
@@ -45,6 +57,7 @@
             <%= link_to "#", data: {toggle: "modal", target: "#modal-#{source.id}"}, class: "" do  %>
               <i class="move-folder-icon far fa-folder"></i>
             <% end %>
+
 
             <div id="modal-<%= source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
               <div class="modal-dialog modal-lg">
@@ -56,8 +69,6 @@
                 </div>
               </div>
             </div>
-
-
 
           </div>
         </div>

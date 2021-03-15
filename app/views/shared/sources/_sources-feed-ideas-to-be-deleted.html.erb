@@ -1,0 +1,151 @@
+  <% @sources.each_with_index do |source, index| %>
+    <div class="source-and-quote-cards">
+
+      <% if index > 0 %>
+        <div class="source-card">
+          <% else %>
+        <div class="source-card mt-0">
+      <% end %>
+
+      <div class="d-flex">
+
+        <div class="">
+          <% if source.photo.attached? %>
+            <%= cl_image_tag source.photo.key, class: "source-photo" %>
+          <% else %>
+            <%= cl_image_tag "b08hxPY_jhyrxg", class: "source-photo" %>
+          <% end %>
+        </div>
+
+        <div class="">
+          <!-- Source Card Title -->
+          <%= link_to source_path(source),class: "remove-underline m-0" do %>
+            <p class="source-card-title"><strong><%= source.title %></strong></p>
+          <% end %>
+
+          <!-- Source Card Citation -->
+          <p class="info-subtitle"><%= link_to "#{source.website.gsub("www.", "")}", "#{source.url_of_website}"%> · by <%= link_to "Tara McKelvey Sterling", "#"  %>, Virginia, ·  September 22, 2020</p>
+
+          <!-- Source Owner -->
+          <div class="d-flex source-owner">
+            <div>
+              <% if source.user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class: "profile-avatar" %>
+              <% else %>
+                <%= cl_image_tag "b08hxPY_jhyrxg", class: "profile-avatar" %>
+              <% end %>
+            </div>
+
+            <div>
+              <%= link_to user_profile_overview_path(source.user) do  %>
+                <p class="username"> <%= source.user.username %> </p>
+              <% end %>
+              <p class="time-ago"> <%= time_ago_in_words(source.created_at).gsub('about','').gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago </p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+      <% if index > 0 %>
+        <div id="carouselExampleControls-<%= source.id %>" class="carousel slide feed-quote-cards" data-interval="false">
+          <% else %>
+        <div id="carouselExampleControls-<%= source.id %>" class="carousel slide feed-quote-cards mt-0" data-interval="false">
+      <% end %>
+
+        <div class="carousel-inner">
+
+          <% i = 0 %>
+          <% source.quotes.each_with_index do |quote, index| %>
+            <% if index == 0  %>
+              <div class="carousel-item quote-card active">
+                <p class="quote">"<%= quote.content %>"</p>
+
+                <div class="d-flex">
+                  <div>
+                    <% if quote.user.photo.attached? %>
+                      <%= cl_image_tag current_user.photo.key, class: "quote-owner-avatar" %>
+                    <% else %>
+                      <%= cl_image_tag "b08hxPY_jhyrxg", class: "quote-owner-avatar" %>
+                    <% end %>
+                  </div>
+
+                  <div>
+                    <% if !quote.comments.first.nil? %>
+                    <p class="quote-comment"><%= quote.comments.first.content %></p>
+
+                    <% else %>
+                      <h1>hey</h1>
+
+                    <%= link_to "#quote-#{quote.id}", data: {toggle: "collapse"}, class: "remove-underline" do   %>
+                      <p class="comment-icon"><i class="far fa-comment"></i> <%= quote.comments.count %></p>
+                    <% end %>
+
+                      <% @comment = Comment.new %>
+    <div id="quote-<%= quote.id%>" class="collapse" >
+
+
+
+      <%= form_tag quote_create_comment_from_feed_index_path(quote), method: :post do %>
+         <%= text_field_tag :content, params[:content], class: "comment-input-field", placeholder: "Say something"  %>
+      <% end %>
+    </div>
+
+
+
+                    <% end %>
+                  </div>
+                </div>
+
+
+              </div>
+
+            <% else %>
+
+              <div class="carousel-item quote-card">
+                <p class="quote">"<%= quote.content %>"</p>
+              </div>
+
+
+
+            <% end %>
+          <% end %>
+        </div>
+
+<!--         <a class="carousel-control-prev" href="#carouselExampleControls-<%= source.id %>" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a> -->
+
+        <a class="carousel-control-next" href="#carouselExampleControls-<%= source.id %>" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+
+    </div>
+  <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

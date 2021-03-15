@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_folders, if: :user_signed_in?
+  # before_action :set_folders, if: :user_signed_in?
 
   include Pundit
 
@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
-  def set_folders
-      @folders = Folder.where(user: current_user)
-  end
+  # def set_folders
+  #     @folders = Folder.where(user: current_user)
+  # end
 end

@@ -5,7 +5,7 @@ class FoldersController < ApplicationController
   def show
     @folder = Folder.find(params[:id])
     authorize @folder
-
+    @heading = @folder.folder_name
     if params[:folder_filter_query].present?
       # search for sources with query
       @sources = policy_scope(Source).filter_sources_with_quotes(params[:folder_filter_query]).where(user: current_user)
@@ -19,6 +19,8 @@ class FoldersController < ApplicationController
 
    @sources = @sources.sort_by { |source| source.created_at } # isn't working yet either
     # @sources = @sources.order(created_at: :desc) <-- is not working because its not active record
+    @no_right_column = true
+
   end
 
   def new
