@@ -1,1 +1,5 @@
-Here goes the feed
+<% @sources.order(created_at: :desc).each do |source| %>
+<%= source.title %>
+<br>
+<br>
+<% end %>
