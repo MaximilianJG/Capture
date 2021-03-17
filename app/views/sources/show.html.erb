@@ -6,26 +6,6 @@
 
       <p class="source-show-citation"><%= link_to "#{@source.website.gsub("www.", "")}", "#{@source.url_of_website}"%> · by <%= link_to "Tara McKelvey Sterling", "#"  %>, Virginia, ·  September 22, 2020</p>
 
-
-<!--       <% if @source.user != current_user %>
-        <%= link_to "#", class: "info-tag-div" do  %>
-          <p class="info-tag-text "><i class="fas fa-user"></i><strong class="ml-1"><%= @source.user.username %></strong> </p>
-        <% end %>
-      <% else %>
-
-        <%= link_to "#", data: {toggle: "modal", target: "#modal-#{@source.id}"}, class: "info-tag-div" do  %>
-          <p class="info-tag-text"><i class="fas fa-folder"></i> <strong><%= @source.folder.folder_name %></strong> </p>
-        <% end %>
-      <% end %> -->
-
-<!--         <%= link_to "#", class: "info-tag-div" do  %>
-          <p class="info-tag-text "><i class="fas fa-quote-right"></i><strong class="ml-1"><%= @source.quotes.count %></strong> </p>
-        <% end %>
-
-        <%= link_to "#", class: "info-tag-div" do  %>
-          <p class="info-tag-text "><i class="fas fa-comment"></i></i><strong class="ml-1"><%= @all_comments.count %></strong> </p>
-        <% end %> -->
-
         <!-- Source Image -->
         <div class="mt-2 mb-2">
           <% if @source.photo.attached? %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_07_115322) do
+ActiveRecord::Schema.define(version: 2021_02_24_191326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,18 +90,37 @@ ActiveRecord::Schema.define(version: 2021_02_07_115322) do
     t.index ["receiver_id"], name: "index_relationships_on_receiver_id"
   end
 
+  create_table "source_tags", force: :cascade do |t|
+    t.bigint "source_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["source_id"], name: "index_source_tags_on_source_id"
+    t.index ["tag_id"], name: "index_source_tags_on_tag_id"
+  end
+
   create_table "sources", force: :cascade do |t|
     t.string "title"
     t.string "website"
     t.date "date_of_article"
     t.string "url_of_website"
     t.bigint "user_id", null: false
-    t.bigint "folder_id", null: false
+    t.bigint "folder_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "content"
+    t.bigint "source_tag_id"
     t.index ["folder_id"], name: "index_sources_on_folder_id"
+    t.index ["source_tag_id"], name: "index_sources_on_source_tag_id"
     t.index ["user_id"], name: "index_sources_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "source_tag_id"
+    t.index ["source_tag_id"], name: "index_tags_on_source_tag_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -129,6 +148,10 @@ ActiveRecord::Schema.define(version: 2021_02_07_115322) do
   add_foreign_key "quotes", "users"
   add_foreign_key "relationships", "users", column: "asker_id"
   add_foreign_key "relationships", "users", column: "receiver_id"
+  add_foreign_key "source_tags", "sources"
+  add_foreign_key "source_tags", "tags"
   add_foreign_key "sources", "folders"
+  add_foreign_key "sources", "source_tags"
   add_foreign_key "sources", "users"
+  add_foreign_key "tags", "source_tags"
 end

@@ -1,15 +1,17 @@
 class Source < ApplicationRecord
   belongs_to :user
-  belongs_to :folder
+  belongs_to :folder, optional: true
   has_many :quotes, dependent: :destroy
   has_one_attached :photo
+  has_many :source_tags
+  has_many :tags, through: :source_tags
 
 
   validates :title, presence: true
   validates :website, presence: true
   # validates :date_of_article, presence: true
   validates :user_id, presence: true
-  validates :folder_id, presence: true
+  # validates :folder_id, presence: true
   validates :url_of_website, presence: true
 
   include PgSearch::Model
@@ -34,3 +36,5 @@ end
 #     content: 'C'
 #   }
 # end
+
+
