@@ -39,7 +39,6 @@ class FoldersController < ApplicationController
     end
   end
 
-
 private
 
 def folder_params

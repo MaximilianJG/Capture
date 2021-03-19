@@ -1,7 +1,5 @@
 class QuotesController < ApplicationController
-
   skip_before_action :verify_authenticity_token, only: [:create, :create_quote_within_app]
-
 
   def show
     @quote = Quote.find(params[:id])

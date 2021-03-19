@@ -17,5 +17,4 @@ class FolderPolicy < ApplicationPolicy
   def create?
     true
   end
-
 end

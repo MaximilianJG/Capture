@@ -9,8 +9,6 @@ class SourcePolicy < ApplicationPolicy
   #   return true
   # end
 
-
-
   def show?
     true # make it so that only people can see the cards of the people they are following
     # record.user == user || user.admin
@@ -39,5 +37,4 @@ class SourcePolicy < ApplicationPolicy
   def feed?
     return true
   end
-
 end

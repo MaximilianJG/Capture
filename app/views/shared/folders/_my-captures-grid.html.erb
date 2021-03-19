@@ -1,0 +1,20 @@
+<% unless @folders.nil? %>
+  <div class="row my-captures-row">
+    <% @folders.each do |folder| %>
+      <div class="col-3 my-captures-col">
+
+        <%= link_to folder_path(folder), class: "remove-underline" do  %>
+          <div class="folder">
+            <div class="folder-content">
+              <i class="far fa-folder"></i>
+              <p><%= folder.folder_name %></p>
+            </div>
+          </div>
+
+        <p class="overview-folder-name mb-1"></p>
+        <% end %>
+
+      </div>
+    <% end %>
+  </div>
+<% end %>

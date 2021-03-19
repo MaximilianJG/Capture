@@ -4,42 +4,21 @@
 
     <h1 class="heading mb-2"><%= @source.title %></h1>
 
-      <p class="source-show-citation"><%= link_to "#{@source.website.gsub("www.", "")}", "#{@source.url_of_website}"%> · by <%= link_to "Tara McKelvey Sterling", "#"  %>, Virginia, ·  September 22, 2020</p>
+    <p class="source-show-citation"><%= link_to "#{@source.website.gsub("www.", "")}", "#{@source.url_of_website}"%> · by <%= link_to "Tara McKelvey Sterling", "#"  %>, Virginia, ·  September 22, 2020</p>
 
-        <!-- Source Image -->
-        <div class="mt-2 mb-2">
-          <% if @source.photo.attached? %>
-            <%= cl_image_tag @source.photo.key, class: "source-show-image" %>
-          <% else %>
-            <%= cl_image_tag "5v1a9wm3yevk4b8wsuqosjaaou2k", class: "source-show-image" %>
-          <% end %>
-        </div>
-
-<!--         <div id="modal-<%= @source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <%= simple_form_for(@source) do |f| %>
-              <%= f.input :folder_id, collection: Folder.where(user_id: current_user.id), label_method: :folder_name, label: "Folder name", id: "move-folder-form", include_blank: false %>
-              <%= f.submit %>
-              <% end %>
-            </div>
-          </div>
-        </div> -->
-
-
-
-    <div id="text" class="paragraph-text">
-      <%= simple_format(@source.content) %>
+    <!-- Source Image -->
+    <div class="mt-2 mb-2">
+      <% if @source.photo.attached? %>
+        <%= cl_image_tag @source.photo.key, class: "source-show-image" %>
+      <% else %>
+        <%= cl_image_tag "5v1a9wm3yevk4b8wsuqosjaaou2k", class: "source-show-image" %>
+      <% end %>
     </div>
-
-        <!-- "\r\n\r\ " for a paragraph with a space, don't forget the space! and replace all " with ' -->
-
-</div>
+  </div>
 
   <script>
 
 // HIGHLIGHT EXISTING QUOTES
-
     function highlight(text, id) {
       var inputText = document.getElementById("text");
       var innerHTML = inputText.innerHTML;

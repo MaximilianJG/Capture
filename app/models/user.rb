@@ -32,7 +32,7 @@ class User < ApplicationRecord
     users = relationships.map { |relationship| relationship.receiver }
   end
 
-private
+  private
 
   def make_default_folder
     Folder.create(folder_name: "My Latest Captures", user: self)

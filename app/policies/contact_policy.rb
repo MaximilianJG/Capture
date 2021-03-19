@@ -5,8 +5,7 @@ class ContactPolicy < ApplicationPolicy
     end
   end
 
-def create?
-  true
-end
-
+  def create?
+    true
+  end
 end

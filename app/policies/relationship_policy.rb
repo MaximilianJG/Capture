@@ -12,5 +12,4 @@ class RelationshipPolicy < ApplicationPolicy
   def destroy?
     true
   end
-
 end
