@@ -1,4 +1,4 @@
-<%= render 'shared/profile-user-header' %>
+<%= render 'pages/profile-header' %>
 
 <div class="row folders-activity-div">
   <div>
@@ -14,7 +14,7 @@
                 <p><%= folder.folder_name %></p>
               </div>
             </div>
-        
+
           <p class="overview-folder-name mb-1"></p>
           <% end %>
 
@@ -25,7 +25,7 @@
 
   <div class="col-6" id="activity-wrapper">
     <h3 class="overview-header">Recent Activity</h3>
-    
+
     <div id=activity-box>
 
       <% @recent_activity.take(8).each do |activity| %>

@@ -1,7 +1,5 @@
 class RelationshipsController < ApplicationController
-
   def create
-
     @follower = User.find(params[:id])
     @relationship = Relationship.new(asker: current_user, receiver: @follower, status: 1)
     authorize @relationship

@@ -4,34 +4,28 @@
 
 
 
-@import "comment-feed/cards";
+@import "comment-columns/cards";
 
 @import "global-search/results";
-@import "global-search/field";
+@import "global-search/search-bar";
 
 @import "landingpage/banner";
 @import "landingpage/button";
 @import "landingpage/navbar";
 
-@import "profile/dropdown";
 @import "profile/follow-cards";
 @import "profile/header";
 @import "profile/recent-activity";
+@import "profile/general";
+
 
 @import "navbars/side-navbar";
 @import "navbars/top-navbar";
 
-@import "search-user-bar/search-user-bar";
+@import "my-captures/filter-field";
+@import "my-captures/source-cards";
 
-
-
-
-@import "source#index-folder#show/filter-field";
-@import "source#index-folder#show/source-cards";
-@import "source#index-folder#show/source-feed";
-
-@import "source#show/quote-cards"; // nicht genutzt
-@import "source#show/source-show-page";
+@import "source#show/general";
 
 
 

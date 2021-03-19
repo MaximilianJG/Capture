@@ -12,17 +12,10 @@ class SourcesController < ApplicationController
     # else
     #   @sources = policy_scope(Source).where(user: current_user)
     # end
+
     @sources = @sources.order(created_at: :desc)
 
-
     @folders = Folder.where(user: current_user)
-
-    # automatic_create
-    # file = URI.open("https://ichef.bbci.co.uk/news/240/cpsprodpb/15A8C/production/_117561788_eeaaf6ed-5fbe-4235-95f2-7fe3a49b420d.jpg")
-    # @source.photo.attach(io: file, filename: 'image.jpg', content_type: 'image/jpg')
-
-
-
   end
 
   def show
@@ -81,7 +74,6 @@ class SourcesController < ApplicationController
     redirect_to sources_path
   end
 
-
   def feed
     @heading = "Start"
     @no_right_column = true
@@ -103,63 +95,4 @@ class SourcesController < ApplicationController
     @source = Source.find(params[:id])
     authorize @source
   end
-
-  # require 'nokogiri'
-  # require 'httparty'
-  # require 'byebug'
-
-  # def bbc_scraper
-  #   website_url = 'https://www.bbc.com/'
-  #   unparsed_page = HTTParty.get(website_url)
-  #   parsed_page = Nokogiri::HTML(unparsed_page)
-  #   news_listings = parsed_page.css('li.media-list__item')
-
-  #   articles = Array.new
-
-  #   news_listings.each do |news_listing|
-  #     listing_url = 'https://www.bbc.com' + news_listing.css('a')[0].attributes['href'].value
-  #     unparsed_page = HTTParty.get(listing_url)
-  #     parsed_page = Nokogiri::HTML(unparsed_page)
-
-  #     # Title
-  #     if parsed_page.css('h1#main-heading').text.strip == ""
-  #       article_title = parsed_page.css('header').text.strip
-  #     else
-  #       article_title = parsed_page.css('h1#main-heading').text.strip
-  #     end
-
-  #     content = ""
-  #     parsed_page.css('[data-component="text-block"]').each do |text|
-  #       content = "#{content} #{text.text.strip} \r\n\r\ "
-  #     end
-
-  #     unless parsed_page.css('[data-testid="timestamp"]')[0].nil?
-  #       article_date = parsed_page.css('[data-testid="timestamp"]')[0].attributes['datetime'].value
-  #     end
-
-
-  #     article = {
-  #       title: article_title,
-  #       content: content,
-  #       website: website_url,
-  #       url_of_website: listing_url,
-  #       date_of_article: article_date,
-  #       user_id: 1,
-  #       folder_id: 1
-  #     }
-
-  #     unless parsed_page.css('div[data-component="image-block"]')[0].nil?
-  #       image_url = parsed_page.css('div[data-component="image-block"]')[0].css('span').css('img').to_html
-  #       image_url[/\A.+?(?=https:\/\/)/mi] = ''
-  #       image_url = image_url.gsub(/\s.+/, '').strip
-  #     end
-
-
-  #     @source = Source.new(article)
-
-  #     @source.save!
-  #   end
-  # end
-
-
 end

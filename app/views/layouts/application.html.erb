@@ -12,30 +12,18 @@
     <title>Capture</title>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Merriweather&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Quattrocento+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
-
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <%= favicon_link_tag asset_path('capture_logo.png') %>
 
   </head>
       <body>
-
-        <!-- This is the Landing Page (we don't want a navbar on the landing page. -->
+        <!-- Landing Page -->
         <% if @landing_page_navbar %>
           <%= render 'shared/flashes' %>
           <%= yield %>
 
-        <!-- This is everything else -->
+        <!-- Everything Else -->
         <% else %>
           <%= render 'shared/flashes' %>
           <%= render 'shared/navbars/top-navbar' %>
@@ -43,21 +31,22 @@
 
           <div class="display-flex-container">
 
+            <!-- Sidebar (Left-Navbar)-->
             <div class="sidebar-rest">
               <%= render('shared/navbars/side-navbar', folders: @folders) if user_signed_in? %> <!-- this is comming from the application controller (set_folder method) -->
             </div>
 
+            <!-- Center Content -->
             <div class="center-content">
               <%= yield %>
             </div>
 
+            <!-- Right Column -->
             <div class="right-column">
               <%= render 'shared/right-column/right-column'%>
             </div>
 
           </div>
-
         <% end %>
       </body>
-
 </html>

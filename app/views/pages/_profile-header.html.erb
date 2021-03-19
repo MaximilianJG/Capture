@@ -3,10 +3,10 @@
   <div class="user-show-avatar">
     <% if @user.photo.attached? %>
       <%= cl_image_tag @user.photo.key, class: "avatar-user-show dropdown-toggle",
-        id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> 
+        id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     <% else %>
       <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-user-show dropdown-toggle",
-        id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> 
+        id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     <% end %>
   </div>
 

@@ -27,14 +27,4 @@ class Source < ApplicationRecord
   multisearchable against: [:title, :website]
 end
 
-# for later versions some prioritizing:
-#
-#   include PgSearch::Model
-#   pg_search_scope :search_full_text, against: {
-#     title: 'A',
-#     subtitle: 'B',
-#     content: 'C'
-#   }
-# end
-
 
