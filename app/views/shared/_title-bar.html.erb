@@ -1,3 +1,7 @@
 <div class="heading-div text-center">
-  <h1 class="heading"><span class=""><%= @heading %></span></h1>
+  <% if @heading.nil? %>
+    <h1 class="heading"><span class="">__</span></h1>
+  <% else %>
+    <h1 class="heading"><span class=""><%= @heading %></span></h1>
+  <% end %>
 </div>
