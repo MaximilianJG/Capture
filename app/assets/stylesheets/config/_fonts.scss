@@ -1,6 +1,8 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+
 // Define fonts for body and headers
 $body-font: "Work Sans", "Helvetica", "sans-serif";
 $headers-font: "Nunito", "Helvetica", "sans-serif";
@@ -14,3 +16,13 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+
+$logo-font: "Open Sans", "sans-serif";
+
+$heading-font: "Open Sans", "sans-serif";
+$secondary-heading-font: "Open Sans", "sans-serif";
+
+$navbar-links-font: "Open Sans", "sans-serif";
+
+$standard-font: "Open Sans", "sans-serif";

@@ -1,0 +1,38 @@
+.profile-folders {
+  .title {
+    color: $heading-color;
+    font-family: $secondary-heading-font;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  .folder {
+    background: white;
+    padding: 8px 12px;
+    border: 1px solid #D8D7D5;
+    border-radius: 8px;
+    color: black;
+
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    margin-bottom: 12px;
+
+    i {
+      margin-right: 8px;
+    }
+
+    p {
+      margin-bottom: 0px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis !important;
+    }
+    }
+    .folder:hover {
+      background: #F7F7F7;
+    }
+  }

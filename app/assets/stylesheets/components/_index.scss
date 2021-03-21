@@ -2,7 +2,8 @@
 
 @import "friends-feed/friends-feed-cards";
 
-
+@import "right-column/general";
+@import "right-column/suggested_for_you";
 
 @import "comment-columns/cards";
 
@@ -13,20 +14,25 @@
 @import "landingpage/button";
 @import "landingpage/navbar";
 
-@import "profile/follow-cards";
 @import "profile/header";
 @import "profile/recent-activity";
 @import "profile/general";
+@import "profile/stats";
+@import "profile/folders";
 
 
 @import "navbars/side-navbar";
 @import "navbars/top-navbar";
 
+@import "my-captures/general";
 @import "my-captures/filter-field";
-@import "my-captures/source-cards";
+@import "my-captures/folders";
+@import "my-captures/sources";
+
 
 @import "source#show/general";
 
+@import "devise/general";
 
 
 // ______

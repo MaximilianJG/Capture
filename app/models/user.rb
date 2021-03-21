@@ -20,7 +20,7 @@ class User < ApplicationRecord
   acts_as_token_authenticatable
 
   include PgSearch::Model
-  multisearchable against: [:username]
+  multisearchable against: [:username] # make Searchable by firstname and lastname
 
   def followers
     relationships = Relationship.where(receiver: self, status: 1)

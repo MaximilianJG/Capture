@@ -28,8 +28,8 @@ class PagesController < ApplicationController
   end
 
   def user_profile_overview
-    @no_right_column = true
     @public_folders = Folder.where(user_id: params[:id])
+    @user = User.find(params[:id])
     # @public_folders.sort_by{|folder| folder.sources.count} ## public folders has to be sorted by amount of sources in each folder. (only folders with most sources should show.)
 
     @recent_activity = []
@@ -45,6 +45,13 @@ class PagesController < ApplicationController
     end
 
     @recent_activity.sort_by{|e| !e[:created_at]}
+
+    @number_of_captures = policy_scope(Quote).where(user: params[:id]).count
+    @number_of_comments = policy_scope(Comment).where(user: params[:id]).count
+    @number_of_followers = User.find(params[:id]).followers.count
+    @number_of_following = User.find(params[:id]).following.count
+
+
   end
 
   def user_profile_followers
@@ -53,11 +60,16 @@ class PagesController < ApplicationController
   def user_profile_following
   end
 
+  def coming_soon
+    @heading = "Coming Soon!"
+  end
+
   private
 
   def profile_show_page?
     @user = User.find(params[:id])
     @profile_show_page = true
+    @heading = User.find(params[:id]).first_name + " " + User.find(params[:id]).last_name
   end
 
 end

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :suggested_for_your
 
   include Pundit
 
@@ -16,6 +17,10 @@ class ApplicationController < ActionController::Base
   end
 
   # Pundit: white-list approach.
+
+  def suggested_for_your # Users that are not current_user && not current_user.following
+    @suggested_users = User.all
+  end
 
   private
 

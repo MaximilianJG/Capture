@@ -1,53 +1,78 @@
-<%= render 'pages/profile-header' %>
-
-<div class="row folders-activity-div">
+<div class="d-flex justify-content-between stats mb-3">
   <div>
-    <h3 class="overview-header">Public Folders</h3>
-    <div>
-      <% @public_folders.take(4).each do |folder| %>
-        <div class="col-6">
-
-          <%= link_to folder_path(folder), class: "remove-underline" do  %>
-            <div class="folder">
-              <div class="folder-content">
-                <i class="far fa-folder"></i>
-                <p><%= folder.folder_name %></p>
-              </div>
-            </div>
-
-          <p class="overview-folder-name mb-1"></p>
-          <% end %>
-
-        </div>
-      <% end %>
+    <div class="text-center">
+      <span class="value"><%= @number_of_captures %></span> <br>
+      <span class="descriptor">Captures</span>
     </div>
   </div>
 
-  <div class="col-6" id="activity-wrapper">
-    <h3 class="overview-header">Recent Activity</h3>
-
-    <div id=activity-box>
-
-      <% @recent_activity.take(8).each do |activity| %>
-
-        <% if activity.class == Source %>
-
-          <div class="recent-capture">
-            <%= link_to source_path(activity), class: "recent-capture-link" do %>
-              Captured: <%= activity.title %>
-            <% end %>
-            <span class="recent-capture-sub-info"><%= link_to "#{activity.website.gsub("www.", "")}", "#{activity.url_of_website}", class: "source-sub-info" %> · by <%= link_to "Tara McKelvey Sterling", "#", class: "source-sub-info"  %> </span>
-          </div>
-        <% else %>
-        commented: <%= activity.class %> <br>
-        <% end %>
-
-
-      <% end %>
-
+  <div>
+    <div class="text-center">
+      <span class="value"><%= @number_of_comments %></span> <br>
+      <span class="descriptor">Comments</span>
     </div>
+  </div>
 
+  <div>
+    <div class="text-center">
+      <span class="value"><%= @number_of_followers %></span> <br>
+      <span class="descriptor">Followers</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="text-center">
+      <span class="value"><%= @number_of_following %></span> <br>
+      <span class="descriptor">Following</span>
+    </div>
   </div>
 </div>
+
+<div class="d-flex justify-content-center">
+  <div>
+    <span class="profile-primary-line"></span>
+    <span class="profile-secondary-line"></span>
+  </div>
+</div>
+
+<% if @user == current_user %>
+  <%= link_to edit_user_registration_path, class: "edit-profile" do %>
+    <span class="">Edit Profile</span>
+  <% end %>
+<% end %>
+
+
+<!-- Profile Folders -->
+<div class="profile-folders">
+  <h1 class="title">Public Folders</h1>
+
+  <div class="row">
+    <% @public_folders.take(6).each do |folder| %>
+      <div class="col-4">
+        <%= link_to folder_path(folder) do  %>
+          <div class="folder">
+            <p class="folder-content"><i class="far fa-folder"></i><%= folder.folder_name %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- Profile Recent Activity -->
+
+<div class="profile-recent-activity">
+  <h1 class="title">Recent Activity</h1>
+
+  <% @recent_activity.take(8).each do |activity| %>
+    <% if activity.class == Source %>
+
+    <% else %>
+
+    <% end %>
+  <% end %>
+</div>
+
+
 
 

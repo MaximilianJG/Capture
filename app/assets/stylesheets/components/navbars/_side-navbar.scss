@@ -1,18 +1,14 @@
 .side-navbar {
-  background-color: #A72301;
+  background-color: $primary-color;
   border-radius: 8px;
-  padding: 24px;
-  // margin-top: 91px;
-  // position: fixed;
-  width: 200px;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  // top: 173px;
-
+  padding: 20px;
+  width: 208px;
+  position: fixed;
 }
 
 .sidebar-link {
   color: white;
+  font-family: $navbar-links-font;
   font-size: 18px;
   margin-bottom: 10px;
   align-items: center;
