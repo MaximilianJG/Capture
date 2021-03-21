@@ -1,4 +1,5 @@
 class Api::V1::QuotesController < Api::V1::BaseController
+
 require "open-uri"
   def create
     current_user = User.find(general_post_request_params[:user_id])
