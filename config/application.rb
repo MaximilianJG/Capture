@@ -25,7 +25,7 @@ module Capture
       allow do
         origins '*'
         resource(
-          '*',
+          origins: '*',
           headers: :any,
           methods: [:get, :patch, :put, :delete, :post, :options]
           )
