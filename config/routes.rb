@@ -35,7 +35,11 @@ Rails.application.routes.draw do
   # API
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :quotes, only: [ :create ]
+      resources :sources, only: [:create]
+      resources :quotes, only: [:create, :destroy]
+      resources :comments, only: [:create]
+      resources :tags, only: [:create]
+
     end
   end
 
