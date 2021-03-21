@@ -25,7 +25,6 @@ require "open-uri"
       render :show
   end
 
-
   def general_post_request_params
     params.require(:general_post_request).permit(:user_id, :quote_content, :url_of_quote, :source_title, :website, :url_of_website, :source_photo_url)
   end
