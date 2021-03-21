@@ -1,55 +1,51 @@
-<div class="row my-captures-row">
-  <% @sources.each do |source| %>
-    <div class="col-3 my-captures-col">
-      <%= link_to source_path(source), class: "remove-underline" do  %>
-      <div class="my-captures-source">
-        <div class="image">
-          <% if source.photo.attached? %>
-            <%= cl_image_tag source.photo.key, class: "" %>
-          <% else %>
-            <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "" %>
-          <% end %>
-        </div>
+<div class="my-captures-sources">
+  <div class="row">
+    <% @sources.each do |source| %>
+      <div class="col-4">
+        <%= link_to source_path(source) do %>
+          <div class="source">
 
-        <div class="description">
-          <span class="title"><%= source.title %></span>
-
-              <% tags = "" %>
-              <% source.tags.each_with_index do |tag, index| %>
-                <% if index <= 0 %>
-                    <% tags << "##{tag.name}" %>
-                <% else %>
-                  <% tags << ", ##{tag.name}" %>
-                <% end %>
+            <div class="image">
+              <% if source.photo.attached? %>
+                <%= cl_image_tag source.photo.key, class: "" %>
+              <% else %>
+                <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "" %>
               <% end %>
-
-              <span class="tags"><%= tags %></span>
-
-
-          <div class="d-flex justify-content-between align-items-center">
-            <span class="time-since-saved"> <%= time_ago_in_words(source.created_at).gsub('about','').gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago </span>
-
-
-            <%= link_to "#", data: {toggle: "modal", target: "#modal-#{source.id}"}, class: "" do  %>
-              <i class="move-folder-icon far fa-folder"></i>
-            <% end %>
-
-
-            <div id="modal-<%= source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <%= simple_form_for(source) do |f| %>
-                    <%= f.input :folder_id, collection: Folder.where(user_id: current_user.id), label_method: :folder_name, label: "Folder name", id: "move-folder-form", include_blank: false %>
-                    <%= f.submit %>
-                  <% end %>
-                </div>
-              </div>
             </div>
 
+            <div class="description">
+              <div class="title">
+                <span><%= source.title %></span>
+              </div>
+
+              <div class="time-and-folder">
+                <div class="time-ago">
+                  <span><%= time_ago_in_words(source.created_at).gsub('about','').gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago </span>
+                </div>
+
+                <div class="change-folder">
+                  <%= link_to "#", data: {toggle: "modal", target: "#modal-#{source.id}"} do  %>
+                    <i class="move-folder-icon far fa-folder"></i>
+                  <% end %>
+                </div>
+
+              </div>
+            </div>
           </div>
-        </div>
+
+          <div id="modal-<%= source.id %>" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <%= simple_form_for(source) do |f| %>
+                  <%= f.input :folder_id, collection: Folder.where(user_id: current_user.id), label_method: :folder_name, label: "Folder name", id: "move-folder-form", include_blank: false %>
+                  <%= f.submit %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <% end %>
-    </div>
-  <% end %>
+
+    <% end %>
+  </div>
 </div>

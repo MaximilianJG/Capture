@@ -1,26 +1,30 @@
-.capture-logo-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 25px;
-  margin-bottom: 0px;
-  color: black;
-}
-
 .heading-div {
   margin-top: 100px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 
 }
 
 .heading {
-  font-family: 'Montserrat', sans-serif;
+  font-family: $heading-font;
+  font-weight: bold;
   font-size: 35px;
-  margin-top: 10px;
-  margin-bottom: 25px;
-  color: black;
+  // margin-top: 10px;
+  // margin-bottom: 25px;
+  color: $heading-color;
   text-align: center;
   // margin-right: 20%;
   // padding-right: 60px;
+
 }
+
+  .no-heading {
+  opacity: 0.0;
+  font-size: 35px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  text-align: center;
+  }
+
 
 .subheading {
   font-family: 'Merriweather', serif !important;

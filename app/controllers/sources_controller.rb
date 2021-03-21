@@ -19,7 +19,7 @@ class SourcesController < ApplicationController
   end
 
   def show
-    @heading = "My Captures"
+
     @source_page = true
 
     @all_comments = []
@@ -35,6 +35,7 @@ class SourcesController < ApplicationController
       format.html
       format.json {render json: {source_quotes: @source_quotes }}
     end
+
 
   end
 
@@ -75,7 +76,7 @@ class SourcesController < ApplicationController
   end
 
   def feed
-    @heading = "Start"
+    @heading = "Friends Feed"
     @no_right_column = true
     @sources = policy_scope(Source).where(user: current_user.following)
     authorize @sources

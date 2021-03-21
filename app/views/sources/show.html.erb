@@ -1,20 +1,8 @@
 <div class="">
 
-  <div id="hallo" data-controller="highlightQuotes">
 
-    <h1 class="heading mb-2"><%= @source.title %></h1>
-
-    <p class="source-show-citation"><%= link_to "#{@source.website.gsub("www.", "")}", "#{@source.url_of_website}"%> · by <%= link_to "Tara McKelvey Sterling", "#"  %>, Virginia, ·  September 22, 2020</p>
-
-    <!-- Source Image -->
-    <div class="mt-2 mb-2">
-      <% if @source.photo.attached? %>
-        <%= cl_image_tag @source.photo.key, class: "source-show-image" %>
-      <% else %>
-        <%= cl_image_tag "5v1a9wm3yevk4b8wsuqosjaaou2k", class: "source-show-image" %>
-      <% end %>
-    </div>
-  </div>
+  <h1 class="heading show-heading"><%= @source.title %></h1>
+  <p class="source-show-citation"><%= link_to "#{@source.website.gsub("www.", "")}", "#{@source.url_of_website}"%> · by <%= link_to "Tara McKelvey Sterling", "#"  %>, Virginia, ·  September 22, 2020</p>
 
   <script>
 

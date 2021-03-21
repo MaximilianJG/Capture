@@ -3,22 +3,25 @@
 
   i {
     position: absolute;
-    top: 6px;
+    top: 8px;
     left: 10px;
     font-size: 15px;
-    color: #797979;
+    color: $dark-grey;
   }
 }
 
 .global-search-form {
-  background-color: #F6F6F4;
-  border: 1px solid #797979;
-  border-radius: 15px;
+  background-color: $background-color;
+  border: 1px solid $dark-grey;
+  border-radius: 8px;
   padding-left: 30px;
+  width: 208px;
+  height: 30px;
+  color: black;
 }
 
 .global-search-form::placeholder {
-  color: #797979;
-  font-size: 15px;
+  color: $dark-grey;
+  font-size: 16px;
   font-family: 'Open Sans', sans-serif;
 }

@@ -1,0 +1,15 @@
+.component-div {
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid $light-grey;
+  position: fixed;
+  width: 208px;
+
+}
+
+.component-header {
+  font-family: $secondary-heading-font;
+  font-weight: bold;
+  font-size: 18px;
+}

@@ -1,0 +1,14 @@
+.stats {
+  .value {
+    font-size: 20px;
+    font-family: $standard-font;
+    font-weight: bold;
+    line-height: 1px;
+
+  }
+
+  .descriptor {
+    font-family: $standard-font;
+    line-height: 0;
+  }
+}
