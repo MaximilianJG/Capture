@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_21_160214) do
+ActiveRecord::Schema.define(version: 2021_03_21_160726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,8 @@ ActiveRecord::Schema.define(version: 2021_03_21_160214) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "content"
     t.bigint "source_tag_id"
+    t.bigint "folder_id"
+    t.index ["folder_id"], name: "index_sources_on_folder_id"
     t.index ["source_tag_id"], name: "index_sources_on_source_tag_id"
     t.index ["user_id"], name: "index_sources_on_user_id"
   end
@@ -148,6 +150,7 @@ ActiveRecord::Schema.define(version: 2021_03_21_160214) do
   add_foreign_key "relationships", "users", column: "receiver_id"
   add_foreign_key "source_tags", "sources"
   add_foreign_key "source_tags", "tags"
+  add_foreign_key "sources", "folders"
   add_foreign_key "sources", "source_tags"
   add_foreign_key "sources", "users"
   add_foreign_key "tags", "source_tags"
