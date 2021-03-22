@@ -35,11 +35,25 @@
   </div>
 </div>
 
-<% if @user == current_user %>
-  <%= link_to edit_user_registration_path, class: "edit-profile" do %>
-    <span class="">Edit Profile</span>
-  <% end %>
-<% end %>
+<div class="follow-and-edit">
+  <div class="follow">
+    <% if ((Relationship.where(asker: current_user, receiver: @user, status: 1).size > 0) ) %>
+      <%= link_to "Unfollow", delete_relationship_path(@user, current_user), method: :delete, class: "follow-btn" %>
+    <% else %>
+      <%= link_to "Follow", create_relationship_path(@user, current_user), method: :create, class: "follow-btn" %>
+    <% end %>
+  </div>
+
+  <div>
+    <% if @user == current_user %>
+      <%= link_to edit_user_registration_path, class: "edit-profile" do %>
+        <span class="">Edit Profile</span>
+      <% end %>
+    <% end %>
+
+  </div>
+
+</div>
 
 
 <!-- Profile Folders -->
@@ -72,6 +86,8 @@
     <% end %>
   <% end %>
 </div>
+
+
 
 
 

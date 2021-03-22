@@ -22,15 +22,29 @@
   align-items: center;
 }
 
-.edit-profile {
-  display: block;
-  text-align: right;
-  margin-top: 2px;
-  font-family: $standard-font;
-  font-size: 15px;
-  color: $dark-grey;
+.follow-and-edit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  :hover {
+  .follow a {
+    display: block;
+    margin-top: 2px;
+    font-family: $standard-font;
+    font-size: 15px;
     color: $dark-grey;
   }
+
+  .edit-profile {
+    display: block;
+    margin-top: 2px;
+    font-family: $standard-font;
+    font-size: 15px;
+    color: $dark-grey;
+
+    :hover {
+      color: $dark-grey;
+    }
+  }
+
 }
