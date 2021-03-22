@@ -1,31 +1,39 @@
-<div class="">
+
+
+<div class="source-show">
 
 
   <h1 class="heading show-heading"><%= @source.title %></h1>
-  <p class="source-show-citation"><%= link_to "#{@source.website.gsub("www.", "")}", "#{@source.url_of_website}"%> · by <%= link_to "Tara McKelvey Sterling", "#"  %>, Virginia, ·  September 22, 2020</p>
+  <p class="citation"><%= link_to "#{@source.website.gsub("www.", "")}", "#{@source.url_of_website}"%></p>
 
-  <script>
+  <div class="image d-flex justify-content-center">
+    <% if @source.photo.attached? %>
+      <%= cl_image_tag @source.photo.key, class: "image" %>
+    <% else %>
+      <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "image" %>
+    <% end %>
+  </div>
 
-// HIGHLIGHT EXISTING QUOTES
-    function highlight(text, id) {
-      var inputText = document.getElementById("text");
-      var innerHTML = inputText.innerHTML;
-      var index = innerHTML.indexOf(text);
-      if (index >= 0) {
-       innerHTML = innerHTML.substring(0,index) + `<span data-id=${id} class="permanent-highlight">` + innerHTML.substring(index,index+text.length) + "</span>" + innerHTML.substring(index + text.length);
-       inputText.innerHTML = innerHTML;
-      }
-    }
+  <div class="quotes">
+    <% @source.quotes.each do |quote| %>
+    <div class="quote">
+      <i class="fas fa-quote-left"></i>
+      <p class=""><span><%= quote.content %></span></p>
+    </div>
 
-      fetch(`${window.location.pathname}`, {headers: { accept: "application/json"}})
-        .then(response => response.json())
-        .then((data) => {
-          data.source_quotes.forEach((d) => {
-            highlight(`${d.content.trim()}`, d.id )
-          })
-        });
+    <% quote.comments.each do |comment| %>
 
-  </script>
+
+      <div class="comment">
+        <%= comment.content%>
+      </div>
+
+
+    <% end %>
+
+
+    <% end %>
+  </div>
 </div>
 
 

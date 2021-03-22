@@ -4,7 +4,9 @@
     <div class="feed-card">
 
       <div class="title">
-        <span class=""><%= source.title %></span><br>
+        <%= link_to source_path(source) do  %>
+          <span class=""><%= source.title %></span><br>
+        <% end %>
       </div>
 
           <% if source.user.photo.attached? %>
