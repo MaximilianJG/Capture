@@ -1,91 +1,111 @@
 <!-- When search is filled -->
 <% if !@results.nil? %>
-  <div class="row m-1">
 
+  <div class="searched-captures">
     <% if @sources.size > 0 %>
-      <div class="col-6 no-marg-no-pad">
-        <p class="model-title">Captures</p>
-        <div class="row no-marg-no-pad">
-          <% @sources.take(4).each do |source| %>
-            <div class="col-6 col-6-global-search">
-              <%= link_to source_path(source), class: "remove-hover" do  %>
-                <div class="global-search-card-source">
+      <div class="title-and-see-all">
+        <p class="title">Captures</p>
+        <p class="see-all">See all</p>
+      </div>
+
+
+      <div class="row">
+        <% @sources.take(3).each do |source| %>
+          <div class="col-4">
+            <div class="source">
+              <%= link_to source_path(source) do %>
+
+                <div class="image">
                   <% if source.photo.attached? %>
                     <%= cl_image_tag source.photo.key, class: "global-search-source-banner dropdown-toggle" %>
                   <% else %>
                     <%= cl_image_tag "newspapers-stack-1to2_svlmsn", class: "global-search-source-banner dropdown-toggle" %>
                   <% end %>
+                </div>
 
+                <div class="description">
                   <div class="title">
                     <p><%= source.title %></p>
                   </div>
                 </div>
+
               <% end %>
+
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
+  </div>
 
+  <div class="searched-folders">
     <% if @searched_folders.size > 0 %>
-      <div class="col-6 no-marg-no-pad">
-        <p class="model-title">Folders</p>
-        <div class="row no-marg-no-pad">
-          <% @searched_folders.take(4).each do |folder| %>
-            <div class="col-6 col-6-global-search">
-              <%= link_to folder_path(folder), class: "remove-hover" do  %>
-                <div class="d-flex align-items-center global-search-card-folder">
-                  <% if folder.sources.first && folder.sources.first.photo.attached? %>
-                    <%= cl_image_tag folder.sources.first.photo.key, class: "ml-2 global-search-folder-banner dropdown-toggle" %>
+      <div class="title-and-see-all">
+        <p class="title">Folders</p>
+        <p class="see-all">See all</p>
+      </div>
+      <div class="row">
+        <% @searched_folders.take(3).each do |folder| %>
+          <div class="col-4">
+            <div class="folder">
+              <%= link_to folder_path(folder) do  %>
+                <div class="image">
+                  <% if (folder.sources.size > 0) && (folder.sources.first.photo.attached?) %>
+                    <%= cl_image_tag folder.sources.first.photo.key, class: "global-search-source-banner dropdown-toggle" %>
                   <% else %>
-                    <%= cl_image_tag "1024px-Newspaper_Cover.svg_n0hnt9", class: "ml-2 global-search-folder-banner dropdown-toggle" %>
+                    <%= cl_image_tag "newspapers-stack-1to2_svlmsn", class: "global-search-source-banner dropdown-toggle" %>
                   <% end %>
+                </div>
 
-                    <div class="title">
-                      <p><%= folder.folder_name %></p>
-                      <p class="folder-user"><%= folder.user.username %></p>
-                    </div>
+                <div class="description">
+                  <div class="title">
+                    <p><i class="far fa-folder"></i><%= folder.folder_name %></p>
+                  </div>
                 </div>
               <% end %>
+
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
+  </div>
 
+
+  <div class="searched-users">
     <% if @users.size > 0 %>
-      <div class="col-6 no-marg-no-pad">
-        <p class="model-title">Users</p>
-        <div class="row no-marg-no-pad">
-          <% @users.take(8).each do |user| %>
-          <div class="col-6 col-6-global-search">
+      <div class="title-and-see-all">
+        <p class="title">Users</p>
+        <p class="see-all">See all</p>
+      </div>
 
-            <%= link_to user_profile_overview_path(user), class: "remove-hover" do  %>
-              <div class="global-search-card-user d-flex align-items-center">
-                <% if user.photo.attached? %>
-                   <%= cl_image_tag user.photo.key, class: "avatar-global-search dropdown-toggle",
-                    id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                <% else %>
-                    <%= cl_image_tag "b08hxPY_jhyrxg", class: "avatar-global-search dropdown-toggle",
-                    id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                <% end %>
+      <div class="row">
+        <% @users.take(6).each do |user| %>
+          <div class="col-4">
+            <%= link_to user_profile_overview_path(user) do  %>
 
-                <div class="global-search-username-follower-count-div">
-                  <p><%= user.username %></p>
-                  <p class="follower-count"><%= user.followers.count %> Followers </p>
+              <div class="user">
+                <div class="image">
+                  <% if user.photo.attached? %>
+                    <%= cl_image_tag user.photo.key, class: "global-search-source-banner dropdown-toggle" %>
+                  <% else %>
+                    <%= cl_image_tag "newspapers-stack-1to2_svlmsn", class: "global-search-source-banner dropdown-toggle" %>
+                  <% end %>
                 </div>
 
+                <div class="description">
+                  <div class="title">
+                    <p class="username"><%= user.username %></p>
+                    <p class="followers"><%= user.followers.count %> Followers</p>
+                  </div>
+                </div>
               </div>
             <% end %>
 
           </div>
-          <% end %>
-        </div>
+        <% end %>
       </div>
     <% end %>
-
-
-
   </div>
 
 <!-- When Search is empty -->
