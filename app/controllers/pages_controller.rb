@@ -69,7 +69,7 @@ class PagesController < ApplicationController
   def profile_show_page?
     @user = User.find(params[:id])
     @profile_show_page = true
-    @heading = User.find(params[:id]).first_name + " " + User.find(params[:id]).last_name
+    @heading = "#{User.find(params[:id]).first_name} #{User.find(params[:id]).last_name}"
   end
 
 end
