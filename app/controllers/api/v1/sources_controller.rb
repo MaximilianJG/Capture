@@ -26,7 +26,8 @@ class Api::V1::SourcesController < Api::V1::BaseController
     @source.tags.delete_all
 
     @tags = []
-    tag_post_request_params[:tags].each do |tag|
+
+    params[:tags].each do |tag|
       @tag = Tag.where(name: tag)
       if @tag = []
         @tag = Tag.new(name: tag)
@@ -37,7 +38,7 @@ class Api::V1::SourcesController < Api::V1::BaseController
       end
     end
 
-    tag_post_request_params[:tags].each do |tag|
+    params[:tags].each do |tag|
       source.tags << tag
     end
 
@@ -50,9 +51,11 @@ class Api::V1::SourcesController < Api::V1::BaseController
     params.require(:general_post_request).permit(:user_id, :quote_content, :url_of_quote, :source_title, :website, :url_of_website, :source_photo_url)
   end
 
-  def tag_post_request_params
-    params.require(:tag_post_request).permit(:tags)
-  end
+
+
+  # def tag_post_request_params
+  #   params.require(:tag_post_request).permit(:tags)
+  # end
 
   def render_error
     render json: { errors: @source.errors.full_messages },
