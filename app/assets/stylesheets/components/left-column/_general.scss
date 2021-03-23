@@ -1,0 +1,26 @@
+.left-column {
+  position: fixed;
+}
+
+.new-folder {
+  margin-top: 10px;
+    border: 1px solid $dark-grey;
+    padding: 3px 8px 3px 8px;
+    border-radius: 8px;
+    display: inline-block;
+    height: 32px;
+    background-color: white;
+
+  .new-folder-text {
+    font-family: $standard-font;
+    color: black;
+    font-size: 15px;
+  }
+
+
+}
+  .new-folder:hover {
+    padding: 2px 7px 2px 7px;
+    background-color: $light-grey;
+    border: 2px solid $dark-grey;
+  }

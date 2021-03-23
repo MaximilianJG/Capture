@@ -1,7 +1,8 @@
 class Api::V1::TagsController < Api::V1::BaseController
 
-  def create
-
+  def index
+    @tags = Tag.all
+    render :show
   end
 
   def tag_post_request_params
