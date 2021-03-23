@@ -30,15 +30,14 @@ class Api::V1::SourcesController < Api::V1::BaseController
     params[:tags].each do |tag|
       @tag = Tag.where(name: tag)
       if @tag = []
-        @tag = Tag.new(name: tag)
-        @tag.save!
+        @tag = Tag.create!(name: tag)
         @tags << @tag
       else
         @tags << @tag
       end
     end
 
-    params[:tags].each do |tag|
+    @tags.each do |tag|
       @source.tags << tag
     end
 
