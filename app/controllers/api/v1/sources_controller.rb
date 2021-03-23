@@ -39,7 +39,7 @@ class Api::V1::SourcesController < Api::V1::BaseController
     end
 
     params[:tags].each do |tag|
-      source.tags << tag
+      @source.tags << tag
     end
 
     render :show
@@ -50,8 +50,6 @@ class Api::V1::SourcesController < Api::V1::BaseController
   def general_post_request_params
     params.require(:general_post_request).permit(:user_id, :quote_content, :url_of_quote, :source_title, :website, :url_of_website, :source_photo_url)
   end
-
-
 
   # def tag_post_request_params
   #   params.require(:tag_post_request).permit(:tags)
