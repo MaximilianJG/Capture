@@ -51,7 +51,7 @@ class Api::V1::SourcesController < Api::V1::BaseController
   end
 
   def tag_post_request_params
-    params.require(:tag_post_request).permit(:source_id, :tags)
+    params.require(:tag_post_request).permit(:tags)
   end
 
   def render_error
