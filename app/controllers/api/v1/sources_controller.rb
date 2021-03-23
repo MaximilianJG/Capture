@@ -22,8 +22,23 @@ class Api::V1::SourcesController < Api::V1::BaseController
 
   def update
     @source = Source.find(params[:id])
-
     @source.tags.delete_all
+
+    @tags = []
+    tag_post_request_params[:tags].each do |tag|
+      @tag = Tag.where(name: tag)
+      if @tag = []
+        @tag = Tag.new(name: tag)
+        @tag.save!
+        @tags << tag
+      else
+        @tags << @tag
+      end
+    end
+
+
+
+
 
     tag_post_request_params[:tags].each do |tag|
       source.tags << tag
