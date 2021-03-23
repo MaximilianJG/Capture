@@ -27,7 +27,8 @@ class SourcePolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user || user.admin
+    true
+    # record.user == user || user.admin
   end
 
   def destroy?
