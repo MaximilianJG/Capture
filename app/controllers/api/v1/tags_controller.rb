@@ -1,7 +1,7 @@
 class Api::V1::TagsController < Api::V1::BaseController
 
   def index
-    @tags = Tag.all
+    @tags = policy_scope(Tag)
     render :index
   end
 

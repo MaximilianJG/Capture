@@ -19,16 +19,16 @@ class ApplicationController < ActionController::Base
   # Pundit: white-list approach.
 
   def suggested_for_your # Users that are not current_user && not current_user.following
-    @users = User.where.not(id: current_user.id)
+    if user_signed_in?
+      @users = User.where.not(id: current_user.id)
 
-    @suggested_users = []
-    @users.each do |user|
-      unless current_user.following.include? user
-        @suggested_users << user
+      @suggested_users = []
+      @users.each do |user|
+        unless current_user.following.include? user
+          @suggested_users << user
+        end
       end
     end
-
-
   end
 
   private
