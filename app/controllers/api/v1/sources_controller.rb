@@ -32,7 +32,7 @@ class Api::V1::SourcesController < Api::V1::BaseController
       if @tag = []
         @tag = Tag.new(name: tag)
         @tag.save!
-        @tags << tag
+        @tags << @tag
       else
         @tags << @tag
       end
