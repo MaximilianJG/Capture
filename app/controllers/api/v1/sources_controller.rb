@@ -36,10 +36,6 @@ class Api::V1::SourcesController < Api::V1::BaseController
       end
     end
 
-
-
-
-
     tag_post_request_params[:tags].each do |tag|
       source.tags << tag
     end
