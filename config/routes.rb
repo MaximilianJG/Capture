@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       resources :sources, only: [:create]
       resources :quotes, only: [:create, :destroy]
       resources :comments, only: [:create]
-      resources :tags, only: [:create]
+      resources :tags, only: [:index, :create]
 
     end
   end
