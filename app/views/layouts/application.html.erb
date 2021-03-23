@@ -33,7 +33,7 @@
 
             <!-- Sidebar (Left-Navbar)-->
             <div class="sidebar-rest">
-              <%= render('shared/navbars/side-navbar', folders: @folders) if user_signed_in? %> <!-- this is comming from the application controller (set_folder method) -->
+              <%= render 'shared/left-column/left-column' %> <!-- this is comming from the application controller (set_folder method) -->
             </div>
 
             <!-- Center Content -->

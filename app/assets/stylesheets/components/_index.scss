@@ -5,6 +5,10 @@
 @import "right-column/general";
 @import "right-column/suggested_for_you";
 
+@import "left-column/general";
+@import "left-column/side-navbar";
+
+
 @import "comment-columns/cards";
 
 @import "global-search/results";
@@ -21,7 +25,6 @@
 @import "profile/folders";
 
 
-@import "navbars/side-navbar";
 @import "navbars/top-navbar";
 
 @import "my-captures/general";

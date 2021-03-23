@@ -20,10 +20,24 @@ class Api::V1::SourcesController < Api::V1::BaseController
     render :show
   end
 
+  def update
+    @source = Source.find(params[:id])
+
+    @source.tags.delete_all
+
+    tag_post_request_params[:tags].each do |tag|
+      source.tags << tag
+    end
+  end
+
   private
 
   def general_post_request_params
     params.require(:general_post_request).permit(:user_id, :quote_content, :url_of_quote, :source_title, :website, :url_of_website, :source_photo_url)
+  end
+
+  def tag_post_request_params
+    params.require(:tag_post_request).permit(:source_id, :tags)
   end
 
   def render_error

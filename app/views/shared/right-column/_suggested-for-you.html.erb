@@ -12,7 +12,7 @@
       <% end %>
 
       <div>
-        <p class="name"><%= user.first_name %><%= user.last_name %></p>
+        <p class="name"><%= user.username %></p>
         <p class="tags">#tech, #economi...</p>
 
         <%= link_to create_relationship_path(user, current_user), method: :create, class: "follow-btn" do %>
