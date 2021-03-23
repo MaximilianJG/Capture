@@ -22,6 +22,7 @@ class Api::V1::SourcesController < Api::V1::BaseController
 
   def update
     @source = Source.find(params[:id])
+    authorize @source
     @source.tags.delete_all
 
     @tags = []
