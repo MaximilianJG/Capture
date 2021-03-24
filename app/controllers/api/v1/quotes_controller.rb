@@ -11,6 +11,11 @@ class Api::V1::QuotesController < Api::V1::BaseController
     render :show
   end
 
+  def destroy
+    @quote = Quote.find(params[:id])
+    @quote.destroy
+  end
+
   def snippet_post_request_params
     params.require(:snippet_post_request).permit(:user_id, :quote_content, :url_of_quote)
   end
