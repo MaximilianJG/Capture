@@ -17,7 +17,7 @@ class QuotePolicy < ApplicationPolicy
     true
   end
 
-  def delete?
+  def destroy?
     true # HAS TO BE CHANGED
     # record.user == user || user.admin
   end
