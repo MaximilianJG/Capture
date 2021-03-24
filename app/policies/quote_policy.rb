@@ -17,6 +17,11 @@ class QuotePolicy < ApplicationPolicy
     true
   end
 
+  def delete?
+    true # HAS TO BE CHANGED
+    # record.user == user || user.admin
+  end
+
   def create_quote_within_app
     true
   end

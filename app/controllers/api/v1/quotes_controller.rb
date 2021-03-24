@@ -13,6 +13,7 @@ class Api::V1::QuotesController < Api::V1::BaseController
 
   def destroy
     @quote = Quote.find(params[:id])
+    user = current_user
     @quote.destroy
   end
 
