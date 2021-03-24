@@ -17,7 +17,8 @@ class Api::V1::SourcesController < Api::V1::BaseController
     @quote.source = @source
 
     @quote.save!
-    render :show
+    render :sourceshow
+    render :quoteshow
   end
 
   def update
