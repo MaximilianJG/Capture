@@ -21,7 +21,35 @@
   <div class="content">
     <div class="trending-articles">
       <p class="header">Trending Articles</p>
+      <div class="row trending-article-row">
+        <% @sources.each do |source| %>
+          <div class="col-4 trending-article-col">
 
+            <div class="source">
+              <%= link_to source_path(source) do %>
+                <div class="image">
+                  <% if source.photo.attached? %>
+                    <%= cl_image_tag source.photo.key, class: "" %>
+                  <% else %>
+                    <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "" %>
+                  <% end %>
+                </div>
+              <% end %>
+
+              <div class="description">
+                <p class="title"><%= source.title %></p>
+                <p class="website"><%= source.website %></p>
+              </div>
+
+              <span class="primary-line"></span>
+              <span class="secondary-line"></span>
+
+
+            </div>
+
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <div class="other-trending">

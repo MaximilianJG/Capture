@@ -5,6 +5,8 @@ class PagesController < ApplicationController
 
   def home
     @landing_page_navbar = true
+    @sources = Source.take(3)
+
   end
 
   def search
