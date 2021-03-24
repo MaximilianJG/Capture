@@ -1,0 +1,52 @@
+.landing-page-navbar {
+  margin: 0 auto;
+  width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+
+  .logo-and-name {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      margin-right: 8px;
+    }
+
+    .capture-logo-title {
+      margin-bottom: 0px !important;
+      color: $logo-color;
+      font-family: $logo-font;
+      font-weight: bold;
+      font-size: 30px;
+    }
+  }
+
+  .right-links {
+    display: flex;
+    align-items: center;
+
+    .about-us a {
+      color: black;
+      font-family: $standard-font;
+      font-weight: 600;
+
+    }
+
+    .log-in a {
+      color: black;
+      font-family: $standard-font;
+      font-weight: 600;
+      margin-left: 32px;
+    }
+
+    .sign-up a {
+      margin-left: 32px;
+      background-color: $primary-color;
+      padding: 12px 18px;
+      color: white;
+      border-radius: 5px;
+    }
+  }
+}
