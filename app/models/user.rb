@@ -18,6 +18,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+  # validates :tags, presence: true
 
   acts_as_token_authenticatable
 
@@ -41,5 +42,6 @@ class User < ApplicationRecord
   def make_default_folder
     Folder.create(folder_name: "My Latest Captures", user: self)
   end
+
 
 end

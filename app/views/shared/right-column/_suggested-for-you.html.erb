@@ -1,5 +1,5 @@
 <div class="component-div">
-  <h4 class="component-header">Suggested for you</h4>
+  <h4 class="component-header">Newest Members</h4>
 
   <div class="suggested-for-you">
     <% @suggested_users.take(3).each do |user| %>
@@ -12,12 +12,13 @@
       <% end %>
 
       <div>
-        <p class="name"><%= user.username %></p>
-        <div class="tags">
-          <% user.tags.each do |tag| %>
-            <%= link_to "##{tag.name},", "#", class: "tag"  %>
-          <% end %>
-        </div>
+        <p class="name"><%= link_to "#{user.username}", user_profile_overview_path(user)  %></p>
+
+          <p class="tags">
+            <% user.tags.each do |tag| %>
+              <%= link_to "##{tag.name},", "#", class: "tag"  %>
+            <% end %>
+          </p>
 
         <%= link_to create_relationship_path(user, current_user), method: :create, class: "follow-btn" do %>
           <span class="follow-text"><i class="fas fa-plus"></i> Follow </span>

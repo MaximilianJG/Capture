@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
           @suggested_users << user
         end
       end
+      @suggested_users = @suggested_users.sort! { |a, b|  b.created_at <=> a.created_at }
     end
   end
 
@@ -37,11 +38,6 @@ class ApplicationController < ActionController::Base
     source_url_count = source_url_count.sort_by{|source,number| number}
     return source_url_count.last(3).map {|source_url| Source.find_by(url_of_website: source_url)}
   end
-
-
-
-
-
 
   private
 
