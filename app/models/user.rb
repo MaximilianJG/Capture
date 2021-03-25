@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :sources, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :users, dependent: :destroy
+  has_many :user_tags
+  has_many :tags, through: :user_tags
   has_one_attached :photo
 
   after_create :make_default_folder

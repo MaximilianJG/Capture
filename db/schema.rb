@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_21_160726) do
+ActiveRecord::Schema.define(version: 2021_03_25_152302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,7 +120,18 @@ ActiveRecord::Schema.define(version: 2021_03_21_160726) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "source_tag_id"
+    t.bigint "user_tag_id"
     t.index ["source_tag_id"], name: "index_tags_on_source_tag_id"
+    t.index ["user_tag_id"], name: "index_tags_on_user_tag_id"
+  end
+
+  create_table "user_tags", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_user_tags_on_tag_id"
+    t.index ["user_id"], name: "index_user_tags_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -135,9 +146,11 @@ ActiveRecord::Schema.define(version: 2021_03_21_160726) do
     t.string "last_name"
     t.string "username"
     t.string "authentication_token", limit: 30
+    t.bigint "user_tag_id"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["user_tag_id"], name: "index_users_on_user_tag_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -154,4 +167,8 @@ ActiveRecord::Schema.define(version: 2021_03_21_160726) do
   add_foreign_key "sources", "source_tags"
   add_foreign_key "sources", "users"
   add_foreign_key "tags", "source_tags"
+  add_foreign_key "tags", "user_tags"
+  add_foreign_key "user_tags", "tags"
+  add_foreign_key "user_tags", "users"
+  add_foreign_key "users", "user_tags"
 end
