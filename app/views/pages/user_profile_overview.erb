@@ -87,8 +87,8 @@
   <% end %>
 </div>
 
-
-
-
+<% if @user = current_user  %>
+  <%= link_to "LOG OUT", destroy_user_session_path, method: :delete   %>
+<% end %>
 
 
