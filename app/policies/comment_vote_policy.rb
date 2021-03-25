@@ -1,4 +1,4 @@
-class CommentLikePolicy < ApplicationPolicy
+class CommentVotePolicy < ApplicationPolicy
     class Scope < Scope
       def resolve
         scope.all

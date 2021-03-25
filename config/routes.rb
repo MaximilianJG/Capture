@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: [:new, :create, :show, :index, :destroy]
-  resources :comment_likes, only: [:new, :create, :destroy]
+  resources :comment_votes, only: [:new, :create, :destroy]
 
 
   # Pages

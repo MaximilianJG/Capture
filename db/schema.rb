@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_25_200144) do
+ActiveRecord::Schema.define(version: 2021_03_25_231805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2021_03_25_200144) do
     t.index ["user_id"], name: "index_comment_likes_on_user_id"
   end
 
+  create_table "comment_votes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "comment_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_comment_votes_on_comment_id"
+    t.index ["user_id"], name: "index_comment_votes_on_user_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.bigint "quote_id", null: false
@@ -54,6 +63,8 @@ ActiveRecord::Schema.define(version: 2021_03_25_200144) do
     t.integer "comment_id"
     t.integer "likes_count", default: 0
     t.integer "comment_likes_count", default: 0
+    t.integer "votes_count", default: 0
+    t.integer "comment_votes_count", default: 0
     t.index ["quote_id"], name: "index_comments_on_quote_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -71,7 +82,16 @@ ActiveRecord::Schema.define(version: 2021_03_25_200144) do
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_folders_on_user_id"
   end
-  
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "comment_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_likes_on_comment_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
     t.string "searchable_type"
@@ -155,6 +175,8 @@ ActiveRecord::Schema.define(version: 2021_03_25_200144) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comment_likes", "comments"
   add_foreign_key "comment_likes", "users"
+  add_foreign_key "comment_votes", "comments"
+  add_foreign_key "comment_votes", "users"
   add_foreign_key "comments", "quotes"
   add_foreign_key "comments", "users"
   add_foreign_key "folders", "users"
