@@ -6,15 +6,15 @@
     comment_path(comment),
     method: :delete %>
 
-  <%= comment.likes_count %>
+  <%= comment.comment_likes_count %>
 
 
-  <% if current_user&.likes&.where(comment_id: comment.id)&.any? %>
-    <%= link_to like_path(comment), method: :delete do %>
+  <% if current_user&.comment_likes&.where(comment_id: comment.id)&.any? %>
+    <%= link_to comment_like_path(comment), method: :delete do %>
       <i class="fas fa-heart"></i>
     <% end %>
   <% else %>
-    <%= link_to likes_path(comment), method: :create do %>
+    <%= link_to comment_likes_path(comment), method: :create do %>
       <i class="far fa-heart"></i>
     <% end %>
   <% end %>
