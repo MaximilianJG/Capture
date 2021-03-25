@@ -19,7 +19,7 @@ class SourcesController < ApplicationController
   end
 
   def show
-
+    raise
     @source_page = true
 
     @all_comments = []

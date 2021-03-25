@@ -4,15 +4,15 @@ class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource/sign_in
   def create
     super
     # current_user.update(authentication_token: nil)
-    cookies[:capture_user_id]= current_user.id
+    cookies[:capture_user_id] = current_user.id
   end
 
   # DELETE /resource/sign_out
