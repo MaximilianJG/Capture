@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     resources :comments, only: [:create], as: "create_comment_from_feed"
   end
 
-  resources :comments, only: [:new, :create, :show, :index]
+  resources :comments, only: [:new, :create, :show, :index, :destroy]
+  resources :likes, only: [:new, :create, :destroy]
+
 
   # Pages
   get "search", to: "pages#search"

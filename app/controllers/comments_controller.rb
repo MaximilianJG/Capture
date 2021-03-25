@@ -44,4 +44,11 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:content)
   end
 
+  def destroy
+    @comment = Comment.find_by_id(params[:id].to_i)
+    authorize @comment
+    @comment.destroy!
+    redirect_to request.referrer
+  end
+
 end

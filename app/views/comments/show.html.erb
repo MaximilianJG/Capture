@@ -1,8 +1,13 @@
+<h1>Quote:</h1>
 <%= @comment.quote.content %>
+
+<h2>Last Comment:</h2>
+
 <%= @comment.content %>
 
+<h3>Comments on Comment:</h3>
 <% @comment.comments.each do |comment| %>
-    <%= comment.content %>
+  <%= render partial: "reply", locals: { comment: comment } %>
 <% end %>
 
 <%= form_for(@new_comment) do |f| %>
@@ -12,3 +17,5 @@
   <%= f.hidden_field :quote_id, :value => @comment.quote.id %>
   <%= f.submit %>
 <% end %>
+
+

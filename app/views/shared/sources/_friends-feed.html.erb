@@ -34,6 +34,10 @@
               <p class=""><span><%= quote.content %></span></p>
             </div>
 
+            <% if quote.comments.empty? %>
+              <i class="far fa-comment"></i><p>be the first to comment</p> 
+            <% end %>
+
             <% quote.comments.where(comment_id:nil).each do |comment| %>
               <div class="comment">
                 <div class="avatar">

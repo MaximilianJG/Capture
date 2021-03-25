@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_24_165827) do
+ActiveRecord::Schema.define(version: 2021_03_25_112332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_03_24_165827) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "comment_id"
+    t.integer "likes_count", default: 0
     t.index ["quote_id"], name: "index_comments_on_quote_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -59,6 +60,15 @@ ActiveRecord::Schema.define(version: 2021_03_24_165827) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_folders_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "comment_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_likes_on_comment_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -145,6 +155,8 @@ ActiveRecord::Schema.define(version: 2021_03_24_165827) do
   add_foreign_key "comments", "quotes"
   add_foreign_key "comments", "users"
   add_foreign_key "folders", "users"
+  add_foreign_key "likes", "comments"
+  add_foreign_key "likes", "users"
   add_foreign_key "quotes", "sources"
   add_foreign_key "quotes", "users"
   add_foreign_key "relationships", "users", column: "asker_id"
