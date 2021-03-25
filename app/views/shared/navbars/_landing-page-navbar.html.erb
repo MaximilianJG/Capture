@@ -1,28 +1,31 @@
-<div class="landing-page-navbar">
+<div class="global-nav">
+  <div class="landing-page-navbar">
 
-    <%= link_to sources_path, class: "remove-underline" do  %>
-      <div class="logo-and-name">
-        <%= cl_image_tag "Screenshot_2021-02-14_at_00.59.44_mafn2e", class: "logo", width: 35 %>
-        <h1 class="capture-logo-title">Capture</h1>
+      <%= link_to sources_path, class: "remove-underline" do  %>
+        <div class="logo-and-name">
+          <%= cl_image_tag "Screenshot_2021-02-14_at_00.59.44_mafn2e", class: "logo", width: 35 %>
+          <h1 class="capture-logo-title">Capture</h1>
+        </div>
+      <% end %>
+
+      <div class="right-links">
+        <div class="about-us">
+          <%= link_to "About Us", "#"  %>
+        </div>
+
+        <div class="log-in">
+          <%= link_to "Log In", "#"  %>
+        </div>
+
+        <div class="sign-up">
+          <%= link_to "Get Started", "#"  %>
+        </div>
       </div>
-    <% end %>
 
-    <div class="right-links">
-      <div class="about-us">
-        <%= link_to "About Us", "#"  %>
-      </div>
 
-      <div class="log-in">
-        <%= link_to "Log In", "#"  %>
-      </div>
+  </div>
 
-      <div class="sign-up">
-        <%= link_to "Get Started", "#"  %>
-      </div>
-    </div>
-
+  <span class="primary-line"></span>
+  <span class="secondary-line"></span>
 
 </div>
-
-<span class="primary-line"></span>
-<span class="secondary-line"></span>
