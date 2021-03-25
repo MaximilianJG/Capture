@@ -31,6 +31,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def most_saved_sources
+    source_url_count = Hash.new(0)
+    Source.all.each { |source| source_url_count[source.url_of_website] += 1}
+    source_url_count = source_url_count.sort_by{|source,number| number}
+    return source_url_count.last(3).map {|source_url| Source.find_by(url_of_website: source_url)}
+  end
+
+
+
+
 
 
   private
