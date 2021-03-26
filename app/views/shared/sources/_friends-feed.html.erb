@@ -40,7 +40,7 @@
             </div>
 
             <% if quote.comments.empty? %>
-              <i class="far fa-comment"></i><p>be the first to comment</p> 
+              <i class="far fa-comment"></i><p>be the first to comment</p>
             <% end %>
 
             <% quote.comments.where(comment_id:nil).each do |comment| %>
@@ -52,8 +52,8 @@
                     <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "" %>
                   <% end %>
                 </div>
-                
-                <%= link_to comment_path(id: comment.id) do %>
+
+                <%= link_to comment_path(comment) do %>
                   <div class="comment-content-box">
                     <div class="user-and-time">
                       <p class="user"><%= comment.user.username %></p>
