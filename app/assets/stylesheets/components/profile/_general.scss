@@ -22,12 +22,13 @@
   align-items: center;
 }
 
-.follow-and-edit {
+.log-out-and-edit {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 30px;
 
-  .follow a {
+  .log-out {
     display: block;
     margin-top: 2px;
     font-family: $standard-font;
@@ -45,6 +46,33 @@
     :hover {
       color: $dark-grey;
     }
+  }
+
+}
+
+.follow-btn-div {
+  text-align: center;
+  height: 30px;
+
+  .follow-btn {
+    background-color: white;
+    margin-top: 5px;
+    border: 1px solid $dark-grey;
+    padding: 3px 25px 3px 25px;
+    border-radius: 8px;
+    display: inline-block;
+    height: 32px;
+
+    .follow-text {
+      font-family: $standard-font;
+      color: black;
+      font-size: 15px;
+    }
+  }
+  .follow-btn:hover {
+    padding: 2px 24px 2px 24px;
+    background-color: $light-grey;
+    border: 2px solid $dark-grey;
   }
 
 }
