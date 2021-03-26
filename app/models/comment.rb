@@ -6,4 +6,15 @@ class Comment < ApplicationRecord
 
 
   validates :content, presence: true
+
+  def comment_votes_aggregate
+    value = 0
+    if self.comment_votes
+      self.comment_votes.each do |comment_vote|
+        value = 0
+        value += comment_vote.value
+      end
+    end
+    return value
+  end
 end
