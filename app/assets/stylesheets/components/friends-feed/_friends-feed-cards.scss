@@ -7,12 +7,15 @@
     padding: 8px 10px;
     position: relative;
 
-     .title a {
+     .title {
         color: black;
         font-family: $standard-font;
         font-weight: 700;
         font-size: 18px;
-        width: 550px;
+        width: 540px;
+        a {
+          color: black;
+        }
      }
 
      .source-avatar {
@@ -61,7 +64,6 @@
 
         .quote {
           display: flex;
-          align-items: center;
 
           i {
             color: $primary-color;
@@ -119,6 +121,25 @@
             }
           }
         }
+      }
+    }
+
+    .see-more-and-captured-by {
+      display: flex;
+      align-content: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      .see-more {
+        margin: 0px;
+        color: $dark-grey;
+        font-size: 14px;
+        font-family: $standard-font;
+      }
+      .captured-by {
+        margin: 0px;
+        color: $dark-grey;
+        font-size: 14px;
+        font-family: $standard-font;
       }
     }
   }
