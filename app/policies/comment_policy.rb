@@ -9,4 +9,12 @@ class CommentPolicy < ApplicationPolicy
     true
   end
 
+  def destroy?
+    true
+  end
+
+  def show?
+    true
+  end
+
 end

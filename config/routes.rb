@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create], as: "create_comment_from_feed"
   end
 
+  resources :comments, only: [:new, :create, :show, :index, :destroy]
+  resources :comment_votes, only: [:new, :create, :destroy]
+
+
   # Pages
   get "search", to: "pages#search"
   get "user/:id/overview", to: "pages#user_profile_overview", as: "user_profile_overview"

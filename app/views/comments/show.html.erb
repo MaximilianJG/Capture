@@ -1,0 +1,24 @@
+<div class="quote">
+  <i class="fas fa-quote-left"></i>
+  <p class=""><span><%= @comment.quote.content %></span></p>
+</div>
+
+
+<h2>Last Comment:</h2>
+
+<%= @comment.content %>
+
+<h3>Comments on Comment:</h3>
+<% @comment.comments.each do |comment| %>
+  <%= render partial: "reply", locals: { comment: comment } %>
+<% end %>
+
+<%= form_for(@new_comment) do |f| %>
+  <%= f.label "Comment:" %>
+  <%= f.text_field :content %>
+  <%= f.hidden_field :comment_id, :value => @comment.id %>
+  <%= f.hidden_field :quote_id, :value => @comment.quote.id %>
+  <%= f.submit %>
+<% end %>
+
+
