@@ -1,4 +1,4 @@
 <div class="left-column">
-  <%= render('shared/left-column/side-navbar', folders: @folders) if user_signed_in? %> <!-- this is comming from the application controller (set_folder method) -->
-  <%= render 'shared/left-column/create-folder' %>
+  <%= render('shared/left-column/side-navbar') if user_signed_in? %>
+  <%= render 'shared/left-column/create-folder' if user_signed_in? && current_page?(sources_path)%>
 </div>

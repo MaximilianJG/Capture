@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :users, dependent: :destroy
   has_many :comment_votes, dependent: :destroy
+  has_many :user_tags
+  has_many :tags, through: :user_tags
   has_one_attached :photo
 
   after_create :make_default_folder
@@ -17,6 +19,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+  # validates :tags, presence: true
 
   acts_as_token_authenticatable
 
@@ -40,5 +43,6 @@ class User < ApplicationRecord
   def make_default_folder
     Folder.create(folder_name: "My Latest Captures", user: self)
   end
+
 
 end

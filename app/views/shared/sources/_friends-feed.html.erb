@@ -9,14 +9,19 @@
         <% end %>
       </div>
 
-          <% if source.user.photo.attached? %>
-            <%= cl_image_tag source.user.photo.key, class: "source-avatar" %>
-          <% else %>
-            <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "source-avatar" %>
-          <% end %>
+      <% if source.user.photo.attached? %>
+        <%= cl_image_tag source.user.photo.key, class: "source-avatar" %>
+      <% else %>
+        <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "source-avatar" %>
+      <% end %>
 
-        <span class="website"><%= source.website %></span>
+      <%= link_to "#{source.website.gsub("www.", "")}", "#{source.url_of_website}", class: "website" %>
 
+      <div class="tags">
+        <% source.tags.each do |tag| %>
+          <%= link_to "##{tag.name},", "#", class: "tag"  %>
+        <% end %>
+      </div>
 
       <div class="image">
         <% if source.photo.attached? %>
