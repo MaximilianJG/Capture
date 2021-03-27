@@ -1,7 +1,7 @@
 class Comment < ApplicationRecord
   belongs_to :quote
   belongs_to :user
-  has_many :comments, dependent: :destroy
+  has_many :comments, foreign_key: :parent_id, dependent: :destroy
   has_many :comment_votes, dependent: :destroy
 
 

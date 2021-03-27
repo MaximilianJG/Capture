@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
       @quote = Quote.find(params[:quote_id])
     end
 
-    @comment_id = params["comment"]["comment_id"].to_i
+    @parent_id = params["comment"]["parent_id"].to_i
 
     if !params[:source_id].nil?
       @source = Source.find(params[:source_id])
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
 
     @comment.quote = @quote
     @comment.user = current_user
-    @comment.comment_id = @comment_id 
+    @comment.parent_id = @parent_id 
 
     if @comment.save!
       redirect_back(fallback_location: root_path)
