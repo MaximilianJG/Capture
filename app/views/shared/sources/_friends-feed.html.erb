@@ -35,7 +35,12 @@
             </div>
 
             <% if quote.comments.empty? %>
-              <i class="far fa-comment"></i><p>be the first to comment</p> 
+              <%= form_for(@new_comment) do |f| %>
+                <%= f.label "Be the first to comment:" %>
+                <%= f.text_field :content %>
+                <%= f.hidden_field :quote_id, :value => quote.id %>
+                <%= f.submit %>
+              <% end %>
             <% end %>
 
             <% quote.comments.where(parent_id:nil).each do |comment| %>
@@ -47,7 +52,15 @@
                     <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "" %>
                   <% end %>
                 </div>
-                
+
+                <%= comment.comment_votes_aggregate %>
+
+                <%= link_to comment_votes_path(comment), method: :create do %>
+                    <i class="fas fa-sort-up"></i>
+                <% end %>
+                <%= link_to comment_vote_path(comment), method: :delete do %>
+                    <i class="fas fa-sort-down"></i>
+                <% end %>             
                 <%= link_to comment_path(id: comment.id) do %>
                   <div class="comment-content-box">
                     <div class="user-and-time">
@@ -57,15 +70,35 @@
                     <p class="comment-text"><%= comment.content %></p>
                   </div>
                 <% end %>
+                <% if comment.comments.empty? %>
+                    <%= link_to comment_path(comment), method: :delete do %>
+                       <i class="far fa-trash-alt"></i>
+                    <% end %>
+                <% end %>
               </div>
 
+              <% if !comment.comments.where(user_id: current_user.id).empty? %>
+                <%= comment.comments.where(user_id: current_user.id).first.content %>
+                <span>by</span>
+                <%= comment.comments.where(user_id: current_user.id).first.user.username %>
+              <% else %>
+
+                <div class="comment">
+                  <i class="far fa-comment"></i>
+                  <%= form_for(@new_comment) do |f| %>
+                    <%= f.label "Reply:" %>
+                    <%= f.text_field :content %>
+                    <%= f.hidden_field :parent_id, :value => comment.id %>
+                    <%= f.hidden_field :quote_id, :value => comment.quote.id %>
+                    <%= f.submit %>
+                  <% end %>
+                </div>
+             
+              <% end %>
             <% end %>
           </div>
-
-
         <% end %>
       </div>
-
     </div>
   <% end %>
 </div>

@@ -1,13 +1,13 @@
 class CommentsController < ApplicationController
 
   def create
-    if params["comment"]["quote_id"] != nil
+    if params["comment"]["quote_id"] 
       @quote = Quote.find(params["comment"]["quote_id"])
     else
       @quote = Quote.find(params[:quote_id])
     end
 
-    @parent_id = params["comment"]["parent_id"].to_i
+    @parent_id = params["comment"]["parent_id"]&.to_i
 
     if !params[:source_id].nil?
       @source = Source.find(params[:source_id])
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
       @source = Source.find(@quote.source_id)
     end
 
-   if params["comment"]["content"] != nil
+   if params["comment"]["content"] 
       @comment = Comment.new(content: params["comment"]["content"]) 
    else
       @comment = Comment.new(content: params[:content]) # how do I build this with strong_comment_params
