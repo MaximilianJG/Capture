@@ -12,5 +12,4 @@ class CommentVotePolicy < ApplicationPolicy
     def destroy?
       true
     end
-  
-  end
+end

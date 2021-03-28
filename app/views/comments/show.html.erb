@@ -1,24 +1,33 @@
-<div class="quote">
-  <i class="fas fa-quote-left"></i>
-  <p class=""><span><%= @comment.quote.content %></span></p>
+
+<% if Comment.find_by_id(@comment.parent_id) %>
+  <%= link_to comment_path(id: @comment.parent_id) do %>
+    <i class="fas fa-chevron-left"></i>
+  <% end %>
+<% end %>
+<%= link_to feed_path do %>
+  <div class="quote">
+    <i class="fas fa-quote-left"></i>
+    <p class=""><span><%= @comment.quote.content %></span></p>
+  </div>
+<% end %>
+
+<div style="margin-left: <%= 22 %>px"> 
+
+  <%= link_to comment_path(id: @comment.id) do %>
+      <h2><%= @comment.content %></h2>
+  <% end %>
+  
+  <% @comment.comments.each do |comment| %>
+    <%= render partial: "reply", locals: { comment: comment } %>
+  <% end %>
+
+  <%= form_for(@new_comment) do |f| %>
+    <%= f.label "Comment:" %>
+    <%= f.text_field :content %>
+    <%= f.hidden_field :parent_id, :value => @comment.id %>
+    <%= f.hidden_field :quote_id, :value => @comment.quote.id %>
+    <%= f.submit %>
+  <% end %>
 </div>
-
-
-<h2>Last Comment:</h2>
-
-<%= @comment.content %>
-
-<h3>Comments on Comment:</h3>
-<% @comment.comments.each do |comment| %>
-  <%= render partial: "reply", locals: { comment: comment } %>
-<% end %>
-
-<%= form_for(@new_comment) do |f| %>
-  <%= f.label "Comment:" %>
-  <%= f.text_field :content %>
-  <%= f.hidden_field :comment_id, :value => @comment.id %>
-  <%= f.hidden_field :quote_id, :value => @comment.quote.id %>
-  <%= f.submit %>
-<% end %>
 
 

@@ -75,6 +75,7 @@ class SourcesController < ApplicationController
   end
 
   def feed
+    @new_comment = Comment.new
     @heading = "Friends Feed"
     @no_right_column = true
     @sources = policy_scope(Source).where(user: current_user.following)

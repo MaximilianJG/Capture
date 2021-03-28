@@ -1,20 +1,25 @@
-<%= link_to comment_path(id: comment.id) do %>
-    <h2><%= comment.content %></h2>
-<% end %>
+<div style="margin-left: <%= 22 %>px"> 
 
-<%= link_to "Delete this Comment",
-    comment_path(comment),
-    method: :delete %>
-
-  <%= comment.comment_votes_count %>
-
-
-  <% if current_user&.comment_votes&.where(comment_id: comment.id)&.any? %>
-    <%= link_to comment_vote_path(comment), method: :delete do %>
-      <i class="fas fa-heart"></i>
+    <%= link_to comment_path(id: comment.id) do %>
+        <h2><%= comment.content %></h2>
     <% end %>
-  <% else %>
+
+    <% if comment.comments.empty? %>
+        <i class="far fa-trash-alt"></i>
+        <%= link_to "Delete this Comment",
+            comment_path(comment),
+            method: :delete %>
+    <% end %>
+
+    <%= comment.comment_votes_aggregate %>
+
     <%= link_to comment_votes_path(comment), method: :create do %>
-      <i class="far fa-heart"></i>
+        <i class="fas fa-sort-up"></i>
     <% end %>
-  <% end %>
+    <%= link_to comment_vote_path(comment), method: :delete do %>
+        <i class="fas fa-sort-down"></i>
+    <% end %>
+</div>
+
+
+

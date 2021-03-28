@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_25_231805) do
+ActiveRecord::Schema.define(version: 2021_03_26_190319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2021_03_25_231805) do
     t.bigint "comment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "value", default: 0
     t.index ["comment_id"], name: "index_comment_votes_on_comment_id"
     t.index ["user_id"], name: "index_comment_votes_on_user_id"
   end
@@ -51,11 +52,11 @@ ActiveRecord::Schema.define(version: 2021_03_25_231805) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "comment_id"
     t.integer "likes_count", default: 0
     t.integer "comment_likes_count", default: 0
     t.integer "votes_count", default: 0
     t.integer "comment_votes_count", default: 0
+    t.integer "parent_id"
     t.index ["quote_id"], name: "index_comments_on_quote_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
