@@ -14,9 +14,9 @@
 @import "global-search/results";
 @import "global-search/search-bar";
 
-@import "landingpage/banner";
-@import "landingpage/button";
-@import "landingpage/navbar";
+@import "landingpage/general";
+@import "landingpage/trending-articles";
+
 
 @import "profile/header";
 @import "profile/recent-activity";
@@ -26,6 +26,9 @@
 
 
 @import "navbars/top-navbar";
+@import "navbars/landing-page-navbar";
+@import "navbars/general";
+
 
 @import "my-captures/general";
 @import "my-captures/filter-field";

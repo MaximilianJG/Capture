@@ -8,10 +8,14 @@
     position: relative;
 
      .title {
+        color: black;
         font-family: $standard-font;
         font-weight: 700;
         font-size: 18px;
-        width: 550px;
+        width: 540px;
+        a {
+          color: black;
+        }
      }
 
      .source-avatar {
@@ -28,11 +32,25 @@
       color: $dark-grey;
 
     }
+
+    .tags {
+      display: flex;
+
+      .tag {
+        margin-right: 5px;
+        margin-bottom: 5px;
+        font-family: $standard-font;
+        font-size: 12px;
+        color: $primary-color;
+        font-weight: 600;
+      }
+    }
+
     .image img {
       width: 622px;
       height: 280px;
       object-fit: cover;
-      margin: 10px 0px 0px -10px;
+      margin: 0px 0px 0px -10px;
       border-top: 1px solid $light-grey;
       border-bottom: 1px solid $light-grey;
     }
@@ -46,7 +64,6 @@
 
         .quote {
           display: flex;
-          align-items: center;
 
           i {
             color: $primary-color;
@@ -104,6 +121,25 @@
             }
           }
         }
+      }
+    }
+
+    .see-more-and-captured-by {
+      display: flex;
+      align-content: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      .see-more {
+        margin: 0px;
+        color: $dark-grey;
+        font-size: 14px;
+        font-family: $standard-font;
+      }
+      .captured-by {
+        margin: 0px;
+        color: $dark-grey;
+        font-size: 14px;
+        font-family: $standard-font;
       }
     }
   }

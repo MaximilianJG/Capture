@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 
   def create
     if params["comment"]["quote_id"] 
+
       @quote = Quote.find(params["comment"]["quote_id"])
     else
       @quote = Quote.find(params[:quote_id])
@@ -17,10 +18,11 @@ class CommentsController < ApplicationController
 
    if params["comment"]["content"] 
       @comment = Comment.new(content: params["comment"]["content"]) 
+
    else
       @comment = Comment.new(content: params[:content]) # how do I build this with strong_comment_params
    end
-    
+
     authorize @comment
 
     @comment.quote = @quote

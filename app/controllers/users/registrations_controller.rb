@@ -5,14 +5,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    sign_up_tags
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+
+    tags = []
+    params[:user][:tags].each do |tag_id|
+      unless tag_id == ""
+        @user.tags << Tag.find(tag_id)
+      end
+    end
+
+  end
 
   # GET /resource/edit
   # def edit
@@ -59,4 +68,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def sign_up_tags
+    tag_names = ["economics", "politics", "corona", "tech", "finance", "venture", "breaking_news"]
+
+    @sign_up_tags = []
+    tag_names.each do |tag_name|
+      if Tag.find_by(name: tag_name)
+        @sign_up_tags << Tag.find_by(name: tag_name)
+      else
+        @sign_up_tags << Tag.create!(name: tag_name)
+      end
+    end
+    @sign_up_tags
+  end
 end

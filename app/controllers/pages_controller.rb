@@ -5,6 +5,8 @@ class PagesController < ApplicationController
 
   def home
     @landing_page_navbar = true
+
+    @sources = most_saved_sources # Application Controller method
   end
 
   def search
@@ -50,8 +52,6 @@ class PagesController < ApplicationController
     @number_of_comments = policy_scope(Comment).where(user: params[:id]).count
     @number_of_followers = User.find(params[:id]).followers.count
     @number_of_following = User.find(params[:id]).following.count
-
-
   end
 
   def user_profile_followers
@@ -68,6 +68,7 @@ class PagesController < ApplicationController
 
   def profile_show_page?
     @user = User.find(params[:id])
+
     @profile_show_page = true
     @heading = "#{User.find(params[:id]).first_name} #{User.find(params[:id]).last_name}"
   end

@@ -5,6 +5,7 @@ class RelationshipsController < ApplicationController
     authorize @relationship
     @relationship.save!
 
+
     redirect_back(fallback_location: root_path)
   end
 

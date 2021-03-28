@@ -9,14 +9,19 @@
         <% end %>
       </div>
 
-          <% if source.user.photo.attached? %>
-            <%= cl_image_tag source.user.photo.key, class: "source-avatar" %>
-          <% else %>
-            <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "source-avatar" %>
-          <% end %>
+      <% if source.user.photo.attached? %>
+        <%= cl_image_tag source.user.photo.key, class: "source-avatar" %>
+      <% else %>
+        <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "source-avatar" %>
+      <% end %>
 
-        <span class="website"><%= source.website %></span>
+      <%= link_to "#{source.website.gsub("www.", "")}", "#{source.url_of_website}", class: "website" %>
 
+      <div class="tags">
+        <% source.tags.each do |tag| %>
+          <%= link_to "##{tag.name},", "#", class: "tag"  %>
+        <% end %>
+      </div>
 
       <div class="image">
         <% if source.photo.attached? %>
@@ -41,6 +46,7 @@
                 <%= f.hidden_field :quote_id, :value => quote.id %>
                 <%= f.submit %>
               <% end %>
+
             <% end %>
 
             <% quote.comments.where(parent_id:nil).each do |comment| %>
@@ -62,6 +68,7 @@
                     <i class="fas fa-sort-down"></i>
                 <% end %>             
                 <%= link_to comment_path(id: comment.id) do %>
+
                   <div class="comment-content-box">
                     <div class="user-and-time">
                       <p class="user"><%= comment.user.username %></p>
@@ -99,6 +106,13 @@
           </div>
         <% end %>
       </div>
+
+      <div class="see-more-and-captured-by">
+        <p class="see-more">See more...</p>
+        <p class="captured-by">Captured by <strong class="mr-2"><%= source.user.username %></strong> <i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','').gsub(" days", "d").gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago</p>
+
+      </div>
+
     </div>
   <% end %>
 </div>

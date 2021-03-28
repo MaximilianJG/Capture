@@ -1,61 +1,71 @@
-  <div style="background-color: #1E202C; height: 100vh; z-index: -1; position: absolute; top: 0; left: 0; ">
-    <%= cl_image_tag "crowd_z9xbj9", class: "background-image-class" %>
+<%= render 'shared/navbars/landing-page-navbar' %>
+
+
+<div class="landing-page">
+
+  <div class="hero">
+    <div class="hero-content">
+      <div class="text">
+        <h1 class="title">Capture what's <br> important</h1>
+        <h2 class="subtitle">Save, Read and Discuss News from all <br> around the internet. Learn More. </h2>
+      </div>
+
+      <div class="image">
+        <%= cl_image_tag "Screenshot_2021-03-24_at_21.01.30_j24nyt", width: 400;  %>
+
+      </div>
+    </div>
+
   </div>
 
-      <div class="text-center banner-text">
-        <div class="d-flex align-items-center justify-content-center">
-          <%= cl_image_tag "capture_logo_copy_q14wdh", width: 50 %>
-          <h1 class="website-title">Capture</h1>
-        </div>
+  <div class="content">
 
-        <h3 class="website-subtitle mt-2">A Summary of the Internet</h3>
+    <div class="trending-articles">
+      <div class="header">
+        <p class="title">Trending Articles</p>
+        <%= link_to "See all", sources_path, class: "see-all" %>
 
-        <% @contact =  Contact.new %>
-        <div class="content pt-3">
-          <%= form_for @contact do |f| %>
-            <% if @contact.errors.any? %>
-              <div id="error_explanation">
-                <h3><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+      </div>
+      <div class="row trending-article-row">
+        <% @sources.each do |source| %>
+          <div class="col-4 trending-article-col">
+            <div class="source">
+              <%= link_to source_path(source) do %>
+                <div class="image">
+                  <% if source.photo.attached? %>
+                    <%= cl_image_tag source.photo.key, class: "" %>
+                  <% else %>
+                    <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "" %>
+                  <% end %>
+                </div>
 
-                <ul>
-                <% @contact.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-                </ul>
-              </div>
-            <% end %>
+                <div class="description">
+                  <p class="title"><%= source.title %></p>
+                  <p class="website"><%= source.website %></p>
+                </div>
 
-            <div class="d-flex justify-content-center early-access-form">
-              <div class="field">
-                <%= f.text_field :email, required: true, class: "form-email", placeholder: "Enter email address" %>
-              </div>
-
-              <div class="actions">
-                <%= f.submit "Get Early Access", class: "form-submit" %>
-              </div>
+                <span class="primary-line"></span>
+                <span class="secondary-line"></span>
+              <% end %>
             </div>
-
-          <% end %>
-        </div>
-
-
-
-
-
-        <div class="d-flex justify-content-center">
-          <div class="d-flex watch-the-film align-items-center">
-            <h5 class="watch-the-film-text">Watch the Video</h5>
-            <span class="watch-the-film-icon"><i class="fas fa-play-circle"></i></span>
           </div>
-        </div>
+        <% end %>
       </div>
+    </div>
 
-      <div class="d-flex justify-content-end">
-        <div class="log-in-homepage">
-          <% if !user_signed_in? %>
-            <%= link_to "Log in", new_user_session_path, class: "remove-underline" %>
-          <% else %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "remove-underline" %>
-          <% end %>
-        </div>
-      </div>
+    <div class="other-trending">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+
+
+  </div>
+</div>
