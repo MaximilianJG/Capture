@@ -6,6 +6,7 @@ class SourcesController < ApplicationController
     @heading = "My Captures"
     @no_right_column = true
     @sources = policy_scope(Source).where(folder: nil, user: current_user)
+    raise
 
     # if params[:index_filter_query].present?
     #   @sources = policy_scope(Source).filter_sources_with_quotes(params[:index_filter_query]).where(user: current_user)
