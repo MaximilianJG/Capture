@@ -13,6 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
+    cookies[:capture_user_id] = current_user.id
 
     tags = []
     params[:user][:tags].each do |tag_id|
