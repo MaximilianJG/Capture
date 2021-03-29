@@ -39,6 +39,7 @@
               <p class=""><span><%= quote.content %></span></p>
             </div>
 
+            <!-- Be the First to Comment -->
             <% if quote.comments.empty? %>
               <%= form_for(@new_comment) do |f| %>
                 <%= f.label "Be the first to comment:" %>
@@ -46,12 +47,18 @@
                 <%= f.hidden_field :quote_id, :value => quote.id %>
                 <%= f.submit %>
               <% end %>
-
             <% end %>
 
             <% quote.comments.where(parent_id:nil).each do |comment| %>
               <div class="comment">
-                <div class="avatar">
+
+                <div class="votes">
+                  <%= link_to "", comment_votes_path(comment), class: "fas fa-sort-up upvote", method: :create %>
+                  <span class="number-of-votes"><%= comment.comment_votes_aggregate %></span>
+                  <%= link_to "", comment_vote_path(comment), class: "fas fa-sort-down downvote", method: :delete %>
+                </div>
+
+                <div class="comment-avatar">
                   <% if comment.user.photo.attached? %>
                     <%= cl_image_tag comment.user.photo.key, class: "" %>
                   <% else %>
@@ -59,24 +66,23 @@
                   <% end %>
                 </div>
 
-                <%= comment.comment_votes_aggregate %>
-
-                <%= link_to comment_votes_path(comment), method: :create do %>
-                    <i class="fas fa-sort-up"></i>
-                <% end %>
-                <%= link_to comment_vote_path(comment), method: :delete do %>
-                    <i class="fas fa-sort-down"></i>
-                <% end %>             
-                <%= link_to comment_path(id: comment.id) do %>
-
-                  <div class="comment-content-box">
-                    <div class="user-and-time">
-                      <p class="user"><%= comment.user.username %></p>
-                      <span class="time"><%= time_ago_in_words(comment.created_at).gsub('about','').gsub(" days", "d").gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %></span>
+                <div>
+                  <%= link_to comment_path(id: comment.id) do %>
+                    <div class="comment-content-box">
+                      <div class="user-and-time">
+                        <p class="user"><%= comment.user.username %></p>
+                        <span class="time"><%= time_ago_in_words(comment.created_at).gsub('about','').gsub(" days", "d").gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %></span>
+                      </div>
+                      <p class="comment-text"><%= comment.content %></p>
                     </div>
-                    <p class="comment-text"><%= comment.content %></p>
+                  <% end %>
+
+                  <div class="reply-btn">
+                    <%= link_to "Reply", "#"  %>
                   </div>
-                <% end %>
+                </div>
+
+                <!-- Delete Main Comment -->
                 <% if comment.comments.empty? %>
                     <%= link_to comment_path(comment), method: :delete do %>
                        <i class="far fa-trash-alt"></i>
@@ -84,10 +90,11 @@
                 <% end %>
               </div>
 
-              <% if !comment.comments.where(user_id: current_user.id).empty? %>
-                <%= comment.comments.where(user_id: current_user.id).first.content %>
-                <span>by</span>
-                <%= comment.comments.where(user_id: current_user.id).first.user.username %>
+              <!-- Your Reply -->
+              <% unless comment.comments.where(user: current_user).empty? %>
+                <%= render 'comments/comment-reply' %>
+
+
               <% else %>
 
                 <div class="comment">
@@ -100,7 +107,7 @@
                     <%= f.submit %>
                   <% end %>
                 </div>
-             
+
               <% end %>
             <% end %>
           </div>
