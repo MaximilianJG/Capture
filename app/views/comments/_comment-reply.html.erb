@@ -1,0 +1,63 @@
+<% comment.comments.each do |reply| %>
+<span class="comment-anchor" id="comment-<%= reply.id %>"></span>
+
+  <div class="reply-div" id="">
+    <div class="reply">
+      <div class="reply-avatar">
+        <% if reply.user.photo.attached? %>
+          <%= cl_image_tag reply.user.photo.key, class: "" %>
+        <% else %>
+          <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "" %>
+        <% end %>
+      </div>
+
+      <div class="box-and-btn">
+        <%= link_to comment_path(reply) do %>
+          <div class="reply-content-box">
+            <div class="user-and-time">
+              <p class="user"><%= reply.user.username %></p>
+              <span class="time"><%= time_ago_in_words(reply.created_at).gsub('about','').gsub(" days", "d").gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %></span>
+            </div>
+            <p class="comment-text"><%= reply.content %></p>
+          </div>
+        <% end %>
+
+        <div class="reply-btn">
+          <%= link_to "#", data: {toggle: "modal", target: "#modal-#{reply.id}"} do  %>
+            Reply
+          <% end %>
+        </div>
+      </div>
+
+      <% @new_comment = Comment.new %>
+      <div class="modal fade" id="modal-<%= reply.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content p-1">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Reply to <span>"<%= reply.content %>"</span></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="">
+                 <%= form_for(@new_comment) do |f| %>
+                   <%= f.label "Comment:" %>
+                   <%= f.text_field :content %>
+                   <%= f.hidden_field :parent_id, :value => reply.id %>
+                   <%= f.hidden_field :quote_id, :value => reply.quote.id %>
+                   <%= f.submit %>
+                 <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <%= render partial: "comments/comment-reply", locals: { comment: reply } %>
+  </div>
+<% end %>
+
+

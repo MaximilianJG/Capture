@@ -9,7 +9,7 @@ class CommentVotesController < ApplicationController
             authorize @comment_vote
             @comment_vote.upvote
         end
-        redirect_to request.referrer
+        redirect_to request.referer + "#vote-#{params[:format]}"
     end
 
     def destroy
@@ -22,6 +22,6 @@ class CommentVotesController < ApplicationController
             authorize @comment_vote
             @comment_vote.downvote
         end
-        redirect_to request.referrer
+        redirect_to request.referer + "#vote-#{params[:id]}"
     end
 end

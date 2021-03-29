@@ -83,11 +83,43 @@
           display: flex;
           margin-top: 10px;
 
-          .avatar img {
-            width: 40px;
-            height: 40px;
+          .comment-avatar img {
+            width: 50px;
+            height: 50px;
             object-fit: cover;
             border-radius: 50%;
+            margin-right: 5px;
+          }
+
+          .votes {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 5px;
+
+            .vote-anchor {
+              display: block;
+              height: 115px; /*same height as header*/
+              margin-top: -115px; /*same height as header*/
+              visibility: hidden;
+            }
+
+            .upvote {
+              font-size: 25px;
+              margin-bottom: -5px;
+              text-decoration: none;
+            }
+
+            .number-of-votes {
+              line-height: 14px;
+            }
+
+            .downvote {
+              font-size: 25px;
+              margin-top: -7px;
+              text-decoration: none;
+
+            }
           }
 
           .comment-content-box {
@@ -121,6 +153,71 @@
             }
           }
         }
+
+        .comment-anchor {
+          display: block;
+          height: 115px; /*same height as header*/
+          margin-top: -115px; /*same height as header*/
+          visibility: hidden;
+        }
+
+        .reply-div {
+          margin-top: 10px;
+          margin-left: 50px;
+
+          .reply {
+            display: flex;
+
+            a {
+              width: 100%;
+            }
+
+            .box-and-btn {
+            width: 100%;
+            }
+
+
+            .reply-avatar img {
+              width: 40px;
+              height: 40px;
+              object-fit: cover;
+              border-radius: 50%;
+              margin-right: 5px;
+            }
+
+            .reply-content-box {
+              background-color: #EFEFEF;
+              border-radius: 0px 8px 8px 8px;
+              padding: 5px 8px;
+
+              .user-and-time {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .user {
+                  font-family: $standard-font;
+                  font-weight: 600;
+                  font-size: 15px;
+                  margin: 0px;
+                }
+
+                .time {
+                  font-family: $standard-font;
+                  font-size: 12px;
+
+                }
+              }
+
+              .comment-text {
+                font-family: $standard-font;
+                margin: 0px;
+                font-size: 15px;
+              }
+            }
+          }
+
+        }
+
       }
     }
 
