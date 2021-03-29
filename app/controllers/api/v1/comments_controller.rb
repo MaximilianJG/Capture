@@ -7,6 +7,7 @@ class Api::V1::CommentsController < Api::V1::BaseController
 
 
     @comment = Comment.new(content: comment_post_request_params[:comment])
+    print(@comment)
     authorize @comment
     @comment.quote = @quote
     @comment.user = current_user
