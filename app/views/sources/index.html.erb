@@ -1,6 +1,15 @@
-<%= render 'shared/folders/my-captures-grid' %>
-<%= render 'shared/sources/my-captures-grid' %>
+  <%= render 'shared/folders/my-captures-grid' %>
+<% unless @sources == [] %>
+  <%= render 'shared/sources/my-captures-grid' %>
+<% else %>
+  <div class="nil-my-captures">
+    <h3 class="text">Start Capturing by using our <br><%= link_to "Chrome Extension", "#" %></h3>
 
+    <div class="d-flex justify-content-center">
+      <%= cl_image_tag "Screenshot_2021-03-31_at_18.21.57_vudxhh", width: 400;  %>
+    </div>
+  </div>
+<% end %>
 
 
 
