@@ -1,1 +1,13 @@
-<%= render 'shared/sources/friends-feed' %>
+<% unless @sources == [] %>
+  <%= render 'shared/sources/friends-feed' %>
+
+<% else %>
+  <div class="nil-feed">
+    <h3 class="text">Please <strong>follow other users</strong> <br>to see their Captures</h3>
+
+    <div class="arrow-right">
+      <h1 class="fas fa-long-arrow-alt-right"></h1>
+    </div>
+
+  </div>
+<% end %>

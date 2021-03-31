@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 2021_03_28_132739) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "comment_votes_count", default: 0
     t.integer "parent_id"
-    t.integer "comment_votes_count"
     t.index ["quote_id"], name: "index_comments_on_quote_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end

@@ -1,0 +1,16 @@
+.nil-feed {
+  .text {
+    text-align: center;
+    font-family: $standard-font;
+    font-weight: 600;
+  }
+
+  .arrow-right {
+    display: flex;
+    justify-content: center;
+    h1 {
+      font-size: 200px;
+    }
+  }
+
+}
