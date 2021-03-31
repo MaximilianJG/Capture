@@ -16,7 +16,6 @@ class SourcesController < ApplicationController
     @sources = @sources.order(created_at: :desc)
 
     @folders = Folder.where(user: current_user)
-    raise
   end
 
   def show
