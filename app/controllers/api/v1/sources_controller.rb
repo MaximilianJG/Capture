@@ -11,7 +11,7 @@ class Api::V1::SourcesController < Api::V1::BaseController
 
     @source.user = current_user
     file = URI.open(general_post_request_params[:source_photo_url])
-    @source.photo.attach(io: file.rewind, filename: 'image.jpg', content_type: 'image/jpg')
+    @source.photo.attach(io: file, filename: 'image.jpg', content_type: 'image/jpg')
     @source.save!
 
     @quote.source = @source
