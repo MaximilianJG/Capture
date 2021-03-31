@@ -6,12 +6,12 @@ class Api::V1::SourcesController < Api::V1::BaseController
     @quote = Quote.new(content: general_post_request_params[:quote_content], url_of_quote: general_post_request_params[:url_of_quote])
     @quote.user = current_user
     authorize @quote
-
     @source = Source.new(title: general_post_request_params[:source_title], website: general_post_request_params[:website], url_of_website: general_post_request_params[:url_of_website])
 
     @source.user = current_user
     file = URI.open(general_post_request_params[:source_photo_url])
-    @source.photo.attach(io: file.rewind, filename: 'image.jpg', content_type: 'image/jpg')
+    file.rewind
+    @source.photo.attach(io: file, filename: 'image.jpg', content_type: 'image/jpg')
     @source.save!
 
     @quote.source = @source

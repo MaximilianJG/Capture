@@ -41,6 +41,8 @@ gem 'wombat'
 gem 'httparty'
 gem 'nokogiri'
 gem 'byebug'
+gem "lazyload-rails"
+
 
 
 gem 'autoprefixer-rails'
