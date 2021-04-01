@@ -7,8 +7,8 @@
       </div>
 
       <!-- Be the First to Comment -->
-      <% @new_comment = Comment.new %>
       <% if quote.comments.empty? %>
+        <% @new_comment = Comment.new %>
         <%= form_for(@new_comment) do |f| %>
           <%= f.label "Be the first to comment:" %>
           <%= f.text_field :content %>
