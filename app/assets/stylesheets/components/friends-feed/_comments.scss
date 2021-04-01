@@ -1,0 +1,67 @@
+.reply-div {
+  margin-top: 10px;
+  margin-left: 50px;
+
+  .reply {
+    display: flex;
+
+    // a {
+    //   width: 100%;
+    // }
+
+    .reply-avatar img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+
+    .box-and-btn {
+      width: 100%;
+
+      .reply-content-box {
+        background-color: #EFEFEF;
+        border-radius: 0px 8px 8px 8px;
+        padding: 5px 8px;
+
+        .user-and-time {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: black;
+
+          .user {
+            font-family: $standard-font;
+            font-weight: 600;
+            font-size: 15px;
+            margin: 0px;
+          }
+
+          .time {
+            font-family: $standard-font;
+            font-size: 12px;
+
+          }
+        }
+
+        .comment-text {
+          color: black;
+          font-family: $standard-font;
+          margin: 0px;
+          font-size: 15px;
+        }
+      }
+
+      .reply-btn{
+        margin-top: 2px;
+        font-size: 12px;
+        a {
+          color: $dark-grey;
+        }
+      }
+    }
+
+  }
+
+}
