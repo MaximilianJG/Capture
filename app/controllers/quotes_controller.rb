@@ -43,4 +43,16 @@ class QuotesController < ApplicationController
   def strong_quote_params
     params.require(:quote).permit(:content, :url_of_quote, :source_id)
   end
+
+  def destroy
+    @quote = Quote.find(params[:id])
+    authorize @quote
+    @quote.destroy!
+    redirect_to request.referrer
+    
+    # @comment = Comment.find_by_id(params[:id].to_i)
+    # authorize @comment
+    # @comment.destroy!
+    # redirect_to request.referrer
+  end
 end

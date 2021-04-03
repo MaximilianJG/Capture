@@ -29,6 +29,14 @@
         </div>
       </div>
 
+      
+      <!-- Delete Sub Comment -->
+      <% if reply.user = current_user %>
+        <%= link_to comment_path(reply), method: :delete do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+      <% end %>
+
       <% @new_comment = Comment.new %>
       <div class="modal fade" id="modal-<%= reply.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

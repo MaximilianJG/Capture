@@ -4,7 +4,12 @@
       <div class="quote">
         <i class="fas fa-quote-left"></i>
         <p class=""><span><%= quote.content %></span></p>
-      </div>
+        <% if quote.user = current_user %>
+          <%= link_to quote_path(quote), method: :delete do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        <% end %>  
+      </div>     
 
       <!-- Be the First to Comment -->
       <% if quote.comments.empty? %>
@@ -80,11 +85,11 @@
       </div>
 
           <!-- Delete Main Comment -->
-          <% if comment.comments.empty? %>
+            <% if comment.user = current_user %>
               <%= link_to comment_path(comment), method: :delete do %>
-                 <i class="far fa-trash-alt"></i>
+                  <i class="far fa-trash-alt"></i>
               <% end %>
-          <% end %>
+            <% end %>
         </div>
 
         <!-- Replies -->

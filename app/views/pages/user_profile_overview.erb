@@ -2,28 +2,28 @@
   <div>
     <div class="text-center">
       <span class="value"><%= @number_of_captures %></span> <br>
-      <span class="descriptor">Captures</span>
+      <span class="descriptor"><%= link_to "Captures", user_profile_overview_path(@user), class: "user-link"%></span>
     </div>
   </div>
 
   <div>
     <div class="text-center">
       <span class="value"><%= @number_of_comments %></span> <br>
-      <span class="descriptor">Comments</span>
+      <span class="descriptor"><%= link_to "Comments", coming_soon_path, class: "user-link"%></span>
     </div>
   </div>
 
   <div>
     <div class="text-center">
       <span class="value"><%= @number_of_followers %></span> <br>
-      <span class="descriptor">Followers</span>
+      <span class="descriptor"><%= link_to "Followers", user_profile_followers_path(@user), class: "user-link"%></span>
     </div>
   </div>
 
   <div>
     <div class="text-center">
       <span class="value"><%= @number_of_following %></span> <br>
-      <span class="descriptor">Following</span>
+      <span class="descriptor"><%= link_to "Following", user_profile_following_path(@user), class: "user-link"%></span>
     </div>
   </div>
 </div>

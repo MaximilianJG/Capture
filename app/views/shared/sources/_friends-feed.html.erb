@@ -36,7 +36,11 @@
       <div class="see-more-and-captured-by">
         <p class="see-more">See more...</p>
         <p class="captured-by">Captured by <strong class="mr-2"><%= source.user.username %></strong> <i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','').gsub(" days", "d").gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago</p>
-
+        <% if source.user = current_user %>
+          <%= link_to source_path(source), method: :delete do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        <% end %>  
       </div>
     </div>
   <% end %>

@@ -70,8 +70,10 @@ class SourcesController < ApplicationController
   end
 
   def destroy
-    @source.destroy
-    redirect_to sources_path
+    @source = Source.find(params[:id])
+    authorize @source
+    @source.destroy!
+    redirect_to request.referrer
   end
 
   def feed
