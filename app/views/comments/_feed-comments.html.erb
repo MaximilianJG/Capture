@@ -26,10 +26,29 @@
         <div class="comment">
 
           <div class="votes">
-            <span class="vote-anchor" id="vote-<%= comment.id %>"></span>
-            <%= link_to "", comment_votes_path(comment), class: "fas fa-sort-up upvote", method: :create %>
-            <span class="number-of-votes"><%= comment.comment_votes_aggregate %></span>
-            <%= link_to "", comment_vote_path(comment), class: "fas fa-sort-down downvote", method: :delete %>
+            <% if comment.liked_by_user?(current_user) == nil %>
+
+              <span class="vote-anchor" id="vote-<%= comment.id %>"></span>
+              <%= link_to "", comment_votes_path(comment), class: "fas fa-sort-up upvote", method: :create %>
+              <span class="number-of-votes"><%= comment.comment_votes_aggregate %></span>
+              <%= link_to "", comment_vote_path(comment), class: "fas fa-sort-down downvote", method: :delete %>
+
+            <% elsif comment.liked_by_user?(current_user) == true %>
+
+              <span class="vote-anchor" id="vote-<%= comment.id %>"></span>
+              <%= link_to "", comment_votes_path(comment), class: "fas fa-sort-up upvote", id:"active-vote", method: :create %>
+              <span class="number-of-votes"><%= comment.comment_votes_aggregate %></span>
+              <%= link_to "", comment_vote_path(comment), class: "fas fa-sort-down downvote", method: :delete %>
+
+
+            <% elsif comment.liked_by_user?(current_user) == false %>
+
+              <span class="vote-anchor" id="vote-<%= comment.id %>"></span>
+              <%= link_to "", comment_votes_path(comment), class: "fas fa-sort-up upvote", method: :create %>
+              <span class="number-of-votes"><%= comment.comment_votes_aggregate %></span>
+              <%= link_to "", comment_vote_path(comment), class: "fas fa-sort-down downvote", id:"active-vote", method: :delete %>
+
+            <% end %>
           </div>
 
           <div class="comment-avatar">

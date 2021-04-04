@@ -49,10 +49,5 @@ class QuotesController < ApplicationController
     authorize @quote
     @quote.destroy!
     redirect_to request.referrer
-    
-    # @comment = Comment.find_by_id(params[:id].to_i)
-    # authorize @comment
-    # @comment.destroy!
-    # redirect_to request.referrer
   end
 end
