@@ -32,7 +32,8 @@ class SourcePolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user || user.admin
+    true
+    # record.user == user || user.admin
   end
 
   def feed?

@@ -3,6 +3,26 @@
 
   <div class="reply-div" id="">
     <div class="reply">
+
+      <div class="votes">
+        <% if reply.liked_by_user?(current_user) == nil %>
+          <span class="vote-anchor" id="vote-<%= reply.id %>"></span>
+          <%= link_to "", comment_votes_path(reply), class: "fas fa-sort-up upvote", method: :create %>
+          <span class="number-of-votes"><%= reply.comment_votes_aggregate %></span>
+          <%= link_to "", comment_vote_path(reply), class: "fas fa-sort-down downvote", method: :delete %>
+        <% elsif reply.liked_by_user?(current_user) == true %>
+          <span class="vote-anchor" id="vote-<%= reply.id %>"></span>
+          <%= link_to "", comment_votes_path(reply), class: "fas fa-sort-up upvote", id:"active-vote", method: :create %>
+          <span class="number-of-votes"><%= reply.comment_votes_aggregate %></span>
+          <%= link_to "", comment_vote_path(reply), class: "fas fa-sort-down downvote", method: :delete %>
+        <% elsif reply.liked_by_user?(current_user) == false %>
+          <span class="vote-anchor" id="vote-<%= reply.id %>"></span>
+          <%= link_to "", comment_votes_path(reply), class: "fas fa-sort-up upvote", method: :create %>
+          <span class="number-of-votes"><%= reply.comment_votes_aggregate %></span>
+          <%= link_to "", comment_vote_path(reply), class: "fas fa-sort-down downvote", id:"active-vote", method: :delete %>
+        <% end %>
+      </div>
+
       <div class="reply-avatar">
         <% if reply.user.photo.attached? %>
           <%= cl_image_tag reply.user.photo.key, class: "" %>
@@ -28,6 +48,14 @@
           <% end %>
         </div>
       </div>
+
+      
+      <!-- Delete Sub Comment -->
+      <% if reply.user = current_user %>
+        <%= link_to comment_path(reply), method: :delete do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+      <% end %>
 
       <% @new_comment = Comment.new %>
       <div class="modal fade" id="modal-<%= reply.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

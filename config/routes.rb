@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "feed", to: "sources#feed", as: "feed"
 
   # Quotes
-  resources :quotes, only: [:new, :create, :show] do
+  resources :quotes, only: [:new, :create, :show, :destroy] do
     resources :comments, only: [:create], as: "create_comment_from_feed"
   end
 

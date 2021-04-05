@@ -7,14 +7,25 @@ class Comment < ApplicationRecord
 
   validates :content, presence: true
 
+  # Adds up all the values of all comment votes on a comment. Don't confuse this with comment_votes_count,
+  # which returns total nr of comment votes on a comment instead of aggregating their value.
   def comment_votes_aggregate
-    value = 0
-    if self.comment_votes
-      self.comment_votes.each do |comment_vote|
-        value = 0
-        value += comment_vote.value
-      end
+    if comment_votes
+      CommentVote.where(comment_id: self.id).map(&:value).inject(0){|sum,x| sum + x }
+    else
+      return 0
     end
-    return value
+  end
+
+  # Returns true if liked by user, false if downvoted by user, nil if not liked or disliked by user
+  def liked_by_user?(current_user)
+    value = CommentVote.where(comment_id: self.id, user_id: current_user.id)&.first&.value
+    if value == 1
+      return true
+    elsif value == -1
+      return false
+    else
+      return nil
+    end
   end
 end
