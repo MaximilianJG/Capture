@@ -55,13 +55,26 @@ class PagesController < ApplicationController
   end
 
   def user_profile_followers
+    @number_of_captures = policy_scope(Quote).where(user: params[:id]).count
+    @number_of_comments = policy_scope(Comment).where(user: params[:id]).count
+    @number_of_followers = User.find(params[:id]).followers.count
+    @number_of_following = User.find(params[:id]).following.count
   end
 
   def user_profile_following
+    @number_of_captures = policy_scope(Quote).where(user: params[:id]).count
+    @number_of_comments = policy_scope(Comment).where(user: params[:id]).count
+    @number_of_followers = User.find(params[:id]).followers.count
+    @number_of_following = User.find(params[:id]).following.count
   end
 
   def coming_soon
     @heading = "Coming Soon!"
+  end
+
+  def all_user_suggestions
+    @heading = "All User Suggestions"
+    @users = suggested_for_your
   end
 
   private

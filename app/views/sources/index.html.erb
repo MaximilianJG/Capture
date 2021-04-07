@@ -1,5 +1,5 @@
-  <%= render 'shared/folders/my-captures-grid' %>
-<% unless @sources == [] %>
+<%= render 'shared/folders/my-captures-grid' %>
+<% unless policy_scope(Source).where(user: current_user) == [] %>
   <%= render 'shared/sources/my-captures-grid' %>
 <% else %>
   <div class="nil-my-captures">

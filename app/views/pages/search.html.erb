@@ -89,7 +89,7 @@
                     <% if user.photo.attached? %>
                       <%= cl_image_tag user.photo.key, class: "global-search-source-banner dropdown-toggle" %>
                     <% else %>
-                      <%= cl_image_tag "newspapers-stack-1to2_svlmsn", class: "global-search-source-banner dropdown-toggle" %>
+                      <%= cl_image_tag "#{@default_profile_image}", class: "global-search-source-banner dropdown-toggle" %>
                     <% end %>
                   </div>
 

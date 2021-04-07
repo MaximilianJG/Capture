@@ -1,69 +1,4 @@
-<div class="d-flex justify-content-between stats mb-3">
-  <div>
-    <div class="text-center">
-      <span class="value"><%= @number_of_captures %></span> <br>
-      <span class="descriptor">Captures</span>
-    </div>
-  </div>
-
-  <div>
-    <div class="text-center">
-      <span class="value"><%= @number_of_comments %></span> <br>
-      <span class="descriptor">Comments</span>
-    </div>
-  </div>
-
-  <div>
-    <div class="text-center">
-      <span class="value"><%= @number_of_followers %></span> <br>
-      <span class="descriptor">Followers</span>
-    </div>
-  </div>
-
-  <div>
-    <div class="text-center">
-      <span class="value"><%= @number_of_following %></span> <br>
-      <span class="descriptor">Following</span>
-    </div>
-  </div>
-</div>
-
-<div class="d-flex justify-content-center">
-  <div>
-    <span class="profile-primary-line"></span>
-    <span class="profile-secondary-line"></span>
-  </div>
-</div>
-
-<% if @user == current_user %>
-  <div class="log-out-and-edit">
-    <div class="log-out">
-        <%= link_to "Log Out", destroy_user_session_path(@user), method: :delete, class: "log-out" %>
-    </div>
-
-    <div>
-      <%= link_to edit_user_registration_path, class: "edit-profile" do %>
-        <span class="">Edit Profile</span>
-      <% end %>
-    </div>
-  </div>
-<% else %>
-
-  <div class="follow-btn-div">
-      <% if ((Relationship.where(asker: current_user, receiver: @user, status: 1).size > 0) ) %>
-        <%= link_to delete_relationship_path(@user), method: :delete, class: "follow-btn" do %>
-          <span class="follow-text"> Unfollow </span>
-        <% end %>
-      <% else %>
-        <%= link_to create_relationship_path(@user), method: :create, class: "follow-btn" do %>
-          <span class="follow-text"> Follow </span>
-        <% end %>
-      <% end %>
-  </div>
-<% end %>
-
-
-
+<%= render 'pages/profile-header' %>
 
 <!-- Profile Folders -->
 <div class="profile-folders">
@@ -83,11 +18,11 @@
 </div>
 
 <!-- Profile Recent Activity -->
-
 <div class="profile-recent-activity">
   <h1 class="recent-activity-title">Recent Captures</h1>
 
-  <%= render 'shared/sources/friends-feed' %>
+  <%= render partial: "shared/sources/friends-feed", locals: { sources: @sources } %>
+
 </div>
 
 

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :suggested_for_your
+  before_action :suggested_for_your, :default_profile_image
 
   include Pundit
 
@@ -17,6 +17,11 @@ class ApplicationController < ActionController::Base
   end
 
   # Pundit: white-list approach.
+
+  # This is a method so that we can change default profile image in one place rather than having to do it everywhere it's rendered
+  def default_profile_image
+    return @default_profile_image = "5116kv41b9vm0jc5gj9hacn56x8c"
+  end
 
   def suggested_for_your # Users that are not current_user && not current_user.following
     if user_signed_in?
@@ -45,7 +50,5 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
-  def after_sign_out_path_for(resource_or_scope)
-    root_path
-  end
+
 end

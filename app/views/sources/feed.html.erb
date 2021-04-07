@@ -1,5 +1,5 @@
 <% unless @sources == [] %>
-  <%= render 'shared/sources/friends-feed' %>
+<%= render partial: "shared/sources/friends-feed", locals: { sources: @sources.order(created_at: :desc) } %>
 
 <% else %>
   <div class="nil-feed">
