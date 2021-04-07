@@ -4,7 +4,7 @@
     <div class="d-flex align-items-center">
       <div class="user-avatar">
         <% if user.photo.attached? %>
-          <%= cl_image_tag followed_guy.photo.key, class: "" %>
+          <%= cl_image_tag user.photo.key, class: "" %>
         <% else %>
           <%= cl_image_tag "#{@default_profile_image}", class: "" %>
         <% end %>
