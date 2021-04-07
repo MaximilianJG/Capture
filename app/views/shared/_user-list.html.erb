@@ -15,7 +15,7 @@
         <p class="tags">
           <% user.tags.each do |tag| %>
             <% if tag == user.tags.last %>
-              <%= link_to "##{tag.name},", "#", class: "tag"  %>
+              <%= link_to "##{tag.name}", "#", class: "tag"  %>
             <% else %>
               <%= link_to "##{tag.name},", "#", class: "tag"  %>
             <% end %>
