@@ -1,0 +1,26 @@
+.quote {
+  display: flex;
+  position: relative;
+
+  i {
+    color: $primary-color;
+    font-size: 45px;
+    margin-right: 10px;
+  }
+  p {
+    font-family: $standard-font;
+    font-size: 15px;
+    margin: 0px;
+    span {
+      background-color: rgba(255, 246, 37, 0.6);
+    }
+  }
+  .quote-delete {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    i {
+      font-size: 10px;
+    }
+  }
+}

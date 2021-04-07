@@ -4,118 +4,51 @@
       <div class="quote">
         <i class="fas fa-quote-left"></i>
         <p class=""><span><%= quote.content %></span></p>
-        <% if quote.user = current_user %>
-          <%= link_to quote_path(quote), method: :delete do %>
-            <i class="far fa-trash-alt"></i>
-          <% end %>
-        <% end %>  
-      </div>     
+      </div>
 
-      <!-- Be the First to Comment -->
       <% if quote.comments.empty? %>
-        <% @new_comment = Comment.new %>
-        <%= form_for(@new_comment) do |f| %>
-          <%= f.label "Be the first to comment:" %>
-          <%= f.text_field :content %>
-          <%= f.hidden_field :quote_id, :value => quote.id %>
-          <%= f.submit %>
-        <% end %>
+        <div class="quote-comment-btn">
+          <%= link_to "#", data: {toggle: "modal", target: "#modal-#{quote.id}"} do  %>
+            Be the first to comment!
+          <% end %>
+        </div>
+      <% else %>
+        <div class="quote-comment-btn">
+          <%= link_to "#", data: {toggle: "modal", target: "#modal-#{quote.id}"} do  %>
+            Comment
+          <% end %>
+        </div>
+
       <% end %>
 
-      <% quote.comments.where(parent_id:nil).each do |comment| %>
-        <div class="comment">
+      <!-- Comments -->
+      <div class="comments-div">
+        <%= render partial: "comments/comment-reply", locals: { comments: quote.comments.where(parent_id:nil) } %>
+      </div>
+    </div>
 
-          <div class="votes">
-            <% if comment.liked_by_user?(current_user) == nil %>
-
-              <span class="vote-anchor" id="vote-<%= comment.id %>"></span>
-              <%= link_to "", comment_votes_path(comment), class: "fas fa-sort-up upvote", method: :create %>
-              <span class="number-of-votes"><%= comment.comment_votes_aggregate %></span>
-              <%= link_to "", comment_vote_path(comment), class: "fas fa-sort-down downvote", method: :delete %>
-
-            <% elsif comment.liked_by_user?(current_user) == true %>
-
-              <span class="vote-anchor" id="vote-<%= comment.id %>"></span>
-              <%= link_to "", comment_votes_path(comment), class: "fas fa-sort-up upvote", id:"active-vote", method: :create %>
-              <span class="number-of-votes"><%= comment.comment_votes_aggregate %></span>
-              <%= link_to "", comment_vote_path(comment), class: "fas fa-sort-down downvote", method: :delete %>
-
-
-            <% elsif comment.liked_by_user?(current_user) == false %>
-
-              <span class="vote-anchor" id="vote-<%= comment.id %>"></span>
-              <%= link_to "", comment_votes_path(comment), class: "fas fa-sort-up upvote", method: :create %>
-              <span class="number-of-votes"><%= comment.comment_votes_aggregate %></span>
-              <%= link_to "", comment_vote_path(comment), class: "fas fa-sort-down downvote", id:"active-vote", method: :delete %>
-
-            <% end %>
+    <% @new_comment = Comment.new %>
+    <div class="modal fade" id="modal-<%= quote.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content p-1">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Comment on <span>"<%= quote.content %>"</span></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-
-          <div class="comment-avatar">
-            <% if comment.user.photo.attached? %>
-              <%= cl_image_tag comment.user.photo.key, class: "" %>
-            <% else %>
-              <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "" %>
-            <% end %>
-          </div>
-
-          <div>
-            <%= link_to comment_path(id: comment.id) do %>
-              <div class="comment-content-box">
-                <div class="user-and-time">
-                  <p class="user"><%= comment.user.username %></p>
-                  <span class="time"><%= time_ago_in_words(comment.created_at).gsub('about','').gsub(" days", "d").gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %></span>
-                </div>
-                <p class="comment-text"><%= comment.content %></p>
-              </div>
-            <% end %>
-
-            <div class="reply-btn">
-              <%= link_to "#", data: {toggle: "modal", target: "#modal-#{comment.id}"} do  %>
-                Reply
-              <% end %>
-            </div>
-          </div>
-
-
-      <% @new_comment = Comment.new %>
-      <div class="modal fade" id="modal-<%= comment.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content p-1">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Reply to <span>"<%= comment.content %>"</span></h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="">
-                 <%= form_for(@new_comment) do |f| %>
-                   <%= f.label "Comment:" %>
-                   <%= f.text_field :content %>
-                   <%= f.hidden_field :parent_id, :value => comment.id %>
-                   <%= f.hidden_field :quote_id, :value => comment.quote.id %>
-                   <%= f.submit %>
-                 <% end %>
-              </div>
+          <div class="modal-body">
+            <div class="">
+               <%= form_for(@new_comment) do |f| %>
+                 <%= f.label "Comment:" %>
+                 <%= f.text_field :content %>
+                 <%= f.hidden_field :quote_id, :value => quote.id %>
+                 <%= f.submit %>
+               <% end %>
             </div>
           </div>
         </div>
       </div>
-
-          <!-- Delete Main Comment -->
-            <% if comment.user = current_user %>
-              <%= link_to comment_path(comment), method: :delete do %>
-                  <i class="far fa-trash-alt"></i>
-              <% end %>
-            <% end %>
-        </div>
-
-        <!-- Replies -->
-        <div class="ml-4">
-            <%= render partial: "comments/comment-reply", locals: { comment: comment } %>
-        </div>
-      <% end %>
     </div>
   <% end %>
 </div>

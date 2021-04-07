@@ -72,6 +72,11 @@ class PagesController < ApplicationController
     @heading = "Coming Soon!"
   end
 
+  def all_user_suggestions
+    @heading = "All User Suggestions"
+    @users = suggested_for_your
+  end
+
   private
 
   def profile_show_page?

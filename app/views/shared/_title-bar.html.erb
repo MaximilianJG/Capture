@@ -11,7 +11,7 @@
         <% if @user.photo.attached? %>
           <%= cl_image_tag @user.photo.key, class: "heading mr-3 profile-heading-avatar" %>
         <% else %>
-          <%= cl_image_tag "Screenshot_2021-03-26_at_16.46.05_kjo20n", class: "heading mr-3 profile-heading-avatar" %>
+          <%= cl_image_tag "#{@default_profile_image}", class: "heading mr-3 profile-heading-avatar" %>
         <% end %>
       </div>
       <div>

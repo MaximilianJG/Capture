@@ -1,6 +1,6 @@
 <div class="friends-feed">
 
-  <% @sources.order(created_at: :desc).each do |source| %>
+  <% sources.each do |source| %>
     <div class="feed-card">
 
       <div class="title">
@@ -12,7 +12,7 @@
       <% if source.user.photo.attached? %>
         <%= cl_image_tag source.user.photo.key, class: "source-avatar" %>
       <% else %>
-        <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "source-avatar" %>
+        <%= cl_image_tag "#{@default_profile_image}", class: "source-avatar" %>
       <% end %>
 
       <%= link_to "#{source.website.gsub("www.", "")}", "#{source.url_of_website}", class: "website" %>
@@ -35,12 +35,9 @@
 
       <div class="see-more-and-captured-by">
         <p class="see-more">See more...</p>
-        <p class="captured-by">Captured by <strong class="mr-2"><%= source.user.username %></strong> <i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','').gsub(" days", "d").gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago</p>
-        <% if source.user = current_user %>
-          <%= link_to source_path(source), method: :delete do %>
-            <i class="far fa-trash-alt"></i>
-          <% end %>
-        <% end %>  
+        <p class="captured-by">Captured by <strong class="mr-2"><%= link_to "#{source.user.username}", user_profile_overview_path(source.user) %></strong> <i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','').gsub(" days", "d").gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago</p>
+
+
       </div>
     </div>
   <% end %>

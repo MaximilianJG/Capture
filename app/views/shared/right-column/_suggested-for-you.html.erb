@@ -8,7 +8,7 @@
       <% if user.photo.attached? %>
         <%= cl_image_tag user.photo.key , class: "avatar"%>
       <% else %>
-        <%= cl_image_tag "eksq10s38n804m87862dj6qqhjqq", class: "avatar" %>
+        <%= cl_image_tag "#{@default_profile_image}", class: "avatar" %>
       <% end %>
 
       <div>
@@ -27,6 +27,6 @@
     </div>
     <% end %>
 
-    <span class=""><%= link_to "See all Suggestions...", "#", class: "see-all-suggestions" %></span>
+    <span class=""><%= link_to "See all Suggestions...", all_user_suggestions_path, class: "see-all-suggestions" %></span>
   </div>
 </div>

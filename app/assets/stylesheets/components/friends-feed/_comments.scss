@@ -1,17 +1,75 @@
-.reply-div {
+.quote-comment-btn {
+  font-size: 12px;
+  // margin-left: 55px;
+  margin-top: 5px;
+  background-color: $light-grey;
+  display: inline-block;
+  padding: 3px 6px;
+  border-radius: 5px;
+  a {
+    color: $dark-grey;
+  }
+}
+
+.comments-div {
+  margin-left: -50px;
+}
+
+.comment-div {
   margin-top: 10px;
   margin-left: 50px;
 
-  .reply {
+  .comment {
     display: flex;
+    position: relative;
 
-    // a {
-    //   width: 100%;
-    // }
+    .votes {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 5px;
 
-    .reply-avatar img {
-      width: 40px;
-      height: 40px;
+      .vote-anchor {
+        display: block;
+        height: 115px; /*same height as header*/
+        margin-top: -115px; /*same height as header*/
+        visibility: hidden;
+      }
+
+      .upvote {
+        color: $dark-grey;
+        font-size: 25px;
+        margin-bottom: -5px;
+        text-decoration: none;
+      }
+
+      .number-of-votes {
+        line-height: 14px;
+      }
+
+      .downvote {
+        color: $dark-grey;
+        font-size: 25px;
+        margin-top: -7px;
+        text-decoration: none;
+
+      }
+
+      #active-vote {
+       color: $primary-color;
+      }
+
+      .comment-anchor {
+        display: block;
+        height: 115px; /*same height as header*/
+        margin-top: -115px; /*same height as header*/
+        visibility: hidden;
+      }
+    }
+
+    .comment-avatar img {
+      width: 45px;
+      height: 45px;
       object-fit: cover;
       border-radius: 50%;
       margin-right: 5px;
@@ -20,7 +78,8 @@
     .box-and-btn {
       width: 100%;
 
-      .reply-content-box {
+      .comment-content-box {
+        width: 100% !important;
         background-color: #EFEFEF;
         border-radius: 0px 8px 8px 8px;
         padding: 5px 8px;
@@ -62,6 +121,15 @@
       }
     }
 
+    .comment-delete {
+      position: absolute;
+      top: 30px;
+      right: 10px;
+      font-size: 12px;
+      i {
+        color: $primary-color;
+      }
+    }
   }
 
 }

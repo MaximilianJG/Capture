@@ -3,26 +3,27 @@
 }
 
 .devise-title {
-  color: #E0CEA0;
-  font-family: 'Merriweather', serif;
+  color: $primary-color;
+  font-family: $standard-font;
 }
 
 .input-title {
-  color: #E0CEA0;
-  font-family: 'Quattrocento Sans', sans-serif;
+  color: $primary-color;
+  font-family: $standard-font;
 }
 
 .action-btn input {
-  background-color: #E0CEA0;
+  background-color: $primary-color;
   border-radius: 2px;
+  color: white;
 }
 
 // shared Links
 
 .shared-link {
-  color: #BEBEBE;
+  color: $dark-grey;
 }
 
 .shared-link:hover {
-  color: #BEBEBE;
+  color: $dark-grey;
 }
