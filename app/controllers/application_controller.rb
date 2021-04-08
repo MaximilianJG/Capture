@@ -44,6 +44,13 @@ class ApplicationController < ActionController::Base
     return source_url_count.last(3).map {|source_url| Source.find_by(url_of_website: source_url)}
   end
 
+  def sort_by_upvotes
+    raise
+    self.sort_by do |comment|
+      comment.comment_votes_count
+    end
+  end
+
   private
 
   def skip_pundit?

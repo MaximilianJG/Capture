@@ -28,4 +28,12 @@ class Comment < ApplicationRecord
       return nil
     end
   end
+
+  def sort_by_upvotes
+    raise
+    self.sort_by do |comment|
+      comment.comment_votes_count
+    end
+  end
+
 end
