@@ -11,7 +11,7 @@ class Comment < ApplicationRecord
   # which returns total nr of comment votes on a comment instead of aggregating their value.
   def comment_votes_aggregate
     if comment_votes
-      CommentVote.where(comment_id: self.id).map(&:value).inject(0){|sum,x| sum + x }
+      CommentVote.where(comment_id: self.id).map(&:value).inject(0){|sum,x| sum + x }      
     else
       return 0
     end

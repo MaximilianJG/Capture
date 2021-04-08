@@ -1,3 +1,4 @@
+<script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
 <div class="my-captures-sources">
   <div class="row">
     <% @sources.each do |source| %>
@@ -7,9 +8,9 @@
 
             <div class="image">
               <% if source.photo.attached? %>
-                <%= cl_image_tag source.photo.key, class: "" %>
+                <%= cl_image_tag source.photo.key, class: "lazyload" %>
               <% else %>
-                <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "" %>
+                <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "lazyload" %>
               <% end %>
             </div>
 
