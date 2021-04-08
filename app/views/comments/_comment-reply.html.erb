@@ -1,4 +1,4 @@
-<% comments.each do |comment| %>
+<% comments.to_a.sort_by(&:comment_votes_aggregate).reverse.each do |comment| %>
 <span class="comment-anchor" id="comment-<%= comment.id %>"></span>
 
   <div class="comment-div" id="">
