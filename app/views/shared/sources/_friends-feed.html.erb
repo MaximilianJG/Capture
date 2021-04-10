@@ -27,9 +27,9 @@
 
       <div class="image">
         <% if source.photo.attached? %>
-          <%= cl_image_tag(source.photo.key, class: "lazyload", :width => :auto, :crop => :scale, :responsive => :true, :responsive_placeholder => "http://res.cloudinary.com/dt31vhhp6/image/upload/c_scale,w_auto/#{source.photo.key}") %>
+          <%= cl_image_tag(source.photo.key, class: "lazyload", :width => :auto, :crop => :scale, :responsive => :true, :responsive_placeholder => "http://res.cloudinary.com/dt31vhhp6/image/upload/c_scale,q_auto:low/#{source.photo.key}") %>
         <% else %>
-          <%= cl_image_tag("6v7fhlnlndyrsijtokwxy4oj9kkr", class: "lazyload", :width => :auto, :crop => :scale, :responsive => :true, :responsive_placeholder => "http://res.cloudinary.com/dt31vhhp6/image/upload/c_scale,w_auto/6v7fhlnlndyrsijtokwxy4oj9kkr") %>
+          <%= cl_image_tag("6v7fhlnlndyrsijtokwxy4oj9kkr", class: "lazyload", :width => :auto, :crop => :scale, :responsive => :true, :responsive_placeholder => "http://res.cloudinary.com/dt31vhhp6/image/upload/c_scale,q_auto:low/6v7fhlnlndyrsijtokwxy4oj9kkr") %>
         <% end %>
       </div>
 
