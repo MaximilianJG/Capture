@@ -1,6 +1,6 @@
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
 
-<div class="friends-feed">
+<div id="main-feed" class="friends-feed">
 
   <% sources.each do |source| %>
     <div class="feed-card">
@@ -27,9 +27,9 @@
 
       <div class="image">
         <% if source.photo.attached? %>
-          <%= cl_image_tag(source.photo.key, class: "lazyload", :width => :auto, :crop => :scale, :responsive => :true, :responsive_placeholder => "http://res.cloudinary.com/dt31vhhp6/image/upload/c_scale,q_auto:low/#{source.photo.key}") %>
+          <%= cl_image_tag(source.photo.key) %>
         <% else %>
-          <%= cl_image_tag("6v7fhlnlndyrsijtokwxy4oj9kkr", class: "lazyload", :width => :auto, :crop => :scale, :responsive => :true, :responsive_placeholder => "http://res.cloudinary.com/dt31vhhp6/image/upload/c_scale,q_auto:low/6v7fhlnlndyrsijtokwxy4oj9kkr") %>
+          <%= cl_image_tag("6v7fhlnlndyrsijtokwxy4oj9kkr") %>
         <% end %>
       </div>
 
@@ -38,8 +38,6 @@
       <div class="see-more-and-captured-by">
         <p class="see-more">See more...</p>
         <p class="captured-by">Captured by <strong class="mr-2"><%= link_to "#{source.user.username}", user_profile_overview_path(source.user) %></strong> <i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','').gsub(" days", "d").gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago</p>
-
-
       </div>
     </div>
   <% end %>

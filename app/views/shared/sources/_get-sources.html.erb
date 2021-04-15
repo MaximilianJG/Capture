@@ -1,0 +1,24 @@
+<button type="button" class="btn btn-primary">
+  <div id="load-more-sources-button">Load more</div>
+</button>
+
+<script>
+    let page = 1;
+
+    document.getElementById("load-more-sources-button").addEventListener("click", function() {
+        page = page + 1;
+
+    console.log(page)
+    fetch(`http://localhost:3000/feed/${page}`)
+      .then(response => response.text())
+      .then(data => {
+        const Wrapper = document.createElement("div");
+        Wrapper.innerHTML = data
+        document.getElementById("main-feed").append(Wrapper);
+      });    
+    });
+            
+</script>
+
+
+
