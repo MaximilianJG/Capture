@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   # This is a method so that we can change default profile image in one place rather than having to do it everywhere it's rendered
   def default_profile_image
-    return @default_profile_image = "5116kv41b9vm0jc5gj9hacn56x8c"
+    return @default_profile_image = "Profile_avatar_placeholder_large_t0udob"
   end
 
   def suggested_for_your # Users that are not current_user && not current_user.following
@@ -42,6 +42,13 @@ class ApplicationController < ActionController::Base
     Source.all.each { |source| source_url_count[source.url_of_website] += 1}
     source_url_count = source_url_count.sort_by{|source,number| number}
     return source_url_count.last(3).map {|source_url| Source.find_by(url_of_website: source_url)}
+  end
+
+  def sort_by_upvotes
+    raise
+    self.sort_by do |comment|
+      comment.comment_votes_count
+    end
   end
 
   private
