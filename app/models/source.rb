@@ -25,6 +25,12 @@ class Source < ApplicationRecord
     }
 
   multisearchable against: [:title, :website]
+
+  # Returns Active Record Association or Sources of people the user follows in descending
+  # order or nil if user doesn't follow anybody.
+  def self.sources_ordered_for_friends_feed(current_user)
+    Source.all.where(user: current_user.following)&.order(created_at: :desc)
+  end
 end
 
 

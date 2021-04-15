@@ -39,4 +39,9 @@ class SourcePolicy < ApplicationPolicy
   def feed?
     return true
   end
+
+
+  def get_sources?
+    return true
+  end
 end

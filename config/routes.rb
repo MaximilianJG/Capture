@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   resources :sources, only: [:index, :new, :create, :show, :edit, :destroy, :update] do
     resources :comments, only: [:create], as: "create_comment"
   end
+
   get "feed", to: "sources#feed", as: "feed"
+  get "feed/:page", to: "sources#get_sources", as: "lazy_feed"
+
 
   # Quotes
   resources :quotes, only: [:new, :create, :show, :destroy] do
@@ -50,4 +53,5 @@ Rails.application.routes.draw do
   end
 
   get '/user' => "sources#feed", :as => :user_root
+
 end

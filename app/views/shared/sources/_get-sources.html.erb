@@ -1,0 +1,98 @@
+<div id="load-more-sources-button">Load more</div>
+
+
+<script>
+    let page = 1;
+
+    document.getElementById("load-more-sources-button").addEventListener("click", function() {
+        page = page + 1;
+
+    fetch(`http://localhost:3000/feed/${page}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        data.forEach(source => {
+            console.log(source);
+
+            // Creating Source Head
+            const newSourceWrapper = document.createElement("div");
+            newSourceWrapper.classList.add("feed-card");
+
+            const newTitleWrapper = document.createElement("div");
+            newTitleWrapper.classList.add("title");
+            newTitleWrapper.innerHTML = source.title;
+
+            const newTitleLink = document.createElement("a");
+            newTitleLink.href = `/sources/${source.id}`;
+
+            const newProfileImage = document.createElement("img");
+            newProfileImage.classList.add("source-avatar");
+            newProfileImage.setAttribute('src', 'http://res.cloudinary.com/dt31vhhp6/image/upload/5116kv41b9vm0jc5gj9hacn56x8c');
+            
+            const newWebsiteLink = document.createElement("a");
+            newWebsiteLink.classList.add("website");
+            newWebsiteLink.href = source.url_of_website;
+            newWebsiteLink.innerHTML = source.website;
+
+            const newTagsWrapper = document.createElement("div");
+            newTagsWrapper.classList.add("tags")
+
+            const newArticleImageWrapper = document.createElement("div");
+            newArticleImageWrapper.classList.add("image");
+
+            const newArticleImage = document.createElement("img");
+            newArticleImage.classList.add("image");
+            newArticleImage.setAttribute('src', 'http://res.cloudinary.com/dt31vhhp6/image/upload/6v7fhlnlndyrsijtokwxy4oj9kkr');
+            newArticleImageWrapper.append(newArticleImage);
+
+
+            // Still have to add Quotes, Comments, and Upvotes/Downvotes to appended Source
+
+
+
+            // Creating Source Footer, missing: Time of Capture and Clock Icon
+            const newFooterWrapper = document.createElement("div");
+            newFooterWrapper.classList.add("see-more-and-captured-by");
+
+            const newSeeMoreItem = document.createElement("p");
+            newSeeMoreItem.classList.add("see-more");
+            newSeeMoreItem.innerHTML = "See More...";
+
+            const newCapturedByWrapper = document.createElement("p");
+            newCapturedByWrapper.classList.add("captured-by");
+            newCapturedByWrapper.innerHTML = "Captured by ";
+
+            const newCapturedByContent1 = document.createElement("strong");
+            newCapturedByContent1.classList.add("mr-2");
+
+            const newCapturedByContent1Link = document.createElement("a");
+            newCapturedByContent1Link.href = `/user/${source.user_id}/overview`;
+            newCapturedByContent1Link.innerHTML = source.user.username;
+            newCapturedByContent1.append(newCapturedByContent1Link);       
+
+            newFooterWrapper.append(newSeeMoreItem);
+            newCapturedByWrapper.append(newCapturedByContent1);
+            newFooterWrapper.append(newCapturedByWrapper);
+
+
+
+
+
+            // Appending everyting to the main Source
+            newTitleWrapper.append(newTitleLink);
+            newSourceWrapper.append(newTitleWrapper);
+            newSourceWrapper.append(newProfileImage);
+            newSourceWrapper.append(newWebsiteLink);
+            newSourceWrapper.append(newTagsWrapper);
+            newSourceWrapper.append(newArticleImageWrapper);
+            newSourceWrapper.append(newFooterWrapper);
+       
+            document.getElementById("main-feed").append(newSourceWrapper);
+        });
+
+      });    
+    });
+</script>
+
+
+
