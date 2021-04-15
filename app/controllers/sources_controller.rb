@@ -80,10 +80,13 @@ class SourcesController < ApplicationController
     @new_comment = Comment.new
     @heading = "Friends Feed"
     @no_right_column = true
-    @sources = Source.sources_ordered_for_friends_feed(current_user).limit(1)
+    @sources = Source.sources_ordered_for_friends_feed(current_user).limit(10)
     authorize @sources
   end
 
+  def automatic_create
+    bbc_scraper
+  end
 
   # ON initial load show feed which gives 10 sources (through to friends-feed partial).
   # Then on feed view add button that allows user to get more sources
@@ -102,37 +105,24 @@ class SourcesController < ApplicationController
     authorize @sources
 
     @current_page = params[:page].to_i
-    @sources_per_page = 1
+    @sources_per_page = 10
 
     @sources = Source.sources_ordered_for_friends_feed(current_user).
     offset((@current_page - 1) * @sources_per_page).
     limit(@sources_per_page)
     authorize @sources 
 
-    render json: @sources.as_json(:include => { :quotes => {
-                                                  :include => { :comments => {
-                                                                  :include => :comment_votes
-                                                                             },
-                                                              },
-                                                            },
-                                              },
-                                  :include => :user,
-    )
-      
-  end
-  
-  def automatic_create
-    bbc_scraper
+    render :layout => false
   end
 
-  private
+      private
 
-  def strong_source_params
-    params.require(:source).permit(:title, :website, :date_of_article, :url_of_website, :folder_id, :photo)
+      def strong_source_params
+        params.require(:source).permit(:title, :website, :date_of_article, :url_of_website, :folder_id, :photo)
+      end
+    
+      def set_source
+        @source = Source.find(params[:id])
+        authorize @source
+      end    
   end
-
-  def set_source
-    @source = Source.find(params[:id])
-    authorize @source
-  end
-end
