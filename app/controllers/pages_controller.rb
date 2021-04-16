@@ -56,7 +56,7 @@ class PagesController < ApplicationController
   end
 
   def get_sources_for_profile_overview
-    @user = User.find(params[:id])
+    @user = User.find(params[:id].to_i)
     @new_comment = Comment.new
     @no_right_column = true
     @sources = Source.sources_ordered_for_profile_overview(@user)

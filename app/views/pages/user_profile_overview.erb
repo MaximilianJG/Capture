@@ -26,6 +26,6 @@
 </div>
 
 <% unless @sources == [] %>
-  <%= render partial: "shared/pages/get-sources-for-profile-overview" %>
+  <%= render partial: "shared/pages/get-sources-for-profile-overview", locals: { user: @user } %>
 <% end %>
 

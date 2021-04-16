@@ -40,15 +40,15 @@ import {
   temporaryHighlight
 } from '../components/temporaryHighlight'
 
-document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
-  toggleQuote();
-  toggleCaret();
-  // keystrokeSearch(); // THIS NEEDS MORE ATTENTION
-  initComments();
-  temporaryHighlight();
-});
+// document.addEventListener('turbolinks:load', () => {
+//   // Call your functions here, e.g:
+//   // initSelect2();
+//   toggleQuote();
+//   toggleCaret();
+//   // keystrokeSearch(); // THIS NEEDS MORE ATTENTION
+//   initComments();
+//   temporaryHighlight();
+// });
 
 // JavaScript
 // create a file in components

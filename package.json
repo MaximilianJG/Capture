@@ -13,8 +13,7 @@
     "jquery": "^3.5.1",
     "lazyload": "^2.0.0-rc.2",
     "popper.js": "^1.16.1",
-    "stimulus": "^1.1.1",
-    "turbolinks": "^5.2.0"
+    "stimulus": "^1.1.1"
   },
   "version": "0.1.0",
   "devDependencies": {
