@@ -42,8 +42,8 @@ class Source < ApplicationRecord
 
   # Returns Active Record Association of Sources user captured in descending 
   # order or nil if user hasn't made any captures yet.
-  def self.sources_ordered_for_profile_overview(current_user)
-    Source.all.where(user: current_user)&.order(created_at: :desc)
+  def self.sources_ordered_for_profile_overview(viewed_user)
+    Source.all.where(user: viewed_user)&.order(created_at: :desc)
   end
 
   # Returns Active Record Association of all Sources in descending order of created at 

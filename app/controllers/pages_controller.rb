@@ -35,7 +35,7 @@ class PagesController < ApplicationController
     # @public_folders.sort_by{|folder| folder.sources.count} ## public folders has to be sorted by amount of sources in each folder. (only folders with most sources should show.)
 
     @recent_activity = []
-    @sources = Source.sources_ordered_for_profile_overview(current_user).limit(10)
+    @sources = Source.sources_ordered_for_profile_overview(@user).limit(10)
     @comments = policy_scope(Comment).where(user: params[:id])
 
     @sources.each do |source|
