@@ -20,9 +20,7 @@
 <!-- Profile Recent Activity -->
 <div class="profile-recent-activity">
   <h1 class="recent-activity-title">Recent Captures</h1>
-
   <%= render partial: "shared/sources/friends-feed", locals: { sources: @sources } %>
-
 </div>
 
 <% unless @sources == [] %>
