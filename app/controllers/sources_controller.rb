@@ -84,20 +84,30 @@ class SourcesController < ApplicationController
     authorize @sources
   end
 
+  # Still have to change sources_ordered_for_discover_feed so that it only returns posty
+  # by people you are not following already
+  def discover
+    @new_comment = Comment.new
+    @heading = "Discover"
+    @no_right_column = true
+    @sources = Source.sources_ordered_for_discover_feed(current_user).limit(10)
+    authorize @sources
+  end
+
   def automatic_create
     bbc_scraper
   end
 
   # ON initial load show feed which gives 10 sources (through to friends-feed partial).
   # Then on feed view add button that allows user to get more sources
-  # Button leads to get_sources controller method, which takes page nr and 
+  # Button leads to get_sources_for_friends_feed controller method, which takes page nr and 
   # updates it on button press. Method finds next 10 sources and has to append them
   # to initial 10 sources loaded in feed view through friends feed. Means that we 
   # have to make get sources a partial as well, that appends onto main feed by using
   # the main feed's id.
   # Need a generic ordering method on sources_ordered_for_feed.
 
-  def get_sources
+  def get_sources_for_friends_feed
     @new_comment = Comment.new
     @heading = "Friends Feed"
     @no_right_column = true
@@ -108,6 +118,24 @@ class SourcesController < ApplicationController
     @sources_per_page = 10
 
     @sources = Source.sources_ordered_for_friends_feed(current_user).
+    offset((@current_page - 1) * @sources_per_page).
+    limit(@sources_per_page)
+    authorize @sources 
+
+    render :layout => false
+  end
+
+  def get_sources_for_discover_feed
+    @new_comment = Comment.new
+    @heading = "Friends Feed"
+    @no_right_column = true
+    @sources = Source.sources_ordered_for_discover_feed(current_user)
+    authorize @sources
+
+    @current_page = params[:page].to_i
+    @sources_per_page = 10
+
+    @sources = Source.sources_ordered_for_discover_feed(current_user).
     offset((@current_page - 1) * @sources_per_page).
     limit(@sources_per_page)
     authorize @sources 
