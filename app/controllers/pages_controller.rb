@@ -6,7 +6,8 @@ class PagesController < ApplicationController
   def home
     @landing_page_navbar = true
 
-    @sources = most_saved_sources # Application Controller method
+    @sources = Source.all.order(created_at: :desc).limit(3)
+    # most_saved_sources # Application Controller method
   end
 
   def search
@@ -55,9 +56,10 @@ class PagesController < ApplicationController
   end
 
   def get_sources_for_profile_overview
+    @user = User.find(params[:id])
     @new_comment = Comment.new
     @no_right_column = true
-    @sources = Source.sources_ordered_for_profile_overview(current_user)
+    @sources = Source.sources_ordered_for_profile_overview(@user)
 
     @current_page = params[:page].to_i
     @sources_per_page = 10

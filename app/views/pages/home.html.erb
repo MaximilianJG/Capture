@@ -23,30 +23,36 @@
     <div class="trending-articles">
       <div class="header">
         <p class="title">Trending Articles</p>
-        <%= link_to "See all", sources_path, class: "see-all" %>
+        <%= link_to "See all", feed_path, class: "see-all" %>
 
       </div>
       <div class="row trending-article-row">
         <% @sources.each do |source| %>
           <div class="col-4 trending-article-col">
             <div class="source">
-              <%= link_to source_path(source) do %>
-                <div class="image">
-                  <% if source.photo.attached? %>
-                    <%= cl_image_tag source.photo.key, class: "" %>
-                  <% else %>
-                    <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "" %>
-                  <% end %>
-                </div>
+             
+                <%= link_to source_path(source) do %>
+                  <div class="image">
+                    <% if source.photo.attached? %>
+                      <%= cl_image_tag source.photo.key, class: "" %>
+                    <% else %>
+                      <%= cl_image_tag "6v7fhlnlndyrsijtokwxy4oj9kkr", class: "" %>
+                    <% end %>
+                  </div>
+                <% end %>
 
                 <div class="description">
-                  <p class="title"><%= source.title %></p>
-                  <p class="website"><%= source.website %></p>
+                  <%= link_to source_path(source) do %>
+                    <p class="title"><%= source.title %></p>
+                  <% end %>
+                  <p>
+                    <%= link_to "#{source.website.gsub("www.", "")}", "#{source.url_of_website}", class: "website", target: "_blank" %>
+                  </p>
                 </div>
 
                 <span class="primary-line"></span>
                 <span class="secondary-line"></span>
-              <% end %>
+             
             </div>
           </div>
         <% end %>

@@ -22,7 +22,9 @@
                     <% end %>
                   </p>
                 <% end %>  
-                <span><%= source.title %></span>
+                <%= link_to source_path(source) do %>
+                  <span><%= source.title %></span>
+                <% end %>
               </div>
 
               <div class="time-and-folder">
