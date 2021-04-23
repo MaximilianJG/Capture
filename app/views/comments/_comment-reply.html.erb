@@ -48,7 +48,7 @@
               <p class="comment-text"><%= comment.content %></p>
             <% end %>
 
-            <% unless comment.source.nil? %>
+            <% unless comment.source&.nil? %>
               <%= link_to "Source", comment.source, :class => "comment-source", target: "_blank" %>
             <% end %>
 
