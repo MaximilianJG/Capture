@@ -47,6 +47,11 @@
             <%= link_to comment_path(comment) do %>
               <p class="comment-text"><%= comment.content %></p>
             <% end %>
+
+            <% unless comment.source.nil? %>
+              <%= link_to "Source", comment.source, :class => "comment-source", target: "_blank" %>
+            <% end %>
+
           </div>
 
        
@@ -83,9 +88,11 @@
                  <%= form_for(@new_comment) do |f| %>
                    <%= f.label "Comment:" %>
                    <%= f.text_field :content %>
+                   <%= f.label "Source:" %>
+                   <%= f.text_field :source %>
                    <%= f.hidden_field :parent_id, :value => comment.id %>
                    <%= f.hidden_field :quote_id, :value => comment.quote.id %>
-                   <%= f.submit %>
+                   <%= f.submit class: 'comment_submit' %>
                  <% end %>
               </div>
             </div>

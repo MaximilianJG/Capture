@@ -59,12 +59,11 @@ class PagesController < ApplicationController
     @user = User.find(params[:id].to_i)
     @new_comment = Comment.new
     @no_right_column = true
-    @sources = Source.sources_ordered_for_profile_overview(@user)
 
     @current_page = params[:page].to_i
     @sources_per_page = 10
 
-    @sources = Source.sources_ordered_for_friends_feed(current_user).
+    @sources = Source.sources_ordered_for_profile_overview(@user).
     offset((@current_page - 1) * @sources_per_page).
     limit(@sources_per_page)
 
