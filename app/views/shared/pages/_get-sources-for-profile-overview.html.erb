@@ -11,7 +11,7 @@
 
     console.log(page)
     // Replace https://www.getcapture.org with http://localhost:3000 for local development
-    fetch(`http://localhost:3000/user/${user_id}/overview/${page}`)
+    fetch(`https://www.getcapture.org/user/${user_id}/overview/${page}`)
       .then(response => response.text())
       .then(data => {
         const Wrapper = document.createElement("div");
