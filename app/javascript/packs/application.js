@@ -4,7 +4,6 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
@@ -40,15 +39,15 @@ import {
   temporaryHighlight
 } from '../components/temporaryHighlight'
 
-document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
-  toggleQuote();
-  toggleCaret();
-  // keystrokeSearch(); // THIS NEEDS MORE ATTENTION
-  initComments();
-  temporaryHighlight();
-});
+// document.addEventListener('turbolinks:load', () => {
+//   // Call your functions here, e.g:
+//   // initSelect2();
+//   toggleQuote();
+//   toggleCaret();
+//   // keystrokeSearch(); // THIS NEEDS MORE ATTENTION
+//   initComments();
+//   temporaryHighlight();
+// });
 
 // JavaScript
 // create a file in components

@@ -3,11 +3,21 @@
   <%= render 'shared/sources/my-captures-grid' %>
 <% else %>
   <div class="nil-my-captures">
-    <h3 class="text">Start Capturing by using our <br><%= link_to "Chrome Extension", "https://chrome.google.com/webstore/detail/capture/jpnkblkejlgonnmaemmcmfjglogondjf" %></h3>
+    <h3 class="text">Start Capturing by using our <br><%= link_to "Chrome Extension", "https://chrome.google.com/webstore/detail/capture/jpnkblkejlgonnmaemmcmfjglogondjf", target: "_blank" %></h3>
 
     <div class="d-flex justify-content-center">
       <%= cl_image_tag "Screenshot_2021-03-31_at_18.21.57_vudxhh", width: 400;  %>
     </div>
+  </div>
+
+  <div class="nil-my-captures">
+    <h3 class="text">A quick How-to Guide on the Capture Extension:</h3>
+    <ul>
+      <li>After downloading Capture from the Chrome Store pin it to your extensions to access its full functionality</li>
+      <li>To disable or to turn Capture off entirely click on the Capture icon that appears in the top right corner of your browser after pinning it to your extensions</li>
+      <li>Once you have installed Capture go to your favorite news websites and start capturing news snippets</li>
+      <li>Add comments to share your thoughts with your friends, add tags to structure your news articles, or delete captures that you want to undo</li>
+    </ul>
   </div>
 <% end %>
 

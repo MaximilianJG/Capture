@@ -7,10 +7,11 @@
 
     document.getElementById("load-more-sources-button").addEventListener("click", function() {
         page = page + 1;
+        const user_id = "<%= @user.id %>";
 
     console.log(page)
     // Replace https://www.getcapture.org with http://localhost:3000 for local development
-    fetch(`https://www.getcapture.org/user/3/overview/${page}`)
+    fetch(`https://www.getcapture.org/user/${user_id}/overview/${page}`)
       .then(response => response.text())
       .then(data => {
         const Wrapper = document.createElement("div");

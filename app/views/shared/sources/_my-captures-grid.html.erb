@@ -15,18 +15,18 @@
 
             <div class="description">
               <div class="title">
-                <% if source.user == current_user %>
-                  <p class="see-more">
-                    <%= link_to source_path(source), method: :delete do %>
-                      <i class="far fa-trash-alt"></i>
-                    <% end %>
-                  </p>
-                <% end %>  
-                <span><%= source.title %></span>
+                <%= link_to source_path(source) do %>
+                  <span style="color: black"><%= source.title %></span>
+                <% end %>
               </div>
 
               <div class="time-and-folder">
-
+                
+                <% if source.user == current_user %> 
+                  <%= link_to source_path(source), method: :delete do %>
+                    <i class="far fa-trash-alt" id="my-captures-trash"></i>
+                  <% end %>
+                <% end %>  
 
                 <div class="time-ago">
                   <span><%= time_ago_in_words(source.created_at).gsub('about','').gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago </span>
