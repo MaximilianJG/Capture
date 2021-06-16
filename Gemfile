@@ -43,6 +43,7 @@ gem 'nokogiri'
 gem 'byebug'
 
 
+
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
