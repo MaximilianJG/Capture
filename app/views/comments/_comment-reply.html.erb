@@ -1,6 +1,6 @@
 <% comments.to_a.sort_by(&:comment_votes_aggregate).reverse.each do |comment| %>
-<span class="comment-anchor" id="comment-<%= comment.id %>"></span>
-  <div class="comment-div" id="">
+<!-- <span class="comment-anchor" id="comment-<%= comment.id %>"></span>
+ -->  <div class="comment-div" id="">
     <div class="comment">
 
       <div class="votes">
@@ -71,8 +71,8 @@
               </button>
             </div>
             <div class="modal-body">
-              <div class="">
-                 <%= form_for(@new_comment) do |f| %>
+              <div id="new_form">
+                 <%= form_for(@new_comment, remote: true, :html => { :onsubmit => "return mySubmitFunction(event)" }) do |f| %>
                    <%= f.label "Comment:" %>
                    <%= f.text_field :content %>
                    <%= f.hidden_field :parent_id, :value => comment.id %>
@@ -91,4 +91,12 @@
   </div>
 <% end %>
 
+<script type="text/javascript">
+  function mySubmitFunction(event) {
+    const newComment = document.querySelector("#new_comment")
+    newComment.submit(function(e) {
+      e.preventDefault();
+});
+  }
+</script>
 

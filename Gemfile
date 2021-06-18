@@ -41,6 +41,7 @@ gem 'wombat'
 gem 'httparty'
 gem 'nokogiri'
 gem 'byebug'
+gem 'turbolinks_render'
 
 
 gem 'autoprefixer-rails'

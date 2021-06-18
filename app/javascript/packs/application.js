@@ -27,7 +27,7 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import {
-  toggleQuote
+  toggleQuote, mySubmitFunction
 } from '../components/toggle-quote';
 import {
   toggleCaret
@@ -44,6 +44,9 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   toggleQuote();
+
+  mySubmitFunction();
+
   toggleCaret();
   // keystrokeSearch(); // THIS NEEDS MORE ATTENTION
   initComments();
