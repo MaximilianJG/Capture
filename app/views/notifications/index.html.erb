@@ -2,7 +2,10 @@
 <p>Find me in app/views/notifications/index.html.erb</p>
 
 <% @notifications.each do |notification| %>
-  <p><%= link_to notification.to_notification.message, notification.to_notification.url %></p>
-
+  <p><%= link_to notification.to_notification.message, notification.to_notification.url(notification), id: "notification-link" %></p>
+  <p><%= link_to "#{notification.params[:comment].user.username} has replied to your commented" %></p>
+  <p><%= notification.read? %></p>
+  <br>
+  <br>
+  <br>
 <% end %>
-

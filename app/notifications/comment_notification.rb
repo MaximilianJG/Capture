@@ -31,7 +31,7 @@ class CommentNotification < Noticed::Base
       "You have received a comment"
     end
   #
-  def url
+  def url(notification)
     comment_path(params[:comment])
   end
 end
