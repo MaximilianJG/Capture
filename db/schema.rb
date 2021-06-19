@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2021_06_19_110214) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+<<<<<<< HEAD
   create_table "notifications", force: :cascade do |t|
     t.string "recipient_type", null: false
     t.bigint "recipient_id", null: false
@@ -100,6 +101,8 @@ ActiveRecord::Schema.define(version: 2021_06_19_110214) do
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient_type_and_recipient_id"
   end
 
+=======
+>>>>>>> master
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
     t.string "searchable_type"
