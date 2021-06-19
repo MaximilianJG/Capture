@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   after_create :make_default_folder
 
+  has_many :notifications, as: :recipient
+
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true
   validates :first_name, presence: true
