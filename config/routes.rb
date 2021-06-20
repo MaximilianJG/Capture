@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :notifications, only: [:index]
+
   get 'newsletters/create'
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
 

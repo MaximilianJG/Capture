@@ -34,9 +34,11 @@ class CommentsController < ApplicationController
     else
       redirect_back(fallback_location: root_path)
     end
+
+    CommentNotification.with(comment: @comment).deliver(Comment.find(@parent_id).user)
   end
 
-  def show
+  def show(notification=nil)
     @comment = Comment.find(params[:id])
     @new_comment = Comment.new
     authorize @comment

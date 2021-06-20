@@ -10,4 +10,12 @@ class UserMailer < ApplicationMailer
     emails = @newsletter.collect(&:email).join(", ")
     mail(to: emails, subject: "Hi, this is a test mail.")
   end
+
+  def notification_mailer
+    @notification = params[:record].to_notification
+    @comment = params[:comment]
+    @recipient = params[:recipient]
+
+    mail(to: @recipient.email, subject: @notification.message)
+  end
 end
