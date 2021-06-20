@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'newsletters/create'
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
 
   root to: 'pages#home'
@@ -61,4 +62,8 @@ Rails.application.routes.draw do
 
   get '/user' => "sources#feed", :as => :user_root
 
+<<<<<<< HEAD
+=======
+  resources :newsletters
+>>>>>>> 46a292fd8703555f33982cb619a11ad7abf8311e
 end
