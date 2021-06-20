@@ -39,4 +39,16 @@ class SourcePolicy < ApplicationPolicy
   def feed?
     return true
   end
+
+  def discover?
+    return true
+  end
+
+  def get_sources_for_discover_feed?
+    return true
+  end
+
+  def get_sources_for_friends_feed?
+    return true
+  end
 end

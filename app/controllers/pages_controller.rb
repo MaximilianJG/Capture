@@ -6,7 +6,8 @@ class PagesController < ApplicationController
   def home
     @landing_page_navbar = true
 
-    @sources = most_saved_sources # Application Controller method
+    @sources = Source.all.order(created_at: :desc).limit(3)
+    # most_saved_sources # Application Controller method
   end
 
   def search
@@ -35,7 +36,7 @@ class PagesController < ApplicationController
     # @public_folders.sort_by{|folder| folder.sources.count} ## public folders has to be sorted by amount of sources in each folder. (only folders with most sources should show.)
 
     @recent_activity = []
-    @sources = policy_scope(Source).where(user: params[:id])
+    @sources = Source.sources_ordered_for_profile_overview(@user).limit(10)
     @comments = policy_scope(Comment).where(user: params[:id])
 
     @sources.each do |source|
@@ -52,6 +53,21 @@ class PagesController < ApplicationController
     @number_of_comments = policy_scope(Comment).where(user: params[:id]).count
     @number_of_followers = User.find(params[:id]).followers.count
     @number_of_following = User.find(params[:id]).following.count
+  end
+
+  def get_sources_for_profile_overview
+    @user = User.find(params[:id].to_i)
+    @new_comment = Comment.new
+    @no_right_column = true
+
+    @current_page = params[:page].to_i
+    @sources_per_page = 10
+
+    @sources = Source.sources_ordered_for_profile_overview(@user).
+    offset((@current_page - 1) * @sources_per_page).
+    limit(@sources_per_page)
+
+    render :layout => false
   end
 
   def user_profile_followers

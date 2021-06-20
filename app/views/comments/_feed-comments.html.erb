@@ -42,8 +42,10 @@
                <%= form_for(@new_comment) do |f| %>
                  <%= f.label "Comment:" %>
                  <%= f.text_field :content %>
+                 <%= f.label "Source:" %>
+                 <%= f.text_field :source %>
                  <%= f.hidden_field :quote_id, :value => quote.id %>
-                 <%= f.submit %>
+                 <%= f.submit class: 'comment_submit' %>
                <% end %>
             </div>
           </div>

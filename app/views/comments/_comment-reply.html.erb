@@ -24,24 +24,37 @@
         <% end %>
       </div>
 
-      <div class="comment-avatar">
-        <% if comment.user.photo.attached? %>
-          <%= cl_image_tag comment.user.photo.key, class: "" %>
-        <% else %>
-          <%= cl_image_tag "#{@default_profile_image}", class: "" %>
-        <% end %>
-      </div>
-
+      <%= link_to user_profile_overview_path(comment.user) do %>
+        <div class="comment-avatar">
+          <% if comment.user.photo.attached? %>
+            <%= cl_image_tag comment.user.photo.key, class: "" %>
+          <% else %>
+            <%= cl_image_tag "#{@default_profile_image}", class: "" %>
+          <% end %>
+        </div>
+      <% end %>
+      
       <div class="box-and-btn">
-        <%= link_to comment_path(comment) do %>
+        
+
           <div class="comment-content-box">
             <div class="user-and-time">
-              <p class="user"><%= comment.user.username %></p>
+            <%= link_to user_profile_overview_path(comment.user) do %>
+              <p class="user comment-text"><%= comment.user.username %></p>
+            <% end %>
               <span class="time"><%= time_ago_in_words(comment.created_at).gsub('about','').gsub(" days", "d").gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %></span>
             </div>
-            <p class="comment-text"><%= comment.content %></p>
+            <%= link_to comment_path(comment) do %>
+              <p class="comment-text"><%= comment.content %></p>
+            <% end %>
+
+            <% unless comment.source == nil %>
+              <%= link_to "Source", comment.source, :class => "comment-source", target: "_blank" %>
+            <% end %>
+
           </div>
-        <% end %>
+
+       
 
         <div class="reply-btn">
           <%= link_to "#", data: {toggle: "modal", target: "#modal-#{comment.id}"} do  %>
@@ -75,9 +88,11 @@
                  <%= form_for(@new_comment) do |f| %>
                    <%= f.label "Comment:" %>
                    <%= f.text_field :content %>
+                   <%= f.label "Source:" %>
+                   <%= f.text_field :source %>
                    <%= f.hidden_field :parent_id, :value => comment.id %>
                    <%= f.hidden_field :quote_id, :value => comment.quote.id %>
-                   <%= f.submit %>
+                   <%= f.submit class: 'comment_submit' %>
                  <% end %>
               </div>
             </div>

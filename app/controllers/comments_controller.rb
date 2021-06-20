@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     end
 
    if params["comment"]["content"]
-      @comment = Comment.new(content: params["comment"]["content"])
+      @comment = Comment.new(content: params["comment"]["content"], source: params["comment"]["source"])
 
    else
       @comment = Comment.new(content: params[:content]) # how do I build this with strong_comment_params
