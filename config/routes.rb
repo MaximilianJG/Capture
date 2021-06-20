@@ -61,9 +61,5 @@ Rails.application.routes.draw do
   end
 
   get '/user' => "sources#feed", :as => :user_root
-
-<<<<<<< HEAD
-=======
   resources :newsletters
->>>>>>> 46a292fd8703555f33982cb619a11ad7abf8311e
 end
