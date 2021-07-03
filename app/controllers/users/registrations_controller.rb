@@ -4,6 +4,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  after_action :welcome_email, only: [:create]
+  after_action :capture_reminder, only: [:create] #-- uncomment when everything is working
+  # this is working in development but might not work in product yet
+  # just a heads up!
+
   # GET /resource/sign_up
   def new
     sign_up_tags
@@ -21,7 +26,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
         @user.tags << Tag.find(tag_id)
       end
     end
+  end
 
+  def welcome_email
+    UserMailer.with(user: @user).welcome_email.deliver
+  end
+
+  def capture_reminder
+    GetChromeExtensionReminderJob.set(wait: 1.minute).perform_later(@user)
+    #https://guides.rubyonrails.org/active_job_basics.html
   end
 
   # GET /resource/edit

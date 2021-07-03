@@ -7,7 +7,7 @@ class CommentReplyNotification < Noticed::Base
   # Add your delivery methods
   #
   deliver_by :database, format: :to_database
-  deliver_by :email, mailer: "UserMailer", method: :notification_mailer
+  deliver_by :email, mailer: "UserMailer", method: :notification_mailer, if: :email_notifications?
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
 
@@ -20,6 +20,10 @@ class CommentReplyNotification < Noticed::Base
       type: self.class.name,
       params: params
     }
+  end
+
+  def email_notifications?
+     recipient.email_notifications?
   end
 
   def message

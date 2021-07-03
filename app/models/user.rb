@@ -19,8 +19,8 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  #validates :first_name, presence: true
+  #validates :last_name, presence: true
   # validates :tags, presence: true
 
   acts_as_token_authenticatable

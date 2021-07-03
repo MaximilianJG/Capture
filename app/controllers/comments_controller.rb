@@ -35,9 +35,9 @@ class CommentsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
 
-      if @comment.parent_id == nil && @comment.quote.user != current_user
+      if @comment.parent_id == nil #&& @comment.quote.user != current_user
         CommentNotification.with(comment: @comment).deliver(@comment.quote.user)
-      elsif @comment.parent_id != nil && Comment.find(@parent_id).user != current_user
+      elsif @comment.parent_id != nil #&& Comment.find(@parent_id).user != current_user
         CommentReplyNotification.with(comment: @comment).deliver(Comment.find(@parent_id).user)
       end
   end
