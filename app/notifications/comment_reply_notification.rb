@@ -1,10 +1,9 @@
 # To deliver this notification:
 #
-# CommentNotification.with(post: @post).deliver_later(current_user)
-# CommentNotification.with(post: @post).deliver(current_user)
-# CommentNotification.with(comment: Comment.first).deliver(current_user)
+# CommentReplyNotification.with(post: @post).deliver_later(current_user)
+# CommentReplyNotification.with(post: @post).deliver(current_user)
 
-class CommentNotification < Noticed::Base
+class CommentReplyNotification < Noticed::Base
   # Add your delivery methods
   #
   deliver_by :database, format: :to_database
@@ -12,25 +11,23 @@ class CommentNotification < Noticed::Base
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
 
+  # Add required params
+  #
+  param :comment
+
   def to_database
     {
-      type: self.class.name, 
+      type: self.class.name,
       params: params
     }
   end
-
-  # Add required params
-  param :comment
-
-  # Define helper methods to make rendering easier.
 
   def email_notifications?
      recipient.email_notifications?
   end
 
-
   def message
-    "#{params[:comment].user.username} has commented on your capture"
+    "#{params[:comment].user.username} replied to your comment"
   end
 
   def url()

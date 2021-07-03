@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Capture
   class Application < Rails::Application
+    #config.active_job.queue_adapter = :sidekiq
+    #https://github.com/mperham/sidekiq/wiki/Active-Job
+
     config.generators do |generate|
       generate.assets false
       generate.helper false

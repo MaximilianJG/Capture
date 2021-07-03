@@ -15,7 +15,16 @@ class UserMailer < ApplicationMailer
     @notification = params[:record].to_notification
     @comment = params[:comment]
     @recipient = params[:recipient]
-
     mail(to: @recipient.email, subject: @notification.message)
+  end
+
+  def get_chrome_extension_reminder
+    @user = params[:user]
+    mail(to: @user.email, subject: "Don't forget to download the Chrome Extension")
+  end
+
+  def welcome_email
+    @user = params[:user]
+    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
   end
 end
