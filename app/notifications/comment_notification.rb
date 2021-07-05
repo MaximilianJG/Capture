@@ -25,7 +25,11 @@ class CommentNotification < Noticed::Base
   # Define helper methods to make rendering easier.
 
   def email_notifications?
-     recipient.email_notifications?
+    if recipient
+      recipient.email_notifications?
+    else
+      true
+    end
   end
 
 

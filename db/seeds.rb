@@ -13,9 +13,9 @@
 
 # User --------------------------------------------------------------
 print("Creating Users")
-tim = User.create!(email: "tijenner1998@gmail.com", first_name: "Tim", last_name: "Jenner", username: "timjenner", password: "123456")
-marc = User.create!(email: "mar_onthemove@hotmail.com", first_name: "Marc", last_name: "Gaetcke", username: "MARConthemove", password: "123456")
-max = User.create!(email: "maximilia@glasmacher.com", first_name: "Max", last_name: "Glasmacher", username:"maximilian", password: "123456")
+tim = User.create!(email: "timjenner1998@gmail.com", first_name: "Tim", last_name: "Jenner", username: "timjenner", password: "123456")
+marc = User.create!(email: "mar_on_themove@hotmail.com", first_name: "Marc", last_name: "Gaetcke", username: "MARConthemove", password: "123456")
+max = User.create!(email: "maximilian@glasmacher.com", first_name: "Max", last_name: "Glasmacher", username:"maximilian", password: "123456")
 
 # Folder ------------------------------------------------------------
 us_politics_tim = Folder.create!(folder_name: "US Politics", user_id: tim.id)
