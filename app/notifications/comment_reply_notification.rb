@@ -23,7 +23,11 @@ class CommentReplyNotification < Noticed::Base
   end
 
   def email_notifications?
-     recipient.email_notifications?
+    if recipient
+      recipient.email_notifications?
+    else
+      true
+    end
   end
 
   def message
