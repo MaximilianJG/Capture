@@ -28,6 +28,7 @@ class PagesController < ApplicationController
     else
       @ja = "hello"
     end
+    @heading = "Top Results"
   end
 
   def user_profile_overview
@@ -99,7 +100,7 @@ class PagesController < ApplicationController
     @user = User.find(params[:id])
 
     @profile_show_page = true
-    @heading = "#{User.find(params[:id]).first_name} #{User.find(params[:id]).last_name}"
+    @heading = "#{User.find(params[:id]).username}"
   end
 
 end

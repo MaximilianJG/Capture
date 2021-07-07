@@ -23,11 +23,15 @@
           <%= render 'shared/flashes' %>
           <%= yield %>
 
-        <!-- Everything Else -->
+        <% elsif @outside_app %>
+          <div class="outside-app-content">
+            <%= yield %>
+          </div>
+
+        <!-- In-App -->
         <% else %>
           <%= render 'shared/flashes' %>
           <%= render 'shared/navbars/top-navbar' %>
-          <%= render 'shared/title-bar'%>
 
           <div class="display-flex-container">
 
@@ -36,16 +40,23 @@
               <%= render 'shared/left-column/left-column' %> <!-- this is comming from the application controller (set_folder method) -->
             </div>
 
-            <!-- Center Content -->
-            <div class="center-content">
-              <%= yield %>
-            </div>
 
-            <!-- Right Column -->
-            <div class="right-column">
-              <%= render 'shared/right-column/right-column' if user_signed_in?%>
-            </div>
+            <div class="center-right-column">
+              <%= render 'shared/page-title' %>
 
+
+              <div class="d-flex justify-content-between">
+                <!-- Center Content -->
+                <div class="center-content">
+                  <%= yield %>
+                </div>
+
+                <!-- Right Column -->
+                <div class="right-column">
+                  <%= render 'shared/right-column/right-column' if user_signed_in?%>
+                </div>
+              </div>
+            </div>
           </div>
         <% end %>
 

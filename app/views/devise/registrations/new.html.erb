@@ -1,5 +1,5 @@
 
-<div class="">
+<div class="devise-div">
   <h2 class="devise-title">Sign up</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -43,10 +43,10 @@
                       input_html: { autocomplete: "new-password" } %>
           </div>
 
-          <div class="col-6">
+<!--           <div class="col-6">
             <%= f.input :tags, collection: @sign_up_tags, as: :collection_select, label_method: :name, required: true, input_html: { multiple: true } %>
           </div>
-
+ -->
 
         </div>
         <%= f.input :photo, as: :file %>

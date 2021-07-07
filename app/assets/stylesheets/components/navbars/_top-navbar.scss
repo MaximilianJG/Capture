@@ -1,9 +1,11 @@
 .global-nav {
   position: fixed;
-  width: 100vw;
+  width: 100%;
   top: 0px;
   background-color: #F6F6F4;
   z-index: 1;
+
+  box-shadow: 0px 2px 10px rgba(197, 197, 197, 0.5);
 }
 
 .top-navbar {
@@ -11,7 +13,7 @@
   margin-top: 12px;
   margin-bottom: 12px;
 
-  width: 1100px;
+  width: 1300px;
 
   display: flex;
   justify-content: space-between;
@@ -45,7 +47,7 @@
 
 .top-navbar-middle {
   width: 624px;
-  text-align: right;
+  // text-align: right;
 
 
   .back-btn {
@@ -54,15 +56,6 @@
 
     :hover {
       color: black;
-    }
-  }
-  .feedback-btn {
-    background-color: $light-grey;
-    padding: 3px 6px;
-    display: inline-block;
-    border-radius: 8px;
-    a {
-      color: $dark-grey;
     }
   }
 }
