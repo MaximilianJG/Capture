@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-between stats mb-3">
+<div class="d-flex justify-content-between stats mb-1">
   <div>
     <div class="text-center">
       <span class="value"><%= @number_of_captures %></span> <br>
@@ -28,12 +28,6 @@
   </div>
 </div>
 
-<div class="d-flex justify-content-center">
-  <div>
-    <span class="profile-primary-line"></span>
-    <span class="profile-secondary-line"></span>
-  </div>
-</div>
 
 <% if @user == current_user %>
   <div class="log-out-and-edit">
@@ -49,14 +43,14 @@
   </div>
 <% else %>
 
-  <div class="follow-btn-div">
+  <div class="profile-follow-btn-div">
       <% if ((Relationship.where(asker: current_user, receiver: @user, status: 1).size > 0) ) %>
-        <%= link_to delete_relationship_path(@user), method: :delete, class: "follow-btn" do %>
-          <span class="follow-text"> Unfollow </span>
+        <%= link_to delete_relationship_path(@user), method: :delete, class: "profile-follow-btn" do %>
+          <span class="profile-follow-text"> Unfollow </span>
         <% end %>
       <% else %>
-        <%= link_to create_relationship_path(@user), method: :create, class: "follow-btn" do %>
-          <span class="follow-text"> Follow </span>
+        <%= link_to create_relationship_path(@user), method: :create, class: "profile-follow-btn" do %>
+          <span class="profile-follow-text"> Follow </span>
         <% end %>
       <% end %>
   </div>

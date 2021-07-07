@@ -11,6 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
+    @outside_app = true
     sign_up_tags
     super
   end
@@ -20,12 +21,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     cookies[:capture_user_id] = current_user.id
 
-    tags = []
-    params[:user][:tags].each do |tag_id|
-      unless tag_id == ""
-        @user.tags << Tag.find(tag_id)
-      end
-    end
+    # User taghs
+    # tags = []
+    # params[:user][:tags].each do |tag_id|
+    #   unless tag_id == ""
+    #     @user.tags << Tag.find(tag_id)
+    #   end
+    # end
   end
 
   def welcome_email

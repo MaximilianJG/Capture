@@ -4,5 +4,6 @@ class NotificationsController < ApplicationController
   def index
     @notifications = policy_scope(Notification).where(recipient: current_user).newest_first
     #@notification = current_user.notifications
+    @heading = "Notifications"
   end
 end

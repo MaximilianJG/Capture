@@ -1,10 +1,14 @@
+.right-column-content {
+    position: fixed;
+}
+
+
 .component-div {
   padding: 15px;
   background-color: white;
   border-radius: 8px;
   border: 1px solid $light-grey;
-  position: fixed;
-  width: 208px;
+  width: 400px;
 
 }
 

@@ -19,6 +19,7 @@ class SourcesController < ApplicationController
   end
 
   def show
+    @heading = Capture
     @source_page = true
 
     @all_comments = []
