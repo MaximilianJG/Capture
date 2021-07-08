@@ -100,6 +100,10 @@ class PagesController < ApplicationController
     @users = suggested_for_your
   end
 
+  def about_us
+
+  end
+
   private
 
   def profile_show_page?
