@@ -1,0 +1,15 @@
+<div class="comment-notification">
+  <div class="reply">
+    <p><%= notification.params[:comment].content %><p>
+  </div>
+
+  <div class="comment-notification-reference">
+    <%= link_to notification.to_notification.url, class: "text-decoration-none" do  %>
+      <div class="comment-notification-content">
+        <i class="fas fa-quote-left"></i>
+        <p class=""><span><%= notification.params[:comment].quote.content %></span></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+

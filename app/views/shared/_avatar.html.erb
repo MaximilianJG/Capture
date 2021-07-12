@@ -1,6 +1,10 @@
 
 <% if user.photo.attached? %>
-  <%= cl_image_tag source.user.photo.key, class: "avatar" %>
-<% else %>
+  <%= cl_image_tag user.photo.key, class: "avatar" %>
+<% elsif @default_profile_image%>
   <%= cl_image_tag "#{@default_profile_image}", class: "avatar" %>
+<% else %>
+  <%= cl_image_tag "Profile_avatar_placeholder_large_t0udob", class: "avatar" %>
 <% end %>
+
+<!-- source.user.photo.key -->

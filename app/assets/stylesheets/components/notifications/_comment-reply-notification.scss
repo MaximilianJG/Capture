@@ -1,0 +1,46 @@
+.comment-reply-notification {
+
+  .reply {
+  margin-top: 5px;
+  margin-bottom: 5px !important;
+    p {
+      margin-bottom: 0px;
+      // color: red;
+    }
+  }
+
+  .comment-reply-notification-reference {
+    border-radius: 6px;
+    border: 1px solid #D8D7D5;
+    padding: 10px;
+
+
+    .comment-reply-notification-content {
+      display: flex;
+
+      .avatar {
+        margin-right: 5px;
+      }
+      .content-bubble {
+        background-color: $light-grey;
+        border-radius: 0px 8px 8px 8px;
+        padding: 5px;
+        width: 100%;
+        color: black;
+        p {
+          &.username {
+            font-family: "Open Sans", "sans-serif";
+            font-weight: 600;
+            font-size: 15px;
+            font-weight: 600;
+          }
+          margin: 0px;
+        }
+      }
+    }
+    &:hover {
+      text-decoration: none;
+      background-color: $hover-grey;
+    }
+  }
+}

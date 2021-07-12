@@ -1,0 +1,24 @@
+.notification-card {
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid #D8D7D5;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  .avatar-and-message {
+    width: 100%;
+    display: flex;
+    // justify-content: space-between;
+
+    .time-ago {
+      color: $dark-grey;
+      margin-left: auto;
+    }
+  }
+  @import "comment-notification";
+  @import "comment-reply-notification";
+}
+
+.hello-man {
+  color: red;
+}

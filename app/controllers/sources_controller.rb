@@ -3,6 +3,7 @@ class SourcesController < ApplicationController
 
   # AKA My captures
   def index
+
     @heading = "My Captures"
     @no_right_column = true
     @sources = policy_scope(Source).where(folder: nil, user: current_user)
