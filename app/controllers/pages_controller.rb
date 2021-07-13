@@ -101,7 +101,7 @@ class PagesController < ApplicationController
   end
 
   def about_us
-
+    @landing_page_navbar = true
   end
 
   private
