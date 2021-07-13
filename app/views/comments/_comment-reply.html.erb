@@ -2,7 +2,6 @@
 <span class="comment-anchor" id="comment-<%= comment.id %>"></span>
   <div class="comment-div" id="">
     <div class="comment">
-
       <div class="votes">
         <% if comment.liked_by_user?(current_user) == nil %>
           <span class="vote-anchor" id="vote-<%= comment.id %>"></span>
