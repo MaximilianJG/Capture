@@ -40,6 +40,7 @@ gem 'httparty'
 gem 'nokogiri'
 gem 'byebug'
 gem "noticed"
+gem 'premailer-rails'
 
 
 

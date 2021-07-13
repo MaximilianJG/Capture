@@ -6,4 +6,8 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.newsletter_mailer
   end
 
+  def notification_mailer
+    UserMailer.notification_mailer
+  end
+
 end

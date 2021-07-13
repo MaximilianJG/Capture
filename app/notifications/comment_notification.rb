@@ -38,6 +38,6 @@ class CommentNotification < Noticed::Base
   end
 
   def url()
-    comment_path(params[:comment])
+    comment_url(params[:comment])
   end
 end

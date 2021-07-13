@@ -1,0 +1,26 @@
+.greeting {
+}
+
+.view-notification-btn {
+  background-color: $primary-color;
+  border-radius: 6px;
+  padding: 10px 30px;
+  text-align: center;
+  width: 20px;
+
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+  }
+}
+
+.unsubscribe-text {
+  font-size: 10px;
+  margin-top: 10px;
+  a {
+    color: black;
+    font-weight: 600;
+  }
+}

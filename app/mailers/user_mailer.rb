@@ -12,10 +12,22 @@ class UserMailer < ApplicationMailer
   end
 
   def notification_mailer
-    @notification = params[:record].to_notification
+    @notification = params[:record]
     @comment = params[:comment]
     @recipient = params[:recipient]
-    mail(to: @recipient.email, subject: @notification.message)
+    mail(to: @recipient.email, subject: @notification.to_notification.message)
+
+    # @notification =Notification.first
+    # @comment = Comment.last
+    # @recipient = User.third
+
+    # if @comment.user.photo.attached?
+    #   attachments.inline["avatar.jpg"] = @comment.user.photo.key
+    # # else
+    # #   attachments["avatar"]
+    # end
+
+    mail(to: @recipient.email, subject: @notification.to_notification.message)
   end
 
   def get_chrome_extension_reminder

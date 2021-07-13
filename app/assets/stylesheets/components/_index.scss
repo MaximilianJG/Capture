@@ -42,9 +42,11 @@
 @import "my-captures/folders";
 @import "my-captures/sources";
 
+@import "notifications/general";
 @import "notifications/comment-notification";
 @import "notifications/comment-reply-notification";
 
+@import "mailers/notification_mailer";
 
 @import "page-title";
 @import "feedback-btn";

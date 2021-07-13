@@ -1,0 +1,21 @@
+<div class="comment-reply-notification">
+  <div class="reply">
+    <p><%= notification.params[:comment].content %><p>
+  </div>
+
+  <div class="comment-reply-notification-reference">
+    <%= link_to notification.to_notification.url, class: "text-decoration-none" do  %>
+        <div class="comment-reply-notification-content">
+          <div class="avatar">
+            <%= render partial: "shared/avatar", locals: { user: notification.recipient } %>
+          </div>
+          <% parent_comment = Comment.find(notification.params[:comment].parent_id) ## could be passed as param in commentreplynotification%>
+          <div class="content-bubble">
+            <p class="username"><%= parent_comment.user.username %></p>
+            <p><%= parent_comment.content %></p>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+

@@ -1,44 +1,24 @@
 <% @notifications.each do |notification| %>
 
-    <div class="comment-reply-notification">
-      <div class="avatar-and-message">
-        <div>
-          <%= render partial: "shared/avatar", locals: { user: notification.params[:comment].user } %>
-          <%= notification.to_notification.message %>
-        </div>
-        <span class="time-ago"><%= time_ago_in_words(notification.created_at).gsub('about','').gsub(" days", "d").gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago</span>
-      </div>
 
-      <div class="reply">
-        <p><%= notification.params[:comment].content %><p>
-      </div>
-
-      <div class="parent">
-        <%= link_to notification.to_notification.url, class: "text-decoration-none" do  %>
-        <% if notification.type == "CommentReplyNotification"  %>
-          <div class="reply-notification">
-            <div class="avatar">
-              <%= render partial: "shared/avatar", locals: { user: notification.recipient } %>
-            </div>
-            <% parent_comment = Comment.find(notification.params[:comment].parent_id) ## could be passed as param in commentreplynotification%>
-            <div class="content-bubble">
-              <p class="username"><%= parent_comment.user.username %></p>
-              <p><%= parent_comment.content %></p>
-            </div>
-          </div>
-        <% elsif notification.type == "CommentNotification" %>
-        <div class="comment-notification">
-
-          <i class="fas fa-quote-left"></i>
-          <p class=""><span><%= notification.params[:comment].quote.content %></span></p>
-
-        </div>
-        <% end %>
-
-      <% end %>
-      </div>
-
+<div class="notification-card">
+  <div class="avatar-and-message">
+    <div>
+      <%= render partial: "shared/avatar", locals: { user: notification.params[:comment].user } %>
+      <%= notification.to_notification.message %>
     </div>
+    <span class="time-ago"><%= time_ago_in_words(notification.created_at).gsub('about','').gsub(" days", "d").gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago</span>
+  </div>
+
+  <% if notification.type == "CommentNotification" %>
+    <%= render partial: "notifications/comment-notification", locals: { notification: notification } %>
+
+  <% elsif notification.type == "CommentReplyNotification" %>
+    <%= render partial: "notifications/comment-reply-notification", locals: { notification: notification } %>
+  <% end %>
+
+</div>
+
 
 
 
