@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   get 'newsletters/create'
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
 
+  devise_scope :user do
+    post "/users/enter_private_mode" => "users/registrations#enter_private_mode"
+  end
+
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

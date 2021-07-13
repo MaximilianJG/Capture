@@ -46,8 +46,8 @@
 }
 
 .top-navbar-middle {
-  width: 624px;
-  // text-align: right;
+  width: 816px;
+  text-align: right;
 
 
   .back-btn {
@@ -65,4 +65,12 @@
   margin-left: 30px;
 }
 
+.private_mode_tag {
+  padding: 2px 8px;
+  background-color: $primary-color;
+  color: white;
+  border-radius: 6px;
+  display: inline-block;
+  text-align: right;
+}
 

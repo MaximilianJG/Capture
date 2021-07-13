@@ -7,7 +7,11 @@ class Api::V1::SourcesController < Api::V1::BaseController
     @quote.user = current_user
     authorize @quote
 
-    @source = Source.new(title: general_post_request_params[:source_title], website: general_post_request_params[:website], url_of_website: general_post_request_params[:url_of_website])
+    if current_user.private_mode == true
+      @source = Source.new(title: general_post_request_params[:source_title], website: general_post_request_params[:website], url_of_website: general_post_request_params[:url_of_website], private: true)
+    else
+      @source = Source.new(title: general_post_request_params[:source_title], website: general_post_request_params[:website], url_of_website: general_post_request_params[:url_of_website])
+    end
 
     @source.user = current_user
     file = URI.open(general_post_request_params[:source_photo_url])
