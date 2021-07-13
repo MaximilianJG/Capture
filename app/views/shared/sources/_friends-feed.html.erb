@@ -3,6 +3,7 @@
   <% sources.each do |source| %>
     <div class="feed-card">
 
+
       <div class="title">
         <%= link_to source_path(source) do  %>
           <span class=""><%= source.title %></span><br>
@@ -36,16 +37,27 @@
       <%= render partial: "comments/feed-comments", locals: { source: source } %>
 
       <div class="see-more-and-captured-by">
+        <div class="d-flex align-items-center">
+          <% if source.user == current_user %>
+            <p class="see-more">
+              <%= link_to source_path(source), method: :delete do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            </p>
 
-        <% if source.user == current_user %>
-          <p class="see-more">
-            <%= link_to source_path(source), method: :delete do %>
-              <i class="far fa-trash-alt"></i>
+            <% if !source.private %>
+            <div class="source-private-tag">
+              <span>Private</span>
+            </div>
             <% end %>
-          </p>
-        <% else %>
-          <p class="see-more">See more...</p>
-        <% end %>        
+
+          <% else %>
+            <p class="see-more">See more...</p>
+          <% end %>
+
+        </div>
+
+
         <p class="captured-by">Captured by <strong class="mr-2"><%= link_to "#{source.user.username}", user_profile_overview_path(source.user) %></strong> <i class="far fa-clock"></i> <%= time_ago_in_words(source.created_at).gsub('about','').gsub(" days", "d").gsub("less than a", "1").gsub(" minutes", "m").gsub(" hours", "h") %> ago</p>
       </div>
     </div>

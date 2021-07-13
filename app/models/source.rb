@@ -37,7 +37,7 @@ class Source < ApplicationRecord
   # Returns Active Record Association of Sources of people the user follows in descending
   # order or nil if user doesn't follow anybody.
   def self.sources_ordered_for_friends_feed(current_user)
-    Source.all.where(user: current_user.following)&.order(created_at: :desc)
+    Source.all.where(user: current_user.following, private: false)&.order(created_at: :desc)
   end
 
   # Returns Active Record Association of Sources user captured in descending 
@@ -49,7 +49,7 @@ class Source < ApplicationRecord
   # Returns Active Record Association of all Sources in descending order of created at 
   # date where user didn't do the Capture themselves
   def self.sources_ordered_for_discover_feed(current_user)
-    Source.all.where.not(user: current_user).order(created_at: :desc)
+    Source.all.where.not(user: current_user, private: true).order(created_at: :desc)
   end
 
 end

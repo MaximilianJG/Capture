@@ -4,6 +4,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  skip_before_action :verify_authenticity_token, only: [:enter_private_mode]
+
+
   after_action :welcome_email, only: [:create]
   after_action :capture_reminder, only: [:create] #-- uncomment when everything is working
   # this is working in development but might not work in product yet
@@ -28,6 +31,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     #     @user.tags << Tag.find(tag_id)
     #   end
     # end
+  end
+
+  def enter_private_mode
+    if current_user.private_mode == true
+      current_user.update!(private_mode: false)
+    else
+      current_user.update!(private_mode: true)
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   def welcome_email

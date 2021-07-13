@@ -99,6 +99,7 @@
 
     .see-more-and-captured-by {
       display: flex;
+      align-items: center;
       align-content: center;
       justify-content: space-between;
       margin-top: 10px;
@@ -107,6 +108,13 @@
         color: $dark-grey;
         font-size: 14px;
         font-family: $standard-font;
+      }
+      .source-private-tag {
+        padding: 1px 5px;
+        margin-left: 10px;
+        background-color: $primary-color;
+        color: white;
+        border-radius: 6px;
       }
       .captured-by, a {
         margin: 0px;
