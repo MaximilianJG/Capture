@@ -23,7 +23,7 @@ class FoldersController < ApplicationController
 
     # only show private sources to owner of folder
     if @folder.user != current_user
-      @sources.where(private: false)
+      @sources = @sources.select { |source| source.private == false }
     end
 
   end
