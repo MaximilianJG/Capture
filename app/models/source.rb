@@ -51,7 +51,6 @@ class Source < ApplicationRecord
   def self.sources_ordered_for_discover_feed(current_user)
     Source.all.where.not(user: current_user, private: true).order(created_at: :desc)
   end
-
 end
 
 

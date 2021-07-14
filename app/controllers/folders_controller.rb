@@ -17,9 +17,14 @@ class FoldersController < ApplicationController
       # where(user: current_user)
     end
 
-   @sources = @sources.sort_by { |source| source.created_at } # isn't working yet either
+    @sources = @sources.sort_by { |source| source.created_at } # isn't working yet either
     # @sources = @sources.order(created_at: :desc) <-- is not working because its not active record
     @no_right_column = true
+
+    # only show private sources to owner of folder
+    if @folder.user != current_user
+      @sources.where(private: false)
+    end
 
   end
 
