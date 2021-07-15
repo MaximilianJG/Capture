@@ -1,6 +1,5 @@
 <% @notifications.each do |notification| %>
 
-
 <div class="notification-card">
   <div class="avatar-and-message">
     <div>
@@ -20,8 +19,6 @@
 </div>
 
 <% current_user.notifications.mark_as_read! %>
-
-
 
 <% end %>
 
