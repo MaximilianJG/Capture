@@ -11,12 +11,32 @@
     font-weight: bold;
 }
 
+
+.who-are-we-title {
+    color: $heading-color;
+    font-size: 50px;
+    font-family: $heading-font;
+    font-weight: bold;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
 .about-us-subtitle {
     font-family: $heading-font;
     font-size: 18px;
     margin-top: 14px;
     line-height: 27.24px;
+    a {
+        color: black;
+    }
+  }
 
+.about-us-subtitle-text {
+    font-family: $heading-font;
+    font-size: 18px;
+    margin-top: 14px;
+    line-height: 27.24px;
+    margin-top: 40px;
     a {
         color: black;
     }
@@ -28,10 +48,29 @@
     width: 100%;
     padding-left: 400px;
     padding-right: 400px;
-
+    margin-bottom: 40px;
+    align-items: center;
     .about-us-photo {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+    i {
+        font-size: 22px;
+    }
+  }
+
+.feedback-box {
+    display: flex;
+
+    .feedback-btn {
+        margin-left: 15px;
+    }
+}
+
+.max-avatar {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
   }

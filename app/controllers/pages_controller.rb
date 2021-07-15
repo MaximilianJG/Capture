@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   def home
     @landing_page_navbar = true
 
-    @sources = Source.all.order(created_at: :desc).limit(3)
+    @sources = Source.all.order(created_at: :desc).limit(9)
     # most_saved_sources # Application Controller method
   end
 
