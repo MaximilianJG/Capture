@@ -1,9 +1,27 @@
+// .feedback-btn {
+//   background-color: $primary-color;
+//   padding: 6px 9px;
+//   display: inline-block;
+//   border-radius: 8px;
+//   a {
+//     color: white;
+//   }
+// }
+
 .feedback-btn {
-  background-color: $primary-color;
+  background-color: white;
   padding: 6px 9px;
+
+  font-weight: bold;
+  border: 3px solid #CB1215;
+
+
   display: inline-block;
   border-radius: 8px;
-  a {
-    color: white;
-  }
+  color: #CB1215;
+}
+
+.feedback-btn:hover {
+  background-color: #CB1215;
+  color: white;
 }
