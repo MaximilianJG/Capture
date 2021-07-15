@@ -20,6 +20,10 @@
       <div class="d-flex sidebar-link">
         <i class="far fa-bell icon"></i>
         <p class="">Notifications</p>
+
+        <% if current_user.notifications.unread.count > 0 %>
+          <p class="red-notification-indicator"><%= current_user.notifications.unread.count %></p>
+        <% end %>
       </div>
     <% end %>
 

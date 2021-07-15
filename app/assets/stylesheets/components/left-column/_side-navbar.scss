@@ -11,17 +11,36 @@
   font-size: 18px;
   margin-bottom: 10px;
   align-items: center;
+  position: relative;
 
   p {
     margin-bottom: 0px;
   }
 
   .icon {
-    margin-right: 6px;
+    margin-right: 12px;
   }
 
   .active {
     color: black;
     font-weight: bold;
   }
+
+  .red-notification-indicator {
+    background-color: #CB1215;
+    border-radius: 50%;
+    color: white;
+    font-size: 10px;
+    position: absolute;
+    padding-top: 2px;
+    top: -4px;
+    left: 6px;
+    width: 19px;
+    height: 19px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
 }
+
