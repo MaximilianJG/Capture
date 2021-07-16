@@ -45,9 +45,19 @@
   }
 }
 
-.top-navbar-middle {
-  width: 816px;
+.top-navbar-right {
   text-align: right;
+  width: 816px;
+  font-family: "Open Sans", "sans-serif";
+  font-weight: 600;
+  a {
+    color: black;
+  }
+}
+
+.top-navbar-left {
+  width: 816px;
+  text-align: center;
 
 
   .back-btn {
@@ -58,6 +68,7 @@
       color: black;
     }
   }
+
 }
 
 .top-navbar-global-search {
