@@ -37,6 +37,6 @@ class UserMailer < ApplicationMailer
 
   def welcome_email
     @user = params[:user]
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+    mail(to: @user.email, subject: "Welcome to Capture #{@user.username}")
   end
 end

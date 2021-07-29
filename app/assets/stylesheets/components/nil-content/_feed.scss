@@ -47,8 +47,21 @@
   margin-right: 60px;
 }
 
+.how-to-5 {
+  height: 70px;
+  width: 210px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 60px;
+}
+
 .info-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+#done-text {
+  font-size: 40px;
+  margin-top: 20px;
 }
