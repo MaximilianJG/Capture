@@ -3,29 +3,55 @@
 <%= render partial: "shared/sources/get-sources-for-friends-feed" %>
 
 <% else %>
-  <div class="nil-feed">
-    <h3 class="text">Please <strong>follow other users</strong> <br>to see their Captures</h3>
-    <div class="arrow-right">
-      <h1 class="fas fa-long-arrow-alt-right"></h1>
+    <h1 class="about-us-title"><strong>Getting started</strong></h1>
+    <h2 class="about-us-subtitle-text">
+        1. Let’s get you started <span>🚀</span> Download our free 
+        <a href="https://www.getcapture.org/users/sign_up" target="_blank"><strong>Chrome Extension</strong></a> 
+        and have a quick look at our How to Guide 📖 below. 
+    </h2>
+    <h2 class="about-us-subtitle-text">
+      2. Follow friends who use Capture to see what they’re reading <span>➡️</span> 
+    </h2>
+    <h2 class="about-us-subtitle-text">
+      3. Can’t find them there? Try out the <strong>search bar</strong> <span>🔍</span> in the top right <span>↗️</span> 
+      or <strong>invite your friends</strong> by sharing captures by email. 
+    </h2>
+    <h2 class="about-us-subtitle-text">
+      4. Get 10 users onboard and gain <strong>free access to a newspaper of your choice</strong>
+      for one month <span>🤑</span>
+    </h2>
+    <h2 class="about-us-subtitle-text">
+      You’re good to go! Make sure to use our <strong>feedback button</strong> if you 
+      want to report any bugs <span>🐞</span> or suggest new ideas <span>💡</span> - ️
+      But for now, happy capturing <span>🎉</span> ! 
+    </h2>
+    <h1 class="about-us-title"><strong>How to use Capture</strong></h1>
+    <div class="how-to-photos">
+      <div class="info-box">
+        <%= cl_image_tag "v1626465143/Screen_Shot_2021-07-16_at_9.52.18_PM_vjknyd.png", class: "how-to-1" %>  
+        <h2 class="about-us-subtitle-text">
+          <strong>1. Pin Capture to get the most out of it</strong> <span>💪🏼</span> 
+        </h2>       
+      </div>
+      <div class="info-box">
+        <%= cl_image_tag "v1626465177/Screen_Shot_2021-07-16_at_9.52.50_PM_oyjwuq.png", class: "how-to-2" %>  
+        <h2 class="about-us-subtitle-text">
+          <strong>2. Highlight and press the Capture  button to save and share your snippet </strong> <span>🌍</span> 
+        </h2>       
+      </div>
+      <div class="info-box">
+        <%= cl_image_tag "v1626465268/Screen_Shot_2021-07-16_at_9.54.22_PM_jcoxlg.png", class: "how-to-3" %>  
+        <h2 class="about-us-subtitle-text">
+          <strong>3. Comment and add tags on your capture </strong> <span>📣</span> 
+        </h2>       
+      </div>
+      <div class="info-box">
+        <%= cl_image_tag "v1626465333/Screen_Shot_2021-07-16_at_9.55.28_PM_wa7emr.png", class: "how-to-4" %>   
+        <h2 class="about-us-subtitle-text">
+          <strong>4. Disable or turn capture off  by clicking the Capture logo </strong> <span>🌗</span> 
+        </h2>       
+      </div>      
     </div>
-  </div>
-
-  <div class="nil-my-captures">
-    <h3 class="text">Start Capturing by using our <br><%= link_to "Chrome Extension", "https://chrome.google.com/webstore/detail/capture/jpnkblkejlgonnmaemmcmfjglogondjf", target: "_blank" %></h3>
-    <div class="d-flex justify-content-center">
-      <%= cl_image_tag "Screenshot_2021-03-31_at_18.21.57_vudxhh", width: 400;  %>
-    </div>
-  </div>
-
-  <div class="nil-my-captures">
-    <h3 class="text">A quick How-to Guide on the Capture Extension:</h3>
-    <ul>
-      <li>After downloading Capture from the Chrome Store pin it to your extensions to access its full functionality</li>
-      <li>To disable or to turn Capture off entirely click on the Capture icon that appears in the top right corner of your browser after pinning it to your extensions</li>
-      <li>Once you have installed Capture go to your favorite news websites and start capturing news snippets</li>
-      <li>Add comments to share your thoughts with your friends, add tags to structure your news articles, or delete captures that you want to undo</li>
-    </ul>
-  </div>
 <% end %>
 
 

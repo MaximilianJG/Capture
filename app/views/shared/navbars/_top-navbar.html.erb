@@ -12,12 +12,18 @@
     </div>
     <!--  -->
 
-    <div class="top-navbar-middle">
+    <div class="top-navbar-left">
       <% if current_user.private_mode %>
-      <div class="private_mode_tag">
-        <i class="fas fa-lock mr-2"></i><span>Private Session</span>
-      </div>
+        <div class="private_mode_tag">
+          <i class="fas fa-lock mr-2"></i><span>Private Session</span>
+        </div>
       <% end %>
+    </div>
+
+    <div class="top-navbar-right">
+        <div class="about-us">
+        <%= link_to "About us", about_us_path  %>
+      </div>
     </div>
 
     <div class="top-navbar-global-search">

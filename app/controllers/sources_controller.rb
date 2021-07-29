@@ -80,10 +80,14 @@ class SourcesController < ApplicationController
 
   def feed
     @new_comment = Comment.new
-    @heading = "Friends Feed"
     @no_right_column = true
     @sources = Source.sources_ordered_for_friends_feed(current_user).limit(10)
     authorize @sources
+    if @sources
+      @heading = "Friends Feed"
+    else
+      @heading = "Getting started"
+    end
   end
 
   # Still have to change sources_ordered_for_discover_feed so that it only returns posty

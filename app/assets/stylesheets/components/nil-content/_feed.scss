@@ -14,3 +14,41 @@
   }
 
 }
+.how-to-photos {
+  display: flex;
+  flex-direction: column;
+}
+.how-to-1 {
+  width: 230px;
+  height: 200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 60px;
+}
+.how-to-2 {
+  width: 380px;
+  height: 70px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 60px;
+}
+.how-to-3 {
+  width: 370px;
+  height: 220px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 60px;
+}
+.how-to-4 {
+  width: 220px;
+  height: 210px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 60px;
+}
+
+.info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

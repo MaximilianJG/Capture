@@ -7,9 +7,14 @@ class PagesController < ApplicationController
     @landing_page_navbar = true
 
     @sources = Source.where(private: false).order(created_at: :desc).limit(9)
-
-
     # most_saved_sources # Application Controller method
+
+    # Shows selection of 9 unique sources, all have a photo attached
+    @sources_with_a_photo = []
+    @sources.each do |source|
+      @sources_with_a_photo << source if source.photo
+    end
+    @nice_sources = @sources_with_a_photo.uniq { |source| source.url_of_website }.first(9)
   end
 
   def search
