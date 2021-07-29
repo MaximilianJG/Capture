@@ -7,8 +7,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   skip_before_action :verify_authenticity_token, only: [:enter_private_mode]
 
 
-  after_action :welcome_email, only: [:create]
-  after_action :capture_reminder, only: [:create] #-- uncomment when everything is working
+  #after_action :welcome_email, only: [:create], if :user_signed_in?
+  #after_action :capture_reminder, only: [:create], if :user_signed_in? #-- uncomment when everything is working
   # this is working in development but might not work in product yet
   # just a heads up!
 
@@ -21,8 +21,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    @outside_app = true
     super
-    cookies[:capture_user_id] = current_user.id
+
+    if @user.save
+      flash[:success]="User added"
+      cookies[:capture_user_id] = current_user.id
+      #redirect_to root_path
+      welcome_email
+    else
+      flash[:error]="Something went wrong, please try again"
+    end
 
     # User taghs
     # tags = []
@@ -51,6 +60,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     #https://guides.rubyonrails.org/active_job_basics.html
   end
 
+  def user_saved?
+  end
+
   # GET /resource/edit
   # def edit
   #   super
@@ -62,9 +74,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
