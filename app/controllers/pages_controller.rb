@@ -1,12 +1,14 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [ :home, :about_us ]
 
   before_action :profile_show_page?, only: [:user_profile_overview, :user_profile_followers, :user_profile_following]
 
   def home
     @landing_page_navbar = true
 
-    @sources = Source.all.order(created_at: :desc).limit(9)
+    @sources = Source.where(private: false).order(created_at: :desc).limit(9)
+
+
     # most_saved_sources # Application Controller method
   end
 
@@ -55,7 +57,7 @@ class PagesController < ApplicationController
 
     @recent_activity.sort_by{|e| !e[:created_at]}
 
-    @number_of_captures = policy_scope(Quote).where(user: params[:id]).count
+    @number_of_captures = policy_scope(Source).where(user: params[:id]).count
     @number_of_comments = policy_scope(Comment).where(user: params[:id]).count
     @number_of_followers = User.find(params[:id]).followers.count
     @number_of_following = User.find(params[:id]).following.count

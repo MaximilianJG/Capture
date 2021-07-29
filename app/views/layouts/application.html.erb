@@ -31,6 +31,7 @@
         <% elsif @outside_app %>
           <div class="outside-app-content">
             <%= yield %>
+            <%= render 'shared/flashes' %>
           </div>
 
         <!-- In-App -->
