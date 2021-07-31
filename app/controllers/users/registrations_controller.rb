@@ -75,6 +75,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # DELETE /resource
   def destroy
+    Relationship.where(asker_id: current_user.id).destroy_all
+    Relationship.where(receiver_id: current_user.id).destroy_all
     super
   end
 
