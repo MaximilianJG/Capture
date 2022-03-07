@@ -38,7 +38,7 @@ gem 'simple_token_authentication'
 gem 'wombat'
 gem 'httparty'
 gem 'nokogiri'
-gem 'byebug'
+#gem 'byebug'
 gem "noticed"
 gem 'premailer-rails'
 
