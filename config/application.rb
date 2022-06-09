@@ -24,12 +24,15 @@ module Capture
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 #application.rb
+
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
         resource '*', :headers => :any, :methods => [:get, :post, :options, :patch, :delete]
       end
     end
+
+
 
     config.assets.initialize_on_precompile = false
 
